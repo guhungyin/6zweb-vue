@@ -1,0 +1,225 @@
+:root{
+  --black1: #24262b;
+  --black2:#1c1e22;
+  --black3:#1a1c20;
+  --black4: #191919;
+  --fff: #FFFFFF;
+  --gray1: #98a7b5;
+  --gray2: #494949;
+  --blue: #8ea7bb;
+  --primary: #3bc117;
+  --greenBg: #009d80;
+  --yellow: #ffe800;
+  --greenGradient: linear-gradient(180deg,#278e47,#64d23e);
+  --redGradient: linear-gradient(180deg,#8b0000,#d23e3e);
+}
+#app{
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  background-color: var(--black1);
+  min-height: 100%;
+}
+#app.widthLimit{
+  max-width: 34rem;
+}
+body{
+  font-family: "Helvetica Neue",Helvetica,'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;
+  font-size: 16px;
+  background-color: var(--fff);
+}
+hr{
+  background-color: var(--fff);
+}
+h2{
+  color: var(--fff);
+  margin: 0;
+}
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:focus{
+  box-shadow: none;
+}
+.form-control{
+  border: none;
+  background-color: var(--black3);
+}
+.form-control:focus{
+  background-color: var(--black4);
+  box-shadow: 0 0 0 1px var(--primary);
+  color: var(--fff);
+}
+/* 下方選單 */
+.bottomMenu{
+  width: 100%;
+  max-width: 34rem;
+  bottom: 0;
+  height: 4rem;
+  z-index: 1;
+  background-color: var(--black2);
+}
+.bottomMenu ul{
+  box-sizing: border-box;
+}
+.bottomMenu ul li{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bottomMenu ul li .bottomMenuName{
+  color: var(--gray1);
+  font-size: .7rem;
+}
+.bottomMenu .active svg,
+.bottomMenu .active .bottomMenuName{
+  color: var(--primary);
+  fill: var(--primary);
+}
+
+/* 主選單 */
+.mainMenu{
+  font-size: .8rem;
+  width: 100%;
+  border: none;
+  background-color: #17191b;
+  color: var(--gray1);
+}
+.mainMenu li{
+  display: flex;
+  align-items: center;
+  line-height: 3rem;
+}
+.mainMenu .logo{
+  height: 2.5rem;
+}
+.mainMenu .gameLink .download img{
+  height: 2.2rem;
+}
+.mainMenu li .icon{
+  margin-right: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.mainMenu .pageLink{
+  background-color: #24262b;
+}
+.mainMenu a{
+  color: var(--gray1);
+}
+.mainMenu .pageLink .installBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--redGradient);
+  font-size: .7rem;
+  border-radius: .2rem;
+  width: 5rem;
+  height: 2rem;
+}
+.mainMenu .pageLink .installBtn a{
+  color: var(--fff);
+}
+.mainMenu .socialLink{
+  background-color: #24262b;
+}
+.mainMenu .socialLink img{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.mainMenu .helpLink{
+  background-color: #24262b;
+}
+/* 個人選單 */
+.profileWindow .offcanvas-header{
+  background-color: var(--black1);
+  height: 4rem;
+}
+.profileWindow .offcanvas-header img{
+  height: 2.5rem;
+}
+.profileWindow .offcanvas-body{
+  overflow: initial;
+  background-color: #1f1f1f;
+}
+.profileWindow .main .userContent{
+  color: var(--blue);
+}
+.profileWindow .main .userContent .userImg img{
+  width: 3rem;
+}
+.profileWindow .main .userContent .changePassword{
+  color: var(--blue);
+}
+.profileWindow .main .userContent .keyIcon{
+  width: 1rem;
+  padding-bottom: 1rem;
+  background: url('../images/icon/key.png') no-repeat center center / contain;
+}
+.profileWindow .main .coin{
+  color: var(--blue);
+}
+.profileWindow .main .coin::before{
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  background-color: #4c4c4c;
+  transform: translate(-50%,0);
+}
+.profileWindow .main .coin .num{
+  color: var(--fff);
+}
+.profileWindow .main .link a{
+  width: 7rem;
+  height: 2.2rem;
+  color: var(--fff);
+  border-radius: .2rem;
+  font-size: .8rem;
+  background: linear-gradient(180deg,#303030,#494949);
+}
+.profileWindow .main ul{
+  background-color: #2d3035;
+}
+.profileWindow .main ul li{
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.profileWindow .main ul li .icon{
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.5rem;
+}
+.profileWindow .main ul li a{
+  color: var(--blue);
+  font-size: .7rem;
+}
+.profileWindow .main .logOut{
+  display: flex;
+  align-items: center;
+  color: var(--blue);
+  font-size: .8rem;
+}
+.profileWindow .main .logOut img{
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.headerBack{
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #17181c;
+  max-width: 34rem;
+}
+.headerBack .title{
+  font-size: 1.2rem;
+}
