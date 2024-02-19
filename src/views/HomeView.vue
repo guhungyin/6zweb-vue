@@ -32,18 +32,18 @@
   </header>
   <!-- banner -->
   <div class="banner">
-    <swiper-container 
-    loop="true"
-    spaceBetween="30"
-    centeredSlides="true"
-    autoplay="{
+    <swiper 
+    :loop="true"
+    :spaceBetween="30"
+    :centeredSlides="true"
+    :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
     }"
-    pagination="{
+    :pagination="{
       clickable: true,
     }"
-    modules="modules"
+    :modules="modules"
     class="bannerSwiper">
       <swiper-slide>
         <img class="img-fluid" src="https://images.hibigwin.com/wildbet777/202312/mzrqWIEAPFiZzqF.jpg" alt="">
@@ -60,7 +60,7 @@
       <swiper-slide>
         <img class="img-fluid" src="https://images.hibigwin.com/wildbet777/202312/UkdfGNnCHEVhPRD.jpg" alt="">
       </swiper-slide>
-    </swiper-container>
+    </swiper>
   </div>
   <!-- 跑馬燈 -->
   <section class="container d-flex marquee mb-2">
@@ -83,11 +83,11 @@
   <!-- 遊戲內容 -->
   <section class="container-fluid mb-4">
     <div class="recentListTitle title">Recent Grand Prize</div>
-    <swiper-container 
-    loop="true"
-    slidesPerView="3"
-    spaceBetween="10"
-    autoplay="{
+    <swiper 
+    :loop="true"
+    :slidesPerView="3"
+    :spaceBetween="10"
+    :autoplay="{
       delay: 3000,
       disableOnInteraction: false,
     }"
@@ -101,8 +101,8 @@
             <div class="money">{{ item.winMoney }}</div>
           </div>
       </swiper-slide>
-    </swiper-container>
-    <div class="tabHome my-3">
+    </swiper>
+    <div class="tabHome mt-3">
       <ul class="p-0">
         <li class="px-3 py-2 me-2">
           <span>Promoções</span>
@@ -122,376 +122,245 @@
       </ul>
     </div>
     <!-- Quente  -->
-    <div class="gameMain mb-3">
-      <div class="topContent d-flex justify-content-between align-items-center">
-        <div class="title">Quente</div>
-        <div class="right d-flex ">
-          <div class="total px-3 py-1 fw-bold me-2">ALL 18</div>
-          <div part="button-prev" class="quenteGameListSwiper-button-prev swiper-button-prev px-2 button-prev me-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-            </svg>
-          </div>
-          <div part="button-next" class="quenteGameListSwiper-button-next swiper-button-next px-2 button-next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-right" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-            </svg>
+    <swiper 
+    :navigation="true" 
+    :modules="modules" 
+    class="quenteGameListSwiper mt-3">
+      <template v-slot:container-start>
+        <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
+          <div class="title">Quente</div>
+          <div class="total px-3 py-1 fw-bold me-4">ALL 18</div>
+        </div>
+      </template>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.quente.list1" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
+            </div>
           </div>
         </div>
-      </div>
-      <swiper-container 
-      loop= "true"
-      navigation="true"
-      class="quenteGameListSwiper mt-2">
-        <swiper-slide>
-          <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in quenteImgData" :key="item">
-              <div class="img">
-                  <img :src="item.imgUrl" class="w-100">
-              </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.quente.list2" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
             </div>
           </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in quenteImgData" :key="item">
-              <div class="img">
-                  <img :src="item.imgUrl" class="w-100">
-              </div>
-            </div>
-          </div>
-        </swiper-slide>
-      </swiper-container>
-    </div>
+        </div>
+      </swiper-slide>
+    </swiper>
     <!-- pg game -->
-    <div class="gameMain mb-3">
-      <div class="topContent d-flex justify-content-between align-items-center">
-        <div class="title">PG Soft</div>
-        <div class="right d-flex ">
-          <div class="total px-3 py-1 fw-bold me-2">ALL 102</div>
-          <div class="pgGameListSwiper-button-prev px-2 button-prev me-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-            </svg>
-          </div>
-          <div class="pgGameListSwiper-button-next px-2 button-next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-right" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-            </svg>
-          </div>
+    <swiper 
+    :navigation="true" 
+    :modules="modules" 
+    class="pgGameListSwiper mt-3">
+      <template v-slot:container-start>
+        <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
+          <div class="title">PG Soft</div>
+            <div class="total px-3 py-1 fw-bold me-4">ALL 102</div>
         </div>
-      </div>
-      <div class="swiper pgGameListSwiper mt-3">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="row row-cols-3 g-2">
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551931.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551932.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551934.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551933.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551936.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551935.jpg" class="w-100">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="row row-cols-3  g-2">
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551937.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551938.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551940.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551941.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551942.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551943.jpg" class="w-100">
-                </div>
-              </div>
+      </template>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.pg.list1" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.pg.list2" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper>
     <!-- 6z game -->
-    <div class="gameMain mb-3">
-      <div class="topContent d-flex justify-content-between align-items-center">
-        <div class="title"> 6z Originals </div>
-        <div class="right d-flex ">
-          <div class="total px-3 py-1 fw-bold me-2">ALL 41</div>
-          <div class="sixzGameListSwiper-button-prev px-2 button-prev me-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-            </svg>
-          </div>
-          <div class="sixzGameListSwiper-button-next px-2 button-next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-right" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-            </svg>
-          </div>
+    <swiper
+    :navigation="true" 
+    :modules="modules" 
+      class="sixzGameListSwiper mt-3">
+      <template v-slot:container-start>
+        <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
+          <div class="title"> 6z Originals </div>
+            <div class="total px-3 py-1 fw-bold me-4">ALL 41</div>
         </div>
-      </div>
-      <div class="swiper sixzGameListSwiper mt-3">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="row row-cols-3 g-2">
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/PIC_Mines.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551032.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551008.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551031.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551010.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551009.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551037.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551006.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/PIC_Tower.jpg" class="w-100">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="row row-cols-3 g-2">
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551025.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551034.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551012.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551004.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551028.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551011.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551019.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551024.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551016.jpg" class="w-100">
-                </div>
-              </div>
+      </template>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.sixz.list1" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.sixz.list2" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper>
     <!-- Provedor -->
-    <div class="gameMain mb-3">
-      <div class="topContent">
-        <div class="title"> 6z Originals </div>
+    <div class="mt-3">
+      <div class="topContent mb-2">
+        <div class="title">Provedor Do Jogo</div>
       </div>
-      <div class="row row-cols-2 g-2 mt-3">
-        <div class="col">
-          <img src="https://6z.com/images/homePage/provider/link_PG.jpg" class="w-100" alt="">
-        </div>
-        <div class="col">
-          <img src="https://6z.com/images/homePage/provider/link_TD.jpg" class="w-100" alt="">
-        </div>
-        <div class="col">
-          <img src="https://6z.com/images/homePage/provider/link_pp.jpg" class="w-100" alt="">
-        </div>
-        <div class="col">
-          <img src="https://6z.com/images/homePage/provider/link_EG.jpg" class="w-100" alt="">
-        </div>
-        <div class="col">
-          <img src="https://6z.com/images/homePage/provider/link_6z.jpg" class="w-100" alt="">
+      <div class="row row-cols-2 g-2">
+        <div class="col" v-for="item in gameImgData.Provedor" :key="item">
+        <img :src="item.imgUrl" alt="" class="w-100">
         </div>
       </div>
     </div>
     <!-- LIVE game -->
-    <div class="gameMain mb-3">
-      <div class="topContent d-flex justify-content-between align-items-center">
-        <div class="title"> Live Casino </div>
-        <div class="right d-flex ">
-          <div class="total px-3 py-1 fw-bold me-2">ALL 55</div>
-          <div class="liveGameListSwiper-button-prev px-2 button-prev me-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-            </svg>
+    <swiper 
+    :navigation="true" 
+    :modules="modules" 
+    class="liveGameListSwiper mt-3">
+      <template v-slot:container-start>
+          <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
+            <div class="title"> Live Casino </div>
+              <div class="total px-3 py-1 fw-bold me-4">ALL 55</div>
           </div>
-          <div class="liveGameListSwiper-button-next px-2 button-next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#c4c4c4" class="bi bi-chevron-right" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="swiper liveGameListSwiper mt-3">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="row row-cols-3 g-2">
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551914.jpg" class="w-100">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551909.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551910.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551912.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551911.jpg" class="w-100">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551913.jpg" class="w-100">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="row row-cols-3 g-2">
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551908.jpg" class="img-fluid">
-                </div>
-              </div>
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551851.jpg" class="img-fluid">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551879.jpg" class="img-fluid">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551863.jpg" class="img-fluid">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551859.jpg" class="img-fluid">
-                </div>
-              </div>                
-              <div class="col">
-                <div class="img">
-                  <img src="https://6z.com/images/game/551857.jpg" class="img-fluid">
-                </div>
-              </div>
+      </template>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.live.list1" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
             </div>
           </div>
         </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="row row-cols-3 g-2">
+          <div class="col" v-for="item in gameImgData.live.list2" :key="item">
+            <div class="img">
+                <img :src="item.imgUrl" class="w-100">
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper>
+  </section>
+  <footer class="container-fluid footer">
+    <div class="bottomLogo mb-4 pt-3">
+      <img src="../assets/images/logo.png" class="img-fluid" alt="">
+    </div>
+    <div class="customerService mb-3">
+      <a href="#" class="mx-2">
+        <img src="https://6z.com/img/persons.ac57c729.png" alt="">
+      </a>
+      <a href="#" class="mx-2">
+        <img src="https://6z.com/img/service.1a114e92.png" alt="">
+      </a>
+    </div>
+    <div class="share mb-3">
+      <span class="d-flex justify-content-center">6Z GAME irá responder todas suas dúvidas. Entre em contato usando uma das formas abaixo.</span>
+      <div class="d-flex justify-content-around mt-3">
+        <a href="#" class="text-decoration-none">
+          <img src="https://6z.com/img/facebook.3fa7319c.svg" alt="">
+        </a>
+        <a href="#" class="text-decoration-none">
+          <img src="https://6z.com/img/twitter.cff17340.svg" alt="">
+        </a>
+        <a href="#" class="text-decoration-none">
+          <img src="../assets/images/icon/youtube.png" alt="">
+        </a>
+        <a href="#" class="text-decoration-none">
+          <img src="https://6z.com/img/telegram.dbf9a86f.svg" alt="">
+        </a>
+        <a href="#" class="text-decoration-none">
+          <img src="https://6z.com/img/whatsapp.e195b1e8.svg" alt="">
+        </a>
+        <a href="#" class="text-decoration-none">
+          <img src="https://6z.com/img/ins.5bd9c20b.png" alt="">
+        </a>
       </div>
     </div>
-  </section>
+    <div class="footerBottom">
+      <div class="title text-center mb-3">JOGOS</div>
+      <ul class="d-flex justify-content-around p-0">
+        <li>
+          <a href="#" class="text-decoration-none"> Crash </a>
+        </li>
+        <li>
+          <a href="#" class="text-decoration-none"> Mines </a>
+        </li>
+        <li>
+          <a href="#" class="text-decoration-none"> Super777 </a>
+        </li>
+      </ul>
+      <div class="title text-center mb-3">SOBRE NÓS</div>
+      <ul class="d-flex justify-content-around p-0">
+        <li>
+          <a href="#" class="text-decoration-none"> Contate-nos </a>
+        </li>
+        <li>
+          <a href="#" class="text-decoration-none"> Como Jogar </a>
+        </li>
+      </ul>
+      <hr>
+      <div class="title text-center mb-3">SOBRE NÓS</div>
+      <p class="license">
+        6z.com é operada pela Dubet N.V., número de registro da empresa 10692, com endereço registrado em Abraham de Veerstraat 7, Curaçao e é licenciada e autorizada pelo governo de Curaçao. A 6z opera sob a Master License of Gaming Services Provider, N.V. Número da Licença 365/JAZ Sub-Licença 
+        <a href="#" class="text-decoration-none">GLH-OCCHKTW0705152022</a>
+      </p>
+      <p class="warnContent">
+        1. Este produto é para uso de usuários maiores de 18 anos e é destinado apenas para fins de entretenimento. 
+        <br>
+        2. este jogo contém compras noapp.
+        <br>
+        3. O fato de um jogador jogar ou ganhar em um jogo de apostas sociais não significa que ele ganhará em apostas com dinheiro real e jogos relacionados no futuro.
+      </p>
+      <hr>
+      <div class="support pt-3">
+        <ul class="p-0">
+          <li class="d-flex justify-content-center mb-4">
+            <div class="text">Support</div>
+            <div class="email ms-2">royal@6z.com</div>
+          </li>
+          <li class="d-flex justify-content-center mb-4">
+            <div class="text">Partners</div>
+            <div class="email ms-2">partners@6z.com</div>
+          </li>
+          <li class="d-flex justify-content-center mb-4">
+            <div class="text">Legal</div>
+            <div class="email ms-2">trusted@6z.com</div>
+          </li>
+        </ul>
+        <div class="favorite">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z"/>
+          </svg>
+        </div>
+        <div class="message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+            <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="topBtn mx-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#3bc117" class="bi bi-chevron-up" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+        </svg>
+        <span class="mt-2">TOP</span>
+      </div>
+    </div>
+  </footer>
+  <!-- 下方選單 -->
+  <BottomMenu></BottomMenu>
 </template>
-
 <style>
   #app{
       padding-top: 4rem;
@@ -541,12 +410,9 @@
       width: 2rem;
       height: 2rem;
   }
-  .banner{
-      position: relative;
-      padding-bottom: 2.5rem;
-  }
-  .swiper-pagination-bullet{background-color: #979797 !important;}
-  .swiper-pagination-bullet-active{background-color: var(--fff) !important;}
+  .bannerSwiper{padding-bottom: 2.5rem;}
+  .bannerSwiper .swiper-pagination-bullet{background-color: #979797 !important;}
+  .bannerSwiper .swiper-pagination-bullet-active{background-color: var(--fff) !important;}
   .marquee .marqueeContent{
       width: 100%;
       white-space: nowrap;
@@ -602,14 +468,26 @@
       white-space: nowrap;
       color: var(--gray1);
   }
-  .gameMain .topContent .total{
+  .topContent .total{
       color: var(--fff);
       background-color: var(--black2);
       font-size: .8rem;
   }
-  .gameMain .button-prev,
-  .gameMain .button-next{
-      background-color: var(--black2);
+  .swiper-button-prev{
+    right: 2rem;
+    left: initial;
+    background: var(--black2) url('../assets/images/icon/chevron-left.png') no-repeat center center / 100% 100%;
+  }
+  .swiper-button-next{
+    right: 0;
+    background: var(--black2) url('../assets/images/icon/chevron-right.png') no-repeat center center / 100% 100%;
+  }
+  .swiper-button-prev,
+  .swiper-button-next{
+    position: absolute;
+    top: 0;
+    width: 1.7rem;
+    height: 1.7rem;
   }
   .footer{
       background-color: var(--black3);
@@ -726,91 +604,302 @@
   }
 </style>
 <script>
-export default {
-  data(){
-    return {
-      recentListWinData: [
-        {
-          userName: '6799*****14',
-          winMoney: 'R$ 5700',
-          imgUrl: 'https://6z.com/images/game/551032.jpg',
-        },
-        {
-          userName: '6799*****75',
-          winMoney: 'R$ 4900',
-          imgUrl: 'https://6z.com/images/game/551458.jpg',
-        },
-        {
-          userName: '6799*****43',
-          winMoney: 'R$ 3400',
-          imgUrl: 'https://6z.com/images/game/551031.jpg',
-        },
-        {
-          userName: '6799*****96',
-          winMoney: 'R$ 1100',
-          imgUrl: 'https://6z.com/images/game/551932.jpg',
-        },
-        {
-          userName: '6722*****75',
-          winMoney: 'R$ 8300',
-          imgUrl: 'https://6z.com/images/game/551008.jpg',
-        },
-        {
-          userName: '604*****98',
-          winMoney: 'R$ 9600',
-          imgUrl: 'https://6z.com/images/game/551934.jpg',
-        },
-        {
-          userName: '6764*****65',
-          winMoney: 'R$ 10000',
-          imgUrl: 'https://pg61.vip/images/game/551037.jpg',
-        },
-        {
-          userName: '6176*****41',
-          winMoney: 'R$ 8800',
-          imgUrl: 'https://pg61.vip/images/game/551204.jpg',
-        },
-        {
-          userName: '6756*****32',
-          winMoney: 'R$ 4400',
-          imgUrl: 'https://pg61.vip/images/game/551476.jpg',
-        },
-        {
-          userName: '6142*****11',
-          winMoney: 'R$ 2300',
-          imgUrl: 'https://pg61.vip/images/game/551936.jpg',
-        },
-      ],
-      quenteImgData:[
-        {
-          imgUrl: 'https://6z.com/images/game/551931.jpg'
-        },
-        {
-          imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
-        },
-        {
-          imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551476.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551031.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551010.jpg'
-        },
-        {
-          imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551458.jpg'
-        },
-      ]
-    }
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import { Navigation, Pagination } from 'swiper/modules';
+
+  import BottomMenu from '../components/BottomMenu.vue';
+
+  export default {
+    data(){
+      return {
+        recentListWinData: [
+          {
+            userName: '6799*****14',
+            winMoney: 'R$ 5700',
+            imgUrl: 'https://6z.com/images/game/551032.jpg',
+          },
+          {
+            userName: '6799*****75',
+            winMoney: 'R$ 4900',
+            imgUrl: 'https://6z.com/images/game/551458.jpg',
+          },
+          {
+            userName: '6799*****43',
+            winMoney: 'R$ 3400',
+            imgUrl: 'https://6z.com/images/game/551031.jpg',
+          },
+          {
+            userName: '6799*****96',
+            winMoney: 'R$ 1100',
+            imgUrl: 'https://6z.com/images/game/551932.jpg',
+          },
+          {
+            userName: '6722*****75',
+            winMoney: 'R$ 8300',
+            imgUrl: 'https://6z.com/images/game/551008.jpg',
+          },
+          {
+            userName: '604*****98',
+            winMoney: 'R$ 9600',
+            imgUrl: 'https://6z.com/images/game/551934.jpg',
+          },
+          {
+            userName: '6764*****65',
+            winMoney: 'R$ 10000',
+            imgUrl: 'https://pg61.vip/images/game/551037.jpg',
+          },
+          {
+            userName: '6176*****41',
+            winMoney: 'R$ 8800',
+            imgUrl: 'https://pg61.vip/images/game/551204.jpg',
+          },
+          {
+            userName: '6756*****32',
+            winMoney: 'R$ 4400',
+            imgUrl: 'https://pg61.vip/images/game/551476.jpg',
+          },
+          {
+            userName: '6142*****11',
+            winMoney: 'R$ 2300',
+            imgUrl: 'https://pg61.vip/images/game/551936.jpg',
+          },
+        ],
+        gameImgData:{
+          quente:{
+            list1:[
+              {
+                imgUrl: 'https://6z.com/images/game/551931.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551476.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551031.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551010.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551458.jpg'
+              }
+            ],
+            list2:[
+              {
+                imgUrl: 'https://6z.com/images/game/551931.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551476.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551031.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551010.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551458.jpg'
+              }
+            ],
+          },
+          pg:{
+            list1: [
+              {
+                imgUrl: 'https://6z.com/images/game/551931.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551932.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551934.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551933.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551936.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551935.jpg'
+              }
+            ],
+            list2: [
+              {
+                imgUrl: 'https://6z.com/images/game/551937.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551938.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551940.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551941.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551942.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551943.jpg'
+              }
+            ],
+          },
+          sixz:{
+            list1:[
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551032.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551008.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551031.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551010.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551009.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551037.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551006.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Tower.jpg'
+              }
+            ],
+            list2:[
+              {
+                imgUrl: 'https://6z.com/images/game/551025.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551034.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551012.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551004.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551028.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551011.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551019.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551024.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551016.jpg'
+              }
+            ],
+          },
+          Provedor:[
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_PG.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_TD.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_pp.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_EG.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_6z.jpg'
+            }
+          ],
+          live:{
+            list1:[
+              {
+                imgUrl: 'https://6z.com/images/game/551914.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551909.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551910.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551912.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551911.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551913.jpg'
+              },
+            ],
+            list2:[
+              {
+                imgUrl: 'https://6z.com/images/game/551908.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551951.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551979.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551963.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551959.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551957.jpg'
+              },
+            ]
+          }
+        }
+      }
+    },
+    components: {
+      Swiper,
+      SwiperSlide,
+      BottomMenu
+    },
+    setup() {
+      return {
+        modules: [Navigation,Pagination],
+      };
+    },
   }
-}
 </script>
