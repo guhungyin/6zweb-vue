@@ -1,3 +1,4 @@
+@import url('./reset.css');
 :root{
   --black1: #24262b;
   --black2:#1c1e22;
@@ -13,14 +14,15 @@
   --greenGradient: linear-gradient(180deg,#278e47,#64d23e);
   --redGradient: linear-gradient(180deg,#8b0000,#d23e3e);
 }
-#app{
+.app{
   overflow: hidden;
   position: relative;
   margin: 0 auto;
   background-color: var(--black1);
   min-height: 100%;
+  padding-top: 4rem;
 }
-#app.widthLimit{
+.app.widthLimit{
   max-width: 34rem;
 }
 body{

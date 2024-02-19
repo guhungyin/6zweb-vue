@@ -2,20 +2,21 @@
   <section class="bottomMenu position-fixed w-100">
     <ul class="d-flex justify-content-between align-items-end pb-2 px-0 m-0 h-100">
       <li class="active">
-        <a class="d-flex flex-column justify-content-center align-items-center text-decoration-none" href="./index.html">
+        <RouterLink to="/" class="d-flex flex-column justify-content-center align-items-center text-decoration-none" >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFF" class="bi bi-house-door-fill" viewBox="0 0 16 16">
               <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
             </svg>
           <span class="bottomMenuName mt-2">Início</span>
-        </a>
+        </RouterLink>
       </li>
       <li>
-        <RouterLink to="/DepositView" class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0">
+        <RouterLink to="/deposit" class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFF" class="bi bi-wallet-fill" viewBox="0 0 16 16">
             <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z"/>
             <path d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z"/>
           </svg>
-          <span class="bottomMenuName mt-2">Depósito</span></RouterLink>
+          <span class="bottomMenuName mt-2">Depósito</span>
+        </RouterLink>
       </li>
       <li class="main">
         <img src="../assets/images/icon/afiliado.png" width="50" height="50" alt="">

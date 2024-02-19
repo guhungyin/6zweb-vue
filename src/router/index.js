@@ -10,29 +10,59 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/Deposit',
-      name: 'Deposit',
+      path: '/deposit',
+      name: 'deposit',
       component: () => import('../views/DepositView.vue')
     },
     {
-      path: '/Login',
-      name: 'Login',
+      path: '/login',
+      name: 'login',
       component: () => import('../views/LoginView.vue')
     },
     {
-      path: '/GameBets',
-      name: 'GameBets',
+      path: '/gameBets',
+      name: 'gameBets',
       component: () => import('../views/GameBetsView.vue')
     },
     {
-      path: '/Cashback',
-      name: 'Cashback',
+      path: '/cashback',
+      name: 'cashback',
       component: () => import('../views/CashbackView.vue')
     },
     {
-      path: '/Contact',
-      name: 'Contact',
+      path: '/contact',
+      name: 'contact',
       component: () => import('../views/ContactView.vue')
+    },
+    {
+      path: '/downloadApp',
+      name: 'downloadApp',
+      component: () => import('../views/DownloadAppView.vue')
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: () => import('../views/HelpView.vue')
+    },
+    {
+      path: '/message',
+      name: 'message',
+      component: () => import('../views/MessageView.vue')
+    },
+    {
+      path: '/promotions',
+      name: 'promotions',
+      component: () => import('../views/PromotionsView.vue')
+    },
+    {
+      path: '/resetPhone',
+      name: 'resetPhone',
+      component: () => import('../views/ResetPhoneView.vue')
+    },
+    {
+      path: '/withdraw',
+      name: 'withdraw',
+      component: () => import('../views/WithdrawView.vue')
     },
   ]
 })

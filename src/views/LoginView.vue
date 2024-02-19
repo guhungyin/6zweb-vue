@@ -47,80 +47,80 @@
     </div>
 </template>
 <style>
-.app{
-    background-color: var(--black2);
-    height: 100vh;
-}
-.phoneInput input{
-    color: var(--fff);
-    text-indent: 3rem;
-}
-.phoneInput span{
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translate(0,-50%);
-    color: #4d565e;
-}
-.passwordInput input{
-    text-indent: 1rem;
-    color: var(--fff);
-}
-.passwordInput span{
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translate(0,-50%);
-}
-.forgetPassword{
-    text-align: end;
-    font-size: .8rem;
-    color: var(--gray1);
-}
-.loginBtn{
-    background: var(--greenGradient);
-    color: var(--fff);
-    border: none;
-    opacity: .4;
-    border-radius: 2px;
-    padding: 0.56rem 0;
-}
-.loginBtn.active{
-    opacity: 1;
-}
-.link{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #d4d9e6;
-    font-size: .8rem;
-}
-.link a{
-    color: var(--primary);
-}
-.or{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #656e78;
-    font-size: .7rem;
-}
-.or::before,
-.or::after{
-    content: '';
-    background-color: #4d565e;
-    flex: 1;
-    height: 1px;
-}
-.googleLoginBtn{
-    font-size: 1rem;
-    height: 3rem;
-    width: 16rem;
-    border-radius: .2rem;
-    background-color: #3f6bb3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--fff);
-}
+    .app{
+        background-color: var(--black2);
+        height: 100vh;
+    }
+    .phoneInput input{
+        color: var(--fff);
+        text-indent: 3rem;
+    }
+    .phoneInput span{
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translate(0,-50%);
+        color: #4d565e;
+    }
+    .passwordInput input{
+        text-indent: 1rem;
+        color: var(--fff);
+    }
+    .passwordInput span{
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translate(0,-50%);
+    }
+    .forgetPassword{
+        text-align: end;
+        font-size: .8rem;
+        color: var(--gray1);
+    }
+    .loginBtn{
+        background: var(--greenGradient);
+        color: var(--fff);
+        border: none;
+        opacity: .4;
+        border-radius: 2px;
+        padding: 0.56rem 0;
+    }
+    .loginBtn.active{
+        opacity: 1;
+    }
+    .link{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #d4d9e6;
+        font-size: .8rem;
+    }
+    .link a{
+        color: var(--primary);
+    }
+    .or{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #656e78;
+        font-size: .7rem;
+    }
+    .or::before,
+    .or::after{
+        content: '';
+        background-color: #4d565e;
+        flex: 1;
+        height: 1px;
+    }
+    .googleLoginBtn{
+        font-size: 1rem;
+        height: 3rem;
+        width: 16rem;
+        border-radius: .2rem;
+        background-color: #3f6bb3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fff);
+    }
 </style>

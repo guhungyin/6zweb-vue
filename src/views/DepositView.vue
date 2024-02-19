@@ -1,4 +1,12 @@
 <template>
+    <div class="headerBack d-flex justify-content-between align-items-center px-2">
+        <h2 class="title">Depósito</h2>
+        <div class="closeBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+        </svg>
+        </div>
+    </div>
     <div class="container-fluid mt-3 depositWindows">
         <div class="pixInfo mb-2">Formas de Pagamentos</div>
         <div class="channelContainer mb-5">
@@ -120,116 +128,116 @@
 </template>
 
 <style>
-.depositWindows{
-    font-size: .8rem;
-    width: 100%;
-    border: none;
-    background-color: #24262b;
-    color: var(--gray1);
-    padding-bottom: 7rem;
-}
-.depositWindows .pixInfo{
-    color: #b4c0cb;
-}
-.depositWindows .channelContainer{
-    overflow: auto;
-}
-.depositWindows .channelContainer::-webkit-scrollbar{display: none;}
-.depositWindows .channelContainer .channelItem{
-    color: #8ea7bb;
-    background: #232323;
-    border-radius: .4rem;
-    width: 12rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-wrap: nowrap;
-}
-.depositWindows .channelContainer .channelItem.active{
-    box-shadow: inset 0 0 0 1px #8399ac80;
-}
-.depositWindows .channelContainer .channelItem .pixInfo{
-    color: #9e9e9e;
-}
-.depositWindows .channelContainer .channelItem .pixImg{
-    height: 2.2rem;
-    margin-right: 1rem;
-}
-.depositWindows .channelContainer .channelItem span{
-    white-space: nowrap;
-}
-.depositWindows .depositMain input{
-    text-indent: 13rem;
-    color: var(--blue);
-    padding: .8rem 0;
-}
-.depositWindows .depositMain .tips-close{
-    left: 1rem;
-    top: 50%;
-    color: var(--blue);
-    transform: translate(0,-50%);
-}
-.depositWindows .depositMain .deposit ul{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-.depositWindows .depositMain .deposit li{
-    position: relative;
-    border-radius: .3rem;
-    width: 30%;
-    background-color: var(--gray2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.depositWindows .depositMain .deposit li.active{
-    background: var(--greenGradient);
-}
-.depositWindows .depositMain .deposit li.hot::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2rem;
-    height: 2rem;
-    background: url('../images/icon/hot.png') no-repeat center center / contain;
-}
-.depositWindows .depositMain .deposit .amountContent{
-    display: flex;
-    align-items: center;
-}
-.depositWindows .depositMain .deposit .currencyIcon{
-    height: .9rem;
-}
-.depositWindows .depositMain .deposit span{
-    color: var(--fff);
-    font-size: 1rem;
-}
-.depositWindows .depositMain .deposit .amountTips{
-    font-size: .7rem;
-    color: #9e9e9e;
-}
-.depositWindows .depositMain .deposit li.active .amountTips{
-    color: var(--fff);
-}
-.depositWindows .depositMain .depositBtn{
-    background: var(--greenGradient);
-    color: var(--fff);
-    border: none;
-    opacity: .4;
-    border-radius: 2px;
-    padding: 0.56rem 0;
-}
-.depositWindows .depositMain .depositBtn.active{opacity: 1;}
-.depositWindows .tips li{
-    color: #7e7e7e;
-    text-indent: -1rem;
-}
-.depositWindows .tips li span{
-    font-weight: bold;
-    color: #64d23e;
-}
+    .depositWindows{
+        font-size: .8rem;
+        width: 100%;
+        border: none;
+        background-color: #24262b;
+        color: var(--gray1);
+        padding-bottom: 7rem;
+    }
+    .depositWindows .pixInfo{
+        color: #b4c0cb;
+    }
+    .depositWindows .channelContainer{
+        overflow: auto;
+    }
+    .depositWindows .channelContainer::-webkit-scrollbar{display: none;}
+    .depositWindows .channelContainer .channelItem{
+        color: #8ea7bb;
+        background: #232323;
+        border-radius: .4rem;
+        width: 12rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-wrap: nowrap;
+    }
+    .depositWindows .channelContainer .channelItem.active{
+        box-shadow: inset 0 0 0 1px #8399ac80;
+    }
+    .depositWindows .channelContainer .channelItem .pixInfo{
+        color: #9e9e9e;
+    }
+    .depositWindows .channelContainer .channelItem .pixImg{
+        height: 2.2rem;
+        margin-right: 1rem;
+    }
+    .depositWindows .channelContainer .channelItem span{
+        white-space: nowrap;
+    }
+    .depositWindows .depositMain input{
+        text-indent: 8rem;
+        color: var(--blue);
+        padding: .8rem 0;
+    }
+    .depositWindows .depositMain .tips-close{
+        left: 1rem;
+        top: 50%;
+        color: var(--blue);
+        transform: translate(0,-50%);
+    }
+    .depositWindows .depositMain .deposit ul{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .depositWindows .depositMain .deposit li{
+        position: relative;
+        border-radius: .3rem;
+        width: 30%;
+        background-color: var(--gray2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .depositWindows .depositMain .deposit li.active{
+        background: var(--greenGradient);
+    }
+    .depositWindows .depositMain .deposit li.hot::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2rem;
+        height: 2rem;
+        background: url('../images/icon/hot.png') no-repeat center center / contain;
+    }
+    .depositWindows .depositMain .deposit .amountContent{
+        display: flex;
+        align-items: center;
+    }
+    .depositWindows .depositMain .deposit .currencyIcon{
+        height: .9rem;
+    }
+    .depositWindows .depositMain .deposit span{
+        color: var(--fff);
+        font-size: 1rem;
+    }
+    .depositWindows .depositMain .deposit .amountTips{
+        font-size: .7rem;
+        color: #9e9e9e;
+    }
+    .depositWindows .depositMain .deposit li.active .amountTips{
+        color: var(--fff);
+    }
+    .depositWindows .depositMain .depositBtn{
+        background: var(--greenGradient);
+        color: var(--fff);
+        border: none;
+        opacity: .4;
+        border-radius: 2px;
+        padding: 0.56rem 0;
+    }
+    .depositWindows .depositMain .depositBtn.active{opacity: 1;}
+    .depositWindows .tips li{
+        color: #7e7e7e;
+        text-indent: -1rem;
+    }
+    .depositWindows .tips li span{
+        font-weight: bold;
+        color: #64d23e;
+    }
 </style>
