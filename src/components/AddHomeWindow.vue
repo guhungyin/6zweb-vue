@@ -10,3 +10,25 @@
         </div>
     </div>
 </template>
+<style scoped>
+  .addHomeWindow{
+      width: 100%;
+      max-width: 34rem;
+      background-color: var(--black2);
+      color: var(--gray1);
+      z-index: 3;
+      bottom: 0;
+      margin: 0;
+      border-radius: 0;
+      border: none;
+  }
+  .addHomeWindow img{
+      width: 4rem;
+      height: 4rem;
+  }
+  .addHomeWindow .continueBtn{
+      border: none;
+      color: var(--fff);
+      background: var(--greenGradient);
+  }
+</style>

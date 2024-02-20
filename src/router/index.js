@@ -67,4 +67,8 @@ const router = createRouter({
   ]
 })
 
+router.afterEach((to, from, failure) => {
+  window.scrollTo(0,0);
+});
+
 export default router

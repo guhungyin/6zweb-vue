@@ -1,3 +1,307 @@
+<script>
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { Navigation, Pagination } from 'swiper/modules';
+  import AddHomeWindow from '../components/AddHomeWindow.vue';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import '../assets/css/index.css';
+  export default {
+    data(){
+      return {
+        recentListWinData: [
+          {
+            userName: '6799*****14',
+            winMoney: 'R$ 5700',
+            imgUrl: 'https://6z.com/images/game/551032.jpg',
+          },
+          {
+            userName: '6799*****75',
+            winMoney: 'R$ 4900',
+            imgUrl: 'https://6z.com/images/game/551458.jpg',
+          },
+          {
+            userName: '6799*****43',
+            winMoney: 'R$ 3400',
+            imgUrl: 'https://6z.com/images/game/551031.jpg',
+          },
+          {
+            userName: '6799*****96',
+            winMoney: 'R$ 1100',
+            imgUrl: 'https://6z.com/images/game/551932.jpg',
+          },
+          {
+            userName: '6722*****75',
+            winMoney: 'R$ 8300',
+            imgUrl: 'https://6z.com/images/game/551008.jpg',
+          },
+          {
+            userName: '604*****98',
+            winMoney: 'R$ 9600',
+            imgUrl: 'https://6z.com/images/game/551934.jpg',
+          },
+          {
+            userName: '6764*****65',
+            winMoney: 'R$ 10000',
+            imgUrl: 'https://pg61.vip/images/game/551037.jpg',
+          },
+          {
+            userName: '6176*****41',
+            winMoney: 'R$ 8800',
+            imgUrl: 'https://pg61.vip/images/game/551204.jpg',
+          },
+          {
+            userName: '6756*****32',
+            winMoney: 'R$ 4400',
+            imgUrl: 'https://pg61.vip/images/game/551476.jpg',
+          },
+          {
+            userName: '6142*****11',
+            winMoney: 'R$ 2300',
+            imgUrl: 'https://pg61.vip/images/game/551936.jpg',
+          },
+        ],
+        gameImgData:{
+          quente:{
+            list1:[
+              {
+                imgUrl: 'https://6z.com/images/game/551931.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551476.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551031.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551010.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551458.jpg'
+              }
+            ],
+            list2:[
+              {
+                imgUrl: 'https://6z.com/images/game/551931.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551476.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551031.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551010.jpg'
+              },
+              {
+                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551458.jpg'
+              }
+            ],
+          },
+          pg:{
+            list1: [
+              {
+                imgUrl: 'https://6z.com/images/game/551931.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551932.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551934.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551933.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551936.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551935.jpg'
+              }
+            ],
+            list2: [
+              {
+                imgUrl: 'https://6z.com/images/game/551937.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551938.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551940.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551941.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551942.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551943.jpg'
+              }
+            ],
+          },
+          sixz:{
+            list1:[
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551032.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551008.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551031.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551010.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551009.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551037.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551006.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/PIC_Tower.jpg'
+              }
+            ],
+            list2:[
+              {
+                imgUrl: 'https://6z.com/images/game/551025.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551034.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551012.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551004.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551028.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551011.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551019.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551024.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551016.jpg'
+              }
+            ],
+          },
+          Provedor:[
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_PG.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_TD.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_pp.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_EG.jpg'
+            },
+            {
+              imgUrl: 'https://6z.com/images/homePage/provider/link_6z.jpg'
+            }
+          ],
+          live:{
+            list1:[
+              {
+                imgUrl: 'https://6z.com/images/game/551914.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551909.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551910.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551912.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551911.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551913.jpg'
+              },
+            ],
+            list2:[
+              {
+                imgUrl: 'https://6z.com/images/game/551908.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551951.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551979.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551963.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551959.jpg'
+              },
+              {
+                imgUrl: 'https://6z.com/images/game/551957.jpg'
+              },
+            ]
+          }
+        }
+      }
+    },
+    components: {
+      Swiper,
+      SwiperSlide,
+      AddHomeWindow
+    },
+    methods: {
+      toTop() {
+          document.documentElement.scrollTop = 0;
+      },
+    },
+    setup() {
+      return {
+        modules: [Navigation,Pagination],
+      };
+    },
+  }
+</script>
 <template>
   <!-- 上方選單 -->
   <header class="position-fixed">
@@ -358,548 +662,5 @@
       </div>
     </div>
   </footer>
+  <AddHomeWindow></AddHomeWindow>
 </template>
-<style>
-  .app{
-      padding-top: 4rem;
-  }
-  header{
-      width: 100%;
-      max-width: 34rem;
-      top: 0;
-      background-color: var(--black1);
-      z-index: 2;
-      height: 4rem;
-  }
-  header .logo img{
-      height: 2.5rem;
-  }
-  header .loginBtn{
-      border: none;
-      color: var(--fff);
-      background: var(--greenGradient);
-  }
-  header .right{
-      display: flex;
-      align-items: center;
-  }
-  header .right .userMoney{
-      display: flex;
-      align-items: center;
-      color: var(--blue);
-  }
-  header .right .userMoney img{
-      width: 1.5rem;
-  }
-  header .right .depositBtn{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg,#5519cd,#9449ff);
-      color: var(--fff);
-      font-size: .8rem;
-      height: 2rem;
-      width: 6rem;
-      border-radius: .2rem;
-  }
-  header .right .userBtn{
-      border: none;
-      background-color: #1f1f1f;
-      width: 2rem;
-      height: 2rem;
-  }
-  .bannerSwiper{padding-bottom: 2.5rem;}
-  .bannerSwiper .swiper-pagination-bullet{background-color: #979797 !important;}
-  .bannerSwiper .swiper-pagination-bullet-active{background-color: var(--fff) !important;}
-  .marquee .marqueeContent{
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      box-sizing: border-box;
-  }
-  .marquee .marqueeContent span{
-      color: var(--primary);
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 15s linear infinite;
-  }
-  @keyframes marquee {
-      0%   { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
-  }
-  .searchBox{
-      position: relative;
-      background-color: #191919;
-  }
-  .searchBox .searchIcon{
-      position: absolute;
-      left: 3%;
-      top: 50%;
-      transform: translate(0,-50%);
-  }
-  .searchBox input{
-      color: var(--gray1);
-      background-color: transparent;
-  }
-  .title{
-      color: var(--fff);
-  }
-  .recentListSwiper .main{
-      background-color: var(--black2);
-  }
-  .recentListSwiper .main .name{
-      font-size: .8rem;
-      color: var(--gray1);}
-  .recentListSwiper .main .money{
-      font-size: .8rem;
-      color: var(--primary);}
-  .tabHome{
-      overflow-x: auto;
-  }
-  .tabHome::-webkit-scrollbar{display: none;}
-  .tabHome ul{
-      display: flex;
-  }
-  .tabHome li{background-color: var(--black2);}
-  .tabHome li span{
-      font-size: .8rem;
-      white-space: nowrap;
-      color: var(--gray1);
-  }
-  .topContent .total{
-      color: var(--fff);
-      background-color: var(--black2);
-      font-size: .8rem;
-  }
-  .swiper-button-prev{
-    right: 2rem;
-    left: initial;
-    background: var(--black2) url('../assets/images/icon/chevron-left.png') no-repeat center center / 100% 100%;
-  }
-  .swiper-button-next{
-    right: 0;
-    background: var(--black2) url('../assets/images/icon/chevron-right.png') no-repeat center center / 100% 100%;
-  }
-  .swiper-button-prev,
-  .swiper-button-next{
-    position: absolute;
-    top: 0;
-    width: 1.7rem;
-    height: 1.7rem;
-  }
-  .footer{
-      background-color: var(--black3);
-      padding-bottom: 8rem;
-  }
-  .footer .bottomLogo{
-      display: flex;
-      justify-content: center;
-  }
-  .footer .bottomLogo img{
-      height: 2.5rem;
-  }
-  .footer .customerService{
-      display: flex;
-      justify-content: center;
-  }
-  .footer .customerService img{
-      width: 2.5rem;
-      height: 2.5rem;
-  }
-  .footer .share span{
-      color: var(--gray1);
-      font-size: .6rem;
-      text-align: center;
-  }
-  .footer .share img{
-      width: 2.5rem;
-      height: 2.5rem;
-  }
-  .footerBottom a{
-      font-size: .8rem;
-      color: var(--gray1);
-  }
-  .footerBottom .license{
-      text-align: center;
-      font-size: .8rem;
-      color: var(--gray1);
-  }
-  .footerBottom .license a{
-      color: var(--fff);
-  }
-  .footerBottom .warnContent{
-      font-size: .8rem;
-      color: var(--gray1);
-  }
-  .footerBottom .support{
-      position: relative;
-      font-size: .8rem;
-  }
-  .footerBottom .support .text{color: var(--gray1);}
-  .footerBottom .support .email{color: var(--fff);}
-  .footerBottom .favorite{
-      line-height: .45rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      position: absolute;
-      right: 0.2rem;
-      bottom: 0.34rem;
-      font-size: .2rem;
-      color: #fff;
-      background: #da2d4b;
-  }
-  .footerBottom .message{
-      line-height: .45rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      position: fixed;
-      right: 1rem;
-      bottom: 8rem;
-      font-size: .2rem;
-      color: #fff;
-      background: #2f7dea;
-      z-index: 3;
-  }
-  .footerBottom .topBtn{
-      width: 4rem;
-      height: 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--black1);
-      color: var(--fff);
-      font-size: .8rem;
-  }
-
-  .addHomeWindow{
-      width: 100%;
-      max-width: 34rem;
-      background-color: var(--black2);
-      color: var(--gray1);
-      z-index: 3;
-      bottom: 0;
-      margin: 0;
-      border-radius: 0;
-      border: none;
-  }
-  .addHomeWindow img{
-      width: 4rem;
-      height: 4rem;
-  }
-  .addHomeWindow .continueBtn{
-      border: none;
-      color: var(--fff);
-      background: var(--greenGradient);
-  }
-</style>
-<script>
-  import { Swiper, SwiperSlide } from 'swiper/vue';
-  import 'swiper/css';
-  import 'swiper/css/pagination';
-  import { Navigation, Pagination } from 'swiper/modules';
-
-  export default {
-    data(){
-      return {
-        recentListWinData: [
-          {
-            userName: '6799*****14',
-            winMoney: 'R$ 5700',
-            imgUrl: 'https://6z.com/images/game/551032.jpg',
-          },
-          {
-            userName: '6799*****75',
-            winMoney: 'R$ 4900',
-            imgUrl: 'https://6z.com/images/game/551458.jpg',
-          },
-          {
-            userName: '6799*****43',
-            winMoney: 'R$ 3400',
-            imgUrl: 'https://6z.com/images/game/551031.jpg',
-          },
-          {
-            userName: '6799*****96',
-            winMoney: 'R$ 1100',
-            imgUrl: 'https://6z.com/images/game/551932.jpg',
-          },
-          {
-            userName: '6722*****75',
-            winMoney: 'R$ 8300',
-            imgUrl: 'https://6z.com/images/game/551008.jpg',
-          },
-          {
-            userName: '604*****98',
-            winMoney: 'R$ 9600',
-            imgUrl: 'https://6z.com/images/game/551934.jpg',
-          },
-          {
-            userName: '6764*****65',
-            winMoney: 'R$ 10000',
-            imgUrl: 'https://pg61.vip/images/game/551037.jpg',
-          },
-          {
-            userName: '6176*****41',
-            winMoney: 'R$ 8800',
-            imgUrl: 'https://pg61.vip/images/game/551204.jpg',
-          },
-          {
-            userName: '6756*****32',
-            winMoney: 'R$ 4400',
-            imgUrl: 'https://pg61.vip/images/game/551476.jpg',
-          },
-          {
-            userName: '6142*****11',
-            winMoney: 'R$ 2300',
-            imgUrl: 'https://pg61.vip/images/game/551936.jpg',
-          },
-        ],
-        gameImgData:{
-          quente:{
-            list1:[
-              {
-                imgUrl: 'https://6z.com/images/game/551931.jpg'
-              },
-              {
-                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
-              },
-              {
-                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551476.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551031.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551010.jpg'
-              },
-              {
-                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551458.jpg'
-              }
-            ],
-            list2:[
-              {
-                imgUrl: 'https://6z.com/images/game/551931.jpg'
-              },
-              {
-                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
-              },
-              {
-                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551476.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551031.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551010.jpg'
-              },
-              {
-                imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551458.jpg'
-              }
-            ],
-          },
-          pg:{
-            list1: [
-              {
-                imgUrl: 'https://6z.com/images/game/551931.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551932.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551934.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551933.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551936.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551935.jpg'
-              }
-            ],
-            list2: [
-              {
-                imgUrl: 'https://6z.com/images/game/551937.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551938.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551940.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551941.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551942.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551943.jpg'
-              }
-            ],
-          },
-          sixz:{
-            list1:[
-              {
-                imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551032.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551008.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551031.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551010.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551009.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551037.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551006.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/PIC_Tower.jpg'
-              }
-            ],
-            list2:[
-              {
-                imgUrl: 'https://6z.com/images/game/551025.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551034.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551012.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551004.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551028.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551011.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551019.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551024.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551016.jpg'
-              }
-            ],
-          },
-          Provedor:[
-            {
-              imgUrl: 'https://6z.com/images/homePage/provider/link_PG.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/homePage/provider/link_TD.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/homePage/provider/link_pp.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/homePage/provider/link_EG.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/homePage/provider/link_6z.jpg'
-            }
-          ],
-          live:{
-            list1:[
-              {
-                imgUrl: 'https://6z.com/images/game/551914.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551909.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551910.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551912.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551911.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551913.jpg'
-              },
-            ],
-            list2:[
-              {
-                imgUrl: 'https://6z.com/images/game/551908.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551951.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551979.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551963.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551959.jpg'
-              },
-              {
-                imgUrl: 'https://6z.com/images/game/551957.jpg'
-              },
-            ]
-          }
-        }
-      }
-    },
-    components: {
-      Swiper,
-      SwiperSlide
-    },
-    methods: {
-      toTop() {
-          document.documentElement.scrollTop = 0;
-      },
-    },
-    setup() {
-      return {
-        modules: [Navigation,Pagination],
-      };
-    },
-  }
-</script>

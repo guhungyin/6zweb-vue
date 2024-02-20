@@ -1,7 +1,7 @@
 <template>
   <section class="bottomMenu position-fixed w-100">
     <ul class="d-flex justify-content-between align-items-end pb-2 px-0 m-0 h-100">
-      <li class="active">
+      <li :class="{ active: $route.path === '/' }">
         <RouterLink to="/" class="d-flex flex-column justify-content-center align-items-center text-decoration-none" >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFF" class="bi bi-house-door-fill" viewBox="0 0 16 16">
               <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
@@ -9,7 +9,7 @@
           <span class="bottomMenuName mt-2">Início</span>
         </RouterLink>
       </li>
-      <li>
+      <li :class="{ active: $route.path === '/deposit' }">
         <RouterLink to="/deposit" class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFF" class="bi bi-wallet-fill" viewBox="0 0 16 16">
             <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z"/>
@@ -42,3 +42,32 @@
     </ul>
   </section>
 </template>
+<style scoped>
+  .bottomMenu{
+    width: 100%;
+    max-width: 34rem;
+    bottom: 0;
+    height: 4rem;
+    z-index: 1;
+    background-color: var(--black2);
+  }
+  .bottomMenu ul{
+    box-sizing: border-box;
+  }
+  .bottomMenu ul li{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .bottomMenu ul li .bottomMenuName{
+    color: var(--gray1);
+    font-size: .7rem;
+  }
+  .bottomMenu .active svg,
+  .bottomMenu .active .bottomMenuName{
+    color: var(--primary);
+    fill: var(--primary);
+  }
+</style>
