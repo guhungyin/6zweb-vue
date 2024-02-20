@@ -1,8 +1,23 @@
 <script>
-import GameLogo from '../components/home/GameLogo.vue';
+  import { Offcanvas } from 'bootstrap'
+  import GameLogo from '../components/home/GameLogo.vue';
   export default {
+    data() {
+      return {
+        bsOffcanvas: null
+      }
+    },
     components: {
       GameLogo
+    },
+    watch: {
+        $route() {
+            this.bsOffcanvas.hide()
+        }
+    },
+    mounted(){
+        const myOffcanvas = document.getElementById("profileWindow");
+        this.bsOffcanvas = new Offcanvas(myOffcanvas);
     }
   }
 </script>
@@ -22,17 +37,17 @@ import GameLogo from '../components/home/GameLogo.vue';
         <div class="main">
           <div class="userInfo">
             <div class="userContent d-flex justify-content-between align-items-center mb-3">
-              <div class="userImg d-flex justify-content-between align-items-center">
+              <router-link to="/changePassword" class="userImg d-flex justify-content-between align-items-center ">
                 <img class="me-3" src="https://6z.com/img/user.6da7e89a.png" alt="">
                 <div class="d-flex flex-column">
                   <span>Conta</span>
                   <span>*********</span>
                 </div>
-              </div>
-              <a href="#" class="changePassword d-flex">
+              </router-link>
+              <router-link to="/changePassword" class="changePassword d-flex">
                 <i class="keyIcon me-2"></i>
                 Mudar Senha
-              </a>
+              </router-link>
             </div>
             <div class="coin d-flex justify-content-between position-relative mb-3">
               <div class="d-flex flex-column align-items-center w-50">
@@ -62,14 +77,14 @@ import GameLogo from '../components/home/GameLogo.vue';
             </div>
           </div>
           <div class="link d-flex align-items-center justify-content-around mb-3">
-            <router-link to="#" class="d-flex align-items-center justify-content-center">
+            <router-link to="/deposit" class="d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#64d23e" class="bi bi-wallet-fill me-2" viewBox="0 0 16 16">
                 <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z"></path>
                 <path d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z"></path>
               </svg>
               Depósito
             </router-link>
-            <router-link to="./withdraw.html" class="d-flex align-items-center justify-content-center">
+            <router-link to="/withdraw" class="d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#64d23e" class="bi bi-cash-stack me-2" viewBox="0 0 16 16">
                 <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
                 <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
@@ -114,7 +129,7 @@ import GameLogo from '../components/home/GameLogo.vue';
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/danger.png" alt="">
-              <router-link to="./promotions.html"> Promoções </router-link>
+              <router-link to="/promotions"> Promoções </router-link>
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/menuIcon02.png" alt="">
@@ -129,3 +144,83 @@ import GameLogo from '../components/home/GameLogo.vue';
       </div>
     </div>
 </template>
+
+<style scoped>
+.profileWindow .offcanvas-header{
+  background-color: var(--black1);
+  height: 4rem;
+}
+.profileWindow .offcanvas-header img{
+  height: 2.5rem;
+}
+.profileWindow .offcanvas-body{
+  overflow: initial;
+  background-color: #1f1f1f;
+}
+.profileWindow .main .userContent a{
+  color: var(--blue);
+}
+.profileWindow .main .userContent .userImg img{
+  width: 3rem;
+}
+.profileWindow .main .userContent .changePassword{
+  color: var(--blue);
+}
+.profileWindow .main .userContent .keyIcon{
+  width: 1rem;
+  padding-bottom: 1rem;
+  background: url('../assets/images/icon/key.png') no-repeat center center / contain;
+}
+.profileWindow .main .coin{
+  color: var(--blue);
+}
+.profileWindow .main .coin::before{
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  background-color: #4c4c4c;
+  transform: translate(-50%,0);
+}
+.profileWindow .main .coin .num{
+  color: var(--fff);
+}
+.profileWindow .main .link a{
+  width: 7rem;
+  height: 2.2rem;
+  color: var(--fff);
+  border-radius: .2rem;
+  font-size: .8rem;
+  background: linear-gradient(180deg,#303030,#494949);
+}
+.profileWindow .main ul{
+  background-color: #2d3035;
+}
+.profileWindow .main ul li{
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.profileWindow .main ul li .icon{
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.5rem;
+}
+.profileWindow .main ul li a{
+  color: var(--blue);
+  font-size: .7rem;
+}
+.profileWindow .main .logOut{
+  display: flex;
+  align-items: center;
+  color: var(--blue);
+  font-size: .8rem;
+}
+.profileWindow .main .logOut img{
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+</style>

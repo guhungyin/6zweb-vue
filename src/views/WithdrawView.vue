@@ -18,28 +18,28 @@
             <div class="payChannel d-flex">
                 <div class="channelItem me-2 py-2 px-3 active">
                     <div class="pixInfo d-flex align-items-center mb-2">
-                        <img src="./images/icon/pix.png" alt="" class="pixImg">
+                        <img src="../assets/images/icon/pix.png" alt="" class="pixImg">
                         <span>PIX Ⅵ</span>
                     </div>
                     <span>20 ~ 99,999 BRL</span>
                 </div>
                 <div class="channelItem me-2 py-2 px-3">
                     <div class="pixInfo d-flex align-items-center mb-2">
-                        <img src="./images/icon/pix.png" alt="" class="pixImg">
+                        <img src="../assets/images/icon/pix.png" alt="" class="pixImg">
                         <span>V</span>
                     </div>
                     <span>20 ~ 99,999 BRL</span>
                 </div>
                 <div class="channelItem me-2 py-2 px-3">
                     <div class="pixInfo d-flex align-items-center mb-2">
-                        <img src="./images/icon/pix.png" alt="" class="pixImg">
+                        <img src="../assets/images/icon/pix.png" alt="" class="pixImg">
                         <span>PIX Ⅲ</span>
                     </div>
                     <span>20 ~ 99,999 BRL</span>
                 </div>
                 <div class="channelItem me-2 py-2 px-3">
                     <div class="pixInfo d-flex align-items-center mb-2">
-                        <img src="./images/icon/pix.png" alt="" class="pixImg">
+                        <img src="../assets/images/icon/pix.png" alt="" class="pixImg">
                         <span>PIX Ⅳ</span>
                     </div>
                     <span>20 ~ 99,999 BRL</span>
@@ -80,7 +80,7 @@
             <div class="content">
                 <label class="d-flex align-items-center" for="quantiaInupt">
                     SALDO DISPONIVEL:
-                    <img src="./images/icon/rmoneyIcon2.svg" class="ms-2" width="25" alt="">
+                    <img src="../assets/images/icon/rmoneyIcon2.svg" class="ms-2" width="25" alt="">
                     <span class="ms-2">0</span>
                 </label>
                 <div class="position-relative mt-2 mb-3">

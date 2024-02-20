@@ -60,9 +60,19 @@ const router = createRouter({
       component: () => import('../views/ResetPhoneView.vue')
     },
     {
+      path: '/changePassword',
+      name: 'changePassword',
+      component: () => import('../views/ChangePasswordView.vue')
+    },
+    {
       path: '/withdraw',
       name: 'withdraw',
       component: () => import('../views/WithdrawView.vue')
+    },
+    {
+      path: '/bets',
+      name: 'bets',
+      component: () => import('../views/BetsView.vue')
     },
   ]
 })

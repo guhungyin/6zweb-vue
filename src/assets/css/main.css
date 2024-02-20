@@ -18,7 +18,7 @@
   position: relative;
   margin: 0 auto;
   background-color: var(--black1);
-  min-height: 100%;
+  min-height: 100vh;
   padding-top: 4rem;
 }
 .app.widthLimit{
@@ -27,7 +27,7 @@
 body{
   font-family: "Helvetica Neue",Helvetica,'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;
   font-size: 16px;
-  background-color: var(--black2);
+  background-color: var(--fff);
 }
 hr{
   background-color: var(--fff);
@@ -51,85 +51,6 @@ a{
   background-color: var(--black4);
   box-shadow: 0 0 0 1px var(--primary);
   color: var(--fff);
-}
-
-/* 個人選單 */
-.profileWindow .offcanvas-header{
-  background-color: var(--black1);
-  height: 4rem;
-}
-.profileWindow .offcanvas-header img{
-  height: 2.5rem;
-}
-.profileWindow .offcanvas-body{
-  overflow: initial;
-  background-color: #1f1f1f;
-}
-.profileWindow .main .userContent{
-  color: var(--blue);
-}
-.profileWindow .main .userContent .userImg img{
-  width: 3rem;
-}
-.profileWindow .main .userContent .changePassword{
-  color: var(--blue);
-}
-.profileWindow .main .userContent .keyIcon{
-  width: 1rem;
-  padding-bottom: 1rem;
-  background: url('../images/icon/key.png') no-repeat center center / contain;
-}
-.profileWindow .main .coin{
-  color: var(--blue);
-}
-.profileWindow .main .coin::before{
-  content: '';
-  width: 1px;
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  background-color: #4c4c4c;
-  transform: translate(-50%,0);
-}
-.profileWindow .main .coin .num{
-  color: var(--fff);
-}
-.profileWindow .main .link a{
-  width: 7rem;
-  height: 2.2rem;
-  color: var(--fff);
-  border-radius: .2rem;
-  font-size: .8rem;
-  background: linear-gradient(180deg,#303030,#494949);
-}
-.profileWindow .main ul{
-  background-color: #2d3035;
-}
-.profileWindow .main ul li{
-  width: 50%;
-  display: flex;
-  align-items: center;
-}
-.profileWindow .main ul li .icon{
-  width: 0.9rem;
-  height: 0.9rem;
-  margin-right: 0.5rem;
-}
-.profileWindow .main ul li a{
-  color: var(--blue);
-  font-size: .7rem;
-}
-.profileWindow .main .logOut{
-  display: flex;
-  align-items: center;
-  color: var(--blue);
-  font-size: .8rem;
-}
-.profileWindow .main .logOut img{
-  width: 1rem;
-  height: 1rem;
-  margin-right: 0.5rem;
 }
 
 .headerBack{
