@@ -27,7 +27,7 @@
 body{
   font-family: "Helvetica Neue",Helvetica,'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;
   font-size: 16px;
-  background-color: var(--fff);
+  background-color: var(--black2);
 }
 hr{
   background-color: var(--fff);
@@ -53,60 +53,6 @@ a{
   color: var(--fff);
 }
 
-
-/* 主選單 */
-.mainMenu{
-  font-size: .8rem;
-  width: 100%;
-  border: none;
-  background-color: #17191b;
-  color: var(--gray1);
-}
-.mainMenu li{
-  display: flex;
-  align-items: center;
-  line-height: 3rem;
-}
-.mainMenu .logo{
-  height: 2.5rem;
-}
-.mainMenu .gameLink .download img{
-  height: 2.2rem;
-}
-.mainMenu li .icon{
-  margin-right: 1.5rem;
-  width: 1.2rem;
-  height: 1.2rem;
-}
-.mainMenu .pageLink{
-  background-color: #24262b;
-}
-.mainMenu a{
-  color: var(--gray1);
-}
-.mainMenu .pageLink .installBtn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--redGradient);
-  font-size: .7rem;
-  border-radius: .2rem;
-  width: 5rem;
-  height: 2rem;
-}
-.mainMenu .pageLink .installBtn a{
-  color: var(--fff);
-}
-.mainMenu .socialLink{
-  background-color: #24262b;
-}
-.mainMenu .socialLink img{
-  width: 2.5rem;
-  height: 2.5rem;
-}
-.mainMenu .helpLink{
-  background-color: #24262b;
-}
 /* 個人選單 */
 .profileWindow .offcanvas-header{
   background-color: var(--black1);

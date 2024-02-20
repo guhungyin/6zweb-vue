@@ -1,11 +1,15 @@
+<script>
+    import CloseBtn from '../components/CloseBtn.vue';
+    export default {
+        components: {
+            CloseBtn
+        },
+    }
+</script>
 <template>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
         <h2 class="title">Bem Vindo ao </h2>
-        <div class="closeBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16">
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-            </svg>
-        </div>
+        <CloseBtn></CloseBtn>
     </header>
     <div class="main">
         <img class="headerBg w-100" src="./images/login/bg.jpg" alt="">
@@ -30,23 +34,23 @@
                     </svg>
                 </span>
             </div>
-            <a href="./resetPhone.html" class="forgetPassword mb-4">Esqueci minha senha?</a>
+            <router-link to="/resetPhone" class="forgetPassword mb-4">Esqueci minha senha?</router-link>
             <button type="button" class="btn loginBtn w-100 mb-4">Login</button>
             <div class="link mb-5">
                 Novo no 6Z.com? 
-                <a href="#" class="ms-2">Criar Conta Nova</a>
+                <router-link to="/" class="ms-2">Criar Conta Nova</router-link>
             </div>
             <div class="or mb-3">
                 <span class="mx-4">OU</span>
             </div>
             <div class="googleLoginBtn mx-auto">
-                <img class="me-2" src="./images/login/googleIcon.svg" alt="">
+                <img class="me-2" src="../assets/images/login/googleIcon.svg" alt="">
                 Entrar com Google+ 
             </div>
         </div>
     </div>
 </template>
-<style>
+<style scoped>
     .app{
         background-color: var(--black2);
         height: 100vh;

@@ -1,13 +1,19 @@
+<script>
+    import '@/assets/css/deposit.css'
+    import CloseBtn from '../components/CloseBtn.vue';
+    export default {
+        components: {
+            CloseBtn
+        },
+    }
+</script>
+
 <template>
     <div class="headerBack d-flex justify-content-between align-items-center px-2">
         <h2 class="title">Ajuda</h2>
-        <div class="closeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16">
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-        </svg>
-        </div>
+        <CloseBtn></CloseBtn>
     </div>
-    <div class="container-fluid mt-3 helpWindows">
+    <div class="container-fluid mt-3 helpWindows pb-5">
         <div class="">
         <h2>Como criar uma Conta</h2>
         <ul>
@@ -66,7 +72,7 @@
         </ul>
         </div>
         <hr>
-        <div class="">
+        <div>
         <h2>Esqueci minha senha</h2>
         <ul>
             <li class="mb-2">
@@ -79,10 +85,10 @@
             <li class="mb-2">Insira o PIN e escolha sua nova senha.</li>
         </ul>
         </div>
-        <hr>
+        <hr class="mb-5">
     </div>
 </template>
-<style>
+<style scoped>
     .app{
         padding-top: 4rem;
     }

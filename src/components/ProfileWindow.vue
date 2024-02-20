@@ -1,8 +1,16 @@
+<script>
+import GameLogo from '../components/home/GameLogo.vue';
+  export default {
+    components: {
+      GameLogo
+    }
+  }
+</script>
 <template>
     <div class="offcanvas profileWindow offcanvas-top" tabindex="-1" id="profileWindow" aria-labelledby="profileWindowLabel">
       <div class="offcanvas-header">
         <h5 id="profileWindowLabe l">
-          <img src="./images/logo.png" alt="">
+          <GameLogo></GameLogo>
         </h5>
         <button type="button" class="btn text-reset p-0" data-bs-dismiss="offcanvas" aria-label="Close">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16">
@@ -54,67 +62,67 @@
             </div>
           </div>
           <div class="link d-flex align-items-center justify-content-around mb-3">
-            <a href="#" class="d-flex align-items-center justify-content-center">
+            <router-link to="#" class="d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#64d23e" class="bi bi-wallet-fill me-2" viewBox="0 0 16 16">
                 <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z"></path>
                 <path d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z"></path>
               </svg>
               Depósito
-            </a>
-            <a href="./withdraw.html" class="d-flex align-items-center justify-content-center">
+            </router-link>
+            <router-link to="./withdraw.html" class="d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#64d23e" class="bi bi-cash-stack me-2" viewBox="0 0 16 16">
                 <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
                 <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
               </svg>
               Sacar
-            </a>
+            </router-link>
           </div>
           <ul class="p-3 d-flex flex-wrap">
             <li class="py-2">
-              <img class="icon" src="./images/icon/transfer.png" alt="">
-              <a href="./bets.html"> Minhas Apostas de Jogo </a>
+              <img class="icon" src="../assets/images/icon/transfer.png" alt="">
+              <router-link to="/bets"> Minhas Apostas de Jogo </router-link>
             </li>
             <li class="py-2">
-              <img class="icon" src="./images/icon/coin.png" alt="">
-              <a href="#"> Transações </a>
+              <img class="icon" src="../assets/images/icon/coin.png" alt="">
+              <router-link to="#"> Transações </router-link>
             </li>
             <li class="py-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#8ea7bb" class="bi bi-question-circle-fill icon" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"></path>
               </svg>
-              <a href="./help.html"> Ajuda </a>
+              <router-link to="/help"> Ajuda </router-link>
             </li>
             <li class="py-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#8ea7bb" class="bi bi-chat-dots-fill icon" viewBox="0 0 16 16">
                 <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
               </svg>
-              <a href="./message.html"> Mensagem </a>
+              <router-link to="/message"> Mensagem </router-link>
             </li>
             <li class="py-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#8ea7bb" class="bi bi-envelope-fill icon" viewBox="0 0 16 16">
                 <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"></path>
               </svg>
-              <a href="./contact.html"> Contate-nos </a>
+              <router-link to="/contact"> Contate-nos </router-link>
             </li>
             <li class="py-2">
-              <img class="icon" src="./images/icon/share.png" alt="">
-              <a href="#"> Afiliado - Ganhe R$10000 por mês </a>
+              <img class="icon" src="../assets/images/icon/share.png" alt="">
+              <router-link to="#"> Afiliado - Ganhe R$10000 por mês </router-link>
             </li>
             <li class="py-2">
-              <img class="icon" src="./images/icon/money.png" alt="">
-              <a href="#"> Cashback 25% </a>
+              <img class="icon" src="../assets/images/icon/money.png" alt="">
+              <router-link to="#"> Cashback 25% </router-link>
             </li>
             <li class="py-2">
-              <img class="icon" src="./images/icon/danger.png" alt="">
-              <a href="./promotions.html"> Promoções </a>
+              <img class="icon" src="../assets/images/icon/danger.png" alt="">
+              <router-link to="./promotions.html"> Promoções </router-link>
             </li>
             <li class="py-2">
-              <img class="icon" src="./images/icon/menuIcon02.png" alt="">
-              <a href="#"> Receba R$ 100 de graça </a>
+              <img class="icon" src="../assets/images/icon/menuIcon02.png" alt="">
+              <router-link to="#"> Receba R$ 100 de graça </router-link>
             </li>
           </ul>
           <div class="logOut px-3 mb-2">
-            <img src="./images/icon/logout.png" alt="">
+            <img src="../assets/images/icon/logout.png" alt="">
             Login
           </div>
         </div>

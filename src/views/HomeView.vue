@@ -1,6 +1,7 @@
 <script>
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import { Navigation, Pagination } from 'swiper/modules';
+  import GameLogo from '../components/home/GameLogo.vue';
   import AddHomeWindow from '../components/AddHomeWindow.vue';
   import 'swiper/css';
   import 'swiper/css/pagination';
@@ -288,6 +289,7 @@
     components: {
       Swiper,
       SwiperSlide,
+      GameLogo,
       AddHomeWindow
     },
     methods: {
@@ -308,10 +310,10 @@
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
         <a class="navbar-brand logo" href="#">
-          <img src="../assets/images/logo.png" class="img-fluid" alt="">
+          <GameLogo></GameLogo>
         </a>
         <!-- 登出顯示登入按鈕 -->
-        <a href="./login.html" class="btn loginBtn fw-bold">Login</a>
+        <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link>
         <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
         <!-- <div class="right">
           <div class="userMoney me-2">
@@ -381,7 +383,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6e6e6e" class="bi bi-search searchIcon" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg>
-      <input type="email" class="form-control border-0 ps-5" aria-describedby="emailHelp">
+      <input type="email" class="form-control border-0 ps-5" aria-describedby="emailHelp" placeholder="Procure Jogos ou Provedores">
     </div>
   </section>
   <!-- 遊戲內容 -->

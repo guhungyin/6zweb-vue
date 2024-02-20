@@ -1,11 +1,15 @@
+<script>
+    import CloseBtn from '../components/CloseBtn.vue';
+    export default {
+        components: {
+            CloseBtn
+        },
+    }
+</script>
 <template>
     <div class="headerBack d-flex justify-content-between align-items-center px-2">
         <h2 class="title">6Z APP</h2>
-        <div class="closeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16">
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-        </svg>
-        </div>
+        <CloseBtn></CloseBtn>
     </div>
     <div class="container-fluid mt-3 downloadApp">
         <div class="downloadContent mb-3">
@@ -25,9 +29,9 @@
         </svg>
         </div>
     </div>
-    <img src="./images/download/downloadBtn.png" class="w-100" alt="">
+    <img src="../assets/images/download/downloadBtn.png" class="w-100 mb-5" alt="">
 </template>
-<style>
+<style scoped>
     .app{
         padding-top: 4rem;
     }

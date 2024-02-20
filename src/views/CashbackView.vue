@@ -123,7 +123,7 @@
         </div>
     </div>
 </template>
-<style>
+<style scoped>
     .app{
         padding-top: 4rem;
         background-color: #ededed ;
