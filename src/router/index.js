@@ -109,6 +109,11 @@ const router = createRouter({
       name: 'termsSports',
       component: () => import('../views/TermsSportsView.vue')
     },
+    {
+      path: '/transactions',
+      name: 'transactions',
+      component: () => import('../views/TransactionsView.vue')
+    },
   ]
 })
 
