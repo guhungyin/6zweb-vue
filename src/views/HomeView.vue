@@ -625,12 +625,11 @@
         <RouterLink to="/terms" class="px-2">Terms &amp; Conditions</RouterLink>
         <br>
         <RouterLink to="/privacy" class="px-2">KYC Policy </RouterLink>
-        <RouterLink to="/" class="px-2">Self Exclusion Policy</RouterLink>
+        <RouterLink to="/exclusionPolicy" class="px-2">Self Exclusion Policy</RouterLink>
         <br>
-        <RouterLink to="/" class="px-2">Underage Gaming Policy (18+ to play clause)</RouterLink>
+        <RouterLink to="/gamingPolicy" class="px-2">Underage Gaming Policy (18+ to play clause)</RouterLink>
         <br>
-        <RouterLink to="/" class="px-2">Responsible Gaming Policy</RouterLink>
-        <RouterLink to="/" class="px-2">Esportes Regras</RouterLink>
+        <RouterLink to="/responsible" class="px-2">Responsible Gaming Policy</RouterLink>
       </div>
       <hr>
       <div class="title text-center mb-3">LICENÇA</div>

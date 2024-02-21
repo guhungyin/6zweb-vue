@@ -90,14 +90,24 @@ const router = createRouter({
       component: () => import('../views/PrivacyView.vue')
     },
     {
-      path: '/bets',
-      name: 'bets',
-      component: () => import('../views/BetsView.vue')
+      path: '/exclusionPolicy',
+      name: 'exclusionPolicy',
+      component: () => import('../views/ExclusionPolicyView.vue')
     },
     {
-      path: '/bets',
-      name: 'bets',
-      component: () => import('../views/BetsView.vue')
+      path: '/gamingPolicy',
+      name: 'gamingPolicy',
+      component: () => import('../views/GamingPolicyView.vue')
+    },
+    {
+      path: '/responsible',
+      name: 'responsible',
+      component: () => import('../views/ResponsibleView.vue')
+    },
+    {
+      path: '/termsSports',
+      name: 'termsSports',
+      component: () => import('../views/TermsSportsView.vue')
     },
   ]
 })

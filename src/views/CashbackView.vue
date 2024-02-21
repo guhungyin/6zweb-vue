@@ -34,8 +34,8 @@
         </div>
         <div class="vipCash mb-3 p-3">
             <div class="img">
-                <img src="/img/M-4.328863a6.png" alt="" class="cashImg">
-                <img src="/img/free.b8fcf912.png" alt="" class="free">
+                <img src="https://6z.com/img/M-4.328863a6.png" alt="" class="cashImg">
+                <img src="https://6z.com/img/free.b8fcf912.png" alt="" class="free">
             </div>
             <div class="main">
                 <div class="title">Seu Cashback Semanal</div>

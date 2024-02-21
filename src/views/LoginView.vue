@@ -12,7 +12,7 @@
         <CloseBtn></CloseBtn>
     </header>
     <div class="main">
-        <img class="headerBg w-100" src="./images/login/bg.jpg" alt="">
+        <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="">
         <div class="container-fluid">
             <div class="loginTitle">Login</div>
             <div class="phoneInput position-relative mb-3">
