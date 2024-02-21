@@ -6,6 +6,7 @@
   import 'swiper/css';
   import 'swiper/css/pagination';
   import '../assets/css/index.css';
+  import { RouterLink } from 'vue-router';
   export default {
     data(){
       return {
@@ -287,11 +288,12 @@
       }
     },
     components: {
-      Swiper,
-      SwiperSlide,
-      GameLogo,
-      AddHomeWindow
-    },
+    Swiper,
+    SwiperSlide,
+    GameLogo,
+    AddHomeWindow,
+    RouterLink
+},
     methods: {
       toTop() {
           document.documentElement.scrollTop = 0;
@@ -618,8 +620,20 @@
           <router-link to="/help" class="text-decoration-none"> Como Jogar </router-link>
         </li>
       </ul>
+      <div class="terms text-center">
+        <RouterLink to="/preventLaunderMoney" class="px-2">AML Policy</RouterLink>
+        <RouterLink to="/terms" class="px-2">Terms &amp; Conditions</RouterLink>
+        <br>
+        <RouterLink to="/privacy" class="px-2">KYC Policy </RouterLink>
+        <RouterLink to="/" class="px-2">Self Exclusion Policy</RouterLink>
+        <br>
+        <RouterLink to="/" class="px-2">Underage Gaming Policy (18+ to play clause)</RouterLink>
+        <br>
+        <RouterLink to="/" class="px-2">Responsible Gaming Policy</RouterLink>
+        <RouterLink to="/" class="px-2">Esportes Regras</RouterLink>
+      </div>
       <hr>
-      <div class="title text-center mb-3">SOBRE NÓS</div>
+      <div class="title text-center mb-3">LICENÇA</div>
       <p class="license">
         6z.com é operada pela Dubet N.V., número de registro da empresa 10692, com endereço registrado em Abraham de Veerstraat 7, Curaçao e é licenciada e autorizada pelo governo de Curaçao. A 6z opera sob a Master License of Gaming Services Provider, N.V. Número da Licença 365/JAZ Sub-Licença 
         <a href="#" class="text-decoration-none">GLH-OCCHKTW0705152022</a>

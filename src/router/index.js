@@ -74,6 +74,31 @@ const router = createRouter({
       name: 'bets',
       component: () => import('../views/BetsView.vue')
     },
+    {
+      path: '/preventLaunderMoney',
+      name: 'preventLaunderMoney',
+      component: () => import('../views/PreventLaunderMoneyView.vue')
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () => import('../views/TermsView.vue')
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('../views/PrivacyView.vue')
+    },
+    {
+      path: '/bets',
+      name: 'bets',
+      component: () => import('../views/BetsView.vue')
+    },
+    {
+      path: '/bets',
+      name: 'bets',
+      component: () => import('../views/BetsView.vue')
+    },
   ]
 })
 
