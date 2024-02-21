@@ -125,7 +125,7 @@
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/money.png" alt="">
-              <router-link to="#"> Cashback 25% </router-link>
+              <router-link to="/cashback"> Cashback 25% </router-link>
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/danger.png" alt="">

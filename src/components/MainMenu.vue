@@ -49,8 +49,10 @@
             Receba R$ 100 de graça
           </li>
           <li>
-            <img class="icon" src="../assets/images/icon/menuIcon03.png" alt="">
+            <router-link to="/cashback">
+              <img class="icon" src="../assets/images/icon/menuIcon03.png" alt="">
               Cashback 25%
+            </router-link>
           </li>
         </ul>
         <ul class="pageLink px-4 py-2">
