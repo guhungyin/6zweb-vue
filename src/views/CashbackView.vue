@@ -7,7 +7,6 @@
         },
     }
 </script>
-
 <template>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
         <h2 class="title d-flex align-items-center">
