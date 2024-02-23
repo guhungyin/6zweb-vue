@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { piniaPluginPersistedstate } from 'pinia-plugin-persistedstate'
+import { createPersistedState }  from 'pinia-plugin-persistedstate'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '@/assets/css/main.css';
 
 const store = createPinia()
-store.use(piniaPluginPersistedstate)
+store.use(createPersistedState())
 
 const app = createApp(App)
 app.use(store)
