@@ -99,7 +99,7 @@
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/coin.png" alt="">
-              <router-link to="#"> Transações </router-link>
+              <router-link to="/transactions"> Transações </router-link>
             </li>
             <li class="py-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#8ea7bb" class="bi bi-question-circle-fill icon" viewBox="0 0 16 16">
@@ -125,7 +125,7 @@
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/money.png" alt="">
-              <router-link to="#"> Cashback 25% </router-link>
+              <router-link to="/cashback"> Cashback 25% </router-link>
             </li>
             <li class="py-2">
               <img class="icon" src="../assets/images/icon/danger.png" alt="">

@@ -130,7 +130,7 @@
                     <ul class="p-0">
                         <li class="mb-2 d-flex align-items-baseline">
                             RECEBIDO
-                            <img src="./images/icon/rmoneyIcon2.svg" width="35" class="ms-2" alt="">
+                            <img src="../assets/images/icon/rmoneyIcon2.svg" width="35" class="ms-2" alt="">
                         </li>
                         <li class="mb-2 time">
                         Invalid Date
@@ -146,7 +146,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         FALTA APOSTAR 
-                        <img src="./images/icon/rmoneyIcon3.svg" width="24" class="mx-2" alt="">
+                        <img src="../assets/images/icon/rmoneyIcon3.svg" width="24" class="mx-2" alt="">
                         <span>0</span>
                     </div>
                     </div>

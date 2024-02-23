@@ -13,7 +13,7 @@
     </div>
     <div class="container-fluid betsWindows">
         <div class="noData">
-            <img src="./images/icon/nodata.svg" alt="">
+            <img src="../assets/images/icon/nodata.svg" alt="">
             <span class="mt-3">Sem apostas</span>
         </div>
     </div>
