@@ -114,6 +114,11 @@ const router = createRouter({
       name: 'transactions',
       component: () => import('../views/TransactionsView.vue')
     },
+    {
+      path: '/certification',
+      name: 'certification',
+      component: () => import('../views/CertificationPhone.vue')
+    },
   ]
 })
 
