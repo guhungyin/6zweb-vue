@@ -113,12 +113,12 @@ const router = createRouter({
       path: '/transactions',
       name: 'transactions',
       component: () => import('../views/TransactionsView.vue')
-    },
+    }
   ]
 })
 
 router.afterEach((to, from, failure) => {
-  window.scrollTo(0,0);
-});
+  window.scrollTo(0, 0)
+})
 
 export default router

@@ -5,12 +5,11 @@ import { defineStore } from 'pinia'
 //https://www.modb.pro/db/624215 最新pinia 使用
 
 export const commonStore = defineStore('common', {
-    actions: {
-        getWinnerShow() {
-
-            return new Promise((resolve, reject) => {
-                common.getWinnerShow()
-            })   
-        }
+  actions: {
+    getWinnerShow() {
+      return new Promise((resolve, reject) => {
+        common.getWinnerShow()
+      })
     }
+  }
 })

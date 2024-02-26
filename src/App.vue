@@ -10,15 +10,15 @@
 </template>
 
 <script>
-  import BottomMenu from './components/BottomMenu.vue';
-  import MainMenu from './components/MainMenu.vue';
-  import ProfileWindow from './components/ProfileWindow.vue';
+import BottomMenu from './components/BottomMenu.vue'
+import MainMenu from './components/MainMenu.vue'
+import ProfileWindow from './components/ProfileWindow.vue'
 
-  export default {
-    components: {
-      BottomMenu,
-      MainMenu,
-      ProfileWindow
-    },
+export default {
+  components: {
+    BottomMenu,
+    MainMenu,
+    ProfileWindow
   }
+}
 </script>

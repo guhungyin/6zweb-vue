@@ -1,3 +1,3 @@
 <template>
-    <img src="../../assets/images/logo.png" alt="" class="img-fluid logo">
+  <img src="../../assets/images/logo.png" alt="" class="img-fluid logo" />
 </template>

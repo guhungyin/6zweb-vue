@@ -1,19 +1,19 @@
-:root{
+:root {
   --black1: #24262b;
-  --black2:#1c1e22;
-  --black3:#1a1c20;
+  --black2: #1c1e22;
+  --black3: #1a1c20;
   --black4: #191919;
-  --fff: #FFFFFF;
+  --fff: #ffffff;
   --gray1: #98a7b5;
   --gray2: #494949;
   --blue: #8ea7bb;
   --primary: #3bc117;
   --greenBg: #009d80;
   --yellow: #ffe800;
-  --greenGradient: linear-gradient(180deg,#278e47,#64d23e);
-  --redGradient: linear-gradient(180deg,#8b0000,#d23e3e);
+  --greenGradient: linear-gradient(180deg, #278e47, #64d23e);
+  --redGradient: linear-gradient(180deg, #8b0000, #d23e3e);
 }
-.app{
+.app {
   overflow: hidden;
   position: relative;
   margin: 0 auto;
@@ -21,39 +21,40 @@
   min-height: 100vh;
   padding-top: 4rem;
 }
-.app.widthLimit{
+.app.widthLimit {
   max-width: 34rem;
 }
-body{
-  font-family: "Helvetica Neue",Helvetica,'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'Apple SD Gothic Neo', 'Malgun Gothic', Arial,
+    sans-serif;
   font-size: 16px;
   background-color: var(--fff);
 }
-hr{
+hr {
   background-color: var(--fff);
 }
-h2{
+h2 {
   color: var(--fff);
   margin: 0;
 }
-a{
+a {
   cursor: pointer;
   text-decoration: none;
 }
-.btn:focus{
+.btn:focus {
   box-shadow: none;
 }
-.form-control{
+.form-control {
   border: none;
   background-color: var(--black3);
 }
-.form-control:focus{
+.form-control:focus {
   background-color: var(--black4);
   box-shadow: 0 0 0 1px var(--primary);
   color: var(--fff);
 }
 
-.headerBack{
+.headerBack {
   height: 4rem;
   position: fixed;
   top: 0;
@@ -61,6 +62,6 @@ a{
   background-color: #17181c;
   max-width: 34rem;
 }
-.headerBack .title{
+.headerBack .title {
   font-size: 1.2rem;
 }

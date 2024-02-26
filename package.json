@@ -15,7 +15,6 @@
     "bootstrap": "^5.3.2",
     "js-cookie": "^3.0.5",
     "pinia": "^2.1.7",
-    "pinia-plugin-persist": "^1.0.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "swiper": "^11.0.6",
     "vue": "^3.4.15",
