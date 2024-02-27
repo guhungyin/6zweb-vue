@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv  } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import vue from '@vitejs/plugin-vue'
 
 
@@ -26,7 +27,10 @@ export default defineConfig(({ command, mode }) => {
   } else {
     return {
       plugins: [
-        vue(),        
+        vue(),
+        VitePWA({
+          
+        })  
       ],
       base:"/",
       resolve: {
