@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig, loadEnv  } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -11,7 +11,6 @@ export default defineConfig(({ command, mode }) => {
     return {
       plugins: [
         vue(),
-        
       ],
       base:"/",
       resolve: {
@@ -27,8 +26,7 @@ export default defineConfig(({ command, mode }) => {
   } else {
     return {
       plugins: [
-        vue(),
-        
+        vue(),        
       ],
       base:"/",
       resolve: {

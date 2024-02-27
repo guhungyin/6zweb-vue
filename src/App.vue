@@ -2,7 +2,6 @@
   <router-view></router-view>
   <!-- 下方選單 -->
   <BottomMenu></BottomMenu>
-
   <!-- 主選單 -->
   <MainMenu></MainMenu>
   <!-- 個人選單 -->
@@ -19,6 +18,6 @@ export default {
     BottomMenu,
     MainMenu,
     ProfileWindow
-  }
+  },
 }
 </script>
