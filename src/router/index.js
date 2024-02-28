@@ -119,6 +119,11 @@ const router = createRouter({
       name: 'certification',
       component: () => import('../views/CertificationPhone.vue')
     },
+    {
+      path: '/play',
+      name: 'play',
+      component: () => import('../views/PlayGameView.vue')
+    },
   ]
 })
 
