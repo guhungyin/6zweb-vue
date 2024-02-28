@@ -22,6 +22,11 @@ export default defineConfig(({ command, mode }) => {
     
       define: {
         __APP_ENV__: JSON.stringify(env.APP_ENV)
+      },
+
+      server: {
+        host: "127.0.0.1",
+        open: true
       }
     }
   } else {
@@ -39,6 +44,10 @@ export default defineConfig(({ command, mode }) => {
     
       define: {
         __APP_ENV__: JSON.stringify(env.APP_ENV),
+      },
+      server: {
+        host: "127.0.0.1",
+        open: true
       }
     }
   }
