@@ -124,6 +124,11 @@ const router = createRouter({
       name: 'play',
       component: () => import('../views/PlayGameView.vue')
     },
+    {
+      path: '/cashwheel',
+      name: 'cashwheel',
+      component: () => import('../views/CashWheelView.vue')
+    },
   ]
 })
 

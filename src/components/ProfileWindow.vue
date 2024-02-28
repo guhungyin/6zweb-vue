@@ -220,7 +220,7 @@ export default {
           </li>
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/menuIcon02.png" alt="" />
-            <router-link to="#"> Receba R$ 100 de graça </router-link>
+            <router-link to="/cashwheel"> Receba R$ 100 de graça </router-link>
           </li>
         </ul>
         <div class="logOut px-3 mb-2">

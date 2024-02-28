@@ -59,8 +59,10 @@ export default {
           Afiliado - Ganhe R$10000 por mês
         </li>
         <li>
-          <img class="icon" src="../assets/images/icon/menuIcon02.png" alt="" />
-          Receba R$ 100 de graça
+          <router-link to="/cashwheel">
+            <img class="icon" src="../assets/images/icon/menuIcon02.png" alt="" />
+            Receba R$ 100 de graça
+          </router-link>
         </li>
         <li>
           <router-link to="/cashback">
