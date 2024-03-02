@@ -1,3 +1,28 @@
+<script>
+  import { reactive, onMounted } from "vue";
+  export default {
+    setup() {
+      const states = reactive({
+        deferredPrompt: null,
+      });
+      onMounted(() => {
+        window.addEventListener("beforeinstallprompt", e => {
+          e.preventDefault();
+          states.deferredPrompt = e;
+        });
+        window.addEventListener("appinstalled", () => {
+          states.deferredPrompt = null;
+        });
+        document.querySelector("#addApp").addEventListener("click", () => { 
+          if (states.deferredPrompt) {
+            states.deferredPrompt.prompt();
+            states.deferredPrompt = null;
+          }
+        });
+      });
+  }
+  }
+</script>
 <template>
   <div class="addHomeWindow alert position-fixed w-100 fade show" role="alert">
     <div class="addHomeWindowTop d-flex align-items-center mb-2">
@@ -9,7 +34,7 @@
     </div>
     <div class="addHomeWindowBottom d-flex justify-content-end align-items-center">
       <span type="button" data-bs-dismiss="alert">Cancelar</span>
-      <button type="button" class="btn continueBtn ms-4" data-bs-dismiss="alert">Continuar</button>
+      <button type="button" id="addApp" class="btn continueBtn ms-4" data-bs-dismiss="alert">Continuar</button>
     </div>
   </div>
 </template>

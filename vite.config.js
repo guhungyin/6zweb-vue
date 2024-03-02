@@ -29,8 +29,48 @@ export default defineConfig(({ command, mode }) => {
       plugins: [
         vue(),
         VitePWA({
-          
-        })  
+          manifest: {
+            name: "6z",
+            short_name: "6z",
+            icons: [
+              {
+                src: "/pwa-192x192.png",
+                sizes: "192x192",
+                type: "image/png",
+                purpose: "any"
+              },
+              {
+                src: "/pwa-512x512.png",
+                sizes: "512x512",
+                type: "image/png",
+                purpose: "any"
+              },
+              {
+                src: "/pwa-maskable-192x192.png",
+                sizes: "192x192",
+                type: "image/png",
+                purpose: "maskable"
+              },
+              {
+                src: "/pwa-maskable-512x512.png",
+                sizes: "512x512",
+                type: "image/png",
+                purpose: "maskable"
+              }
+            ],
+            start_url: "/",
+            display: "standalone",
+            background_color: "#FFFFFF",
+            theme_color: "#FFFFFF"
+          },
+          registerType: "autoUpdate",
+          workbox: {
+            globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+          },
+          devOptions: {
+            enabled: true
+          }
+        }),
       ],
       base:"/",
       resolve: {
@@ -38,7 +78,6 @@ export default defineConfig(({ command, mode }) => {
           '@': fileURLToPath(new URL('./src', import.meta.url)),
         }
       },
-    
       define: {
         __APP_ENV__: JSON.stringify(env.APP_ENV),
       }
