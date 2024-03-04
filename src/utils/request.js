@@ -1,10 +1,14 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
-import userStore from '@/stores/user'
+// import { Message } from 'element-ui'
+import { pinia } from '@/stores'
+import { useUserStore } from '@/stores/modules/user'
+// import { getToken } from '@/utils/auth'
+
+// const userStore = null
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // 'http://192.168.3.4:8083/backend/', // process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: import.meta.env.VITE_APP_BASE_API, // 'http://192.168.3.4:8083/backend/', // process.env.VUE_APP_BASE_API, // url = base url + request url
   // baseURL: process.env.VUE_APP_BASE_API,
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 50000 // request timeout
@@ -14,7 +18,8 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     // do something before request is sent
-
+    const userStore = useUserStore(pinia)
+    console.log('====> userStore', userStore)
     if (userStore.ticket) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
@@ -48,14 +53,14 @@ service.interceptors.response.use(
     console.log('--------->> res', res)
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== '0') {
-      Message({
-        message: res.msg || 'Error',
-        type: 'error',
-        duration: 5 * 1000
-      })
+    if (res.code !== 0) {
+      // Message({
+      //   message: res.msg || 'Error',
+      //   type: 'error',
+      //   duration: 5 * 1000
+      // })
 
-      if (res.code === '10500012') {
+      if (res.code === 10500012) {
         setTimeout(async function () {
           window.location.href = `/`
         }, 100)
@@ -83,7 +88,6 @@ service.interceptors.response.use(
       //     })
       //   })
       // }
-      console.log('--------->》》》》》》》》》》', res.msg)
       return Promise.reject(new Error(res.msg || 'Error'))
     } else {
       return res
@@ -91,11 +95,11 @@ service.interceptors.response.use(
   },
   (error) => {
     console.log('err' + error) // for debug
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    })
+    // Message({
+    //   message: error.message,
+    //   type: 'error',
+    //   duration: 5 * 1000
+    // })
     return Promise.reject(error)
   }
 )

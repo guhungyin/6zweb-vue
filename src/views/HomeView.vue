@@ -3,10 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '../components/home/GameLogo.vue'
 import AddHomeWindow from '../components/AddHomeWindow.vue'
+import { useCommonStore } from '@/stores/modules/common'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import '../assets/css/index.css'
 import { RouterLink } from 'vue-router'
+// import { pinia } from '@/stores'
+
 export default {
   data() {
     return {
@@ -294,14 +297,29 @@ export default {
     AddHomeWindow,
     RouterLink
   },
+  created() {
+    this.winnerShow()
+  },
   methods: {
     toTop() {
       document.documentElement.scrollTop = 0
+    },
+    winnerShow() {
+      this.commonStore
+        .getWinnerShow()
+        .then((response) => {
+          console.log('response ---> ', response)
+        })
+        .catch((error) => {
+          console.log('getWinnerShow error message  ---> ', error.message)
+        })
     }
   },
   setup() {
+    const commonStore = useCommonStore()
     return {
-      modules: [Navigation, Pagination]
+      modules: [Navigation, Pagination],
+      commonStore
     }
   }
 }
