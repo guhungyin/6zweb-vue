@@ -6,7 +6,6 @@
   <MainMenu></MainMenu>
   <!-- 個人選單 -->
   <ProfileWindow></ProfileWindow>
-  <Turntable></Turntable>
 </template>
 
 <script>
