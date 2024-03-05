@@ -4,6 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '../components/home/GameLogo.vue'
 import AddHomeWindow from '../components/AddHomeWindow.vue'
 import { useCommonStore } from '@/stores/modules/common'
+import { useUserStore } from '@/stores/modules/user'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import '../assets/css/index.css'
@@ -13,58 +14,7 @@ import { RouterLink } from 'vue-router'
 export default {
   data() {
     return {
-      recentListWinData: [
-        {
-          userName: '6799*****14',
-          winMoney: 'R$ 5700',
-          imgUrl: 'https://6z.com/images/game/551032.jpg'
-        },
-        {
-          userName: '6799*****75',
-          winMoney: 'R$ 4900',
-          imgUrl: 'https://6z.com/images/game/551458.jpg'
-        },
-        {
-          userName: '6799*****43',
-          winMoney: 'R$ 3400',
-          imgUrl: 'https://6z.com/images/game/551031.jpg'
-        },
-        {
-          userName: '6799*****96',
-          winMoney: 'R$ 1100',
-          imgUrl: 'https://6z.com/images/game/551932.jpg'
-        },
-        {
-          userName: '6722*****75',
-          winMoney: 'R$ 8300',
-          imgUrl: 'https://6z.com/images/game/551008.jpg'
-        },
-        {
-          userName: '604*****98',
-          winMoney: 'R$ 9600',
-          imgUrl: 'https://6z.com/images/game/551934.jpg'
-        },
-        {
-          userName: '6764*****65',
-          winMoney: 'R$ 10000',
-          imgUrl: 'https://pg61.vip/images/game/551037.jpg'
-        },
-        {
-          userName: '6176*****41',
-          winMoney: 'R$ 8800',
-          imgUrl: 'https://pg61.vip/images/game/551204.jpg'
-        },
-        {
-          userName: '6756*****32',
-          winMoney: 'R$ 4400',
-          imgUrl: 'https://pg61.vip/images/game/551476.jpg'
-        },
-        {
-          userName: '6142*****11',
-          winMoney: 'R$ 2300',
-          imgUrl: 'https://pg61.vip/images/game/551936.jpg'
-        }
-      ],
+      recentListWinData: [],
       gameImgData: {
         quente: {
           list1: [
@@ -287,7 +237,9 @@ export default {
             }
           ]
         }
-      }
+      },
+      logged: false,
+      userMoney: '0.00'
     }
   },
   components: {
@@ -298,6 +250,14 @@ export default {
     RouterLink
   },
   created() {
+    if (this.userStore.ticket) {
+      this.logged = true
+
+      if (this.userStore.money > 0) {
+        this.userMoney = this.userStore.money.toFixed(2)
+      }
+    }
+
     this.winnerShow()
   },
   methods: {
@@ -309,6 +269,18 @@ export default {
         .getWinnerShow()
         .then((response) => {
           console.log('response ---> ', response)
+          //   userName: '6142*****11',
+          //   winMoney: 'R$ 2300',
+          //   imgUrl: 'https://pg61.vip/images/game/551936.jpg'
+          if (response.data.bigWin) {
+            response.data.bigWin.forEach((v) => {
+              this.recentListWinData.push({
+                userName: v.nickname,
+                winMoney: v.amount,
+                imgUrl: v.gameVo.img
+              })
+            })
+          }
         })
         .catch((error) => {
           console.log('getWinnerShow error message  ---> ', error.message)
@@ -317,9 +289,11 @@ export default {
   },
   setup() {
     const commonStore = useCommonStore()
+    const userStore = useUserStore()
     return {
       modules: [Navigation, Pagination],
-      commonStore
+      commonStore,
+      userStore
     }
   }
 }
@@ -333,12 +307,12 @@ export default {
           <GameLogo></GameLogo>
         </a>
         <!-- 登出顯示登入按鈕 -->
-        <!-- <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link> -->
+        <router-link to="/login" class="btn loginBtn fw-bold" v-show="!logged">Login</router-link>
         <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
-        <div class="right">
+        <div class="right" v-show="logged">
           <div class="userMoney me-2">
             <img class="me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-            0.00
+            {{ userMoney }}
           </div>
           <router-link class="depositBtn me-2" to="/deposit">
             <svg

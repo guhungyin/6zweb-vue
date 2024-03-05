@@ -1,9 +1,22 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 export default {
+  data() {
+    return {
+      account: '',
+      password: ''
+    }
+  },
   components: {
     CloseBtn
-  }
+  },
+  created() {},
+  methods: {
+    login() {
+      console.log('账号：', this.account, ' 密码：', this.password)
+    }
+  },
+  setup() {}
 }
 </script>
 <template>
@@ -16,11 +29,16 @@ export default {
     <div class="container-fluid">
       <div class="loginTitle">Login</div>
       <div class="phoneInput position-relative mb-3">
-        <input class="form-control py-2" type="text" placeholder="Número de Celular" />
+        <input
+          class="form-control py-2"
+          type="text"
+          placeholder="Número de Celular"
+          v-model="account"
+        />
         <span>+55</span>
       </div>
       <div class="passwordInput position-relative mb-2">
-        <input class="form-control py-2" placeholder="Senha" type="password" />
+        <input class="form-control py-2" placeholder="Senha" type="password" v-model="password" />
         <span>
           <!-- 顯示密碼 -->
           <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#98a7b5" class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -46,7 +64,7 @@ export default {
         </span>
       </div>
       <router-link to="/resetPhone" class="forgetPassword mb-4">Esqueci minha senha?</router-link>
-      <button type="button" class="btn loginBtn w-100 mb-4">Login</button>
+      <button type="button" class="btn loginBtn w-100 mb-4" @click="login">Login</button>
       <div class="link mb-5">
         Novo no 6Z.com?
         <router-link to="/" class="ms-2">Criar Conta Nova</router-link>
