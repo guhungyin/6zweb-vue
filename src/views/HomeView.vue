@@ -310,6 +310,11 @@ export default {
         <router-link to="/login" class="btn loginBtn fw-bold" v-show="!logged">Login</router-link>
         <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
         <div class="right" v-show="logged">
+          <router-link to="/register" class="registerBtn me-3">Cadastre-se</router-link>
+          <router-link to="/login" class="btn loginBtn">Login</router-link>
+        </div>
+        <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
+        <!-- <div class="right">
           <div class="userMoney me-2">
             <img class="me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
             {{ userMoney }}
@@ -350,7 +355,7 @@ export default {
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
             </svg>
           </button>
-        </div>
+        </div> -->
       </div>
     </nav>
   </header>

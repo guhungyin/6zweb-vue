@@ -1,41 +1,8 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
-import { ref, watch } from 'vue'
 export default {
-  data() {
-    return {}
-  },
   components: {
     CloseBtn
-  },
-  created() {},
-  methods: {
-    login() {
-      console.log('账号：', this.account, ' 密码：', this.password)
-    }
-  },
-  setup() {
-    const isActive = ref(false)
-    const isDisabled = ref(true)
-    const mobile = ref()
-    const password = ref('')
-
-    watch(password, () => {
-      if (password.value.length > 4) {
-        isActive.value = true
-        isDisabled.value = false
-      } else {
-        isActive.value = false
-        isDisabled.value = true
-      }
-    })
-
-    return {
-      isActive,
-      mobile,
-      password,
-      isDisabled
-    }
   }
 }
 </script>
@@ -47,30 +14,20 @@ export default {
   <div class="main">
     <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
     <div class="container-fluid">
-      <div class="loginTitle my-2 fw-bold">Login</div>
+      <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
       <div class="phoneInput position-relative mb-3">
-        <input
-          class="form-control py-2"
-          type="number"
-          placeholder="Número de Celular"
-          v-model.number="mobile"
-        />
+        <input class="form-control py-2" type="text" placeholder="Número de Celular" />
         <span>+55</span>
       </div>
       <div class="passwordInput position-relative mb-2">
-        <input
-          class="form-control py-2"
-          placeholder="Senha"
-          type="password"
-          v-model.trim="password"
-        />
+        <input class="form-control py-2" placeholder="Senha" type="password" />
         <span>
           <!-- 顯示密碼 -->
           <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#98a7b5" class="bi bi-eye-fill" viewBox="0 0 16 16">
                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
                         <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
                     </svg> -->
-          <!-- 不顯示密碼 91987868589 -->
+          <!-- 不顯示密碼 -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -88,20 +45,18 @@ export default {
           </svg>
         </span>
       </div>
-      <router-link to="/resetPhone" class="forgetPassword mb-4">Esqueci minha senha?</router-link>
-      <button
-        type="button"
-        class="btn loginBtn w-100 mb-4"
-        :class="{ active: isActive }"
-        :disabled="isDisabled"
-        style="pointer-events: auto"
-        @click.once="login"
-      >
-        Login
-      </button>
+      <div class="form-check agreeText my-3">
+        <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
+        <label class="form-check-label" for="agreeCheck">
+          Eu concordo com os 
+          <router-link to="/terms" class="agreeLink">acordo do usuário</router-link>
+          e confirmo que tenho pelo menos 18 anos
+        </label>
+      </div>
+      <button type="button" class="btn loginBtn w-100 mb-4"> Criar conta </button>
       <div class="link mb-4">
-        Novo no 6Z.com?
-        <router-link to="/register" class="ms-2">Criar Conta Nova</router-link>
+        Já tem uma conta?
+        <router-link to="/login" class="ms-2"> Criar conta</router-link>
       </div>
       <div class="or mb-3">
         <span class="mx-4">OU</span>
@@ -114,14 +69,12 @@ export default {
   </div>
 </template>
 <style scoped>
-.headerBack {
-  z-index: 3;
-}
+.headerBack{z-index: 3;}
 .app {
   background-color: var(--black2);
   height: 100vh;
 }
-.main {
+.main{
   z-index: 2;
   margin-top: 0rem;
   position: fixed;
@@ -129,14 +82,14 @@ export default {
   top: 0;
   height: 100%;
 }
-.loginTitle {
+.loginTitle{
   color: var(--fff);
 }
 .phoneInput input {
   color: var(--fff);
   text-indent: 3rem;
 }
-.phoneInput input::placeholder {
+.phoneInput input::placeholder{
   color: #4d565e;
 }
 .phoneInput span {
@@ -150,7 +103,7 @@ export default {
   text-indent: 1rem;
   color: var(--fff);
 }
-.passwordInput input::placeholder {
+.passwordInput input::placeholder{
   color: #4d565e;
 }
 .passwordInput span {
@@ -159,11 +112,19 @@ export default {
   right: 1rem;
   transform: translate(0, -50%);
 }
-.forgetPassword {
-  display: block;
-  text-align: right;
+.agreeText {
   font-size: 0.8rem;
   color: var(--gray1);
+}
+.agreeText .form-check-input{
+  background-color: #2d303580;
+  border: 1px solid #919191;
+}
+.agreeText .form-check-input:focus{
+  box-shadow: none;
+}
+.agreeText .agreeLink{
+  color: var(--fff);
 }
 .loginBtn {
   background: var(--greenGradient);
@@ -172,11 +133,9 @@ export default {
   opacity: 0.4;
   border-radius: 2px;
   padding: 0.56rem 0;
-  cursor: not-allowed;
 }
 .loginBtn.active {
   opacity: 1;
-  cursor: pointer;
 }
 .link {
   display: flex;
