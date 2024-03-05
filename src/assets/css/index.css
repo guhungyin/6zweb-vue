@@ -16,6 +16,13 @@ header .loginBtn {
   border: none;
   color: var(--fff);
   background: var(--greenGradient);
+  font-size: .9rem;
+  padding: .4rem 1.5rem;
+  border-radius: .2rem;
+}
+header .registerBtn{
+  color: #98a7b5;
+  font-size: .85rem;
 }
 header .right {
   display: flex;

@@ -14,7 +14,7 @@ export default {
   <div class="main">
     <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
     <div class="container-fluid">
-      <div class="loginTitle my-2 fw-bold">Login</div>
+      <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
       <div class="phoneInput position-relative mb-3">
         <input class="form-control py-2" type="text" placeholder="Número de Celular" />
         <span>+55</span>
@@ -45,11 +45,18 @@ export default {
           </svg>
         </span>
       </div>
-      <router-link to="/resetPhone" class="forgetPassword mb-4">Esqueci minha senha?</router-link>
-      <button type="button" class="btn loginBtn w-100 mb-4">Login</button>
+      <div class="form-check agreeText my-3">
+        <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
+        <label class="form-check-label" for="agreeCheck">
+          Eu concordo com os 
+          <router-link to="/terms" class="agreeLink">acordo do usuário</router-link>
+          e confirmo que tenho pelo menos 18 anos
+        </label>
+      </div>
+      <button type="button" class="btn loginBtn w-100 mb-4"> Criar conta </button>
       <div class="link mb-4">
-        Novo no 6Z.com?
-        <router-link to="/register" class="ms-2">Criar Conta Nova</router-link>
+        Já tem uma conta?
+        <router-link to="/login" class="ms-2"> Criar conta</router-link>
       </div>
       <div class="or mb-3">
         <span class="mx-4">OU</span>
@@ -105,11 +112,19 @@ export default {
   right: 1rem;
   transform: translate(0, -50%);
 }
-.forgetPassword {
-  display: block;
-  text-align: right;
+.agreeText {
   font-size: 0.8rem;
   color: var(--gray1);
+}
+.agreeText .form-check-input{
+  background-color: #2d303580;
+  border: 1px solid #919191;
+}
+.agreeText .form-check-input:focus{
+  box-shadow: none;
+}
+.agreeText .agreeLink{
+  color: var(--fff);
 }
 .loginBtn {
   background: var(--greenGradient);
