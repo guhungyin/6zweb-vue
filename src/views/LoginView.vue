@@ -11,7 +11,7 @@ export default {
   created() {},
   methods: {
     login() {
-      console.log('账号：', this.account, ' 密码：', this.password)
+      console.log('账号：', this.mobile, ' 密码：')
     }
   },
   setup() {
