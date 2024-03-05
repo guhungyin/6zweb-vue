@@ -1,8 +1,19 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 export default {
+  data(){
+    return{
+      pwdFlag:true,
+    }
+  },
   components: {
     CloseBtn
+  },
+  methods: {
+    // 切換是否顯示密碼
+    changePwd(){
+      this.pwdFlag =! this.pwdFlag;
+    }
   }
 }
 </script>
@@ -20,30 +31,12 @@ export default {
         <span>+55</span>
       </div>
       <div class="passwordInput position-relative mb-2">
-        <input class="form-control py-2" placeholder="Senha" type="password" />
-        <span>
-          <!-- 顯示密碼 -->
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#98a7b5" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-                    </svg> -->
-          <!-- 不顯示密碼 -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="#98a7b5"
-            class="bi bi-eye-slash-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"
-            />
-            <path
-              d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"
-            />
-          </svg>
-        </span>
+        <input 
+          class="form-control py-2" 
+          placeholder="Senha" 
+          :type="this.pwdFlag ? 'password' : 'text'"
+         />
+        <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
       </div>
       <div class="form-check agreeText my-3">
         <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
@@ -53,7 +46,7 @@ export default {
           e confirmo que tenho pelo menos 18 anos
         </label>
       </div>
-      <button type="button" class="btn loginBtn w-100 mb-4"> Criar conta </button>
+      <button type="button" class="btn establishBtn w-100 mb-4"> Criar conta </button>
       <div class="link mb-4">
         Já tem uma conta?
         <router-link to="/login" class="ms-2"> Criar conta</router-link>
@@ -106,11 +99,19 @@ export default {
 .passwordInput input::placeholder{
   color: #4d565e;
 }
-.passwordInput span {
+.passwordInput div {
   position: absolute;
   top: 50%;
   right: 1rem;
+  width: 1rem;
+  height: 1rem;
   transform: translate(0, -50%);
+}
+.passwordInput div.textIcon{
+  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain ;
+}
+.passwordInput div.pwdIcon{
+  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain ;
 }
 .agreeText {
   font-size: 0.8rem;
@@ -126,7 +127,7 @@ export default {
 .agreeText .agreeLink{
   color: var(--fff);
 }
-.loginBtn {
+.establishBtn {
   background: var(--greenGradient);
   color: var(--fff);
   border: none;
@@ -134,7 +135,10 @@ export default {
   border-radius: 2px;
   padding: 0.56rem 0;
 }
-.loginBtn.active {
+.establishBtn:active{
+  color: var(--fff);
+}
+.establishBtn.active {
   opacity: 1;
 }
 .link {
