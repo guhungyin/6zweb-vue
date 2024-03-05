@@ -18,10 +18,10 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     login(userInfo) {
-      const { username, password } = userInfo
+      const { mobile, password, source } = userInfo
       return new Promise((resolve, reject) => {
         user
-          .login({ username: username.trim(), password: password })
+          .login({ mobile: mobile, password: password.trim(), source: source.trim() })
           .then((response) => {
             console.log('winnerShow : ', response)
             resolve()

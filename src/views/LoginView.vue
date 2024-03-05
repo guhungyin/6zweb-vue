@@ -1,6 +1,7 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 import { ref, watch } from 'vue'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {}
@@ -11,7 +12,16 @@ export default {
   created() {},
   methods: {
     login() {
-      console.log('账号：', this.mobile, ' 密码：')
+      console.log('账号：', this.mobile, ' 密码：', this.password)
+      let loginUser = { mobile: this.mobile, password: this.password, source: '' }
+      this.userStore
+        .login(loginUser)
+        .then((res) => {
+          console.log('登录响应: ', res)
+        })
+        .catch((err) => {
+          console.log('登录失败: ', err.message)
+        })
     }
   },
   setup() {
@@ -19,6 +29,7 @@ export default {
     const isDisabled = ref(true)
     const mobile = ref()
     const password = ref('')
+    const userStore = useUserStore()
 
     watch(password, () => {
       if (password.value.length > 4) {
@@ -34,7 +45,8 @@ export default {
       isActive,
       mobile,
       password,
-      isDisabled
+      isDisabled,
+      userStore
     }
   }
 }
@@ -95,7 +107,7 @@ export default {
         :class="{ active: isActive }"
         :disabled="isDisabled"
         style="pointer-events: auto"
-        @click.once="login"
+        @click="login"
       >
         Login
       </button>
