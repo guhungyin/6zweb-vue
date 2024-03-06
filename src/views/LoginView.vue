@@ -17,13 +17,19 @@ export default {
     login() {
       console.log('账号：', this.mobile, ' 密码：', this.password)
       this.loginClick = true
+      this.isActive = false
+      this.isDisabled = true
       let loginUser = { mobile: this.mobile, password: this.password, source: '' }
       this.userStore
         .login(loginUser)
         .then((res) => {
+          this.isActive = true
+          this.isDisabled = false
           console.log('登录响应: ', res)
         })
         .catch((err) => {
+          this.isActive = true
+          this.isDisabled = false
           this.errorMsg = err.message
           this.errorActive = true
           console.log('登录失败: ', err.message)
