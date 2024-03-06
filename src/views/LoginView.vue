@@ -170,7 +170,7 @@ export default {
 }
 .tips {
   color: #e53535;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   display: none;
 }
 .tips.active {
