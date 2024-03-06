@@ -15,7 +15,6 @@ export default {
   created() {},
   methods: {
     login() {
-      console.log('账号：', this.mobile, ' 密码：', this.password)
       this.loginClick = true
       this.isActive = false
       this.isDisabled = true
@@ -25,7 +24,10 @@ export default {
         .then((res) => {
           this.isActive = true
           this.isDisabled = false
-          console.log('登录响应: ', res)
+          this.errorMsg = ''
+          this.errorActive = false
+          console.log('登录响应: ', res, ' ---> ', this.userStore.id)
+          this.$router.go(-1)
         })
         .catch((err) => {
           this.isActive = true
@@ -34,7 +36,6 @@ export default {
           this.errorActive = true
           console.log('登录失败: ', err.message)
         })
-      console.log('账号：', this.mobile, ' 密码：')
     },
     // 切換是否顯示密碼
     changePwd() {
@@ -166,13 +167,13 @@ export default {
 .phoneInput input::placeholder {
   color: #4d565e;
 }
-.phoneInput input[type="number"]::-webkit-outer-spin-button,
-.phoneInput input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.phoneInput input[type='number']::-webkit-outer-spin-button,
+.phoneInput input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.phoneInput input[type="number"] {
-    -moz-appearance: textfield;
+.phoneInput input[type='number'] {
+  -moz-appearance: textfield;
 }
 .phoneInput span {
   position: absolute;
