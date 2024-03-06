@@ -5,7 +5,8 @@ import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      pwdFlag: true
+      pwdFlag: true,
+      errorMsg: ''
     }
   },
   components: {
@@ -15,6 +16,7 @@ export default {
   methods: {
     login() {
       console.log('账号：', this.mobile, ' 密码：', this.password)
+      this.loginClick = true
       let loginUser = { mobile: this.mobile, password: this.password, source: '' }
       this.userStore
         .login(loginUser)
@@ -22,6 +24,8 @@ export default {
           console.log('登录响应: ', res)
         })
         .catch((err) => {
+          this.errorMsg = err.message
+          this.errorActive = true
           console.log('登录失败: ', err.message)
         })
       console.log('账号：', this.mobile, ' 密码：')
@@ -33,7 +37,10 @@ export default {
   },
   setup() {
     const isActive = ref(false)
+    const tips1Active = ref(false)
     const isDisabled = ref(true)
+    const errorActive = ref(false)
+    const loginClick = ref(false)
     const mobile = ref()
     const password = ref('')
     const userStore = useUserStore()
@@ -42,18 +49,29 @@ export default {
       if (password.value.length > 4) {
         isActive.value = true
         isDisabled.value = false
+
+        if (loginClick.value) {
+          tips1Active.value = false
+        }
       } else {
         isActive.value = false
         isDisabled.value = true
+
+        if (loginClick.value) {
+          tips1Active.value = true
+        }
       }
     })
 
     return {
       isActive,
+      tips1Active,
       mobile,
       password,
       isDisabled,
-      userStore
+      userStore,
+      loginClick,
+      errorActive
     }
   }
 }
@@ -86,9 +104,11 @@ export default {
         />
         <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
       </div>
-      <div class="tips my-2">Please enter the correct password</div>
+      <div class="tips my-2" :class="{ active: tips1Active }">
+        Please enter the correct password
+      </div>
       <router-link to="/resetPhone" class="forgetPassword my-2">Esqueci minha senha?</router-link>
-      <div class="tips text-center mb-0">O número de telefone não existe.</div>
+      <div class="tips text-center mb-0" :class="{ active: errorActive }">{{ errorMsg }}</div>
       <button
         type="button"
         class="btn loginBtn w-100 my-2"
