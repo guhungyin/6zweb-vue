@@ -20,7 +20,7 @@ export default {
         <span>+55</span>
         <div class="invalid-feedback">Please enter the correct phone number</div>
       </div>
-      <button type="submit" class="btn loginBtn w-100 mb-4">Continuar</button>
+      <button type="submit" class="btn continueBtn w-100 mb-4">Continuar</button>
     </div>
   </div>
 </template>
@@ -50,7 +50,7 @@ export default {
   top: 0.55rem;
   color: #4d565e;
 }
-.loginBtn {
+.continueBtn {
   background: var(--greenGradient);
   color: var(--fff);
   border: none;
@@ -58,7 +58,10 @@ export default {
   border-radius: 2px;
   padding: 0.56rem 0;
 }
-.loginBtn.active {
+.continueBtn:active{
+  color: var(--fff);
+}
+.continueBtn.active {
   opacity: 1;
 }
 </style>

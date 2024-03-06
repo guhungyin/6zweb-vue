@@ -4,7 +4,9 @@ import { ref, watch } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
-    return {}
+    return {
+      pwdFlag: true
+    }
   },
   components: {
     CloseBtn
@@ -22,6 +24,11 @@ export default {
         .catch((err) => {
           console.log('登录失败: ', err.message)
         })
+      console.log('账号：', this.mobile, ' 密码：')
+    },
+    // 切換是否顯示密碼
+    changePwd() {
+      this.pwdFlag = !this.pwdFlag
     }
   },
   setup() {
@@ -60,7 +67,7 @@ export default {
     <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
     <div class="container-fluid">
       <div class="loginTitle my-2 fw-bold">Login</div>
-      <div class="phoneInput position-relative mb-3">
+      <div class="phoneInput position-relative">
         <input
           class="form-control py-2"
           type="number"
@@ -69,41 +76,22 @@ export default {
         />
         <span>+55</span>
       </div>
-      <div class="passwordInput position-relative mb-2">
+      <div class="tips my-2">Please enter the correct phone number</div>
+      <div class="passwordInput position-relative mt-3">
         <input
           class="form-control py-2"
           placeholder="Senha"
-          type="password"
+          :type="this.pwdFlag ? 'password' : 'text'"
           v-model.trim="password"
         />
-        <span>
-          <!-- 顯示密碼 -->
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#98a7b5" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-                    </svg> -->
-          <!-- 不顯示密碼 91987868589 -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="#98a7b5"
-            class="bi bi-eye-slash-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"
-            />
-            <path
-              d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"
-            />
-          </svg>
-        </span>
+        <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
       </div>
-      <router-link to="/resetPhone" class="forgetPassword mb-4">Esqueci minha senha?</router-link>
+      <div class="tips my-2">Please enter the correct password</div>
+      <router-link to="/resetPhone" class="forgetPassword my-2">Esqueci minha senha?</router-link>
+      <div class="tips text-center mb-0">O número de telefone não existe.</div>
       <button
         type="button"
-        class="btn loginBtn w-100 mb-4"
+        class="btn loginBtn w-100 my-2"
         :class="{ active: isActive }"
         :disabled="isDisabled"
         style="pointer-events: auto"
@@ -165,11 +153,27 @@ export default {
 .passwordInput input::placeholder {
   color: #4d565e;
 }
-.passwordInput span {
+.passwordInput div {
   position: absolute;
   top: 50%;
   right: 1rem;
+  width: 1rem;
+  height: 1rem;
   transform: translate(0, -50%);
+}
+.passwordInput div.textIcon {
+  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain;
+}
+.passwordInput div.pwdIcon {
+  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain;
+}
+.tips {
+  color: #e53535;
+  font-size: 0.8rem;
+  display: none;
+}
+.tips.active {
+  display: block;
 }
 .forgetPassword {
   display: block;
@@ -185,6 +189,9 @@ export default {
   border-radius: 2px;
   padding: 0.56rem 0;
   cursor: not-allowed;
+}
+.loginBtn:active {
+  color: var(--fff);
 }
 .loginBtn.active {
   opacity: 1;
