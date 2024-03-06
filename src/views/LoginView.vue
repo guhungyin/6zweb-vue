@@ -1,10 +1,11 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 import { ref, watch } from 'vue'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      pwdFlag:true,
+      pwdFlag: true
     }
   },
   components: {
@@ -13,11 +14,21 @@ export default {
   created() {},
   methods: {
     login() {
+      console.log('账号：', this.mobile, ' 密码：', this.password)
+      let loginUser = { mobile: this.mobile, password: this.password, source: '' }
+      this.userStore
+        .login(loginUser)
+        .then((res) => {
+          console.log('登录响应: ', res)
+        })
+        .catch((err) => {
+          console.log('登录失败: ', err.message)
+        })
       console.log('账号：', this.mobile, ' 密码：')
     },
     // 切換是否顯示密碼
-    changePwd(){
-      this.pwdFlag =! this.pwdFlag;
+    changePwd() {
+      this.pwdFlag = !this.pwdFlag
     }
   },
   setup() {
@@ -25,6 +36,7 @@ export default {
     const isDisabled = ref(true)
     const mobile = ref()
     const password = ref('')
+    const userStore = useUserStore()
 
     watch(password, () => {
       if (password.value.length > 4) {
@@ -40,7 +52,8 @@ export default {
       isActive,
       mobile,
       password,
-      isDisabled
+      isDisabled,
+      userStore
     }
   }
 }
@@ -63,7 +76,7 @@ export default {
         />
         <span>+55</span>
       </div>
-      <div class="tips my-2"> Please enter the correct phone number </div>
+      <div class="tips my-2">Please enter the correct phone number</div>
       <div class="passwordInput position-relative mt-3">
         <input
           class="form-control py-2"
@@ -73,16 +86,16 @@ export default {
         />
         <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
       </div>
-      <div class="tips my-2"> Please enter the correct password </div>
+      <div class="tips my-2">Please enter the correct password</div>
       <router-link to="/resetPhone" class="forgetPassword my-2">Esqueci minha senha?</router-link>
-      <div class="tips text-center mb-0"> O número de telefone não existe. </div>
+      <div class="tips text-center mb-0">O número de telefone não existe.</div>
       <button
         type="button"
         class="btn loginBtn w-100 my-2"
         :class="{ active: isActive }"
         :disabled="isDisabled"
         style="pointer-events: auto"
-        @click.once="login"
+        @click="login"
       >
         Login
       </button>
@@ -149,18 +162,20 @@ export default {
   height: 1rem;
   transform: translate(0, -50%);
 }
-.passwordInput div.textIcon{
-  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain ;
+.passwordInput div.textIcon {
+  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain;
 }
-.passwordInput div.pwdIcon{
-  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain ;
+.passwordInput div.pwdIcon {
+  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain;
 }
-.tips{
+.tips {
   color: #e53535;
-  font-size: .8rem;
+  font-size: 0.8rem;
   display: none;
 }
-.tips.active{display: block;}
+.tips.active {
+  display: block;
+}
 .forgetPassword {
   display: block;
   text-align: right;
@@ -176,7 +191,7 @@ export default {
   padding: 0.56rem 0;
   cursor: not-allowed;
 }
-.loginBtn:active{
+.loginBtn:active {
   color: var(--fff);
 }
 .loginBtn.active {
