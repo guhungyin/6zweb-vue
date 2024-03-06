@@ -26,11 +26,12 @@ export default {
     <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
     <div class="container-fluid">
       <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
-      <div class="phoneInput position-relative mb-3">
+      <div class="phoneInput position-relative">
         <input class="form-control py-2" type="text" placeholder="Número de Celular" />
         <span>+55</span>
       </div>
-      <div class="passwordInput position-relative mb-2">
+      <div class="tips my-2"> Please enter the correct phone number </div>
+      <div class="passwordInput position-relative mt-3">
         <input 
           class="form-control py-2" 
           placeholder="Senha" 
@@ -38,7 +39,8 @@ export default {
          />
         <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
       </div>
-      <div class="form-check agreeText my-3">
+      <div class="tips my-2"> Please enter the correct password </div>
+      <div class="form-check agreeText my-2">
         <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
         <label class="form-check-label" for="agreeCheck">
           Eu concordo com os 
@@ -46,8 +48,8 @@ export default {
           e confirmo que tenho pelo menos 18 anos
         </label>
       </div>
-      <button type="button" class="btn establishBtn w-100 mb-4"> Criar conta </button>
-      <div class="link mb-4">
+      <button type="button" class="btn establishBtn w-100 mb-3"> Criar conta </button>
+      <div class="link mb-3">
         Já tem uma conta?
         <router-link to="/login" class="ms-2"> Criar conta</router-link>
       </div>
@@ -68,6 +70,7 @@ export default {
   height: 100vh;
 }
 .main{
+  max-width: 34rem;
   z-index: 2;
   margin-top: 0rem;
   position: fixed;
@@ -112,6 +115,14 @@ export default {
 }
 .passwordInput div.pwdIcon{
   background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain ;
+}
+.tips {
+  color: #e53535;
+  font-size: 0.9rem;
+  display: none;
+}
+.tips.active {
+  display: block;
 }
 .agreeText {
   font-size: 0.8rem;

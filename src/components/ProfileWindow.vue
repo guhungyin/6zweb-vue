@@ -233,6 +233,9 @@ export default {
 </template>
 
 <style scoped>
+.profileWindow{
+  position: absolute;
+}
 .profileWindow .offcanvas-header {
   background-color: var(--black1);
   height: 4rem;

@@ -142,6 +142,7 @@ export default {
   height: 100vh;
 }
 .main {
+  max-width: 34rem;
   z-index: 2;
   margin-top: 0rem;
   position: fixed;
@@ -189,7 +190,7 @@ export default {
 }
 .tips {
   color: #e53535;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   display: none;
 }
 .tips.active {
