@@ -27,7 +27,7 @@ export default {
     <div class="container-fluid">
       <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
       <div class="phoneInput position-relative">
-        <input class="form-control py-2" type="text" placeholder="Número de Celular" />
+        <input class="form-control py-2" type="number" placeholder="Número de Celular" />
         <span>+55</span>
       </div>
       <div class="tips my-2"> Please enter the correct phone number </div>
@@ -87,6 +87,14 @@ export default {
 }
 .phoneInput input::placeholder{
   color: #4d565e;
+}
+.phoneInput input[type="number"]::-webkit-outer-spin-button,
+.phoneInput input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.phoneInput input[type="number"] {
+    -moz-appearance: textfield;
 }
 .phoneInput span {
   position: absolute;
