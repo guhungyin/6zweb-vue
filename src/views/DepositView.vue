@@ -89,7 +89,7 @@ export default {
   </div>
   <div class="container-fluid mt-3 depositWindows">
     <div class="pixInfo mb-2">Formas de Pagamentos</div>
-    <div class="channelContainer mb-5">
+    <div class="channelContainer mb-2">
       <div class="payChannel d-flex">
         <div class="channelItem me-2 py-2 px-3 active">
           <div class="pixInfo d-flex align-items-center mb-2">
@@ -123,8 +123,8 @@ export default {
     </div>
     <div class="depositMain">
       <div class="amount position-relative mb-4">
-        <input type="text" class="form-control" placeholder="Min. 10" />
-        <span class="tips-close position-absolute fw-bold">Quantia (BRL) {{ showPrice }}</span>
+        <input type="text" v-model="showPrice" class="form-control" placeholder="Min. 10" />
+        <span class="tips-close position-absolute fw-bold">Quantia (BRL)</span>
       </div>
       <div class="deposit">
         <ul class="p-0 m-2">
