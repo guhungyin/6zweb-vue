@@ -61,9 +61,11 @@ service.interceptors.response.use(
       // })
 
       if (res.code === 10500012) {
+        const userStore = useUserStore(pinia)
+        userStore.$reset()
         setTimeout(async function () {
           window.location.href = `/`
-        }, 100)
+        }, 100000)
         return
 
         // thant.$router.push(`/login?redirect=${thant.$route.fullPath}`)

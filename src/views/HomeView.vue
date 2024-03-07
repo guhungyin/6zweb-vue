@@ -250,12 +250,12 @@ export default {
     RouterLink
   },
   created() {
+    console.log('------- userStore ', this.userStore, ' .ticket', this.userStore.ticket)
+
     if (this.userStore.ticket) {
       this.logged = true
 
-      if (this.userStore.money > 0) {
-        this.userMoney = this.userStore.money.toFixed(2)
-      }
+      this.userMoney = this.userStore.money
     }
 
     this.winnerShow()
@@ -306,15 +306,13 @@ export default {
         <a class="navbar-brand logo" href="#">
           <GameLogo></GameLogo>
         </a>
-        <!-- 登出顯示登入按鈕 -->
-        <router-link to="/login" class="btn loginBtn fw-bold" v-show="!logged">Login</router-link>
         <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
-        <div class="right" v-show="logged">
+        <div class="right" v-show="!logged">
           <router-link to="/register" class="registerBtn me-3">Cadastre-se</router-link>
-          <router-link to="/login" class="btn loginBtn">Login</router-link>
+          <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link>
         </div>
         <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
-        <div class="right">
+        <div class="right" v-show="logged">
           <div class="userMoney me-2">
             <img class="me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
             {{ userMoney }}

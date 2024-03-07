@@ -18,6 +18,19 @@ export const useCommonStore = defineStore('common', {
             reject(error)
           })
       })
+    },
+
+    async goodsList(type) {
+      return new Promise((resolve, reject) => {
+        common
+          .goodsList(type)
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
     }
   }
 })

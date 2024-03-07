@@ -1,10 +1,12 @@
 <script>
 import { Offcanvas } from 'bootstrap'
 import GameLogo from '../components/home/GameLogo.vue'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      bsOffcanvas: null
+      bsOffcanvas: null,
+      userMoney: '0.00'
     }
   },
   components: {
@@ -18,6 +20,15 @@ export default {
   mounted() {
     const myOffcanvas = document.getElementById('profileWindow')
     this.bsOffcanvas = new Offcanvas(myOffcanvas)
+    if (this.userStore.ticket) {
+      this.userMoney = this.userStore.money
+    }
+  },
+  setup() {
+    const userStore = useUserStore()
+    return {
+      userStore
+    }
   }
 }
 </script>
@@ -90,7 +101,7 @@ export default {
               </div>
               <div class="num">
                 <span>R$ </span>
-                <span>0.00</span>
+                <span>{{ userMoney }}</span>
               </div>
             </div>
             <div class="d-flex flex-column align-items-center w-50">
@@ -233,7 +244,7 @@ export default {
 </template>
 
 <style scoped>
-.profileWindow{
+.profileWindow {
   position: absolute;
 }
 .profileWindow .offcanvas-header {

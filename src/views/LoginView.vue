@@ -5,7 +5,8 @@ import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      pwdFlag: true
+      pwdFlag: true,
+      errorMsg: ''
     }
   },
   components: {
@@ -14,17 +15,27 @@ export default {
   created() {},
   methods: {
     login() {
-      console.log('账号：', this.mobile, ' 密码：', this.password)
+      this.loginClick = true
+      this.isActive = false
+      this.isDisabled = true
       let loginUser = { mobile: this.mobile, password: this.password, source: '' }
       this.userStore
         .login(loginUser)
         .then((res) => {
-          console.log('登录响应: ', res)
+          this.isActive = true
+          this.isDisabled = false
+          this.errorMsg = ''
+          this.errorActive = false
+          console.log('登录响应: ', res, ' ---> ', this.userStore.id)
+          this.$router.go(-1)
         })
         .catch((err) => {
+          this.isActive = true
+          this.isDisabled = false
+          this.errorMsg = err.message
+          this.errorActive = true
           console.log('登录失败: ', err.message)
         })
-      console.log('账号：', this.mobile, ' 密码：')
     },
     // 切換是否顯示密碼
     changePwd() {
@@ -33,7 +44,10 @@ export default {
   },
   setup() {
     const isActive = ref(false)
+    const tips1Active = ref(false)
     const isDisabled = ref(true)
+    const errorActive = ref(false)
+    const loginClick = ref(false)
     const mobile = ref()
     const password = ref('')
     const userStore = useUserStore()
@@ -42,18 +56,29 @@ export default {
       if (password.value.length > 4) {
         isActive.value = true
         isDisabled.value = false
+
+        if (loginClick.value) {
+          tips1Active.value = false
+        }
       } else {
         isActive.value = false
         isDisabled.value = true
+
+        if (loginClick.value) {
+          tips1Active.value = true
+        }
       }
     })
 
     return {
       isActive,
+      tips1Active,
       mobile,
       password,
       isDisabled,
-      userStore
+      userStore,
+      loginClick,
+      errorActive
     }
   }
 }
@@ -86,9 +111,11 @@ export default {
         />
         <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
       </div>
-      <div class="tips my-2">Please enter the correct password</div>
+      <div class="tips my-2" :class="{ active: tips1Active }">
+        Please enter the correct password
+      </div>
       <router-link to="/resetPhone" class="forgetPassword my-2">Esqueci minha senha?</router-link>
-      <div class="tips text-center mb-0">O número de telefone não existe.</div>
+      <div class="tips text-center mb-0" :class="{ active: errorActive }">{{ errorMsg }}</div>
       <button
         type="button"
         class="btn loginBtn w-100 my-2"
@@ -140,13 +167,13 @@ export default {
 .phoneInput input::placeholder {
   color: #4d565e;
 }
-.phoneInput input[type="number"]::-webkit-outer-spin-button,
-.phoneInput input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.phoneInput input[type='number']::-webkit-outer-spin-button,
+.phoneInput input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.phoneInput input[type="number"] {
-    -moz-appearance: textfield;
+.phoneInput input[type='number'] {
+  -moz-appearance: textfield;
 }
 .phoneInput span {
   position: absolute;
