@@ -65,8 +65,8 @@ service.interceptors.response.use(
         userStore.$reset()
         setTimeout(async function () {
           window.location.href = `/`
-        }, 100000)
-        return
+        }, 100)
+        return // Promise.reject(new Error(res.msg || 'Error'))
 
         // thant.$router.push(`/login?redirect=${thant.$route.fullPath}`)
 

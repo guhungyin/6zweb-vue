@@ -16,6 +16,8 @@ export default {
   },
   methods: {
     toggleActive(selectGoods, e) {
+      this.isDisabled = false
+      this.isActive = true
       this.selectGoods = selectGoods
       this.showPrice = selectGoods.showPrice
       console.log('deposit goods ---->', selectGoods, ' event : ', e.target.className)
@@ -73,9 +75,11 @@ export default {
   setup() {
     const commonStore = useCommonStore()
     const isActive = ref(false)
+    const isDisabled = ref(true)
     return {
       commonStore,
-      isActive
+      isActive,
+      isDisabled
     }
   }
 }
@@ -211,7 +215,15 @@ export default {
         </ul>
       </div>
       <!-- 可加 active -->
-      <button type="button" class="btn depositBtn w-100 mb-3 active">Depositar Agora</button>
+      <button
+        type="button"
+        class="btn depositBtn w-100 mb-3"
+        :disabled="isDisabled"
+        style="pointer-events: auto"
+        :class="{ active: isActive }"
+      >
+        Depositar Agora
+      </button>
     </div>
     <div class="tips">
       <ul class="ps-3">

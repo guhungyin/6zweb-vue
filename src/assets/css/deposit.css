@@ -102,9 +102,11 @@
   opacity: 0.4;
   border-radius: 2px;
   padding: 0.56rem 0;
+  cursor: not-allowed;
 }
 .depositWindows .depositMain .depositBtn.active {
   opacity: 1;
+  cursor: pointer;
 }
 .depositWindows .tips li {
   color: #7e7e7e;

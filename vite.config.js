@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }) => {
       // },
 
       server: {
-        host: '192.168.3.93',
+        host: '0.0.0.0',
         open: true
       }
     }

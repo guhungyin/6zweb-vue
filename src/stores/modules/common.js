@@ -28,6 +28,7 @@ export const useCommonStore = defineStore('common', {
             resolve(response)
           })
           .catch((error) => {
+            console.log('查询商品错误，common', error)
             reject(error)
           })
       })
