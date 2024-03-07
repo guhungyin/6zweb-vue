@@ -20,7 +20,6 @@ export default {
       this.isActive = true
       this.selectGoods = selectGoods
       this.showPrice = selectGoods.showPrice
-      console.log('deposit goods ---->', selectGoods, ' event : ', e.target.className)
 
       if (e.target.className) {
         let nodes = Array.from(document.getElementsByClassName('mb-3 py-2'))
