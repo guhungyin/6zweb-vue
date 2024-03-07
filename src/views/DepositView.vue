@@ -2,16 +2,37 @@
 import '@/assets/css/deposit.css'
 import CloseBtn from '../components/CloseBtn.vue'
 import { useCommonStore } from '@/stores/modules/common'
+import { ref } from 'vue'
 export default {
   data() {
     return {
-      goods: []
+      goods: [],
+      selectGoods: {},
+      showPrice: ''
     }
   },
   created() {
     this.queryGoods()
   },
   methods: {
+    toggleActive(selectGoods, e) {
+      this.selectGoods = selectGoods
+      this.showPrice = selectGoods.showPrice
+      console.log('deposit goods ---->', selectGoods, ' event : ', e.target.className)
+
+      if (e.target.className) {
+        let nodes = Array.from(document.getElementsByClassName('mb-3 py-2'))
+
+        nodes.forEach((ne) => {
+          console.log('ne.id ', typeof ne.id, 'id type of ', typeof id)
+          if (Number.parseInt(ne.id) === selectGoods.id) {
+            ne.className = ne.className + ' active'
+          } else {
+            ne.className = ne.className.replace(/ active/g, '')
+          }
+        })
+      }
+    },
     queryGoods() {
       this.commonStore
         .goodsList(1)
@@ -51,9 +72,10 @@ export default {
   },
   setup() {
     const commonStore = useCommonStore()
-
+    const isActive = ref(false)
     return {
-      commonStore
+      commonStore,
+      isActive
     }
   }
 }
@@ -100,15 +122,15 @@ export default {
     <div class="depositMain">
       <div class="amount position-relative mb-4">
         <input type="text" class="form-control" placeholder="Min. 10" />
-        <span class="tips-close position-absolute fw-bold">Quantia (BRL) </span>
+        <span class="tips-close position-absolute fw-bold">Quantia (BRL) {{ showPrice }}</span>
       </div>
       <div class="deposit">
         <ul class="p-0 m-2">
           <template v-for="item in goods" :key="item.id">
             <li
+              :id="item.id"
               class="mb-3 py-2"
-              :class="{ active: isActive }"
-              @click="toggleActive"
+              @click.self="toggleActive(item, $event)"
               v-if="item.hot == '0'"
             >
               <div class="amountContent d-flex align-items-center">
@@ -118,9 +140,9 @@ export default {
               <div class="amountTips">+100%Bonus</div>
             </li>
             <li
+              :id="item.id"
               class="mb-3 py-2 hot"
-              :class="{ active: isActive }"
-              @click="toggleActive"
+              @click.self="toggleActive(item, $event)"
               v-if="item.hot == '1'"
             >
               <div class="amountContent d-flex align-items-center">
