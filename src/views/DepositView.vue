@@ -25,7 +25,6 @@ export default {
         let nodes = Array.from(document.getElementsByClassName('mb-3 py-2'))
 
         nodes.forEach((ne) => {
-          console.log('ne.id ', typeof ne.id, 'id type of ', typeof id)
           if (Number.parseInt(ne.id) === selectGoods.id) {
             ne.className = ne.className + ' active'
           } else {
