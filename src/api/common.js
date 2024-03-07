@@ -6,3 +6,10 @@ export function getWinnerShow() {
     method: 'get'
   })
 }
+
+export function goodsList(type) {
+  return request({
+    url: 'goods/list/' + type,
+    method: 'get'
+  })
+}

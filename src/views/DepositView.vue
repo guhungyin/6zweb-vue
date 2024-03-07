@@ -1,9 +1,60 @@
 <script>
 import '@/assets/css/deposit.css'
 import CloseBtn from '../components/CloseBtn.vue'
+import { useCommonStore } from '@/stores/modules/common'
 export default {
+  data() {
+    return {
+      goods: []
+    }
+  },
+  created() {
+    this.queryGoods()
+  },
+  methods: {
+    queryGoods() {
+      this.commonStore
+        .goodsList(1)
+        .then((res) => {
+          if (res.data) {
+            res.data.forEach((v) => {
+              this.goods.push({
+                id: v.id,
+                name: v.name,
+                price: v.price,
+                showPrice: v.showPrice,
+                originalPrice: v.originalPrice,
+                limits: v.limits,
+                discountRate: v.discountRate,
+                showOriginalPrice: v.showOriginalPrice,
+                version: v.version,
+                coin: v.coin,
+                giveCoin: v.giveCoin,
+                sort: v.sort,
+                type: v.type,
+                status: v.status,
+                icon: v.icon,
+                resourceId: v.resourceId,
+                desc: v.desc,
+                hot: v.hot
+              })
+            })
+          }
+        })
+        .catch((err) => {
+          console.log('查询商品错误:', err.message)
+        })
+    }
+  },
   components: {
     CloseBtn
+  },
+  setup() {
+    const commonStore = useCommonStore()
+
+    return {
+      commonStore
+    }
   }
 }
 </script>
@@ -53,14 +104,33 @@ export default {
       </div>
       <div class="deposit">
         <ul class="p-0 m-2">
-          <li class="mb-3 py-2" :class="{ active: isActive }" @click="toggleActive">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>20</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2">
+          <template v-for="item in goods" :key="item.id">
+            <li
+              class="mb-3 py-2"
+              :class="{ active: isActive }"
+              @click="toggleActive"
+              v-if="item.hot == '0'"
+            >
+              <div class="amountContent d-flex align-items-center">
+                <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
+                <span>{{ item.showPrice }}</span>
+              </div>
+              <div class="amountTips">+100%Bonus</div>
+            </li>
+            <li
+              class="mb-3 py-2 hot"
+              :class="{ active: isActive }"
+              @click="toggleActive"
+              v-if="item.hot == '1'"
+            >
+              <div class="amountContent d-flex align-items-center">
+                <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
+                <span>{{ item.showPrice }}</span>
+              </div>
+              <div class="amountTips">+100%Bonus</div>
+            </li>
+          </template>
+          <!-- <li class="mb-3 py-2">
             <div class="amountContent d-flex align-items-center">
               <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
               <span>50</span>
@@ -115,7 +185,7 @@ export default {
               <span>10000</span>
             </div>
             <div class="amountTips">+100%Bonus</div>
-          </li>
+          </li> -->
         </ul>
       </div>
       <!-- 可加 active -->
