@@ -134,6 +134,39 @@ const router = createRouter({
       name: 'cashwheel',
       component: () => import('../views/CashWheelView.vue')
     },
+    {
+      path: '/affiliate',
+      name: 'affiliate',
+      component: () => import('../views/affiliateView.vue'),
+      redirect: '/affiliate/summary',
+      children: [
+        {
+          path: 'summary',
+          name: 'summary',
+          component: () => import('../views/affiliate/summaryView.vue'),
+        },
+        {
+          path: 'referrals',
+          name: 'referrals',
+          component: () => import('../views/affiliate/referralsView.vue'),
+        },
+        {
+          path: 'report',
+          name: 'report',
+          component: () => import('../views/affiliate/reportView.vue'),
+        },
+        {
+          path: 'payments',
+          name: 'payments',
+          component: () => import('../views/affiliate/paymentsView.vue'),
+        },
+        {
+          path: 'faq',
+          name: 'faq',
+          component: () => import('../views/affiliate/faqView.vue'),
+        }
+      ]
+    },
   ]
 })
 
