@@ -1,3 +1,11 @@
+<script>
+    import CommitteeModal from '../../components/affiliate/CommitteeModal.vue'
+    export default {
+        components:{
+            CommitteeModal
+        }
+    }
+</script>
 <template>
     <div class="fqaContent p-2 mb-3">
         <div class="content mb-3">
@@ -23,8 +31,8 @@
             QUANTO EU GANHO? 
         </h2>
         <div class="text mb-2">Ganhe dinheiro indicando amigos para a 6z, você ganha sempre que um convidado seu realiza uma aposta!</div>
-        <div class="linkBtn mb-1">Regras de recompensa da comissão</div>
-        <div class="linkBtn mb-1">Regras de cálculo de comissão</div>
+        <div class="linkBtn mb-1" data-bs-toggle="modal" data-bs-target="#committeeModal">Regras de recompensa da comissão</div>
+        <div class="linkBtn mb-1" data-bs-toggle="modal" data-bs-target="#commissionRulesModal">Regras de cálculo de comissão</div>
         </div>
         <div class="hintTitle mb-3">Ganhe dinheiro indicando amigos para a 6z, você ganha sempre que um convidado seu realiza uma aposta!</div>
         <div class="imgContent mb-3">
@@ -51,6 +59,7 @@
         <div class="text mb-2"> Aposta válidas em equiper[num] - Total de valor de apostas válidas provenientes de indicações e contribuições de suas equipes. num - Número total de indicações e membros de suas equipes que contribuíram com apostas válidas.</div>
         </div>
     </div>
+    <CommitteeModal></CommitteeModal>
 </template>
 <style scoped>
     .fqaContent{

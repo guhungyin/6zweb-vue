@@ -1,3 +1,11 @@
+<script>
+    import CommitteeModal from '../../components/affiliate/CommitteeModal.vue'
+    export default {
+        components:{
+            CommitteeModal
+        }
+    }
+</script>
 <template>
     <div class="contentBox summaryContent">
         <div class="card today">
@@ -90,8 +98,8 @@
                 </div>
                 <div class="acting">
                     Nível de Agente 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#a6a6a6" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#a6a6a6" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#committeeModal">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
                     </svg>
                 </div>
                 </div>
@@ -227,6 +235,45 @@
         </div>
         </div>
     </div>
+    <!-- todayModal -->
+    <div class="modal fade todayModal" id="todayModal" tabindex="-1" aria-labelledby="todayModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="todayModalLabel">Definição</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="p-0 mb-3">
+                <li class="mb-2 fw-bold">1. Inscrições - Número de usuários registrados</li>
+                <li class="mb-2 fw-bold">2. Novos Jogadores - Novos jogadores pagantes entre os usuários registrados de hoje</li>
+                <li class="mb-2 fw-bold">3. Aposta válidas em equiper[num] - Total de valor de apostas válidas provenientes de indicações e contribuições de suas equipes. num - Número total de indicações e membros de suas equipes que contribuíram com apostas válidas.</li>
+                </ul>
+                <div class="notice">Aviso: Os dados de hoje são atualizados a cada 15 minutos</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- totalModal -->
+    <div class="modal fade totalModal" id="totalModal" tabindex="-1" aria-labelledby="totalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="todayModalLabel">Definição</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="p-0 mb-3">
+                <li class="mb-2 fw-bold">1. Inscrições - Número de usuários registrados totais</li>
+                <li class="mb-2 fw-bold">2. Jogadores totais - Número total de indicações e membros de suas equipes que contribuíram com apostas válidas</li>
+                <li class="mb-2 fw-bold">3. Aposta válidas total - Total do valor de apostas válidas provenientes de indicações e contribuições de suas equipes</li>
+                </ul>
+                <div class="notice">Aviso: Os dados estatísticos totais não incluem o dia de hoje, última atualização: 0:00 de hoje</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <CommitteeModal></CommitteeModal>
 </template>
 <style scoped>
     .contentBox .card{
@@ -369,4 +416,9 @@
     .contentBox .card.commission .relationSchema li span{
         color: red;
     }
+    .todayModal.modal .modal-title,
+    .totalModal.modal .modal-title{
+        color: #009d81;
+    }
+    .modal .notice{color: #808080;}
 </style>
