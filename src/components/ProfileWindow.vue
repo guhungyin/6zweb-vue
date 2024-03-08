@@ -5,8 +5,7 @@ import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      bsOffcanvas: null,
-      userMoney: '0.00'
+      bsOffcanvas: null
     }
   },
   components: {
@@ -14,15 +13,19 @@ export default {
   },
   watch: {
     $route() {
+      console.log('Profile route wath')
       this.bsOffcanvas.hide()
     }
+  },
+  created() {
+    // console.log('profile money ---> ', this.userStore.money)
+    // if (this.userStore.ticket) {
+    //   this.userMoney = this.userStore.money
+    // }
   },
   mounted() {
     const myOffcanvas = document.getElementById('profileWindow')
     this.bsOffcanvas = new Offcanvas(myOffcanvas)
-    if (this.userStore.ticket) {
-      this.userMoney = this.userStore.money
-    }
   },
   setup() {
     const userStore = useUserStore()
@@ -101,7 +104,7 @@ export default {
               </div>
               <div class="num">
                 <span>R$ </span>
-                <span>{{ userMoney }}</span>
+                <span>{{ userStore.money }}</span>
               </div>
             </div>
             <div class="d-flex flex-column align-items-center w-50">
