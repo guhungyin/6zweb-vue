@@ -33,6 +33,43 @@ export default {
         })
       }
     },
+    payChannel() {
+      //       https://api.wins888.club/platform/pay/payChannel
+      // {
+      //     "data": [
+      //         {
+      //             "channel": "pix_pay2",
+      //             "channelName": "Canal de recarga 2",
+      //             "weight": 2,
+      //             "openFlag": "open",
+      //             "walletAddress": null
+      //         },
+      //         {
+      //             "channel": "USDT_TRC20",
+      //             "channelName": "USDT/TRC20",
+      //             "weight": 2,
+      //             "openFlag": "open",
+      //             "walletAddress": "TT2TQLncv7J8v28H6w96xUJiBxUco8kDAq"
+      //         }
+      //     ],
+      //     "code": 0,
+      //     "msg": "success",
+      //     "total": null
+      // }
+    },
+    toPay() {
+      //       https://api.wins888.club/platform/pay/toPay
+      // {
+      //     "channel": 20231113,
+      //     "goodsId": 2,
+      //     "price": 300000,
+      //     "ccyNo": "BRL",
+      //     "busiCode": "100601",
+      //     "bankCode": "",
+      //     "payChannel": "pix_pay2",
+      //     "clickId": ""
+      // }
+    },
     queryGoods() {
       this.commonStore
         .goodsList(1)
@@ -154,62 +191,6 @@ export default {
               <div class="amountTips">+100%Bonus</div>
             </li>
           </template>
-          <!-- <li class="mb-3 py-2">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>50</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2 hot">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>100</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>200</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2 hot">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>500</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2 hot">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>1000</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2 hot">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>2000</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>5000</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li>
-          <li class="mb-3 py-2">
-            <div class="amountContent d-flex align-items-center">
-              <img class="currencyIcon me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
-              <span>10000</span>
-            </div>
-            <div class="amountTips">+100%Bonus</div>
-          </li> -->
         </ul>
       </div>
       <!-- 可加 active -->
