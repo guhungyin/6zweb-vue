@@ -135,6 +135,11 @@ const router = createRouter({
       component: () => import('../views/CashWheelView.vue')
     },
     {
+      path: '/cash',
+      name: 'cash',
+      component: () => import('../views/CashView.vue')
+    },
+    {
       path: '/affiliate',
       name: 'affiliate',
       component: () => import('../views/affiliateView.vue'),

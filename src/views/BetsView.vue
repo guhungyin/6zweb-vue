@@ -19,20 +19,20 @@ export default {
   </div>
 </template>
 <style scoped>
-.app {
-  padding-top: 4rem;
-  background-color: #1f1f1f;
-  height: 100vh;
-}
-.noData {
-  margin-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #787878;
-}
-.noData img {
-  width: 3.5rem;
-}
+  .app {
+    padding-top: 4rem;
+    background-color: #1f1f1f;
+    height: 100vh;
+  }
+  .noData {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #787878;
+  }
+  .noData img {
+    width: 3.5rem;
+  }
 </style>

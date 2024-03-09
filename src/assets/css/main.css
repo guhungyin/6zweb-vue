@@ -41,7 +41,7 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
-.btn:focus {
+.btn:focus{
   box-shadow: none;
 }
 .form-control {
