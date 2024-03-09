@@ -2,13 +2,16 @@
 import '@/assets/css/deposit.css'
 import CloseBtn from '../components/CloseBtn.vue'
 import { useCommonStore } from '@/stores/modules/common'
+import { usePayStore } from '@/stores/modules/pay'
 import { ref } from 'vue'
 export default {
   data() {
     return {
       goods: [],
       selectGoods: {},
-      showPrice: ''
+      showPrice: '',
+      channelData: [],
+      payData: {}
     }
   },
   created() {
@@ -20,6 +23,8 @@ export default {
       this.isActive = true
       this.selectGoods = selectGoods
       this.showPrice = selectGoods.showPrice
+      this.payData.goodsId = selectGoods.id
+      this.payData.price = selectGoods.price
 
       if (e.target.className) {
         let nodes = Array.from(document.getElementsByClassName('mb-3 py-2'))
@@ -34,6 +39,16 @@ export default {
       }
     },
     payChannel() {
+      return new Promise((resolve, reject) => {
+        this.payStore
+          .payChannel()
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
       //       https://api.wins888.club/platform/pay/payChannel
       // {
       //     "data": [
@@ -57,7 +72,42 @@ export default {
       //     "total": null
       // }
     },
-    toPay() {
+    async toPay() {
+      this.isDisabled = true
+      this.isActive = false
+
+      const channel = await this.payChannel()
+
+      if (channel.data) {
+        this.channelData = channel.data
+
+        this.channelData.forEach((e) => {
+          if (e.channel.startsWith('pix_')) {
+            this.payData.payChannel = e.channel
+            console.log('channel id: ', e.channel, 'openFlag: ', e.openFlag)
+            return false
+          }
+
+          return true
+        })
+
+        if (this.payData.payChannel) {
+          this.payStore
+            .toPay(this.payData)
+            .then((response) => {
+              console.log('支付成功：', response)
+              this.isDisabled = false
+              this.isActive = true
+            })
+            .catch((err) => {
+              console.log('支付错误：', err)
+              this.isDisabled = false
+              this.isActive = true
+            })
+        }
+      }
+
+      console.log('request channel : ', channel)
       //       https://api.wins888.club/platform/pay/toPay
       // {
       //     "channel": 20231113,
@@ -109,12 +159,14 @@ export default {
   },
   setup() {
     const commonStore = useCommonStore()
+    const payStore = usePayStore()
     const isActive = ref(false)
     const isDisabled = ref(true)
     return {
       commonStore,
       isActive,
-      isDisabled
+      isDisabled,
+      payStore
     }
   }
 }
@@ -200,6 +252,7 @@ export default {
         :disabled="isDisabled"
         style="pointer-events: auto"
         :class="{ active: isActive }"
+        @click.self="toPay"
       >
         Depositar Agora
       </button>
