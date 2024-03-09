@@ -92,6 +92,7 @@ export default {
         })
 
         if (this.payData.payChannel) {
+          this.payData.show = 'qrCode'
           this.payStore
             .toPay(this.payData)
             .then((response) => {
