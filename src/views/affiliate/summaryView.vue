@@ -206,7 +206,7 @@
             </div>
         </div>
         </div>
-        <div class="card commission">
+        <div class="card commission m-0">
         <div class="card-header fw-bold">
             Regras de recompensas por comissão 
             <button type="button" class="modalBtn" data-bs-toggle="modal" data-bs-target="#committeeModal">
@@ -276,6 +276,11 @@
     <CommitteeModal></CommitteeModal>
 </template>
 <style scoped>
+    .contentBox{
+        overflow-y: auto;
+        height: calc(100vh - 12.5rem);
+    }
+    .contentBox::-webkit-scrollbar{display: none;}
     .contentBox .card{
         border: none;
         margin-bottom: .8rem;

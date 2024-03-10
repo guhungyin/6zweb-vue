@@ -29,7 +29,7 @@
 <style scoped>
     .paymentContent{
         background-color: var(--fff);
-        height: calc(100vh - 12rem);
+        height: calc(100vh - 12.5rem);
         border-radius: .3rem;
     }
     .paymentContent table{

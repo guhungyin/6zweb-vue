@@ -55,8 +55,10 @@ export default {
           </router-link>
         </li>
         <li>
-          <img class="icon" src="../assets/images/icon/menuIcon01.png" alt="" />
-          Afiliado - Ganhe R$10000 por mês
+          <router-link to="/affiliate">
+            <img class="icon" src="../assets/images/icon/menuIcon01.png" alt="" />
+            Afiliado - Ganhe R$10000 por mês
+          </router-link>
         </li>
         <li>
           <router-link to="/cashwheel">
@@ -194,7 +196,6 @@ export default {
 </template>
 <style scoped>
 .mainMenu {
-  position: absolute;
   font-size: 0.8rem;
   width: 100% !important;
   border: none !important;

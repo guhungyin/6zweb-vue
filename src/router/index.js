@@ -142,7 +142,7 @@ const router = createRouter({
     {
       path: '/affiliate',
       name: 'affiliate',
-      component: () => import('../views/affiliateView.vue'),
+      component: () => import('../views/AffiliateView.vue'),
       redirect: '/affiliate/summary',
       children: [
         {

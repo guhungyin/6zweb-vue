@@ -6,6 +6,7 @@
     data(){
       return {
         isLoading: false,
+        showModal: false
       }
     },
     components: {
@@ -20,18 +21,23 @@
         navigator.clipboard.writeText(textToCopy)
           .then(() => {
             console.log('文字已複製到剪貼簿');
-          })
+            this.showModal = true;
+            setTimeout(() => {
+              this.showModal = false;
+            }, 3000);
+            })
           .catch((error) => {
             console.error('Failed to copy text:', error);
           });
+        
       }
     },
     // 這裡我弄出樣式給你看的，可以依照需求去刪除
     mounted(){
-        this.isLoading=true;
-        setTimeout(()=>{
-          this.isLoading=false
-            },5000)
+      this.isLoading=true;
+      setTimeout(()=>{
+        this.isLoading=false
+          },3000)
     }
   }
 </script>
@@ -52,6 +58,12 @@
         <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
       </svg>
     </button>
+    <div class="alert m-0" role="alert" :class="{ 'active': showModal }">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-check-lg mb-3" viewBox="0 0 16 16">
+        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+      </svg>
+      Copy succeeded
+    </div>
   </div>
 </template>
 <style scoped>
@@ -81,4 +93,22 @@
   .cashWindows .copyQrCodeBtn:active{
     border-color: #56b83f;
   }
-</style>../components/loading/Loading.vue
+  .cashWindows .alert{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.85);
+    border: 0;
+    color: #FFF;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    width: 8rem;
+    height: 8rem;
+    font-size: .8rem;
+    white-space: nowrap;
+  }
+  .cashWindows .alert.active{display: flex;}
+</style>

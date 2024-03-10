@@ -66,7 +66,10 @@
         background-color: var(--fff);
         border-radius: .5rem;
         font-size: .9rem;
+        overflow-y: auto;
+        height: calc(100vh - 12.5rem);
     }
+    .fqaContent::-webkit-scrollbar{display: none;}
     .fqaContent h2{
         color: #383838;
         font-size: 1.2rem;
