@@ -103,7 +103,11 @@ export default {
               this.isDisabled = false
               this.isActive = true
               this.isLoading = false
-              this.$router.push('/cash')
+              this.payStore.payCode = response.data
+              this.payStore.payMoney = this.showPrice
+              this.$router.push({
+                name: 'cash'
+              })
             })
             .catch((err) => {
               console.log('支付错误：', err)
@@ -183,7 +187,7 @@ export default {
   <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
   <div class="headerBack d-flex justify-content-between align-items-center px-2">
     <h2 class="title">Depósito</h2>
-    <CloseBtn></CloseBtn>
+    <CloseBtn>00</CloseBtn>
   </div>
   <div class="container-fluid mt-3 depositWindows">
     <div class="pixInfo mb-2">Formas de Pagamentos</div>

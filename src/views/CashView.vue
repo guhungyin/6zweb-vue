@@ -1,12 +1,16 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 import QrCodeImg from '../components/QrCodeImg.vue'
+import { usePayStore } from '@/stores/modules/pay'
+import BigNumber from 'bignumber.js'
 // import LoadingPage from '../components/LoadingPage.vue' //loadind元件
 export default {
   data() {
     return {
       isLoading: false,
-      showModal: false
+      showModal: false,
+      payMoney: new BigNumber(this.payStore.payMoney).toFormat(0), //new BigNumber(this.$router.params.payMoney).toFormat(0),
+      payCode: this.payStore.payCode
     }
   },
   components: {
@@ -16,12 +20,12 @@ export default {
   },
   methods: {
     // 點擊並複製 button 裡的 data-clipboard-text ，這裡可以放qrcode的那串文字
-    copyText(event) {
-      const textToCopy = event.target.getAttribute('data-clipboard-text')
+    copyText() {
+      const textToCopy = this.payCode //event.target.getAttribute('data-clipboard-text')
       navigator.clipboard
         .writeText(textToCopy)
         .then(() => {
-          console.log('文字已複製到剪貼簿')
+          console.log('文字已複製到剪貼簿:', textToCopy)
           this.showModal = true
           setTimeout(() => {
             this.showModal = false
@@ -38,6 +42,13 @@ export default {
     // setTimeout(()=>{
     //   this.isLoading=false
     //     },3000)
+  },
+  setup() {
+    const payStore = usePayStore()
+
+    return {
+      payStore
+    }
   }
 }
 </script>
@@ -53,14 +64,8 @@ export default {
       Por favor abra o seu aplicativo de pagamento e escaneie o código QR abaixo para pagar ou copie
       o código Pix abaixo e cole em seu app de pagamento para finalizar a compra.
     </p>
-    <h2 class="mb-4">Total R$ 5,000</h2>
-    <QrCodeImg
-      class="mb-4"
-      :width="166"
-      :height="166"
-      :margin="1"
-      text="00020101021226830014br.gov.bcb.pix2561pix.delbank.com.br/v1/qrcode/vcharge47eec388df244936912f08f0f5204000053039865802BR5907DELBANK6007ARACAJU62070503***6304B42B"
-    />
+    <h2 class="mb-4">Total R$ {{ payMoney }}</h2>
+    <QrCodeImg class="mb-4" :width="166" :height="166" :margin="1" :text="payCode" />
     <button
       @click="copyText"
       type="button"

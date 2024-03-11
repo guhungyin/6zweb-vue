@@ -2,6 +2,12 @@ import * as pay from '@/api/pay'
 import { defineStore } from 'pinia'
 
 export const usePayStore = defineStore('pay', {
+  state: () => {
+    return {
+      payCode: '',
+      payMoney: ''
+    }
+  },
   actions: {
     async payChannel() {
       return new Promise((resolve, reject) => {
