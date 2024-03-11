@@ -3,6 +3,7 @@ import '@/assets/css/deposit.css'
 import CloseBtn from '../components/CloseBtn.vue'
 import { useCommonStore } from '@/stores/modules/common'
 import { usePayStore } from '@/stores/modules/pay'
+import LoadingPage from '../components/LoadingPage.vue'
 import { ref } from 'vue'
 export default {
   data() {
@@ -11,7 +12,8 @@ export default {
       selectGoods: {},
       showPrice: '',
       channelData: [],
-      payData: {}
+      payData: {},
+      isLoading: false
     }
   },
   created() {
@@ -75,6 +77,7 @@ export default {
     async toPay() {
       this.isDisabled = true
       this.isActive = false
+      this.isLoading = true
 
       const channel = await this.payChannel()
 
@@ -99,11 +102,14 @@ export default {
               console.log('支付成功：', response.data)
               this.isDisabled = false
               this.isActive = true
+              this.isLoading = false
+              this.$router.push('/cash')
             })
             .catch((err) => {
               console.log('支付错误：', err)
               this.isDisabled = false
               this.isActive = true
+              this.isLoading = false
             })
         }
       }
@@ -156,7 +162,8 @@ export default {
     }
   },
   components: {
-    CloseBtn
+    CloseBtn,
+    LoadingPage
   },
   setup() {
     const commonStore = useCommonStore()
@@ -173,6 +180,7 @@ export default {
 }
 </script>
 <template>
+  <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
   <div class="headerBack d-flex justify-content-between align-items-center px-2">
     <h2 class="title">Depósito</h2>
     <CloseBtn></CloseBtn>
@@ -247,18 +255,18 @@ export default {
         </ul>
       </div>
       <!-- 可加 active -->
-      <router-link to="/cash">
-        <button
-          type="button"
-          class="btn depositBtn w-100 mb-3"
-          :disabled="isDisabled"
-          style="pointer-events: auto"
-          :class="{ active: isActive }"
-          @click.self="toPay"
-        >
-          Depositar Agora
-        </button>
-      </router-link>
+      <!--<router-link to="/cash">-->
+      <button
+        type="button"
+        class="btn depositBtn w-100 mb-3"
+        :disabled="isDisabled"
+        style="pointer-events: auto"
+        :class="{ active: isActive }"
+        @click.self="toPay"
+      >
+        Depositar Agora
+      </button>
+      <!--</router-link>-->
     </div>
     <div class="tips">
       <ul class="ps-3">
