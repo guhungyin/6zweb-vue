@@ -221,7 +221,7 @@ export default {
     </div>
     <div class="depositMain">
       <div class="amount position-relative mb-4">
-        <input type="text" v-model="showPrice" class="form-control" placeholder="Min. 10" />
+        <input type="text" v-model="showPrice" class="form-control" placeholder="Min. 20" />
         <span class="tips-close position-absolute fw-bold">Quantia (BRL)</span>
       </div>
       <div class="deposit">
