@@ -247,16 +247,18 @@ export default {
         </ul>
       </div>
       <!-- 可加 active -->
-      <button
-        type="button"
-        class="btn depositBtn w-100 mb-3"
-        :disabled="isDisabled"
-        style="pointer-events: auto"
-        :class="{ active: isActive }"
-        @click.self="toPay"
-      >
-        Depositar Agora
-      </button>
+      <router-link to="/cash">
+        <button
+          type="button"
+          class="btn depositBtn w-100 mb-3"
+          :disabled="isDisabled"
+          style="pointer-events: auto"
+          :class="{ active: isActive }"
+          @click.self="toPay"
+        >
+          Depositar Agora
+        </button>
+      </router-link>
     </div>
     <div class="tips">
       <ul class="ps-3">
