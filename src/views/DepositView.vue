@@ -96,7 +96,7 @@ export default {
           this.payStore
             .toPay(this.payData)
             .then((response) => {
-              console.log('支付成功：', response)
+              console.log('支付成功：', response.data)
               this.isDisabled = false
               this.isActive = true
             })
