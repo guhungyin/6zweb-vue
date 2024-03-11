@@ -10,6 +10,7 @@ import '@/assets/css/reset.css'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/assets/css/main.css'
+import QRCodePlugin from 'qrcode'
 
 const app = createApp(App)
 // const pinia = createPinia()
@@ -17,6 +18,7 @@ pinia.use(createPersistedState())
 app.use(pinia)
 app.use(VueAxios, axios)
 app.use(router)
+app.use(QRCodePlugin)
 app.provide('axios', app.config.globalProperties.axios)
 app.mount('#app')
 
