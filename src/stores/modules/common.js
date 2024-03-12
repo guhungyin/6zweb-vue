@@ -5,6 +5,12 @@ import { defineStore } from 'pinia'
 //https://www.modb.pro/db/624215 最新pinia 使用
 
 export const useCommonStore = defineStore('common', {
+  state: () => {
+    return {
+      viewInActive: false,
+      viewOutActive: false
+    }
+  },
   getters: {},
   actions: {
     async getWinnerShow() {

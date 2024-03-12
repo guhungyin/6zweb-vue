@@ -2,7 +2,9 @@
 import CloseBtn from '../components/CloseBtn.vue'
 import QrCodeImg from '../components/QrCodeImg.vue'
 import { usePayStore } from '@/stores/modules/pay'
+import { useCommonStore } from '@/stores/modules/common'
 import BigNumber from 'bignumber.js'
+
 // import LoadingPage from '../components/LoadingPage.vue' //loadind元件
 export default {
   data() {
@@ -39,15 +41,17 @@ export default {
   // 這裡我弄出樣式給你看的，可以依照需求去刪除
   mounted() {
     // this.isLoading=true;
-    // setTimeout(()=>{
-    //   this.isLoading=false
-    //     },3000)
+    setTimeout(() => {
+      // this.commonStore.viewInActive = false
+      // this.commonStore.viewOutActive = false
+    }, 500)
   },
   setup() {
     const payStore = usePayStore()
-
+    const commonStore = useCommonStore()
     return {
-      payStore
+      payStore,
+      commonStore
     }
   }
 }
@@ -61,8 +65,8 @@ export default {
     <div class="container-fluid cashWindows">
       <img src="../assets/images/icon/pix.png" alt="" class="my-4" />
       <p class="mx-4">
-        Por favor abra o seu aplicativo de pagamento e escaneie o código QR abaixo para pagar ou copie
-        o código Pix abaixo e cole em seu app de pagamento para finalizar a compra.
+        Por favor abra o seu aplicativo de pagamento e escaneie o código QR abaixo para pagar ou
+        copie o código Pix abaixo e cole em seu app de pagamento para finalizar a compra.
       </p>
       <h2 class="mb-4">Total R$ {{ payMoney }}</h2>
       <QrCodeImg class="mb-4" :width="166" :height="166" :margin="1" :text="payCode" />
