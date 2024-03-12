@@ -103,7 +103,6 @@
 </template>
 <style scoped>
 .bottomMenu {
-  width: 100%;
   max-width: 34rem;
   bottom: 0;
   height: 4rem;

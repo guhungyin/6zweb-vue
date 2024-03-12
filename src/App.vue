@@ -1,22 +1,25 @@
 <template>
-  <router-view></router-view>
-  <!-- 下方選單 -->
-  <BottomMenu></BottomMenu>
-  <!-- 主選單 -->
-  <MainMenu></MainMenu>
-  <!-- 個人選單 -->
-  <ProfileWindow></ProfileWindow>
+  <div class="vuxDrawer">
+    <div class="vuxDrawerBody">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
-
-<script>
-import BottomMenu from './components/BottomMenu.vue'
-import MainMenu from './components/MainMenu.vue'
-import ProfileWindow from './components/ProfileWindow.vue'
-export default {
-  components: {
-    BottomMenu,
-    MainMenu,
-    ProfileWindow,
-  },
+<style scoped>
+.vuxDrawer {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
-</script>
+.vuxDrawerBody{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+</style>

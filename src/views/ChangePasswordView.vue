@@ -7,25 +7,27 @@ export default {
 }
 </script>
 <template>
-  <header class="headerBack d-flex justify-content-between align-items-center px-2">
-    <h2 class="title">Alterar senha</h2>
-    <CloseBtn></CloseBtn>
-  </header>
-  <div class="main">
-    <div class="container-fluid">
-      <div class="changePasswordTitle fw-bold mt-4 mb-3">Alterar senha</div>
-      <div class="passwordInput position-relative mb-4">
-        <input class="form-control py-2" type="text" placeholder="Atual senha" required />
-        <!-- +active顯示 -->
-        <div class="tips mt-2">Please enter the correct password</div>
+  <div class="routerView">
+    <header class="headerBack d-flex justify-content-between align-items-center px-2">
+      <h2 class="title">Alterar senha</h2>
+      <CloseBtn></CloseBtn>
+    </header>
+    <div class="main">
+      <div class="container-fluid">
+        <div class="changePasswordTitle fw-bold mt-4 mb-3">Alterar senha</div>
+        <div class="passwordInput position-relative mb-4">
+          <input class="form-control py-2" type="text" placeholder="Atual senha" required />
+          <!-- +active顯示 -->
+          <div class="tips mt-2">Please enter the correct password</div>
+        </div>
+        <div class="passwordInput position-relative mb-5">
+          <input class="form-control py-2" type="text" placeholder="Atual senha" required />
+          <!-- +active顯示 -->
+          <div class="tips mt-2">Please enter the correct password</div>
+        </div>
+        <button type="submit" class="btn loginBtn w-100 mb-4">Mudar</button>
+        <router-link to="/resetPhone" class="forgetThePassword">Esqueci minha senha?</router-link>
       </div>
-      <div class="passwordInput position-relative mb-5">
-        <input class="form-control py-2" type="text" placeholder="Atual senha" required />
-        <!-- +active顯示 -->
-        <div class="tips mt-2">Please enter the correct password</div>
-      </div>
-      <button type="submit" class="btn loginBtn w-100 mb-4">Mudar</button>
-      <router-link to="/resetPhone" class="forgetThePassword">Esqueci minha senha?</router-link>
     </div>
   </div>
 </template>

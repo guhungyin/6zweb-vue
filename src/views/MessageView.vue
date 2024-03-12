@@ -7,14 +7,16 @@ export default {
 }
 </script>
 <template>
-  <div class="headerBack d-flex justify-content-between align-items-center px-2">
-    <h2 class="title">Mensagem</h2>
-    <CloseBtn></CloseBtn>
-  </div>
-  <div class="container-fluid messageWindows">
-    <div class="noData">
-      <img src="../assets/images/icon/noMessage.png" alt="" />
-      <span class="mt-3">Sem Mensagem</span>
+  <div class="routerView">
+    <div class="headerBack d-flex justify-content-between align-items-center px-2">
+      <h2 class="title">Mensagem</h2>
+      <CloseBtn></CloseBtn>
+    </div>
+    <div class="container-fluid messageWindows">
+      <div class="noData">
+        <img src="../assets/images/icon/noMessage.png" alt="" />
+        <span class="mt-3">Sem Mensagem</span>
+      </div>
     </div>
   </div>
 </template>

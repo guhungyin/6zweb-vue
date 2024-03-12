@@ -82,32 +82,32 @@ const router = createRouter({
     {
       path: '/preventLaunderMoney',
       name: 'preventLaunderMoney',
-      component: () => import('../views/PreventLaunderMoneyView.vue')
+      component: () => import('../views/aboutPage/PreventLaunderMoneyView.vue')
     },
     {
       path: '/terms',
       name: 'terms',
-      component: () => import('../views/TermsView.vue')
+      component: () => import('../views/aboutPage/TermsView.vue')
     },
     {
       path: '/privacy',
       name: 'privacy',
-      component: () => import('../views/PrivacyView.vue')
+      component: () => import('../views/aboutPage/PrivacyView.vue')
     },
     {
       path: '/exclusionPolicy',
       name: 'exclusionPolicy',
-      component: () => import('../views/ExclusionPolicyView.vue')
+      component: () => import('../views/aboutPage/ExclusionPolicyView.vue')
     },
     {
       path: '/gamingPolicy',
       name: 'gamingPolicy',
-      component: () => import('../views/GamingPolicyView.vue')
+      component: () => import('../views/aboutPage/GamingPolicyView.vue')
     },
     {
       path: '/responsible',
       name: 'responsible',
-      component: () => import('../views/ResponsibleView.vue')
+      component: () => import('../views/aboutPage/ResponsibleView.vue')
     },
     {
       path: '/termsSports',

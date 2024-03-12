@@ -67,7 +67,7 @@
         border-radius: .5rem;
         font-size: .9rem;
         overflow-y: auto;
-        height: calc(100vh - 12.5rem);
+        height: calc(100vh - 7.5rem);
     }
     .fqaContent::-webkit-scrollbar{display: none;}
     .fqaContent h2{

@@ -18,47 +18,49 @@ export default {
 }
 </script>
 <template>
-  <header class="headerBack d-flex justify-content-between align-items-center px-2">
-    <h2 class="title">Bem Vindo ao</h2>
-    <CloseBtn></CloseBtn>
-  </header>
-  <div class="main">
-    <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
-    <div class="container-fluid">
-      <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
-      <div class="phoneInput position-relative">
-        <input class="form-control py-2" type="number" placeholder="Número de Celular" />
-        <span>+55</span>
-      </div>
-      <div class="tips my-2"> Please enter the correct phone number </div>
-      <div class="passwordInput position-relative mt-3">
-        <input 
-          class="form-control py-2" 
-          placeholder="Senha" 
-          :type="this.pwdFlag ? 'password' : 'text'"
-         />
-        <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
-      </div>
-      <div class="tips my-2"> Please enter the correct password </div>
-      <div class="form-check agreeText my-2">
-        <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
-        <label class="form-check-label" for="agreeCheck">
-          Eu concordo com os 
-          <router-link to="/terms" class="agreeLink">acordo do usuário</router-link>
-          e confirmo que tenho pelo menos 18 anos
-        </label>
-      </div>
-      <button type="button" class="btn establishBtn w-100 mb-3"> Criar conta </button>
-      <div class="link mb-3">
-        Já tem uma conta?
-        <router-link to="/login" class="ms-2"> Criar conta</router-link>
-      </div>
-      <div class="or mb-3">
-        <span class="mx-4">OU</span>
-      </div>
-      <div class="googleLoginBtn mx-auto">
-        <img class="me-2" src="../assets/images/login/googleIcon.svg" alt="" />
-        Entrar com Google+
+  <div class="routerView">
+    <header class="headerBack d-flex justify-content-between align-items-center px-2">
+      <h2 class="title">Bem Vindo ao</h2>
+      <CloseBtn></CloseBtn>
+    </header>
+    <div class="main">
+      <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
+      <div class="container-fluid">
+        <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
+        <div class="phoneInput position-relative">
+          <input class="form-control py-2" type="number" placeholder="Número de Celular" />
+          <span>+55</span>
+        </div>
+        <div class="tips my-2"> Please enter the correct phone number </div>
+        <div class="passwordInput position-relative mt-3">
+          <input 
+            class="form-control py-2" 
+            placeholder="Senha" 
+            :type="this.pwdFlag ? 'password' : 'text'"
+          />
+          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
+        </div>
+        <div class="tips my-2"> Please enter the correct password </div>
+        <div class="form-check agreeText my-2">
+          <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
+          <label class="form-check-label" for="agreeCheck">
+            Eu concordo com os 
+            <router-link to="/terms" class="agreeLink">acordo do usuário</router-link>
+            e confirmo que tenho pelo menos 18 anos
+          </label>
+        </div>
+        <button type="button" class="btn establishBtn w-100 mb-3"> Criar conta </button>
+        <div class="link mb-3">
+          Já tem uma conta?
+          <router-link to="/login" class="ms-2"> Criar conta</router-link>
+        </div>
+        <div class="or mb-3">
+          <span class="mx-4">OU</span>
+        </div>
+        <div class="googleLoginBtn mx-auto">
+          <img class="me-2" src="../assets/images/login/googleIcon.svg" alt="" />
+          Entrar com Google+
+        </div>
       </div>
     </div>
   </div>

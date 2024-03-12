@@ -31,7 +31,7 @@
 <style scoped>
     .reportContent{
         background-color: var(--fff);
-        height: calc(100vh - 12.5rem);
+        height: calc(100vh - 7.5rem);
         border-radius: .3rem;
     }
     .reportContent table{

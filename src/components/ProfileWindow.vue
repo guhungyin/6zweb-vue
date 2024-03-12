@@ -222,7 +222,7 @@ export default {
           </li>
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/share.png" alt="" />
-            <router-link to="#"> Afiliado - Ganhe R$10000 por mês </router-link>
+            <router-link to="/affiliate"> Afiliado - Ganhe R$10000 por mês </router-link>
           </li>
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/money.png" alt="" />

@@ -196,6 +196,7 @@ export default {
 </template>
 <style scoped>
 .mainMenu {
+  position: absolute;
   font-size: 0.8rem;
   width: 100% !important;
   border: none !important;

@@ -278,7 +278,7 @@
 <style scoped>
     .contentBox{
         overflow-y: auto;
-        height: calc(100vh - 12.5rem);
+        height: calc(100vh - 7.5rem);
     }
     .contentBox::-webkit-scrollbar{display: none;}
     .contentBox .card{

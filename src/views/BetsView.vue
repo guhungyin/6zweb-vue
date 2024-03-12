@@ -7,14 +7,16 @@ export default {
 }
 </script>
 <template>
-  <div class="headerBack d-flex justify-content-between align-items-center px-2">
-    <h2 class="title">Minhas Apostas de Jogo</h2>
-    <CloseBtn></CloseBtn>
-  </div>
-  <div class="container-fluid betsWindows">
-    <div class="noData">
-      <img src="../assets/images/icon/nodata.svg" alt="" />
-      <span class="mt-3">Sem apostas</span>
+  <div class="routerView">
+    <div class="headerBack d-flex justify-content-between align-items-center px-2">
+      <h2 class="title">Minhas Apostas de Jogo</h2>
+      <CloseBtn></CloseBtn>
+    </div>
+    <div class="container-fluid betsWindows">
+      <div class="noData">
+        <img src="../assets/images/icon/nodata.svg" alt="" />
+        <span class="mt-3">Sem apostas</span>
+      </div>
     </div>
   </div>
 </template>

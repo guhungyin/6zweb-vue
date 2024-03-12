@@ -7,24 +7,26 @@
     }
 </script>
 <template>
-      <div class="headerBack d-flex justify-content-between align-items-center px-2">
-        <h2 class="title">Certificação</h2>
-        <CloseBtn></CloseBtn>
+  <div class="routerView">
+    <div class="headerBack d-flex justify-content-between align-items-center px-2">
+      <h2 class="title">Certificação</h2>
+      <CloseBtn></CloseBtn>
     </div>
-  <div class="container-fluid mt-3 certificationWindows">
-    <div class="user mb-3">
-      <img class="mb-2" src="https://vovo2000.com/images/9538.jpg" width="88" height="88" alt="">
-      <span>Bem Vindo, XXX</span>
+    <div class="container-fluid mt-3 certificationWindows">
+      <div class="user mb-3">
+        <img class="mb-2" src="https://vovo2000.com/images/9538.jpg" width="88" height="88" alt="">
+        <span>Bem Vindo, XXX</span>
+      </div>
+      <div class="phone mb-4">
+        <span>+55</span>
+        <input class="form-control py-3" type="text" placeholder="Número de Celular">
+      </div>
+      <div class="certificationPhoneTip mb-5">
+        <span class="tips">!</span>
+        <span>O número do celular será usado para verificar se seu dinheiro está seguro quando você tentar sacar</span>
+      </div>
+      <button type="button" class="btn continueBtn w-100 mb-4">Continuar</button>
     </div>
-    <div class="phone mb-4">
-      <span>+55</span>
-      <input class="form-control py-3" type="text" placeholder="Número de Celular">
-    </div>
-    <div class="certificationPhoneTip mb-5">
-      <span class="tips">!</span>
-      <span>O número do celular será usado para verificar se seu dinheiro está seguro quando você tentar sacar</span>
-    </div>
-    <button type="button" class="btn continueBtn w-100 mb-4">Continuar</button>
   </div>
 </template>
 <style scoped>
