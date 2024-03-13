@@ -19,6 +19,7 @@
   margin: 0 auto;
   min-height: 100%;
   box-sizing: border-box;
+  background-color: #25262b;
 }
 .app.widthLimit {
   max-width: 34rem;
@@ -61,22 +62,17 @@ a {
   color: var(--fff);
 }
 .routerView{
-  transition: all .5s;
+  position:absolute;
+  width:100%;
+  /* will-change: transform; */
+  transition: all .3s;
   overflow-y: auto;
-  width: 100vw;
   height: 100%;
   max-width: 34rem;
   background-color: var(--black1);
 }
 .routerView::-webkit-scrollbar{display: none;}
-.routerView.viewInActive{
-  opacity: 0;
-  transform: translate3d(-100%,0,0);
-}
-.routerView.viewOutActive{
-  opacity: 0;
-  transform: translate3d(100%,0,0);
-}
+
 .headerBack {
   z-index: 1;
   height: 4rem;

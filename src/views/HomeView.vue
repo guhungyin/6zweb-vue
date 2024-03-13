@@ -291,7 +291,7 @@ export default {
         .catch((error) => {
           console.log('getWinnerShow error message  ---> ', error.message)
         })
-    }
+    },
   },
   setup() {
     const commonStore = useCommonStore()

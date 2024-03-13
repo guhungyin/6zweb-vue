@@ -167,7 +167,7 @@
           .catch((err) => {
             console.log('查询商品错误:', err.message)
           })
-      }
+      },
     },
     components: {
       CloseBtn,
