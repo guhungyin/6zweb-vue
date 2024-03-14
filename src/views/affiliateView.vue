@@ -1,8 +1,18 @@
 <script>
-import commissionRulesModal from '../components/affiliate/commissionRulesModal.vue'
+import commissionRulesModal from '@/components/affiliate/CommissionRulesModal.vue'
+import FaqView from '@/components/affiliate/page/FaqView.vue'
+import PaymentsView from '@/components/affiliate/page/PaymentsView.vue'
+import ReferralsView from '@/components/affiliate/page/ReferralsView.vue'
+import ReportView from '@/components/affiliate/page/ReportView.vue'
+import SummaryView from '@/components/affiliate/page/SummaryView.vue'
 export default {
   components: {
-    commissionRulesModal
+    commissionRulesModal,
+    FaqView,
+    PaymentsView,
+    ReferralsView,
+    ReportView,
+    SummaryView
   }
 }
 </script>
@@ -26,39 +36,31 @@ export default {
       </router-link>
     </div>
     <div class="container-fluid affiliateWindow">
-      <div class="tabs mb-2">
-        <router-link
-          to="/affiliate/summary"
-          :class="{ active: $route.path === '/affiliate/summary' }"
-        >
-          <div class="tabItem px-1">PAINEL</div>
-        </router-link>
-        <router-link
-          to="/affiliate/referrals"
-          :class="{ active: $route.path === '/affiliate/referrals' }"
-        >
-          <div class="tabItem px-1">REFERÊNCIAS</div>
-        </router-link>
-        <router-link
-          to="/affiliate/report"
-          :class="{ active: $route.path === '/affiliate/report' }"
-        >
-          <div class="tabItem px-1">RELATÓRIO</div>
-        </router-link>
-        <router-link
-          to="/affiliate/payments"
-          :class="{ active: $route.path === '/affiliate/payments' }"
-        >
-          <div class="tabItem px-1">PAGAMENTOS</div>
-        </router-link>
-        <router-link to="/affiliate/faq" :class="{ active: $route.path === '/affiliate/faq' }">
-          <div class="tabItem px-1">FAQ</div>
-        </router-link>
-        <a data-bs-toggle="modal" data-bs-target="#commissionRulesModal">
-          <div class="tabItem px-1">TUTORIAL</div>
-        </a>
+      <div class="tabs mb-2" id="list-tab" role="tablist">
+        <div class="list-group-item list-group-item-action tabItem px-1 active" id="list-summary-list" data-bs-toggle="list" href="#list-summary" role="tab" aria-controls="list-summary">PAINEL</div>
+        <div class="list-group-item list-group-item-action tabItem px-1" id="list-referrals-list" data-bs-toggle="list" href="#list-referrals" role="tab" aria-controls="list-referrals">REFERÊNCIAS</div>
+        <div class="list-group-item list-group-item-action tabItem px-1" id="list-report-list" data-bs-toggle="list" href="#list-report" role="tab" aria-controls="list-report">RELATÓRIO</div>
+        <div class="list-group-item list-group-item-action tabItem px-1" id="list-payments-list" data-bs-toggle="list" href="#list-payments" role="tab" aria-controls="list-payments">PAGAMENTOS</div>
+        <div class="list-group-item list-group-item-action tabItem px-1" id="list-faq-list" data-bs-toggle="list" href="#list-faq" role="tab" aria-controls="list-faq">FAQ</div>
+        <div class="tabItem px-1" data-bs-toggle="modal" data-bs-target="#commissionRulesModal">TUTORIAL</div>
       </div>
-      <router-view></router-view>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="list-summary" role="tabpanel" aria-labelledby="list-summary-list">
+          <SummaryView></SummaryView>
+        </div>
+        <div class="tab-pane fade" id="list-referrals" role="tabpanel" aria-labelledby="list-referrals-list">
+          <ReferralsView></ReferralsView>
+        </div>
+        <div class="tab-pane fade" id="list-report" role="tabpanel" aria-labelledby="list-report-list">
+          <ReportView></ReportView>
+        </div>
+        <div class="tab-pane fade" id="list-payments" role="tabpanel" aria-labelledby="list-payments-list">
+          <PaymentsView></PaymentsView>
+        </div>
+        <div class="tab-pane fade" id="list-faq" role="tabpanel" aria-labelledby="list-faq-list">
+          <FaqView></FaqView>
+        </div>
+      </div>
     </div>
     <commissionRulesModal></commissionRulesModal>
   </div>
@@ -80,11 +82,8 @@ export default {
 }
 .tabs {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  overflow-x: auto;
+  justify-content: space-between;
   height: 2.2rem;
 }
 .tabs::-webkit-scrollbar {
@@ -93,14 +92,17 @@ export default {
 .tabs a {
   flex: 1;
 }
-.tabs a.active {
+.list-group-item.active {
   box-shadow: inset 0 -1px #009d80;
 }
 .tabs .tabItem {
+  cursor: pointer;
   font-size: 0.8rem;
   color: #808080;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
+  width: auto;
 }
 </style>

@@ -6,8 +6,6 @@
   import CloseBtn from '@/components/CloseBtn.vue'
   import LoadingPage from '@/components/LoadingPage.vue'
   import BottomMenu from '@/components/BottomMenu.vue'
-  import MainMenu from '@/components/MainMenu.vue'
-  import ProfileWindow from '@/components/ProfileWindow.vue'
   import { ref } from 'vue'
   export default {
     data() {
@@ -173,8 +171,6 @@
       CloseBtn,
       LoadingPage,
       BottomMenu,
-      MainMenu,
-      ProfileWindow,
     },
     setup() {
       const commonStore = useCommonStore()
@@ -303,9 +299,5 @@
     </div>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
-    <!-- 主選單 -->
-    <MainMenu></MainMenu>
-    <!-- 個人選單 -->
-    <ProfileWindow></ProfileWindow>
   </div>
 </template>

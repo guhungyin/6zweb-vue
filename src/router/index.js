@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: '/deposit',
       name: 'deposit',
-      component: () => import('../views/DepositView.vue'),
+      component: () => import('@/views/DepositView.vue'),
       meta:{
         index: 1
       }
@@ -23,7 +23,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue'),
+      component: () => import('@/views/LoginView.vue'),
       meta:{
         index: 1
       }
@@ -31,7 +31,7 @@ const router = createRouter({
     {
       path: '/register',
       name: 'register',
-      component: () => import('../views/RegisterView.vue'),
+      component: () => import('@/views/RegisterView.vue'),
       meta:{
         index: 1
       }
@@ -39,7 +39,7 @@ const router = createRouter({
     {
       path: '/gameBets',
       name: 'gameBets',
-      component: () => import('../views/GameBetsView.vue'),
+      component: () => import('@/views/GameBetsView.vue'),
       meta:{
         index: 1
       }
@@ -47,7 +47,7 @@ const router = createRouter({
     {
       path: '/cashback',
       name: 'cashback',
-      component: () => import('../views/CashbackView.vue'),
+      component: () => import('@/views/CashbackView.vue'),
       meta:{
         index: 1
       }
@@ -55,7 +55,7 @@ const router = createRouter({
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('../views/ContactView.vue'),
+      component: () => import('@/views/ContactView.vue'),
       meta:{
         index: 1
       }
@@ -63,7 +63,7 @@ const router = createRouter({
     {
       path: '/downloadApp',
       name: 'downloadApp',
-      component: () => import('../views/DownloadAppView.vue'),
+      component: () => import('@/views/DownloadAppView.vue'),
       meta:{
         index: 1
       }
@@ -71,7 +71,7 @@ const router = createRouter({
     {
       path: '/help',
       name: 'help',
-      component: () => import('../views/HelpView.vue'),
+      component: () => import('@/views/HelpView.vue'),
       meta:{
         index: 1
       }
@@ -79,7 +79,7 @@ const router = createRouter({
     {
       path: '/message',
       name: 'message',
-      component: () => import('../views/MessageView.vue'),
+      component: () => import('@/views/MessageView.vue'),
       meta:{
         index: 1
       }
@@ -87,7 +87,7 @@ const router = createRouter({
     {
       path: '/promotions',
       name: 'promotions',
-      component: () => import('../views/PromotionsView.vue'),
+      component: () => import('@/views/PromotionsView.vue'),
       meta:{
         index: 1
       }
@@ -95,7 +95,7 @@ const router = createRouter({
     {
       path: '/resetPhone',
       name: 'resetPhone',
-      component: () => import('../views/ResetPhoneView.vue'),
+      component: () => import('@/views/ResetPhoneView.vue'),
       meta:{
         index: 1
       }
@@ -103,7 +103,7 @@ const router = createRouter({
     {
       path: '/changePassword',
       name: 'changePassword',
-      component: () => import('../views/ChangePasswordView.vue'),
+      component: () => import('@/views/ChangePasswordView.vue'),
       meta:{
         index: 1
       }
@@ -111,7 +111,7 @@ const router = createRouter({
     {
       path: '/withdraw',
       name: 'withdraw',
-      component: () => import('../views/WithdrawView.vue'),
+      component: () => import('@/views/WithdrawView.vue'),
       meta:{
         index: 1
       }
@@ -119,7 +119,7 @@ const router = createRouter({
     {
       path: '/bets',
       name: 'bets',
-      component: () => import('../views/BetsView.vue'),
+      component: () => import('@/views/BetsView.vue'),
       meta:{
         index: 1
       }
@@ -127,7 +127,7 @@ const router = createRouter({
     {
       path: '/preventLaunderMoney',
       name: 'preventLaunderMoney',
-      component: () => import('../views/aboutPage/PreventLaunderMoneyView.vue'),
+      component: () => import('@/views/aboutPage/PreventLaunderMoneyView.vue'),
       meta:{
         index: 1
       }
@@ -135,7 +135,7 @@ const router = createRouter({
     {
       path: '/terms',
       name: 'terms',
-      component: () => import('../views/aboutPage/TermsView.vue'),
+      component: () => import('@/views/aboutPage/TermsView.vue'),
       meta:{
         index: 1
       }
@@ -143,7 +143,7 @@ const router = createRouter({
     {
       path: '/privacy',
       name: 'privacy',
-      component: () => import('../views/aboutPage/PrivacyView.vue'),
+      component: () => import('@/views/aboutPage/PrivacyView.vue'),
       meta:{
         index: 1
       }
@@ -151,7 +151,7 @@ const router = createRouter({
     {
       path: '/exclusionPolicy',
       name: 'exclusionPolicy',
-      component: () => import('../views/aboutPage/ExclusionPolicyView.vue'),
+      component: () => import('@/views/aboutPage/ExclusionPolicyView.vue'),
       meta:{
         index: 1
       }
@@ -159,7 +159,7 @@ const router = createRouter({
     {
       path: '/gamingPolicy',
       name: 'gamingPolicy',
-      component: () => import('../views/aboutPage/GamingPolicyView.vue'),
+      component: () => import('@/views/aboutPage/GamingPolicyView.vue'),
       meta:{
         index: 1
       }
@@ -167,7 +167,7 @@ const router = createRouter({
     {
       path: '/responsible',
       name: 'responsible',
-      component: () => import('../views/aboutPage/ResponsibleView.vue'),
+      component: () => import('@/views/aboutPage/ResponsibleView.vue'),
       meta:{
         index: 1
       }
@@ -175,7 +175,7 @@ const router = createRouter({
     {
       path: '/termsSports',
       name: 'termsSports',
-      component: () => import('../views/TermsSportsView.vue'),
+      component: () => import('@/views/TermsSportsView.vue'),
       meta:{
         index: 1
       }
@@ -183,7 +183,7 @@ const router = createRouter({
     {
       path: '/transactions',
       name: 'transactions',
-      component: () => import('../views/TransactionsView.vue'),
+      component: () => import('@/views/TransactionsView.vue'),
       meta:{
         index: 1
       }
@@ -191,7 +191,7 @@ const router = createRouter({
     {
       path: '/certification',
       name: 'certification',
-      component: () => import('../views/CertificationPhone.vue'),
+      component: () => import('@/views/CertificationPhone.vue'),
       meta:{
         index: 1
       }
@@ -199,7 +199,7 @@ const router = createRouter({
     {
       path: '/play',
       name: 'play',
-      component: () => import('../views/PlayGameView.vue'),
+      component: () => import('@/views/PlayGameView.vue'),
       meta:{
         index: 1
       }
@@ -207,7 +207,7 @@ const router = createRouter({
     {
       path: '/cashwheel',
       name: 'cashwheel',
-      component: () => import('../views/CashWheelView.vue'),
+      component: () => import('@/views/CashWheelView.vue'),
       meta:{
         index: 1
       }
@@ -215,46 +215,18 @@ const router = createRouter({
     {
       path: '/cash',
       name: 'cash',
-      component: () => import('../views/CashView.vue'),
+      component: () => import('@/views/CashView.vue'),
       meta:{
-        index: 1
+        index: 2
       }
     },
     {
       path: '/affiliate',
       name: 'affiliate',
-      component: () => import('../views/affiliateView.vue'),
-      redirect: '/affiliate/summary',
+      component: () => import('@/views/affiliateView.vue'),
       meta:{
-        index: 2
+        index: 1
       },
-      children: [
-        {
-          path: 'summary',
-          name: 'summary',
-          component: () => import('../views/affiliate/summaryView.vue'),
-        },
-        {
-          path: 'referrals',
-          name: 'referrals',
-          component: () => import('../views/affiliate/referralsView.vue'),
-        },
-        {
-          path: 'report',
-          name: 'report',
-          component: () => import('../views/affiliate/reportView.vue'),
-        },
-        {
-          path: 'payments',
-          name: 'payments',
-          component: () => import('../views/affiliate/paymentsView.vue'),
-        },
-        {
-          path: 'faq',
-          name: 'faq',
-          component: () => import('../views/affiliate/faqView.vue'),
-        }
-      ]
     }
   ]
 })

@@ -3,14 +3,24 @@
     <transition :name="transitionName">
       <router-view :key="$route.fullPath"></router-view>
     </transition>
+    <!-- 主選單 -->
+    <MainMenu></MainMenu>
+    <!-- 個人選單 -->
+    <ProfileWindow></ProfileWindow>
   </div>
 </template>
 <script>
+import MainMenu from '@/components/MainMenu.vue'
+import ProfileWindow from '@/components/ProfileWindow.vue'
 export default {
   data() {
     return {
       transitionName: ''
     }
+  },
+  components: {
+    MainMenu,
+    ProfileWindow,
   },
   watch: {
     $route(to,from) {

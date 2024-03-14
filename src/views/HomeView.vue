@@ -4,8 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
-import MainMenu from '@/components/MainMenu.vue'
-import ProfileWindow from '@/components/ProfileWindow.vue'
+
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
 import 'swiper/css'
@@ -252,8 +251,6 @@ export default {
     AddHomeWindow,
     RouterLink,
     BottomMenu,
-    MainMenu,
-    ProfileWindow,
   },
   created() {
     console.log('------- userStore ', this.userStore, ' .ticket', this.userStore.ticket)
@@ -781,9 +778,5 @@ export default {
     <AddHomeWindow></AddHomeWindow>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
-    <!-- 主選單 -->
-    <MainMenu></MainMenu>
-    <!-- 個人選單 -->
-    <ProfileWindow></ProfileWindow>
   </div>
 </template>
