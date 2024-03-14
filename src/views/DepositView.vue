@@ -1,5 +1,4 @@
 <script>
-<<<<<<< HEAD
 import '@/assets/css/deposit.css'
 
 import { useCommonStore } from '@/stores/modules/common'
@@ -7,8 +6,8 @@ import { usePayStore } from '@/stores/modules/pay'
 import CloseBtn from '@/components/CloseBtn.vue'
 import LoadingPage from '@/components/LoadingPage.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
-import MainMenu from '@/components/MainMenu.vue'
-import ProfileWindow from '@/components/ProfileWindow.vue'
+// import MainMenu from '@/components/MainMenu.vue'
+// import ProfileWindow from '@/components/ProfileWindow.vue'
 import { ref } from 'vue'
 export default {
   data() {
@@ -43,25 +42,6 @@ export default {
             ne.className = ne.className.replace(/ active/g, '')
           }
         })
-=======
-  import '@/assets/css/deposit.css'
-  
-  import { useCommonStore } from '@/stores/modules/common'
-  import { usePayStore } from '@/stores/modules/pay'
-  import CloseBtn from '@/components/CloseBtn.vue'
-  import LoadingPage from '@/components/LoadingPage.vue'
-  import BottomMenu from '@/components/BottomMenu.vue'
-  import { ref } from 'vue'
-  export default {
-    data() {
-      return {
-        goods: [],
-        selectGoods: {},
-        showPrice: '',
-        channelData: [],
-        payData: {},
-        isLoading: false
->>>>>>> 8e3387f41e0e6b3dbae90c9afb4f12b410bd0159
       }
     },
     payChannel() {
@@ -74,7 +54,6 @@ export default {
           .catch((err) => {
             reject(err)
           })
-<<<<<<< HEAD
       })
       //       https://api.wins888.club/platform/pay/payChannel
       // {
@@ -141,25 +120,6 @@ export default {
               this.isLoading = false
             })
         }
-=======
-      },
-    },
-    components: {
-      CloseBtn,
-      LoadingPage,
-      BottomMenu,
-    },
-    setup() {
-      const commonStore = useCommonStore()
-      const payStore = usePayStore()
-      const isActive = ref(false)
-      const isDisabled = ref(true)
-      return {
-        commonStore,
-        isActive,
-        isDisabled,
-        payStore
->>>>>>> 8e3387f41e0e6b3dbae90c9afb4f12b410bd0159
       }
 
       console.log('request channel : ', channel)
@@ -212,9 +172,7 @@ export default {
   components: {
     CloseBtn,
     LoadingPage,
-    BottomMenu,
-    MainMenu,
-    ProfileWindow
+    BottomMenu
   },
   setup() {
     const commonStore = useCommonStore()

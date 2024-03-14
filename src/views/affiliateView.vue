@@ -1,5 +1,5 @@
 <script>
-import commissionRulesModal from '@/components/affiliate/CommissionRulesModal.vue'
+import commissionRulesModal from '@/components/affiliate/commissionRulesModal.vue'
 import FaqView from '@/components/affiliate/page/FaqView.vue'
 import PaymentsView from '@/components/affiliate/page/PaymentsView.vue'
 import ReferralsView from '@/components/affiliate/page/ReferralsView.vue'
@@ -37,24 +37,91 @@ export default {
     </div>
     <div class="container-fluid affiliateWindow">
       <div class="tabs mb-2" id="list-tab" role="tablist">
-        <div class="list-group-item list-group-item-action tabItem px-1 active" id="list-summary-list" data-bs-toggle="list" href="#list-summary" role="tab" aria-controls="list-summary">PAINEL</div>
-        <div class="list-group-item list-group-item-action tabItem px-1" id="list-referrals-list" data-bs-toggle="list" href="#list-referrals" role="tab" aria-controls="list-referrals">REFERÊNCIAS</div>
-        <div class="list-group-item list-group-item-action tabItem px-1" id="list-report-list" data-bs-toggle="list" href="#list-report" role="tab" aria-controls="list-report">RELATÓRIO</div>
-        <div class="list-group-item list-group-item-action tabItem px-1" id="list-payments-list" data-bs-toggle="list" href="#list-payments" role="tab" aria-controls="list-payments">PAGAMENTOS</div>
-        <div class="list-group-item list-group-item-action tabItem px-1" id="list-faq-list" data-bs-toggle="list" href="#list-faq" role="tab" aria-controls="list-faq">FAQ</div>
-        <div class="tabItem px-1" data-bs-toggle="modal" data-bs-target="#commissionRulesModal">TUTORIAL</div>
+        <div
+          class="list-group-item list-group-item-action tabItem px-1 active"
+          id="list-summary-list"
+          data-bs-toggle="list"
+          href="#list-summary"
+          role="tab"
+          aria-controls="list-summary"
+        >
+          PAINEL
+        </div>
+        <div
+          class="list-group-item list-group-item-action tabItem px-1"
+          id="list-referrals-list"
+          data-bs-toggle="list"
+          href="#list-referrals"
+          role="tab"
+          aria-controls="list-referrals"
+        >
+          REFERÊNCIAS
+        </div>
+        <div
+          class="list-group-item list-group-item-action tabItem px-1"
+          id="list-report-list"
+          data-bs-toggle="list"
+          href="#list-report"
+          role="tab"
+          aria-controls="list-report"
+        >
+          RELATÓRIO
+        </div>
+        <div
+          class="list-group-item list-group-item-action tabItem px-1"
+          id="list-payments-list"
+          data-bs-toggle="list"
+          href="#list-payments"
+          role="tab"
+          aria-controls="list-payments"
+        >
+          PAGAMENTOS
+        </div>
+        <div
+          class="list-group-item list-group-item-action tabItem px-1"
+          id="list-faq-list"
+          data-bs-toggle="list"
+          href="#list-faq"
+          role="tab"
+          aria-controls="list-faq"
+        >
+          FAQ
+        </div>
+        <div class="tabItem px-1" data-bs-toggle="modal" data-bs-target="#commissionRulesModal">
+          TUTORIAL
+        </div>
       </div>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="list-summary" role="tabpanel" aria-labelledby="list-summary-list">
+        <div
+          class="tab-pane fade show active"
+          id="list-summary"
+          role="tabpanel"
+          aria-labelledby="list-summary-list"
+        >
           <SummaryView></SummaryView>
         </div>
-        <div class="tab-pane fade" id="list-referrals" role="tabpanel" aria-labelledby="list-referrals-list">
+        <div
+          class="tab-pane fade"
+          id="list-referrals"
+          role="tabpanel"
+          aria-labelledby="list-referrals-list"
+        >
           <ReferralsView></ReferralsView>
         </div>
-        <div class="tab-pane fade" id="list-report" role="tabpanel" aria-labelledby="list-report-list">
+        <div
+          class="tab-pane fade"
+          id="list-report"
+          role="tabpanel"
+          aria-labelledby="list-report-list"
+        >
           <ReportView></ReportView>
         </div>
-        <div class="tab-pane fade" id="list-payments" role="tabpanel" aria-labelledby="list-payments-list">
+        <div
+          class="tab-pane fade"
+          id="list-payments"
+          role="tabpanel"
+          aria-labelledby="list-payments-list"
+        >
           <PaymentsView></PaymentsView>
         </div>
         <div class="tab-pane fade" id="list-faq" role="tabpanel" aria-labelledby="list-faq-list">
