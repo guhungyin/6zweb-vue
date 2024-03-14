@@ -1,8 +1,6 @@
 <script>
   import CloseBtn from '@/components/CloseBtn.vue'
   import BottomMenu from '@/components/BottomMenu.vue'
-  import MainMenu from '@/components/MainMenu.vue'
-  import ProfileWindow from '@/components/ProfileWindow.vue'
   export default {
     data() {
       return {
@@ -21,8 +19,6 @@
     components: {
       CloseBtn,
       BottomMenu,
-      MainMenu,
-      ProfileWindow,
     }
   }
 </script>
@@ -43,10 +39,6 @@
     </div>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
-    <!-- 主選單 -->
-    <MainMenu></MainMenu>
-    <!-- 個人選單 -->
-    <ProfileWindow></ProfileWindow>
   </div>
 </template>
 <style scoped>

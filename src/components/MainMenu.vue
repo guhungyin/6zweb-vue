@@ -1,6 +1,6 @@
 <script>
 import { Offcanvas } from 'bootstrap'
-import GameLogo from '../components/home/GameLogo.vue'
+import GameLogo from '@/components/home/GameLogo.vue'
 export default {
   data() {
     return {
@@ -56,19 +56,19 @@ export default {
         </li>
         <li>
           <router-link to="/affiliate">
-            <img class="icon" src="../assets/images/icon/menuIcon01.png" alt="" />
+            <img class="icon" src="@/assets/images/icon/menuIcon01.png" alt="" />
             Afiliado - Ganhe R$10000 por mês
           </router-link>
         </li>
         <li>
           <router-link to="/cashwheel">
-            <img class="icon" src="../assets/images/icon/menuIcon02.png" alt="" />
+            <img class="icon" src="@/assets/images/icon/menuIcon02.png" alt="" />
             Receba R$ 100 de graça
           </router-link>
         </li>
         <li>
           <router-link to="/cashback">
-            <img class="icon" src="../assets/images/icon/menuIcon03.png" alt="" />
+            <img class="icon" src="@/assets/images/icon/menuIcon03.png" alt="" />
             Cashback 25%
           </router-link>
         </li>
@@ -96,7 +96,7 @@ export default {
         </li>
         <li>
           <router-link to="/promotions">
-            <img class="icon" src="../assets/images/icon/menuIcon04.png" alt="" />
+            <img class="icon" src="@/assets/images/icon/menuIcon04.png" alt="" />
             Promoções
           </router-link>
         </li>

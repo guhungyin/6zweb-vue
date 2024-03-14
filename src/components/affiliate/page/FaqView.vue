@@ -1,5 +1,5 @@
 <script>
-    import CommitteeModal from '../../components/affiliate/CommitteeModal.vue'
+    import CommitteeModal from '@/components/affiliate/CommitteeModal.vue'
     export default {
         components:{
             CommitteeModal
@@ -36,13 +36,13 @@
         </div>
         <div class="hintTitle mb-3">Ganhe dinheiro indicando amigos para a 6z, você ganha sempre que um convidado seu realiza uma aposta!</div>
         <div class="imgContent mb-3">
-        <img src="../../assets/images/icon/money2.png" width="73" alt="">
+        <img src="@/assets/images/icon/money2.png" width="73" alt="">
         <span>Comissão pode ser</span>
         <input type="range" class="rangeBar ms-auto">
         </div>
         <div class="relationSchema">
         <div class="mb-2 text-center fw-bold">Desenvolvimento ilimitado de indicados</div>
-        <img src="../../assets/images/icon/group.png" alt="" class="w-100 mb-5">
+        <img src="@/assets/images/icon/group.png" alt="" class="w-100 mb-5">
         <ul>
             <li class="mb-2">Você receberá uma porcentagem de comissão diferente toda vez que um jogador indicado por você fizer uma aposta, 
             <span>ganhar ou perder</span>.

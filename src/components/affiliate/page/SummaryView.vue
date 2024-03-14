@@ -1,5 +1,5 @@
 <script>
-    import CommitteeModal from '../../components/affiliate/CommitteeModal.vue'
+    import CommitteeModal from '@/components/affiliate/CommitteeModal.vue'
     export default {
         components:{
             CommitteeModal
@@ -142,37 +142,37 @@
             <ul class="p-0 mb-3">
             <li>
                 <a href="#" class="mb-2">
-                <img src="../../assets/images/icon/shar.svg" alt="" width="46">
+                <img src="@/assets/images/icon/shar.svg" alt="" width="46">
                 </a>
                 <span>Mais</span>
             </li>
             <li>
                 <a href="#" class="mb-2">
-                <img src="../../assets/images/icon/fb.svg" alt="" width="46">
+                <img src="@/assets/images/icon/fb.svg" alt="" width="46">
                 </a>
                 <span>Facebook</span>
             </li>
             <li>
                 <a href="#" class="mb-2">
-                <img src="../../assets/images/icon/whatsapp.svg" alt="" width="46">
+                <img src="@/assets/images/icon/whatsapp.svg" alt="" width="46">
                 </a>
                 <span>WhatsApp</span>
             </li>
             <li>
                 <a href="#" class="mb-2">
-                <img src="../../assets/images/icon/Telegram_logo.svg" alt="" width="46">
+                <img src="@/assets/images/icon/Telegram_logo.svg" alt="" width="46">
                 </a>
                 <span>Telegram</span>
             </li>
             <li>
                 <a href="#" class="mb-2">
-                <img src="../../assets/images/icon/x.svg" alt="" width="46">
+                <img src="@/assets/images/icon/x.svg" alt="" width="46">
                 </a>
                 <span>Twitter</span>
             </li>
             <li>
                 <a href="#" class="mb-2">
-                <img src="../../assets/images/icon/mail.svg" alt="" width="46">
+                <img src="@/assets/images/icon/mail.svg" alt="" width="46">
                 </a>
                 <span>Email</span>
             </li>
@@ -193,7 +193,7 @@
         <div class="card-body">
             <div class="d-flex align-items-center mb-2">
             <a href="#" class="me-2">
-                <img src="../../assets/images/icon/Telegram_logo.svg" width="55" alt="">
+                <img src="@/assets/images/icon/Telegram_logo.svg" width="55" alt="">
             </a>
             <div class="text"> Clique o botão de ícone no lado esquerdo, junte-se ao nosso grupo afiliado do TG oficial Vamos oferecer- lo as palavras afiliadas profissionais e as ferramentas afiliadas profissionais. E ajudar-lo obter bem os benefícios reais.</div>
             </div>
@@ -218,13 +218,13 @@
         <div class="card-body">
             <div class="hintTitle mb-3">Ganhe dinheiro indicando amigos para a 6z, você ganha sempre que um convidado seu realiza uma aposta!</div>
             <div class="imgContent mb-3">
-            <img src="../../assets/images/icon/money2.png" width="73" alt="">
+            <img src="@/assets/images/icon/money2.png" width="73" alt="">
             <span>Comissão pode ser</span>
             <input type="range" class="rangeBar ms-auto">
             </div>
             <div class="relationSchema">
             <div class="mb-2 text-center fw-bold">Desenvolvimento ilimitado de indicados</div>
-            <img src="../../assets/images/icon/group.png" alt="" class="w-100 mb-5">
+            <img src="@/assets/images/icon/group.png" alt="" class="w-100 mb-5">
             <ul class="p-0">
                 <li class="mb-2">1. Você receberá uma porcentagem de comissão diferente toda vez que um jogador indicado por você fizer uma aposta, 
                 <span>ganhar ou perder</span>.
@@ -331,7 +331,7 @@
         justify-content: center;
         box-sizing: border-box;
         padding-bottom: .1rem;
-        background: url('../../assets/images/icon/crown.png') no-repeat center center / contain;
+        background: url('@/assets/images/icon/crown.png') no-repeat center center / contain;
     }
     .contentBox .card.committee .vip .leve span{
         color: var(--fff);

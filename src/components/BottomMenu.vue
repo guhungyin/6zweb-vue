@@ -46,7 +46,7 @@
       </li>
       <li class="main">
       <RouterLink to="/affiliate" class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0">
-        <img src="../assets/images/icon/afiliado.png" width="50" height="50" alt="" />
+        <img src="@/assets/images/icon/afiliado.png" width="50" height="50" alt="" />
         <span class="bottomMenuName mt-2">Afiliado</span>
       </RouterLink>
       </li>
