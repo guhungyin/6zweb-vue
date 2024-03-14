@@ -63,7 +63,12 @@ export default {
       <CloseBtn></CloseBtn>
     </div>
     <div class="container-fluid cashWindows">
-      <img src="../assets/images/icon/pix.png" alt="" class="my-4" />
+      <img
+        src="
+      "
+        alt=""
+        class="my-4"
+      />
       <p class="mx-4">
         Por favor abra o seu aplicativo de pagamento e escaneie o código QR abaixo para pagar ou
         copie o código Pix abaixo e cole em seu app de pagamento para finalizar a compra.
