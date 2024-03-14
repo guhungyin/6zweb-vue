@@ -3,6 +3,7 @@
     import { Navigation, Pagination } from 'swiper/modules'
     import GameLogo from '@/components/home/GameLogo.vue'
     import BottomMenu from '@/components/BottomMenu.vue'
+    import CloseBtn from '@/components/CloseBtn.vue'
     import 'swiper/css'
     import 'swiper/css/pagination'
     export default {
@@ -47,6 +48,7 @@
             SwiperSlide,
             GameLogo,
             BottomMenu,
+            CloseBtn
         },
         setup() {
             return {
@@ -68,7 +70,7 @@
                 <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
                 <div class="right">
                 <div class="userMoney me-2">
-                    <img class="me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
+                    <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
                     0.00
                 </div>
                 <router-link class="depositBtn me-2" to="/deposit">
@@ -127,9 +129,7 @@
                         <div class="name">Fortune Rabbit</div>
                     </div>
                     <div class="closeBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16">
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
-                        </svg>
+                        <CloseBtn></CloseBtn>
                     </div>
                 </div>
                 <div class="playBtn mb-3">
@@ -150,7 +150,7 @@
                 <template v-slot:container-start>
                     <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
                         <div class="title">
-                            <img class="me-2" src="../assets/images/icon/hotIcon.png" width="20" alt="">
+                            <img class="me-2" src="@/assets/images/icon/hotIcon.png" width="20" alt="">
                             Provedor Do Jogo
                         </div>
                         <div class="total px-3 py-1 fw-bold me-4">ALL 55</div>
