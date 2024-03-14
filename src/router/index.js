@@ -205,6 +205,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/partnerGame',
+      name: 'partnerGame',
+      component: () => import('@/views/PartnerGameView.vue'),
+      meta:{
+        index: 2
+      }
+    },
+    {
       path: '/cashwheel',
       name: 'cashwheel',
       component: () => import('@/views/CashWheelView.vue'),
