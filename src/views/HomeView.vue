@@ -320,21 +320,21 @@ export default {
     <header class="position-fixed">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand logo" href="#">
+          <RouterLink to="/" class="navbar-brand logo">
             <GameLogo></GameLogo>
-          </a>
+          </RouterLink>
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
           <div class="right" v-show="!logged">
-            <router-link to="/register" class="registerBtn me-3">Cadastre-se</router-link>
-            <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link>
+            <RouterLink to="/register" class="registerBtn me-3">Cadastre-se</RouterLink>
+            <RouterLink to="/login" class="btn loginBtn fw-bold">Login</RouterLink>
           </div>
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
           <div class="right" v-show="logged">
             <div class="userMoney me-2">
-              <img class="me-1" src="../assets/images/icon/rmoneyIcon.svg" alt="" />
+              <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
               {{ userMoney }}
             </div>
-            <router-link class="depositBtn me-2" to="/deposit">
+            <RouterLink class="depositBtn me-2" to="/deposit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -351,7 +351,7 @@ export default {
                 ></path>
               </svg>
               Depósito
-            </router-link>
+            </RouterLink>
             <button
               class="btn userBtn d-flex flex-column justify-content-center align-items-center p-0"
               type="button"
@@ -427,8 +427,19 @@ export default {
         </swiper-slide>
       </swiper>
     </div>
+    <!-- banner2 -->
+    <div class="banner2 container">
+      <div class="row row-cols-2 g-1">
+        <RouterLink class="col" to="/deposit">
+          <img src="https://6z.com/img/vip.a28e101a.jpg" class="w-100" alt="">
+        </RouterLink>
+        <RouterLink class="col" to="/cashback">
+          <img src="https://6z.com/img/RS12.affbb8c0.jpg" class="w-100" alt="">
+        </RouterLink>
+      </div>
+    </div>
     <!-- 跑馬燈 -->
-    <section class="container d-flex marquee mb-2">
+    <section class="container d-flex marquee my-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -494,9 +505,9 @@ export default {
       <div class="tabHome mt-3">
         <ul class="p-0">
           <li class="px-3 py-2 me-2">
-            <router-link to="/promotions">
+            <RouterLink to="/promotions">
               <span>Promoções</span>
-            </router-link>
+            </RouterLink>
           </li>
           <li class="px-3 py-2 me-2">
             <span>6z Originals</span>
@@ -517,15 +528,15 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Quente</div>
-            <div class="total px-3 py-1 fw-bold me-4">ALL 18</div>
+            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 18</RouterLink>
           </div>
         </template>
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.quente.list1" :key="item">
-              <router-link to="/play" class="img">
+              <RouterLink to="/play" class="img">
                 <img :src="item.imgUrl" class="w-100" />
-              </router-link>
+              </RouterLink>
             </div>
           </div>
         </swiper-slide>
@@ -544,7 +555,7 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">PG Soft</div>
-            <div class="total px-3 py-1 fw-bold me-4">ALL 102</div>
+            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 102</RouterLink>
           </div>
         </template>
         <swiper-slide>
@@ -571,7 +582,7 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">6z Originals</div>
-            <div class="total px-3 py-1 fw-bold me-4">ALL 41</div>
+            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 41</RouterLink>
           </div>
         </template>
         <swiper-slide>
@@ -609,7 +620,7 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Live Casino</div>
-            <div class="total px-3 py-1 fw-bold me-4">ALL 55</div>
+            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 55</RouterLink>
           </div>
         </template>
         <swiper-slide>
@@ -686,10 +697,10 @@ export default {
         <div class="title text-center mb-3">SOBRE NÓS</div>
         <ul class="d-flex justify-content-around p-0">
           <li>
-            <router-link to="/contact" class="text-decoration-none"> Contate-nos </router-link>
+            <RouterLink to="/contact" class="text-decoration-none"> Contate-nos </RouterLink>
           </li>
           <li>
-            <router-link to="/help" class="text-decoration-none"> Como Jogar </router-link>
+            <RouterLink to="/help" class="text-decoration-none"> Como Jogar </RouterLink>
           </li>
         </ul>
         <div class="terms text-center">
