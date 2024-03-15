@@ -132,9 +132,11 @@
                         <CloseBtn></CloseBtn>
                     </div>
                 </div>
-                <div class="playBtn mb-3">
-                    JOGUE
-                </div>
+                <router-link to="/partnerGame">
+                    <div class="playBtn mb-3">
+                        JOGUE
+                    </div>
+                </router-link>
             </div>
             <swiper 
             :loop="true"

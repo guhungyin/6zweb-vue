@@ -510,9 +510,9 @@ export default {
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.quente.list1" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
