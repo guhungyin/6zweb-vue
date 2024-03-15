@@ -62,6 +62,14 @@ header .right .userBtn {
 .bannerSwiper .swiper-pagination-bullet-active {
   background-color: var(--fff) !important;
 }
+.banner2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.banner2 img{
+  border-radius: .3rem;
+}
 .marquee .marqueeContent {
   width: 100%;
   white-space: nowrap;

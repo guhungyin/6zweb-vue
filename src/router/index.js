@@ -197,6 +197,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/gameList',
+      name: 'gameList',
+      component: () => import('@/views/GameListView.vue'),
+      meta:{
+        index: 1
+      }
+    },
+    {
       path: '/play',
       name: 'play',
       component: () => import('@/views/PlayGameView.vue'),
