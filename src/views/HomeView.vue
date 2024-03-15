@@ -4,6 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
+import GameListSearch from '@/components/GameListSearch.vue'
 
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
@@ -251,7 +252,8 @@ export default {
     GameLogo,
     AddHomeWindow,
     RouterLink,
-    BottomMenu
+    BottomMenu,
+    GameListSearch
   },
   created() {
     console.log('------- userStore ', this.userStore, ' .ticket', this.userStore.ticket)
@@ -301,7 +303,7 @@ export default {
         .catch((error) => {
           console.log('getWinnerShow error message  ---> ', error.message)
         })
-    }
+    },
   },
   setup() {
     const commonStore = useCommonStore()
@@ -458,26 +460,21 @@ export default {
     </section>
     <!-- 搜尋框 -->
     <section class="container-fluid mb-3">
-      <div class="searchBox rounded-1 d-flex align-items-center">
+      <button type="button" class="btn searchBox" data-bs-toggle="modal" data-bs-target="#GameListSearchModal">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="#6e6e6e"
-          class="bi bi-search searchIcon"
+          class="bi bi-search me-3"
           viewBox="0 0 16 16"
         >
           <path
             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
           />
         </svg>
-        <input
-          type="email"
-          class="form-control border-0 ps-5"
-          aria-describedby="emailHelp"
-          placeholder="Procure Jogos ou Provedores"
-        />
-      </div>
+        <span>Procure Jogos ou Provedores</span>
+      </button>
     </section>
     <!-- 遊戲內容 -->
     <section class="container-fluid mb-4">
@@ -721,18 +718,15 @@ export default {
         <p class="license">
           6z.com é operada pela Dubet N.V., número de registro da empresa 10692, com endereço
           registrado em Abraham de Veerstraat 7, Curaçao e é licenciada e autorizada pelo governo de
-          Curaçao. A 6z opera sob a Master License of Gaming Services Provider, N.V. Número da
-          Licença 365/JAZ Sub-Licença
+          365/JAZ Sub-Licença
           <a href="#" class="text-decoration-none">GLH-OCCHKTW0705152022</a>
         </p>
         <p class="warnContent">
-          1. Este produto é para uso de usuários maiores de 18 anos e é destinado apenas para fins
-          de entretenimento.
+          entretenimento.
           <br />
           2. este jogo contém compras noapp.
           <br />
-          3. O fato de um jogador jogar ou ganhar em um jogo de apostas sociais não significa que
-          ele ganhará em apostas com dinheiro real e jogos relacionados no futuro.
+          ganhará em apostas com dinheiro real e jogos relacionados no futuro.
         </p>
         <hr />
         <div class="support pt-3">
@@ -802,5 +796,7 @@ export default {
     <AddHomeWindow></AddHomeWindow>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
+    <!-- 搜尋遊戲列表 -->
+    <GameListSearch></GameListSearch>
   </div>
 </template>
