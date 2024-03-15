@@ -4,6 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
+import GameListSearch from '@/components/GameListSearch.vue'
 
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
@@ -251,6 +252,7 @@ export default {
     AddHomeWindow,
     RouterLink,
     BottomMenu,
+    GameListSearch
   },
   created() {
     console.log('------- userStore ', this.userStore, ' .ticket', this.userStore.ticket)
@@ -426,7 +428,7 @@ export default {
       </div>
     </div>
     <!-- 跑馬燈 -->
-    <section class="container d-flex marquee my-2">
+    <section class="container d-flex marquee my-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -445,26 +447,21 @@ export default {
     </section>
     <!-- 搜尋框 -->
     <section class="container-fluid mb-3">
-      <div class="searchBox rounded-1 d-flex align-items-center">
+      <button type="button" class="btn searchBox" data-bs-toggle="modal" data-bs-target="#GameListSearchModal">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="#6e6e6e"
-          class="bi bi-search searchIcon"
+          class="bi bi-search me-3"
           viewBox="0 0 16 16"
         >
           <path
             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
           />
         </svg>
-        <input
-          type="email"
-          class="form-control border-0 ps-5"
-          aria-describedby="emailHelp"
-          placeholder="Procure Jogos ou Provedores"
-        />
-      </div>
+        <span>Procure Jogos ou Provedores</span>
+      </button>
     </section>
     <!-- 遊戲內容 -->
     <section class="container-fluid mb-4">
@@ -789,5 +786,7 @@ export default {
     <AddHomeWindow></AddHomeWindow>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
+    <!-- 搜尋遊戲列表 -->
+    <GameListSearch></GameListSearch>
   </div>
 </template>
