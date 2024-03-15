@@ -11,7 +11,6 @@ import { useUserStore } from '@/stores/modules/user'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import '@/assets/css/index.css'
-import { RouterLink } from 'vue-router'
 // import { pinia } from '@/stores'
 
 export default {
@@ -251,7 +250,6 @@ export default {
     SwiperSlide,
     GameLogo,
     AddHomeWindow,
-    RouterLink,
     BottomMenu,
     GameListSearch
   },
@@ -322,13 +320,13 @@ export default {
     <header class="position-fixed">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <RouterLink to="/" class="navbar-brand logo">
+          <router-link to="/" class="navbar-brand logo">
             <GameLogo></GameLogo>
-          </RouterLink>
+          </router-link>
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
           <div class="right" v-show="!logged">
-            <RouterLink to="/register" class="registerBtn me-3">Cadastre-se</RouterLink>
-            <RouterLink to="/login" class="btn loginBtn fw-bold">Login</RouterLink>
+            <router-link to="/register" class="registerBtn me-3">Cadastre-se</router-link>
+            <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link>
           </div>
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
           <div class="right" v-show="logged">
@@ -336,7 +334,7 @@ export default {
               <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
               {{ userMoney }}
             </div>
-            <RouterLink class="depositBtn me-2" to="/deposit">
+            <router-link class="depositBtn me-2" to="/deposit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -353,7 +351,7 @@ export default {
                 ></path>
               </svg>
               Depósito
-            </RouterLink>
+            </router-link>
             <button
               class="btn userBtn d-flex flex-column justify-content-center align-items-center p-0"
               type="button"
@@ -432,12 +430,12 @@ export default {
     <!-- banner2 -->
     <div class="banner2 container">
       <div class="row row-cols-2 g-1">
-        <RouterLink class="col" to="/deposit">
+        <router-link class="col" to="/deposit">
           <img src="https://6z.com/img/vip.a28e101a.jpg" class="w-100" alt="">
-        </RouterLink>
-        <RouterLink class="col" to="/cashback">
+        </router-link>
+        <router-link class="col" to="/cashback">
           <img src="https://6z.com/img/RS12.affbb8c0.jpg" class="w-100" alt="">
-        </RouterLink>
+        </router-link>
       </div>
     </div>
     <!-- 跑馬燈 -->
@@ -502,9 +500,9 @@ export default {
       <div class="tabHome mt-3">
         <ul class="p-0">
           <li class="px-3 py-2 me-2">
-            <RouterLink to="/promotions">
+            <router-link to="/promotions">
               <span>Promoções</span>
-            </RouterLink>
+            </router-link>
           </li>
           <li class="px-3 py-2 me-2">
             <span>6z Originals</span>
@@ -525,15 +523,15 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Quente</div>
-            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 18</RouterLink>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 18</router-link>
           </div>
         </template>
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.quente.list1" :key="item">
-              <RouterLink to="/play" class="img">
+              <router-link to="/play" class="img">
                 <img :src="item.imgUrl" class="w-100" />
-              </RouterLink>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
@@ -552,7 +550,7 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">PG Soft</div>
-            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 102</RouterLink>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 102</router-link>
           </div>
         </template>
         <swiper-slide>
@@ -579,7 +577,7 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">6z Originals</div>
-            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 41</RouterLink>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 41</router-link>
           </div>
         </template>
         <swiper-slide>
@@ -617,7 +615,7 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Live Casino</div>
-            <RouterLink to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 55</RouterLink>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 55</router-link>
           </div>
         </template>
         <swiper-slide>
@@ -694,24 +692,24 @@ export default {
         <div class="title text-center mb-3">SOBRE NÓS</div>
         <ul class="d-flex justify-content-around p-0">
           <li>
-            <RouterLink to="/contact" class="text-decoration-none"> Contate-nos </RouterLink>
+            <router-link to="/contact" class="text-decoration-none"> Contate-nos </router-link>
           </li>
           <li>
-            <RouterLink to="/help" class="text-decoration-none"> Como Jogar </RouterLink>
+            <router-link to="/help" class="text-decoration-none"> Como Jogar </router-link>
           </li>
         </ul>
         <div class="terms text-center">
-          <RouterLink to="/preventLaunderMoney" class="px-2">AML Policy</RouterLink>
-          <RouterLink to="/terms" class="px-2">Terms &amp; Conditions</RouterLink>
+          <router-link to="/preventLaunderMoney" class="px-2">AML Policy</router-link>
+          <router-link to="/terms" class="px-2">Terms &amp; Conditions</router-link>
           <br />
-          <RouterLink to="/privacy" class="px-2">KYC Policy </RouterLink>
-          <RouterLink to="/exclusionPolicy" class="px-2">Self Exclusion Policy</RouterLink>
+          <router-link to="/privacy" class="px-2">KYC Policy </router-link>
+          <router-link to="/exclusionPolicy" class="px-2">Self Exclusion Policy</router-link>
           <br />
-          <RouterLink to="/gamingPolicy" class="px-2"
-            >Underage Gaming Policy (18+ to play clause)</RouterLink
+          <router-link to="/gamingPolicy" class="px-2"
+            >Underage Gaming Policy (18+ to play clause)</router-link
           >
           <br />
-          <RouterLink to="/responsible" class="px-2">Responsible Gaming Policy</RouterLink>
+          <router-link to="/responsible" class="px-2">Responsible Gaming Policy</router-link>
         </div>
         <hr />
         <div class="title text-center mb-3">LICENÇA</div>

@@ -26,8 +26,10 @@ export default {
     $route(to,from) {
       if(to.meta.index > from.meta.index){
         this.transitionName = 'slide-left'
-      } else {
+      } else if (to.meta.index < from.meta.index){
         this.transitionName = 'slide-right'
+      } else {
+        this.transitionName = 'slide-left'
       }
       console.log(to.meta.index);
       console.log(from.meta.index);
@@ -50,23 +52,34 @@ export default {
 .slide-left-enter-active,
 .slide-left-leave-active {
  will-change: transform;
- transition: all .05s;
+ transition: all .5s;
  position: absolute;
 }
-.slide-right-enter-active {
- opacity: 0;
- transform: translate3d(-100%, 0, 0);
+
+.slide-left-enter-from{
+  transform: translate3d(100%, 0, 0);
 }
-.slide-right-leave-active {
- opacity: 0;
- transform: translate3d(100%, 0, 0);
+.slide-left-enter-to{
+  transform: translate3d(0%, 0, 0);
 }
-.slide-left-enter-active {
- opacity: 0;
- transform: translate3d(100%, 0, 0);
+
+.slide-left-leave-from{
+  transform: translate3d(0%, 0, 0);
 }
-.slide-left-leave-active {
- opacity: 0;
- transform: translate3d(-100%, 0, 0);
+.slide-left-leave-to{
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-right-enter-from{
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-enter-to{
+  transform: translate3d(0%, 0, 0);
+}
+.slide-right-leave-from{
+  transform: translate3d(0%, 0, 0);
+}
+.slide-right-leave-to{
+  transform: translate3d(100%, 0, 0);
 }
 </style>
