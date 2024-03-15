@@ -431,10 +431,10 @@ export default {
     <div class="banner2 container">
       <div class="row row-cols-2 g-1">
         <RouterLink class="col" to="/deposit">
-          <img src="https://6z.com/img/vip.a28e101a.jpg" class="w-100" alt="">
+          <img src="https://6z.com/img/vip.a28e101a.jpg" class="w-100" alt="" />
         </RouterLink>
         <RouterLink class="col" to="/cashback">
-          <img src="https://6z.com/img/RS12.affbb8c0.jpg" class="w-100" alt="">
+          <img src="https://6z.com/img/RS12.affbb8c0.jpg" class="w-100" alt="" />
         </RouterLink>
       </div>
     </div>
