@@ -46,7 +46,7 @@ h2 {
   margin: 0;
 }
 a {
-  cursor: pointer;
+  cursor: auto;
   text-decoration: none;
 }
 .btn:focus{
