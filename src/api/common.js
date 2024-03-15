@@ -13,3 +13,10 @@ export function goodsList(type) {
     method: 'get'
   })
 }
+
+export function gameList() {
+  return request({
+    url: '/game/list/web',
+    method: 'get'
+  })
+}

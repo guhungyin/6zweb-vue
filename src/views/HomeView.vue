@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       recentListWinData: [],
+      gameList: [],
       gameImgData: {
         quente: {
           list1: [
@@ -264,19 +265,31 @@ export default {
     }
 
     this.winnerShow()
+    this.queryGameList()
   },
   methods: {
     toTop() {
-      document.documentElement.scrollTop = 0;
+      document.documentElement.scrollTop = 0
+    },
+    queryGameList() {
+      this.commonStore
+        .getGameList()
+        .then((response) => {
+          if (response.data) {
+            response.data.forEach((v) => {
+              this.gameList.push(v)
+            })
+          }
+        })
+        .catch((error) => {
+          console.log('query game list error: ', error.message)
+        })
     },
     winnerShow() {
       this.commonStore
         .getWinnerShow()
         .then((response) => {
           console.log('response ---> ', response)
-          //   userName: '6142*****11',
-          //   winMoney: 'R$ 2300',
-          //   imgUrl: 'https://pg61.vip/images/game/551936.jpg'
           if (response.data.bigWin) {
             response.data.bigWin.forEach((v) => {
               this.recentListWinData.push({
@@ -428,7 +441,7 @@ export default {
       </div>
     </div>
     <!-- 跑馬燈 -->
-    <section class="container d-flex marquee my-3">
+    <section class="container d-flex marquee my-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -705,17 +718,14 @@ export default {
         <p class="license">
           6z.com é operada pela Dubet N.V., número de registro da empresa 10692, com endereço
           registrado em Abraham de Veerstraat 7, Curaçao e é licenciada e autorizada pelo governo de
-          Curaçao. A 6z opera sob a Master License of Gaming Services Provider, N.V. Número da Licença
           365/JAZ Sub-Licença
           <a href="#" class="text-decoration-none">GLH-OCCHKTW0705152022</a>
         </p>
         <p class="warnContent">
-          1. Este produto é para uso de usuários maiores de 18 anos e é destinado apenas para fins de
           entretenimento.
           <br />
           2. este jogo contém compras noapp.
           <br />
-          3. O fato de um jogador jogar ou ganhar em um jogo de apostas sociais não significa que ele
           ganhará em apostas com dinheiro real e jogos relacionados no futuro.
         </p>
         <hr />
