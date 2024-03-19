@@ -50,6 +50,10 @@ export default {
     BottomMenu,
     CloseBtn
   },
+  mounted() {
+    let obj = this.$route.query
+    console.log('------> query params : ', obj)
+  },
   setup() {
     return {
       modules: [Navigation, Pagination]

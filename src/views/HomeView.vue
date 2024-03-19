@@ -23,60 +23,204 @@ export default {
         quente: {
           list1: [
             {
-              imgUrl: 'https://6z.com/images/game/551931.jpg'
+              imgUrl: 'https://6z.com/images/game/551931.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
+              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
+              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551476.jpg'
+              imgUrl: 'https://6z.com/images/game/551476.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551031.jpg'
+              imgUrl: 'https://6z.com/images/game/551031.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551010.jpg'
+              imgUrl: 'https://6z.com/images/game/551010.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
+              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551458.jpg'
+              imgUrl: 'https://6z.com/images/game/551458.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             }
           ],
           list2: [
             {
-              imgUrl: 'https://6z.com/images/game/551931.jpg'
+              imgUrl: 'https://6z.com/images/game/551931.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg'
+              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg'
+              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551476.jpg'
+              imgUrl: 'https://6z.com/images/game/551476.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551031.jpg'
+              imgUrl: 'https://6z.com/images/game/551031.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
+              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551010.jpg'
+              imgUrl: 'https://6z.com/images/game/551010.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg'
+              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             },
             {
-              imgUrl: 'https://6z.com/images/game/551458.jpg'
+              imgUrl: 'https://6z.com/images/game/551458.jpg',
+              id: 41,
+              cp: 'pg_electronic',
+              gameId: '54',
+              gameType: 'slots',
+              gameName: "Captain's Bounty",
+              gameLang: 'pt',
+              gamePlat: null,
+              gameNameZhcn: "Captain's Bounty"
             }
           ]
         },
@@ -303,7 +447,7 @@ export default {
         .catch((error) => {
           console.log('getWinnerShow error message  ---> ', error.message)
         })
-    },
+    }
   },
   setup() {
     const commonStore = useCommonStore()
@@ -460,7 +604,12 @@ export default {
     </section>
     <!-- 搜尋框 -->
     <section class="container-fluid mb-3">
-      <button type="button" class="btn searchBox" data-bs-toggle="modal" data-bs-target="#GameListSearchModal">
+      <button
+        type="button"
+        class="btn searchBox"
+        data-bs-toggle="modal"
+        data-bs-target="#GameListSearchModal"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -531,7 +680,20 @@ export default {
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.quente.list1" :key="item">
-              <RouterLink to="/play" class="img">
+              <RouterLink
+                :to="{
+                  name: 'play',
+                  query: {
+                    id: item.id,
+                    gamePlat: item.gamePlat,
+                    gameId: item.gameId,
+                    cp: item.cp,
+                    gameType: item.gameType,
+                    gameLang: item.gameLang
+                  }
+                }"
+                class="img"
+              >
                 <img :src="item.imgUrl" class="w-100" />
               </RouterLink>
             </div>
