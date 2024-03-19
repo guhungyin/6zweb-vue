@@ -4,6 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '@/components/home/GameLogo.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 import CloseBtn from '@/components/CloseBtn.vue'
+import { useCommonStore } from '@/stores/modules/common'
 import 'swiper/css'
 import 'swiper/css/pagination'
 export default {
@@ -51,11 +52,12 @@ export default {
     CloseBtn
   },
   mounted() {
-    let obj = this.$route.query
-    console.log('------> query params : ', obj)
+    console.log('------> query params : ', this.commonStore.playGame)
   },
   setup() {
+    const commonStore = useCommonStore()
     return {
+      commonStore,
       modules: [Navigation, Pagination]
     }
   }

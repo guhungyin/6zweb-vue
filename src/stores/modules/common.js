@@ -7,12 +7,14 @@ import { defineStore } from 'pinia'
 export const useCommonStore = defineStore('common', {
   state: () => {
     return {
-      viewInActive: false,
-      viewOutActive: false
+      playGame: {}
     }
   },
   getters: {},
   actions: {
+    setPlayGame(setPlayGame) {
+      this.playGame = setPlayGame
+    },
     async getWinnerShow() {
       return new Promise((resolve, reject) => {
         common
