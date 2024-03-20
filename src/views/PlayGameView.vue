@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
 import GameLogo from '@/components/home/GameLogo.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
-import CloseBtn from '@/components/CloseBtn.vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 export default {
@@ -47,8 +46,7 @@ export default {
     Swiper,
     SwiperSlide,
     GameLogo,
-    BottomMenu,
-    CloseBtn
+    BottomMenu
   },
   setup() {
     return {
@@ -129,7 +127,20 @@ export default {
             <div class="name">Fortune Rabbit</div>
           </div>
           <div class="closeBtn">
-            <CloseBtn></CloseBtn>
+            <router-link to="/">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="#FFFFFF"
+                class="bi bi-x"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                />
+              </svg>
+            </router-link>
           </div>
         </div>
         <router-link to="/partnerGame">
