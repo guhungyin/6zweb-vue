@@ -414,7 +414,6 @@ export default {
       document.documentElement.scrollTop = 0
     },
     setParams(gameInfo) {
-      console.log('-------->> play game params : ', gameInfo)
       this.commonStore.setPlayGame(gameInfo)
     },
     queryGameList() {

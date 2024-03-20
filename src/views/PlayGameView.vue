@@ -54,6 +54,13 @@ export default {
   mounted() {
     console.log('------> query params : ', this.commonStore.playGame)
   },
+  methods: {
+    handlePlayGame(e) {
+      //e.preventDefault()
+      console.log('------> handle play game url', e)
+      return false
+    }
+  },
   setup() {
     const commonStore = useCommonStore()
     return {
@@ -138,7 +145,7 @@ export default {
             <CloseBtn></CloseBtn>
           </div>
         </div>
-        <router-link to="/partnerGame">
+        <router-link to="#" @click="handlePlayGame($event)">
           <div class="playBtn mb-3">JOGUE</div>
         </router-link>
       </div>
