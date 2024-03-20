@@ -56,11 +56,11 @@ export default {
   },
   methods: {
     handlePlayGame() {
-      //e.preventDefault()
-      console.log('======> push play game')
-      this.$router.push({
-        name: 'partnerGame'
-      })
+      if (this.commonStore.playGame.cp === 'pg_electronic') {
+        this.$router.push({
+          name: 'partnerGame'
+        })
+      }
     }
   },
   setup() {

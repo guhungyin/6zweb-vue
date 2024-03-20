@@ -12,7 +12,7 @@ export default {
   created() {
     if (this.commonStore.playGame.cp === 'pg_electronic') {
       this.gameUrl =
-        'https://api.wins888.club/platform/pg/loginGame/' +
+        'https://api.wins888.club/platform/pg/gameLogin/' +
         this.commonStore.playGame.gameId +
         '?token=' +
         this.userStore.ticket
@@ -23,6 +23,10 @@ export default {
   methods: {
     toggleActive() {
       this.isMenuActive = !this.isMenuActive
+    },
+    handleClose() {
+      this.$router.replace({ name: 'play' })
+      this.$router.go(-1)
     }
   },
   setup() {
@@ -116,7 +120,7 @@ export default {
           </router-link>
         </li>
         <li>
-          <router-link to="/play">
+          <router-link to="" @click="handleClose">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

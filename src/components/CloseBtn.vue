@@ -18,13 +18,14 @@
 export default {
   methods: {
     closeBtn() {
+      console.log('----> history ', this.$route.name)
       this.$router.go(-1)
     }
   }
 }
 </script>
 <style scoped>
-  .closeBtn{
-    cursor: pointer;
-  }
+.closeBtn {
+  cursor: pointer;
+}
 </style>
