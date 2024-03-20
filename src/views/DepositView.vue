@@ -172,7 +172,7 @@ export default {
   components: {
     CloseBtn,
     LoadingPage,
-    BottomMenu
+    BottomMenu,
   },
   setup() {
     const commonStore = useCommonStore()

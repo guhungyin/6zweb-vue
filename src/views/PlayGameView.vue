@@ -55,9 +55,9 @@ export default {
     console.log('------> query params : ', this.commonStore.playGame)
   },
   methods: {
-    handlePlayGame(e) {
+    handlePlayGame() {
       //e.preventDefault()
-      console.log('------> handle play game url', e)
+      console.log('======> push play game')
       this.$router.push({
         name: 'partnerGame'
       })
@@ -147,9 +147,9 @@ export default {
             <CloseBtn></CloseBtn>
           </div>
         </div>
-        <router-link to="" @click="handlePlayGame($event)">
-          <div class="playBtn mb-3">JOGUE</div>
-        </router-link>
+        <button type="button" class="mb-3 btn playBtn" @click="handlePlayGame($event)">
+          JOGUE
+        </button>
       </div>
       <swiper
         :loop="true"
@@ -225,10 +225,8 @@ export default {
   padding: 0.2rem;
 }
 .playContent .playBtn {
+  border: 0;
   background: linear-gradient(180deg, #278e47, #64d23e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--fff);
   padding: 0.7rem 0;
   border-radius: 0.1rem;

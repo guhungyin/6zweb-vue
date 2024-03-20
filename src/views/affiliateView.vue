@@ -1,5 +1,5 @@
 <script>
-import commissionRulesModal from '@/components/affiliate/CommissionRulesModal.vue'
+import commissionRulesModal from '@/components/affiliate/commissionRulesModal.vue'
 import FaqView from '@/components/affiliate/page/FaqView.vue'
 import PaymentsView from '@/components/affiliate/page/PaymentsView.vue'
 import ReferralsView from '@/components/affiliate/page/ReferralsView.vue'

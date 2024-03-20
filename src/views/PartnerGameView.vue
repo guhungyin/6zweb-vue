@@ -17,6 +17,8 @@ export default {
         '?token=' +
         this.userStore.ticket
     }
+
+    console.log('--------> game url ', this.gameUrl)
   },
   methods: {
     toggleActive() {
