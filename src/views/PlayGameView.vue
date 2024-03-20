@@ -58,7 +58,9 @@ export default {
     handlePlayGame(e) {
       //e.preventDefault()
       console.log('------> handle play game url', e)
-      return false
+      this.$router.push({
+        name: 'partnerGame'
+      })
     }
   },
   setup() {
@@ -145,7 +147,7 @@ export default {
             <CloseBtn></CloseBtn>
           </div>
         </div>
-        <router-link to="#" @click="handlePlayGame($event)">
+        <router-link to="" @click="handlePlayGame($event)">
           <div class="playBtn mb-3">JOGUE</div>
         </router-link>
       </div>
