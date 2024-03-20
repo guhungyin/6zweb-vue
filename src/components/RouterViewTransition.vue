@@ -21,8 +21,6 @@ export default {
       } else {
         this.transitionName = 'slide-left'
       }
-      console.log(to.meta.index);
-      console.log(from.meta.index);
     }
   },
 }
