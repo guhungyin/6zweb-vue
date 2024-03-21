@@ -2,6 +2,7 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 import { pinia } from '@/stores'
 import { useUserStore } from '@/stores/modules/user'
+// import router from './router'
 // import { getToken } from '@/utils/auth'
 
 // const userStore = null
@@ -65,6 +66,7 @@ service.interceptors.response.use(
         userStore.$reset()
         setTimeout(async function () {
           window.location.href = `/`
+          // location.reload()
         }, 100)
         return // Promise.reject(new Error(res.msg || 'Error'))
 

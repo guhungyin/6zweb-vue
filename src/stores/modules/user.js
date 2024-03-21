@@ -40,7 +40,8 @@ export const useUserStore = defineStore('user', {
             reject(error)
           })
       })
-    }
+    },
+    toLogin() {}
   },
   persist: {
     storage: window.sessionStorage
