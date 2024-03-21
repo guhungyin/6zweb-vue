@@ -107,10 +107,18 @@ header .right .userBtn {
   color: var(--fff);
 }
 .recentListSwiper .main {
+  cursor: pointer;
   background-color: var(--black2);
+}
+.recentListSwiper .main .container{
+  height: 4.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .recentListSwiper .main .name {
   font-size: 0.8rem;
+  white-space: nowrap;
   color: var(--gray1);
 }
 .recentListSwiper .main .money {
@@ -127,6 +135,7 @@ header .right .userBtn {
   display: flex;
 }
 .tabHome li {
+  cursor: default;
   background-color: var(--black2);
 }
 .tabHome li span {
@@ -252,7 +261,6 @@ header .right .userBtn {
   background-color: var(--black1);
   color: var(--fff);
   font-size: 0.8rem;
-  cursor: pointer;
 }
 .footerBottom .topBtn svg,
 .footerBottom .topBtn span{

@@ -24,6 +24,9 @@
 .app.widthLimit {
   max-width: 34rem;
 }
+*{
+  cursor: default;
+}
 html{
   height: 100%;
   overflow-y: hidden;
@@ -46,9 +49,10 @@ h2 {
   margin: 0;
 }
 a {
-  cursor: auto;
+  cursor: default;
   text-decoration: none;
 }
+span,button{cursor: default !important;}
 .btn:focus{
   box-shadow: none;
 }
