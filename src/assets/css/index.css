@@ -261,7 +261,6 @@ header .right .userBtn {
   background-color: var(--black1);
   color: var(--fff);
   font-size: 0.8rem;
-  cursor: pointer;
 }
 .footerBottom .topBtn svg,
 .footerBottom .topBtn span{

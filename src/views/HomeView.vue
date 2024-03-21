@@ -5,7 +5,6 @@ import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 import GameListSearch from '@/components/GameListSearch.vue'
-
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
 import 'swiper/css'

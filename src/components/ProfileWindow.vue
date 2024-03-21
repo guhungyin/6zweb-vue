@@ -295,6 +295,7 @@ export default {
   color: var(--fff);
 }
 .profileWindow .main .link a {
+  cursor: default;
   width: 7rem;
   height: 2.2rem;
   color: var(--fff);
