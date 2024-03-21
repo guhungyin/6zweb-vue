@@ -87,7 +87,7 @@ export default {
           </div>
           <div class="coin d-flex justify-content-between position-relative mb-3">
             <div class="d-flex flex-column align-items-center w-50">
-              <div class="d-flex align-items-center">
+              <div class="coinTitle d-flex align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -108,7 +108,7 @@ export default {
               </div>
             </div>
             <div class="d-flex flex-column align-items-center w-50">
-              <div class="d-flex align-items-center">
+              <div class="coinTitle d-flex align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -287,6 +287,9 @@ export default {
   top: 0;
   background-color: #4c4c4c;
   transform: translate(-50%, 0);
+}
+.profileWindow .main .coin .coinTitle{
+  cursor: default;
 }
 .profileWindow .main .coin .num {
   color: var(--fff);

@@ -46,9 +46,9 @@ h2 {
   margin: 0;
 }
 a {
-  cursor: auto;
   text-decoration: none;
 }
+span{cursor: default;}
 .btn:focus{
   box-shadow: none;
 }

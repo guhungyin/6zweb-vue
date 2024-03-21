@@ -639,11 +639,11 @@ export default {
         }"
         class="recentListSwiper mt-2"
       >
-        <swiper-slide v-for="item in recentListWinData" :key="item" class="main">
+        <swiper-slide v-for="item in recentListWinData" :key="item" class="main overflow-hidden">
           <div class="img">
             <img :src="item.imgUrl" class="w-100" />
           </div>
-          <div class="container py-1">
+          <div class="container py-2">
             <div class="name mb-1">{{ item.userName }}</div>
             <div class="money">{{ item.winMoney }}</div>
           </div>
@@ -651,22 +651,25 @@ export default {
       </swiper>
       <div class="tabHome mt-3">
         <ul class="p-0">
-          <li class="px-3 py-2 me-2">
+          <li class="px-4 py-2 me-2">
             <router-link to="/promotions">
               <span>Promoções</span>
             </router-link>
           </li>
-          <li class="px-3 py-2 me-2">
-            <span>6z Originals</span>
+          <li class="px-4 py-2 me-2">
+            <router-link to="/gameList">
+              <span>6z Originals</span>
+            </router-link>
           </li>
-          <li class="px-3 py-2 me-2">
-            <span>Slots</span>
+          <li class="px-4 py-2 me-2">
+            <router-link to="/gameList">
+              <span>Slots</span>
+            </router-link>
           </li>
-          <li class="px-3 py-2 me-2">
-            <span>APP</span>
-          </li>
-          <li class="px-3 py-2 me-2">
-            <span>HOT</span>
+          <li class="px-4 py-2 me-2">
+            <router-link to="/downloadApp">
+              <span>APP</span>
+            </router-link>
           </li>
         </ul>
       </div>
