@@ -20,3 +20,12 @@ export function gameList() {
     method: 'get'
   })
 }
+
+// 游戏模块
+export function gameLogin(loginUrl) {
+  return request({
+    // url: '/vue-admin-template/user/login',
+    url: loginUrl,
+    method: 'get'
+  })
+}

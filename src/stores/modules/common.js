@@ -53,6 +53,22 @@ export const useCommonStore = defineStore('common', {
             reject(error)
           })
       })
+    },
+
+    // 游戏模块
+
+    async gameLogin(url, data) {
+      return new Promise((resolve, reject) => {
+        common
+          .gameLogin(url, data)
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((error) => {
+            console.log('游戏登录错误，common', error)
+            reject(error)
+          })
+      })
     }
   }
 })

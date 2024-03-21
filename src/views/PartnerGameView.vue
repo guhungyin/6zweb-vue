@@ -16,6 +16,11 @@ export default {
         this.commonStore.playGame.gameId +
         '?token=' +
         this.userStore.ticket
+    } else {
+      if (this.commonStore.playGame.cp === 'tada') {
+        this.gameUrl = this.commonStore.playGame.gameUrl
+        console.log('-----> tada game url: ', this.gameUrl)
+      }
     }
 
     console.log('--------> game url ', this.gameUrl)

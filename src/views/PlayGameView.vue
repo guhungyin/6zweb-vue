@@ -5,6 +5,7 @@ import GameLogo from '@/components/home/GameLogo.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 import CloseBtn from '@/components/CloseBtn.vue'
 import { useCommonStore } from '@/stores/modules/common'
+import LoadingPage from '@/components/LoadingPage.vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 export default {
@@ -41,7 +42,8 @@ export default {
         {
           imgUrl: 'https://pg61.vip/images/game/551936.jpg'
         }
-      ]
+      ],
+      isLoading: false
     }
   },
   components: {
@@ -49,7 +51,8 @@ export default {
     SwiperSlide,
     GameLogo,
     BottomMenu,
-    CloseBtn
+    CloseBtn,
+    LoadingPage
   },
   mounted() {
     console.log('------> query params : ', this.commonStore.playGame)
@@ -60,6 +63,32 @@ export default {
         this.$router.push({
           name: 'partnerGame'
         })
+      } else {
+        this.isLoading = true
+        if (this.commonStore.playGame.cp === 'tada') {
+          this.commonStore
+            .gameLogin(
+              '/' +
+                this.commonStore.playGame.cp +
+                '/gemeLoginAddress?gameId=' +
+                this.commonStore.playGame.gameId +
+                '&lang=' +
+                this.commonStore.playGame.gameLang,
+              {}
+            )
+            .then((response) => {
+              console.log('登录响应: ', response)
+              this.commonStore.playGame.gameUrl = response.data.Data
+              this.isLoading = false
+              this.$router.push({
+                name: 'partnerGame'
+              })
+            })
+            .catch((error) => {
+              this.isLoading = false
+              console.log('===> gameLoing error', error.message)
+            })
+        }
       }
     }
   },
@@ -74,6 +103,7 @@ export default {
 </script>
 <template>
   <div class="routerView">
+    <LoadingPage :active="isLoading" :is-full-page="true"></LoadingPage>
     <header class="position-fixed">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">

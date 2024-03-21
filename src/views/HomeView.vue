@@ -34,14 +34,14 @@ export default {
             },
             {
               imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
+              id: 100,
+              cp: 'tada',
+              gameId: '150',
+              gameType: 'bingo',
+              gameName: 'Lucky Bingo',
+              gameLang: 'en-US',
               gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
+              gameNameZhcn: 'Lucky Bingo'
             },
             {
               imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg',
