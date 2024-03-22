@@ -2,15 +2,18 @@
 import CloseBtn from '../components/CloseBtn.vue'
 import { ref, watch } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
+import LoadingPage from '@/components/LoadingPage.vue'
 export default {
   data() {
     return {
       pwdFlag: true,
-      errorMsg: ''
+      errorMsg: '',
+      isLoading: false
     }
   },
   components: {
-    CloseBtn
+    CloseBtn,
+    LoadingPage
   },
   created() {},
   methods: {
@@ -18,6 +21,7 @@ export default {
       this.loginClick = true
       this.isActive = false
       this.isDisabled = true
+      this.isLoading = true
       let loginUser = { mobile: this.mobile, password: this.password, source: '' }
       this.userStore
         .login(loginUser)
@@ -26,6 +30,7 @@ export default {
           this.isDisabled = false
           this.errorMsg = ''
           this.errorActive = false
+          this.isLoading = false
           console.log('登录响应: ', res, ' ---> ', this.userStore.id)
           this.$router.go(-1)
         })
@@ -34,6 +39,7 @@ export default {
           this.isDisabled = false
           this.errorMsg = err.message
           this.errorActive = true
+          this.isLoading = false
           console.log('登录失败: ', err.message)
         })
     },
@@ -85,6 +91,7 @@ export default {
 </script>
 <template>
   <div class="routerView">
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
       <h2 class="title">Bem Vindo ao</h2>
       <CloseBtn></CloseBtn>

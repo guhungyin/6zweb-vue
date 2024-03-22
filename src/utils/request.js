@@ -2,7 +2,7 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 import { pinia } from '@/stores'
 import { useUserStore } from '@/stores/modules/user'
-import Swal from 'sweetalert2'
+import * as bootstrap from 'bootstrap'
 
 // import router from './router'
 // import { getToken } from '@/utils/auth'
@@ -54,40 +54,24 @@ service.interceptors.response.use(
   (response) => {
     const res = response.data
 
-    console.log('--------->> res', res)
+    console.log('--------->> res', res, '--------- rquest url', response.config.url)
 
-    // Swal.fire({
-    //   title: 'Error!',
-    //   text: 'Do you want to continue',
-    //   icon: 'error',
-    //   popup: 'swal2-show',
-    //   backdrop: 'swal2-backdrop-show'
-    // })
-
-    // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 0) {
-      // Message({
-      //   message: res.msg || 'Error',
-      //   type: 'error',
-      //   duration: 5 * 1000
-      // })
-
       if (res.code === 10500012) {
         const userStore = useUserStore(pinia)
         userStore.$reset()
         setTimeout(async function () {
           window.location.href = `/`
-          // location.reload()
-        }, 100)
-        return // Promise.reject(new Error(res.msg || 'Error'))
+        }, 300)
+        return
+      } else if ('/user/login' !== response.config.url) {
+        var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+        document.getElementById('errorTips').innerHTML = res.msg
+        myModal.show()
 
-        // thant.$router.push(`/login?redirect=${thant.$route.fullPath}`)
-
-        // router.replace({
-        //   path: '/login'
-        // })
-
-        // return Promise.reject(new Error(res.msg || 'Error'))
+        setTimeout(async function () {
+          myModal.hide()
+        }, 3000)
       }
 
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
