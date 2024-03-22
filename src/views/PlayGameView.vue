@@ -64,8 +64,8 @@ export default {
           name: 'partnerGame'
         })
       } else {
-        this.isLoading = true
         if (this.commonStore.playGame.cp === 'tada') {
+          this.isLoading = true
           this.commonStore
             .gameLogin(
               '/' +
