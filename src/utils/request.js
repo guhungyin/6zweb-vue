@@ -2,6 +2,8 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 import { pinia } from '@/stores'
 import { useUserStore } from '@/stores/modules/user'
+import Swal from 'sweetalert2'
+
 // import router from './router'
 // import { getToken } from '@/utils/auth'
 
@@ -20,7 +22,7 @@ service.interceptors.request.use(
   (config) => {
     // do something before request is sent
     const userStore = useUserStore(pinia)
-    console.log('====> userStore', userStore)
+    // console.log('====> userStore', userStore)
     if (userStore.ticket) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
@@ -48,10 +50,19 @@ service.interceptors.response.use(
    * Here is just an example
    * You can also judge the status by HTTP Status Code
    */
+
   (response) => {
     const res = response.data
 
     console.log('--------->> res', res)
+
+    // Swal.fire({
+    //   title: 'Error!',
+    //   text: 'Do you want to continue',
+    //   icon: 'error',
+    //   popup: 'swal2-show',
+    //   backdrop: 'swal2-backdrop-show'
+    // })
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 0) {
