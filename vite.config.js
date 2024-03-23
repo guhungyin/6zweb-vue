@@ -34,8 +34,8 @@ export default defineConfig(({ command, mode }) => {
         vue(),
         VitePWA({
           manifest: {
-            name: '6z',
-            short_name: '6z',
+            name: 'win888',
+            short_name: 'win888',
             icons: [
               {
                 src: '/pwa-192x192.png',

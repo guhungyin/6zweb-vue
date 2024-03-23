@@ -61,7 +61,7 @@ service.interceptors.response.use(
         const userStore = useUserStore(pinia)
         userStore.$reset()
         setTimeout(async function () {
-          window.location.href = `/`
+          window.location.href = `/login`
         }, 300)
         return
       } else if ('/user/login' !== response.config.url) {
