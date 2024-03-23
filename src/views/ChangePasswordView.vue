@@ -1,8 +1,19 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 export default {
+  data() {
+    return {
+      pwdFlag: true,
+    }
+  },
   components: {
     CloseBtn
+  },
+  methods: {
+    // 切換是否顯示密碼
+    changePwd() {
+      this.pwdFlag = !this.pwdFlag
+    }
   }
 }
 </script>
@@ -12,16 +23,28 @@ export default {
       <h2 class="title">Alterar senha</h2>
       <CloseBtn></CloseBtn>
     </header>
-    <div class="main">
-      <div class="container-fluid">
-        <div class="changePasswordTitle fw-bold mt-4 mb-3">Alterar senha</div>
+    <div class="main changePasswordWindow">
+      <div class="container-fluid pt-3">
+        <div class="changePasswordTitle fw-bold mb-3">Alterar senha</div>
         <div class="passwordInput position-relative mb-4">
-          <input class="form-control py-2" type="text" placeholder="Atual senha" required />
+          <input
+            class="form-control py-2"
+            placeholder="Atual senha"
+            :type="this.pwdFlag ? 'password' : 'text'"
+            v-model.trim="password"
+          />
+          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
           <!-- +active顯示 -->
           <div class="tips mt-2">Please enter the correct password</div>
         </div>
         <div class="passwordInput position-relative mb-5">
-          <input class="form-control py-2" type="text" placeholder="Atual senha" required />
+          <input
+            class="form-control py-2"
+            placeholder="Atual senha"
+            :type="this.pwdFlag ? 'password' : 'text'"
+            v-model.trim="password"
+          />
+          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
           <!-- +active顯示 -->
           <div class="tips mt-2">Please enter the correct password</div>
         </div>
@@ -32,10 +55,8 @@ export default {
   </div>
 </template>
 <style scoped>
-.app {
-  background-color: var(--black2);
-  height: 100vh;
-  padding-top: 4rem;
+.changePasswordWindow{
+  margin-top: 4rem;
 }
 .changePasswordTitle {
   color: var(--primary);
@@ -47,11 +68,6 @@ export default {
   text-align: center;
   font-size: 0.8rem;
 }
-.passwordInput input {
-  height: 3.2rem;
-  background-color: #494949;
-  color: #868686;
-}
 .loginBtn {
   background: var(--greenGradient);
   color: var(--fff);
@@ -62,6 +78,28 @@ export default {
 }
 .loginBtn.active {
   opacity: 1;
+}
+.passwordInput input {
+  height: 3.2rem;
+  text-indent: 1rem;
+  color: var(--fff);
+}
+.passwordInput input::placeholder {
+  color: #4d565e;
+}
+.passwordInput div {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 1rem;
+  height: 1rem;
+  transform: translate(0, -50%);
+}
+.passwordInput div.textIcon {
+  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain;
+}
+.passwordInput div.pwdIcon {
+  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain;
 }
 .tips {
   display: none;
