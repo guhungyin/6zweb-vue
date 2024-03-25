@@ -19,6 +19,11 @@ export default {
   methods: {
     login() {
       this.loginClick = true
+
+      if (this.password.length <= 4) {
+        return
+      }
+
       this.isActive = false
       this.isDisabled = true
       this.isLoading = true

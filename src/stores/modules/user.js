@@ -41,7 +41,19 @@ export const useUserStore = defineStore('user', {
           })
       })
     },
-    toLogin() {}
+    toLogin() {},
+    async resetPassword(oldPwd, newPwd) {
+      return new Promise((resolve, reject) => {
+        user
+          .resetPassword({ password: oldPwd, newPassword: newPwd })
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    }
   },
   persist: {
     storage: window.sessionStorage

@@ -1,8 +1,9 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
-// import { Encrypt, Decrypt } from '@/utils/crypto'
+import { Encrypt, Decrypt } from '@/utils/crypto'
 import { ref, watch } from 'vue'
 import LoadingPage from '@/components/LoadingPage.vue'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
@@ -20,6 +21,22 @@ export default {
     changePwd() {
       this.btnClick = true
       console.log('old pwd ', this.resetOldPwd, 'new pwd', this.resetNewPwd)
+
+      if (this.resetOldPwd.length <= 4 || this.resetNewPwd.length <= 4) {
+        return
+      }
+
+      this.isLoading = true
+
+      this.userStore
+        .resetPassword(Encrypt(this.resetOldPwd), Encrypt(this.resetNewPwd))
+        .then(() => {
+          this.isLoading = false
+        })
+        .catch((err) => {
+          console.log('修改密码错误: ', err.message)
+          this.isLoading = false
+        })
     },
     showOldPwd() {
       this.pwdFlag = !this.pwdFlag
@@ -35,6 +52,7 @@ export default {
     const btnClick = ref(false)
     const tipsActive1 = ref(false)
     const tipsActive2 = ref(false)
+    const userStore = useUserStore()
 
     watch([resetOldPwd, resetNewPwd], () => {
       console.log('--> oldPwd', resetOldPwd.value, 'newPwd ', resetNewPwd.value)
@@ -66,7 +84,8 @@ export default {
       isActive,
       btnClick,
       tipsActive1,
-      tipsActive2
+      tipsActive2,
+      userStore
     }
   }
 }
