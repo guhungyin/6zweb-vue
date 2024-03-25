@@ -1,24 +1,91 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
+import { ref, watch } from 'vue'
+import { useUserStore } from '@/stores/modules/user'
+import { EncryptReg } from '@/utils/crypto'
+import LoadingPage from '@/components/LoadingPage.vue'
+import * as bootstrap from 'bootstrap'
 export default {
-  data(){
-    return{
-      pwdFlag:true,
+  data() {
+    return {
+      pwdFlag: true,
+      isLoading: false
     }
   },
   components: {
-    CloseBtn
+    CloseBtn,
+    LoadingPage
   },
   methods: {
     // 切換是否顯示密碼
-    changePwd(){
-      this.pwdFlag =! this.pwdFlag;
+    changePwd() {
+      this.pwdFlag = !this.pwdFlag
+    },
+    register() {
+      console.log('mobile > ', this.mobile, 'password > ', this.password)
+      this.isLoading = true
+
+      this.userStore
+        .register({
+          password: EncryptReg(this.password),
+          mobile: this.mobile,
+          channel: 20231113,
+          version: '1',
+          source: ''
+        })
+        .then((res) => {
+          this.isLoading = false
+          console.log('注册用户成功: ', res)
+          var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+          document.getElementById('errorTips').innerHTML = 'Register succeeded'
+          myModal.show()
+          let thant = this
+
+          setTimeout(async function () {
+            myModal.hide()
+            thant.$router.push({
+              name: 'login'
+            })
+          }, 2000)
+        })
+        .catch((err) => {
+          this.isLoading = false
+          console.log('注册用户错误: ', err.message)
+        })
+    }
+  },
+  setup() {
+    const mobile = ref()
+    const password = ref('')
+    const isActive = ref(false)
+    const isDisabled = ref(true)
+    const isChecked = ref(true)
+    const userStore = useUserStore()
+
+    watch([mobile, password], () => {
+      if (mobile.value.toString().length === 11 && password.value.length > 4) {
+        isActive.value = true
+        isDisabled.value = false
+      } else {
+        isActive.value = false
+        isDisabled.value = true
+      }
+    })
+
+    return {
+      mobile,
+      password,
+      isActive,
+      isDisabled,
+      isChecked,
+      userStore
     }
   }
 }
 </script>
 <template>
   <div class="routerView">
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
       <h2 class="title">Bem Vindo ao</h2>
       <CloseBtn></CloseBtn>
@@ -28,28 +95,48 @@ export default {
       <div class="container-fluid">
         <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
         <div class="phoneInput position-relative">
-          <input class="form-control py-2" type="number" placeholder="Número de Celular" />
+          <input
+            class="form-control py-2"
+            type="number"
+            placeholder="Número de Celular"
+            v-model.trim="this.mobile"
+          />
           <span>+55</span>
         </div>
-        <div class="tips my-2"> Please enter the correct phone number </div>
+        <div class="tips my-2">Please enter the correct phone number</div>
         <div class="passwordInput position-relative mt-3">
-          <input 
-            class="form-control py-2" 
-            placeholder="Senha" 
+          <input
+            class="form-control py-2"
+            placeholder="Senha"
             :type="this.pwdFlag ? 'password' : 'text'"
+            v-model.trim="this.password"
           />
           <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
         </div>
-        <div class="tips my-2"> Please enter the correct password </div>
+        <div class="tips my-2">Please enter the correct password</div>
         <div class="form-check agreeText my-2">
-          <input class="form-check-input" type="checkbox" value="" id="agreeCheck">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="agreeCheck"
+            v-model="isChecked"
+            disabled
+          />
           <label class="form-check-label" for="agreeCheck">
-            Eu concordo com os 
+            Eu concordo com os
             <router-link to="/terms" class="agreeLink">acordo do usuário</router-link>
             e confirmo que tenho pelo menos 18 anos
           </label>
         </div>
-        <button type="button" class="btn establishBtn w-100 mb-3"> Criar conta </button>
+        <button
+          type="button"
+          class="btn establishBtn w-100 mb-3"
+          :class="{ active: this.isActive }"
+          :disabled="this.isDisabled"
+          @click="register"
+        >
+          Criar conta
+        </button>
         <div class="link mb-3">
           Já tem uma conta?
           <router-link to="/login" class="ms-2"> Criar conta</router-link>
@@ -66,12 +153,14 @@ export default {
   </div>
 </template>
 <style scoped>
-.headerBack{z-index: 3;}
+.headerBack {
+  z-index: 3;
+}
 .app {
   background-color: var(--black2);
   height: 100vh;
 }
-.main{
+.main {
   max-width: 34rem;
   z-index: 2;
   margin-top: 0rem;
@@ -80,23 +169,23 @@ export default {
   top: 0;
   height: 100%;
 }
-.loginTitle{
+.loginTitle {
   color: var(--fff);
 }
 .phoneInput input {
   color: var(--fff);
   text-indent: 3rem;
 }
-.phoneInput input::placeholder{
+.phoneInput input::placeholder {
   color: #4d565e;
 }
-.phoneInput input[type="number"]::-webkit-outer-spin-button,
-.phoneInput input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.phoneInput input[type='number']::-webkit-outer-spin-button,
+.phoneInput input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.phoneInput input[type="number"] {
-    -moz-appearance: textfield;
+.phoneInput input[type='number'] {
+  -moz-appearance: textfield;
 }
 .phoneInput span {
   position: absolute;
@@ -109,7 +198,7 @@ export default {
   text-indent: 1rem;
   color: var(--fff);
 }
-.passwordInput input::placeholder{
+.passwordInput input::placeholder {
   color: #4d565e;
 }
 .passwordInput div {
@@ -120,11 +209,11 @@ export default {
   height: 1rem;
   transform: translate(0, -50%);
 }
-.passwordInput div.textIcon{
-  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain ;
+.passwordInput div.textIcon {
+  background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain;
 }
-.passwordInput div.pwdIcon{
-  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain ;
+.passwordInput div.pwdIcon {
+  background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain;
 }
 .tips {
   color: #e53535;
@@ -138,14 +227,14 @@ export default {
   font-size: 0.8rem;
   color: var(--gray1);
 }
-.agreeText .form-check-input{
+.agreeText .form-check-input {
   background-color: #2d303580;
   border: 1px solid #919191;
 }
-.agreeText .form-check-input:focus{
+.agreeText .form-check-input:focus {
   box-shadow: none;
 }
-.agreeText .agreeLink{
+.agreeText .agreeLink {
   color: var(--fff);
 }
 .establishBtn {
@@ -156,7 +245,7 @@ export default {
   border-radius: 2px;
   padding: 0.56rem 0;
 }
-.establishBtn:active{
+.establishBtn:active {
   color: var(--fff);
 }
 .establishBtn.active {

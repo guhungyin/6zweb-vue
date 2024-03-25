@@ -60,6 +60,19 @@ export const useUserStore = defineStore('user', {
             reject(error)
           })
       })
+    },
+
+    async register(userInfo) {
+      return new Promise((resolve, reject) => {
+        user
+          .register(userInfo)
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
     }
   },
   persist: {

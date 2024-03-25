@@ -37,7 +37,9 @@ export default {
           this.errorActive = false
           this.isLoading = false
           console.log('登录响应: ', res, ' ---> ', this.userStore.id)
-          this.$router.go(-1)
+          this.$router.push({
+            name: 'home'
+          })
         })
         .catch((err) => {
           this.isActive = true

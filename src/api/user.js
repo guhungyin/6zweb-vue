@@ -17,3 +17,12 @@ export function resetPassword(data) {
     data
   })
 }
+
+export function register(data) {
+  return request({
+    // url: '/vue-admin-template/user/login',
+    url: '/user/register',
+    method: 'post',
+    data
+  })
+}
