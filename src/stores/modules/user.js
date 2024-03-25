@@ -10,7 +10,7 @@ export const useUserStore = defineStore('user', {
       id: 0,
       ticket: '',
       nickName: '',
-      mobile: '',
+      mobile: '*********',
       email: '',
       money: '',
       vipLevel: 0,
@@ -28,7 +28,14 @@ export const useUserStore = defineStore('user', {
             this.id = response.data.id
             this.ticket = response.data.ticket
             this.nickName = response.data.nickName
-            this.mobile = response.data.mobile
+
+            if (
+              response.data.mobile &&
+              response.data.mobile !== '' &&
+              response.data.mobile !== 'null'
+            ) {
+              this.mobile = response.data.mobile
+            }
             this.email = response.data.email
 
             let bgMoney = new BigNumber(response.data.money)

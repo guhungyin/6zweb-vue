@@ -1,9 +1,10 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
-import { Encrypt, Decrypt } from '@/utils/crypto'
+import { Encrypt } from '@/utils/crypto'
 import { ref, watch } from 'vue'
 import LoadingPage from '@/components/LoadingPage.vue'
 import { useUserStore } from '@/stores/modules/user'
+import * as bootstrap from 'bootstrap'
 export default {
   data() {
     return {
@@ -32,6 +33,17 @@ export default {
         .resetPassword(Encrypt(this.resetOldPwd), Encrypt(this.resetNewPwd))
         .then(() => {
           this.isLoading = false
+          var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+          document.getElementById('errorTips').innerHTML = 'Password change succeeded'
+          myModal.show()
+          let thant = this
+
+          setTimeout(async function () {
+            myModal.hide()
+            thant.$router.push({
+              name: 'home'
+            })
+          }, 2000)
         })
         .catch((err) => {
           console.log('修改密码错误: ', err.message)
@@ -120,7 +132,7 @@ export default {
             :type="this.newPwdFlag ? 'password' : 'text'"
             v-model.trim="this.resetNewPwd"
           />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="showNewPwd"></div>
+          <div :class="this.newPwdFlag ? 'textIcon' : 'pwdIcon'" @click="showNewPwd"></div>
           <!-- +active顯示 -->
           <div class="tips mt-2" :class="{ active: this.tipsActive2 }">
             Please enter the correct password

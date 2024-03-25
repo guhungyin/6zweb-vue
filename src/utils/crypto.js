@@ -10,23 +10,24 @@ export function Encrypt(word) {
   const srcs = CryptoJS.enc.Utf8.parse(word)
   const encrypted = CryptoJS.AES.encrypt(srcs, key, {
     iv: iv,
-    mode: CryptoJS.mode.ECB,
+    mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   })
-  return CryptoJS.enc.Base64.stringify(encrypted.ciphertext)
+  return encrypted.ciphertext.toString().toUpperCase()
 }
 
 /**
  * AES 解密 ：字符串 key iv  返回base64
  *  */
 export function Decrypt(word) {
-  const base64 = CryptoJS.enc.Base64.parse(word)
-  const src = CryptoJS.enc.Base64.stringify(base64)
+  let encryptedHexStr = CryptoJS.enc.Hex.parse(word)
+  const src = CryptoJS.enc.Base64.stringify(encryptedHexStr)
 
   const decrypt = CryptoJS.AES.decrypt(src, key, {
     iv: iv,
-    mode: CryptoJS.mode.ECB,
+    mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   })
-  return CryptoJS.enc.Utf8.stringify(decrypt)
+
+  return decrypt.toString(CryptoJS.enc.Utf8).toString()
 }

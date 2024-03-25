@@ -26,6 +26,12 @@ export default {
   mounted() {
     const myOffcanvas = document.getElementById('profileWindow')
     this.bsOffcanvas = new Offcanvas(myOffcanvas)
+
+    // console.log('---> user mobile ', this.userStore.mobile)
+
+    // if (this.userStore.mobile !== '' && this.userStore.mobile !== undefined) {
+    //   this.userMobile = this.userStore.mobile
+    // }
   },
   setup() {
     const userStore = useUserStore()
@@ -77,7 +83,7 @@ export default {
               <img class="me-3" src="https://6z.com/img/user.6da7e89a.png" alt="" />
               <div class="d-flex flex-column">
                 <span>Conta</span>
-                <span>*********</span>
+                <span>{{ this.userStore.mobile }}</span>
               </div>
             </router-link>
             <router-link to="/changePassword" class="changePassword d-flex">
@@ -288,7 +294,7 @@ export default {
   background-color: #4c4c4c;
   transform: translate(-50%, 0);
 }
-.profileWindow .main .coin .coinTitle{
+.profileWindow .main .coin .coinTitle {
   cursor: default;
 }
 .profileWindow .main .coin .num {
