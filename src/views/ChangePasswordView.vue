@@ -1,24 +1,79 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
+// import { Encrypt, Decrypt } from '@/utils/crypto'
+import { ref, watch } from 'vue'
+import LoadingPage from '@/components/LoadingPage.vue'
 export default {
   data() {
     return {
       pwdFlag: true,
+      newPwdFlag: true,
+      isLoading: false
     }
   },
   components: {
-    CloseBtn
+    CloseBtn,
+    LoadingPage
   },
   methods: {
     // 切換是否顯示密碼
     changePwd() {
+      this.btnClick = true
+      console.log('old pwd ', this.resetOldPwd, 'new pwd', this.resetNewPwd)
+    },
+    showOldPwd() {
       this.pwdFlag = !this.pwdFlag
+    },
+    showNewPwd() {
+      this.newPwdFlag = !this.newPwdFlag
+    }
+  },
+  setup() {
+    const resetOldPwd = ref('')
+    const resetNewPwd = ref('')
+    const isActive = ref(false)
+    const btnClick = ref(false)
+    const tipsActive1 = ref(false)
+    const tipsActive2 = ref(false)
+
+    watch([resetOldPwd, resetNewPwd], () => {
+      console.log('--> oldPwd', resetOldPwd.value, 'newPwd ', resetNewPwd.value)
+      if (resetOldPwd.value.length > 4 && resetNewPwd.value.length > 4) {
+        isActive.value = true
+
+        if (btnClick.value) {
+          tipsActive1.value = false
+          tipsActive2.value = false
+        }
+      } else {
+        isActive.value = false
+
+        if (btnClick.value) {
+          if (resetOldPwd.value.length <= 4) {
+            tipsActive1.value = true
+          }
+
+          if (resetNewPwd.value.length <= 4) {
+            tipsActive2.value = true
+          }
+        }
+      }
+    })
+
+    return {
+      resetOldPwd,
+      resetNewPwd,
+      isActive,
+      btnClick,
+      tipsActive1,
+      tipsActive2
     }
   }
 }
 </script>
 <template>
   <div class="routerView">
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
       <h2 class="title">Alterar senha</h2>
       <CloseBtn></CloseBtn>
@@ -31,31 +86,42 @@ export default {
             class="form-control py-2"
             placeholder="Atual senha"
             :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="password"
+            v-model.trim="this.resetOldPwd"
           />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
+          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="showOldPwd"></div>
           <!-- +active顯示 -->
-          <div class="tips mt-2">Please enter the correct password</div>
+          <div class="tips mt-2" :class="{ active: this.tipsActive1 }">
+            Please enter the correct password
+          </div>
         </div>
         <div class="passwordInput position-relative mb-5">
           <input
             class="form-control py-2"
             placeholder="Atual senha"
-            :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="password"
+            :type="this.newPwdFlag ? 'password' : 'text'"
+            v-model.trim="this.resetNewPwd"
           />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
+          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="showNewPwd"></div>
           <!-- +active顯示 -->
-          <div class="tips mt-2">Please enter the correct password</div>
+          <div class="tips mt-2" :class="{ active: this.tipsActive2 }">
+            Please enter the correct password
+          </div>
         </div>
-        <button type="submit" class="btn loginBtn w-100 mb-4">Mudar</button>
+        <button
+          type="submit"
+          class="btn loginBtn w-100 mb-4"
+          :class="{ active: this.isActive }"
+          @click="changePwd"
+        >
+          Mudar
+        </button>
         <router-link to="/resetPhone" class="forgetThePassword">Esqueci minha senha?</router-link>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
-.changePasswordWindow{
+.changePasswordWindow {
   margin-top: 4rem;
 }
 .changePasswordTitle {
@@ -76,8 +142,12 @@ export default {
   border-radius: 2px;
   padding: 0.56rem 0;
 }
+.loginBtn:active {
+  color: var(--fff);
+}
 .loginBtn.active {
   opacity: 1;
+  cursor: pointer;
 }
 .passwordInput input {
   height: 3.2rem;

@@ -1,7 +1,7 @@
 import CryptoJS from 'crypto-js/crypto-js'
 
-const key = CryptoJS.enc.Utf8.parse('123321') // 密钥 后端提供
-const iv = CryptoJS.enc.Utf8.parse('') // 偏移量
+const key = CryptoJS.enc.Utf8.parse('gSMo345678dGLkMg') // 密钥 后端提供
+const iv = CryptoJS.enc.Utf8.parse('YGhjNEIMVMJ6I6iK') // 偏移量
 
 /**
  * AES加密 ：字符串 key iv  返回base64
