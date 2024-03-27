@@ -112,41 +112,60 @@ export default {
     <div class="main changePasswordWindow">
       <div class="container-fluid pt-3">
         <div class="changePasswordTitle fw-bold mb-3">Alterar senha</div>
-        <div class="passwordInput position-relative mb-4">
+        <div class="passwordInput position-relative mt-4">
           <input
             class="form-control py-2"
             placeholder="Atual senha"
             :type="this.pwdFlag ? 'password' : 'text'"
             v-model.trim="this.resetOldPwd"
           />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="showOldPwd"></div>
-          <!-- +active顯示 -->
-          <div class="tips mt-2" :class="{ active: this.tipsActive1 }">
-            Please enter the correct password
-          </div>
+          <div class="eyeIcon" :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="showOldPwd"></div>
         </div>
-        <div class="passwordInput position-relative mb-5">
+        <!-- +active顯示 -->
+        <div class="tips mt-2" :class="{ active: this.tipsActive1 }">
+          Please enter the correct password
+        </div>
+        <div class="passwordInput position-relative mt-4">
           <input
             class="form-control py-2"
             placeholder="Atual senha"
             :type="this.newPwdFlag ? 'password' : 'text'"
             v-model.trim="this.resetNewPwd"
           />
-          <div :class="this.newPwdFlag ? 'textIcon' : 'pwdIcon'" @click="showNewPwd"></div>
-          <!-- +active顯示 -->
-          <div class="tips mt-2" :class="{ active: this.tipsActive2 }">
-            Please enter the correct password
-          </div>
+          <div class="eyeIcon" :class="this.newPwdFlag ? 'textIcon' : 'pwdIcon'" @click="showNewPwd"></div>
+        </div>
+        <!-- +active顯示 -->
+        <div class="tips mt-2" :class="{ active: this.tipsActive2 }">
+          Please enter the correct password
         </div>
         <button
           type="submit"
-          class="btn loginBtn w-100 mb-4"
+          class="btn loginBtn w-100 mt-4"
           :class="{ active: this.isActive }"
           @click="changePwd"
         >
           Mudar
         </button>
-        <router-link to="/resetPhone" class="forgetThePassword">Esqueci minha senha?</router-link>
+        <router-link to="/resetPhone" class="forgetThePassword mt-2">Esqueci minha senha?</router-link>
+      </div>
+    </div>
+    <div
+      class="modal fade alertsModal"
+    >
+      <div class="modal-dialog modal-dialog-centered px-4">
+        <div class="modal-content py-2">
+          <div class="modal-body text-center py-3">
+            <!-- +active 顯示 -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FFF" class="bi bi-check-lg active" viewBox="0 0 16 16">
+              <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+            </svg>
+            <!-- +active 顯示 -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FFF" class="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+            <p class="mt-4">Password change succeeded</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -188,7 +207,7 @@ export default {
 .passwordInput input::placeholder {
   color: #4d565e;
 }
-.passwordInput div {
+.passwordInput .eyeIcon {
   position: absolute;
   top: 50%;
   right: 1rem;
@@ -196,10 +215,10 @@ export default {
   height: 1rem;
   transform: translate(0, -50%);
 }
-.passwordInput div.textIcon {
+.passwordInput .eyeIcon.textIcon {
   background: url('../assets/images/icon/eye-slash.svg') no-repeat center center / contain;
 }
-.passwordInput div.pwdIcon {
+.passwordInput .eyeIcon.pwdIcon {
   background: url('../assets/images/icon/eye-fill.svg') no-repeat center center / contain;
 }
 .tips {
@@ -216,4 +235,15 @@ export default {
   text-align: right;
   font-size: 0.8rem;
 }
+.alertsModal .modal-content {
+  background-color: #1c1c1c;
+  color: var(--fff);
+  width: 80%;
+  margin: auto;
+}
+.alertsModal .modal-content .modal-body svg{
+  display: none;
+  margin: 0 auto;
+}
+.alertsModal .modal-content .modal-body svg.active{display: block;}
 </style>
