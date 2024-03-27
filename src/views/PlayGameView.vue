@@ -88,6 +88,25 @@ export default {
               this.isLoading = false
               console.log('===> gameLoing error', error.message)
             })
+        } else if (this.commonStore.playGame.cp === 'pgplus') {
+          this.isLoading = true
+          this.commonStore
+            .gameLogin(
+              '/pg/plus/gameLogin?gameId=' + this.commonStore.playGame.gameId + '&orientation=H',
+              {}
+            )
+            .then((response) => {
+              console.log('游戏登录响应 url: ', response.data)
+              this.commonStore.playGame.gameUrl = response.data
+              this.isLoading = false
+              this.$router.push({
+                name: 'partnerGame'
+              })
+            })
+            .catch((error) => {
+              this.isLoading = false
+              console.log('===> gameLoing error', error.message)
+            })
         }
       }
     }
