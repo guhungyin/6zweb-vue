@@ -21,9 +21,9 @@ export function gameList() {
   })
 }
 
-export function hostList() {
+export function lobby() {
   return request({
-    url: '/game/hostList',
+    url: '/game/lobby',
     method: 'get'
   })
 }

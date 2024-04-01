@@ -41,10 +41,10 @@ export const useCommonStore = defineStore('common', {
       })
     },
 
-    async hostList() {
+    async lobby() {
       return new Promise((resolve, reject) => {
         common
-          .hostList()
+          .lobby()
           .then((res) => {
             resolve(res)
           })

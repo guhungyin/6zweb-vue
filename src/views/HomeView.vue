@@ -434,17 +434,17 @@ export default {
     },
     hotGameList() {
       this.commonStore
-        .hostList()
+        .lobby()
         .then((res) => {
           if (res.data) {
-            let total = res.data.length
+            let total = res.data.hotList.length
             let rows = Math.ceil(total / 9)
             console.log('总记录数:', total, '总页数:', rows)
             let index = 0
             for (let i = 0; i < rows; i++) {
               this.hotList[i] = []
               for (let j = 0; j < 9 && index < total; j++, index++) {
-                this.hotList[i].push(res.data[index])
+                this.hotList[i].push(res.data.hotList[index])
               }
             }
             // res.data.forEach((v) => this.hotList.push(v))
