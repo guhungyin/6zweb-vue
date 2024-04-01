@@ -63,26 +63,54 @@
             </div>
           </nav>
         </header>
-        <div class="tabHome">
+        <div class="tabList">
             <ul class="p-0">
-                <li class="px-3 py-2">
-                    <router-link to="/promotions">
-                        <span>Promoções</span>
-                    </router-link>
+                <li class="hot" :class="{ 'active' : activeTab === 'Hot' }" @click="setActiveTab('Hot')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Slots</span>
+                    </div>
                 </li>
-                <li class="px-3 py-2" :class="{ 'active': activeTab === 'recommendation' }">
-                    <span @click="setActiveTab('recommendation')">Recomendação</span>
+                <li class="record" :class="{ 'active' : activeTab === 'Record' }" @click="setActiveTab('Record')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Record</span>
+                    </div>
                 </li>
-                <li class="px-3 py-2" :class="{ 'active': activeTab === 'spin' }">
-                    <span @click="setActiveTab('spin')">Spin</span>
+                <li class="slots" :class="{ 'active' : activeTab === 'Slots' }" @click="setActiveTab('Slots')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Slots</span>
+                    </div>
                 </li>
-                <li class="px-3 py-2" :class="{ 'active': activeTab === 'slots' }">
-                    <span @click="setActiveTab('slots')">Slots</span>
+                <li class="live" :class="{ 'active' : activeTab === 'Live' }" @click="setActiveTab('Live')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Live</span>
+                    </div>
+                </li>
+                <li class="fish" :class="{ 'active' : activeTab === 'Fish' }" @click="setActiveTab('Fish')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Fish</span>
+                    </div>
+                </li>
+                <li class="blockchain" :class="{ 'active' : activeTab === 'Blockchain' }" @click="setActiveTab('Blockchain')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Blockchain</span>
+                    </div>
+                </li>
+                <li class="sports" :class="{ 'active' : activeTab === 'Sports' }" @click="setActiveTab('Sports')">
+                    <div class="d-flex">
+                        <i class="icon mb-2"></i>
+                        <span>Sports</span>
+                    </div>
                 </li>
             </ul>
         </div>
         <div class="main">
-            <div class="container">
+            <div class="container mt-2">
                 <div class="row row-cols-3 g-3">
                     <router-link to="/play" class="col gameItem">
                         <img class="bgImg w-100" src="https://6z.com/images/game/PIC_Mines.jpg" />
@@ -127,24 +155,59 @@
     .gameListWindow{
         background-color: #1a1a1a;
     }
-    .tabHome {
-    margin-top: 4.5rem;
+    .tabList {
+        margin-top: 4rem;
+        background-color: #212227;
+        height: 4.8rem;
     }
-    .tabHome ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    .tabList ul {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        height: 100%;
+        overflow-x: auto;
     }
-    .tabHome li {
-    background-color: var(--black2);
+    .tabList ul::-webkit-scrollbar{display: none;}
+    .tabList li {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 0 1.2rem;
     }
-    .tabHome li.active{
+    .tabList li.active{
         background-color: #2d3035;
     }
-    .tabHome li span {
-    font-size: 0.8rem;
-    white-space: nowrap;
-    color: var(--gray1);
+    .tabList li div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .tabList li .icon{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .tabList li.hot .icon{background: url('@/assets/images/icon/gameListIcon/hot_off.png') no-repeat center center / contain;}
+    .tabList li.record .icon{background: url('@/assets/images/icon/gameListIcon/record_off.png') no-repeat center center / contain;}
+    .tabList li.slots .icon{background: url('@/assets/images/icon/gameListIcon/slots_off.png') no-repeat center center / contain;}
+    .tabList li.live .icon{background: url('@/assets/images/icon/gameListIcon/live_off.png') no-repeat center center / contain;}
+    .tabList li.fish .icon{background: url('@/assets/images/icon/gameListIcon/fish_off.png') no-repeat center center / contain;}
+    .tabList li.blockchain .icon{background: url('@/assets/images/icon/gameListIcon/blockchain_off.png') no-repeat center center / contain;}
+    .tabList li.sports .icon{background: url('@/assets/images/icon/gameListIcon/sports_off.png') no-repeat center center / contain;}
+
+    .tabList li.active.hot .icon{background: url('@/assets/images/icon/gameListIcon/hot_on.png') no-repeat center center / contain;}
+    .tabList li.active.record .icon{background: url('@/assets/images/icon/gameListIcon/record_on.png') no-repeat center center / contain;}
+    .tabList li.active.slots .icon{background: url('@/assets/images/icon/gameListIcon/slots_on.png') no-repeat center center / contain;}
+    .tabList li.active.live .icon{background: url('@/assets/images/icon/gameListIcon/live_on.png') no-repeat center center / contain;}
+    .tabList li.active.fish .icon{background: url('@/assets/images/icon/gameListIcon/fish_on.png') no-repeat center center / contain;}
+    .tabList li.active.blockchain .icon{background: url('@/assets/images/icon/gameListIcon/blockchain_on.png') no-repeat center center / contain;}
+    .tabList li.active.sports .icon{background: url('@/assets/images/icon/gameListIcon/sports_on.png') no-repeat center center / contain;}
+
+    .tabList li span {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        color: var(--gray1);
     }
     .main{
         display: flex;

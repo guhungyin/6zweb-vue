@@ -675,24 +675,34 @@ export default {
       </swiper>
       <div class="tabHome mt-3">
         <ul class="p-0">
-          <li class="px-4 py-2 me-2">
-            <router-link to="/promotions">
-              <span>Promoções</span>
-            </router-link>
-          </li>
-          <li class="px-4 py-2 me-2">
+          <li class="me-2">
             <router-link to="/gameList">
-              <span>6z Originals</span>
-            </router-link>
-          </li>
-          <li class="px-4 py-2 me-2">
-            <router-link to="/gameList">
+              <img src="@/assets/images/icon/gameListIcon/slots_on.png" alt="">
               <span>Slots</span>
             </router-link>
           </li>
-          <li class="px-4 py-2 me-2">
-            <router-link to="/downloadApp">
-              <span>APP</span>
+          <li class="me-2">
+            <router-link to="/gameList">
+              <img src="@/assets/images/icon/gameListIcon/live_on.png" alt="">
+              <span>Live</span>
+            </router-link>
+          </li>
+          <li class="me-2">
+            <router-link to="/gameList">
+              <img src="@/assets/images/icon/gameListIcon/fish_on.png" alt="">
+              <span>Fish</span>
+            </router-link>
+          </li>
+          <li class="me-2">
+            <router-link to="/gameList">
+              <img src="@/assets/images/icon/gameListIcon/blockchain_on.png" alt="">
+              <span>Blockchain</span>
+            </router-link>
+          </li>
+          <li class="me-2">
+            <router-link to="/gameList">
+              <img src="@/assets/images/icon/gameListIcon/sports_on.png" alt="">
+              <span>Sports</span>
             </router-link>
           </li>
         </ul>
