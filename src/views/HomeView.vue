@@ -443,11 +443,8 @@ export default {
             let index = 0
             for (let i = 0; i < rows; i++) {
               this.hotList[i] = []
-              for (let j = 0; j < 9; j++) {
-                let v = res.data[index++]
-                if (v) {
-                  this.hotList[i].push(v)
-                }
+              for (let j = 0; j < 9 && index < total; j++, index++) {
+                this.hotList[i].push(res.data[index])
               }
             }
             // res.data.forEach((v) => this.hotList.push(v))
