@@ -719,15 +719,6 @@ export default {
             </div>
           </div>
         </swiper-slide>
-        <!-- <swiper-slide>
-          <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in hotList" :key="item">
-              <div class="img">
-                <img :src="item.iconName" class="w-100" />
-              </div>
-            </div>
-          </div>
-        </swiper-slide> -->
       </swiper>
       <!-- pg game -->
       <swiper :navigation="true" :modules="modules" class="pgGameListSwiper mt-3">
@@ -740,18 +731,18 @@ export default {
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.pg.list1" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img" @click="setParams(item)">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.pg.list2" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img" @click="setParams(item)">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
@@ -767,18 +758,18 @@ export default {
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.sixz.list1" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img" @click="setParams(item)">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.sixz.list2" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img" @click="setParams(item)">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
@@ -805,18 +796,18 @@ export default {
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.live.list1" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img" @click="setParams(item)">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in gameImgData.live.list2" :key="item">
-              <div class="img">
+              <router-link to="/play" class="img" @click="setParams(item)">
                 <img :src="item.imgUrl" class="w-100" />
-              </div>
+              </router-link>
             </div>
           </div>
         </swiper-slide>
