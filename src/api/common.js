@@ -21,6 +21,13 @@ export function gameList() {
   })
 }
 
+export function hostList() {
+  return request({
+    url: '/game/hostList',
+    method: 'get'
+  })
+}
+
 // 游戏模块
 export function gameLogin(loginUrl) {
   return request({

@@ -1,6 +1,6 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination, Grid } from 'swiper/modules'
 import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
@@ -17,11 +17,13 @@ export default {
     return {
       recentListWinData: [],
       gameList: [],
+      hotList: [],
+      hotSize: 0,
       gameImgData: {
         quente: {
           list1: [
             {
-              imgUrl: 'https://6z.com/images/game/551931.jpg',
+              imgUrl: 'https://h5.wins888.club/images/game/tada/252.png', //'https://6z.com/images/game/551931.jpg',
               id: 41,
               cp: 'pg_electronic',
               gameId: '54',
@@ -405,6 +407,7 @@ export default {
       this.userMoney = this.userStore.money
     }
 
+    this.hotGameList()
     this.winnerShow()
     this.queryGameList()
   },
@@ -428,6 +431,31 @@ export default {
         .catch((error) => {
           console.log('query game list error: ', error.message)
         })
+    },
+    hotGameList() {
+      this.commonStore
+        .hostList()
+        .then((res) => {
+          if (res.data) {
+            let total = res.data.length
+            let rows = Math.ceil(total / 9)
+            console.log('总记录数:', total, '总页数:', rows)
+            let index = 0
+            for (let i = 0; i < rows; i++) {
+              this.hotList[i] = []
+              for (let j = 0; j < 9; j++) {
+                let v = res.data[index++]
+                if (v) {
+                  this.hotList[i].push(v)
+                }
+              }
+            }
+            // res.data.forEach((v) => this.hotList.push(v))
+            console.log('hot list : ', this.hotList)
+            this.hotSize = total // this.hotList.length
+          }
+        })
+        .catch((err) => console.log('query host list error: ', err.message))
     },
     winnerShow() {
       this.commonStore
@@ -453,7 +481,7 @@ export default {
     const commonStore = useCommonStore()
     const userStore = useUserStore()
     return {
-      modules: [Navigation, Pagination],
+      modules: [Navigation, Pagination, Grid],
       commonStore,
       userStore
     }
@@ -677,27 +705,29 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Quente</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 18</router-link>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+              >ALL {{ this.hotSize }}</router-link
+            >
           </div>
         </template>
-        <swiper-slide>
+        <swiper-slide v-for="itemrow in this.hotList" :key="itemrow">
           <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.quente.list1" :key="item">
+            <div class="col" v-for="item in itemrow" :key="item">
               <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
+                <img :src="item.iconName" class="w-100" />
               </router-link>
             </div>
           </div>
         </swiper-slide>
-        <swiper-slide>
+        <!-- <swiper-slide>
           <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.quente.list2" :key="item">
+            <div class="col" v-for="item in hotList" :key="item">
               <div class="img">
-                <img :src="item.imgUrl" class="w-100" />
+                <img :src="item.iconName" class="w-100" />
               </div>
             </div>
           </div>
-        </swiper-slide>
+        </swiper-slide> -->
       </swiper>
       <!-- pg game -->
       <swiper :navigation="true" :modules="modules" class="pgGameListSwiper mt-3">

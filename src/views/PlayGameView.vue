@@ -5,6 +5,7 @@ import GameLogo from '@/components/home/GameLogo.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 import CloseBtn from '@/components/CloseBtn.vue'
 import { useCommonStore } from '@/stores/modules/common'
+import { useUserStore } from '@/stores/modules/user'
 import LoadingPage from '@/components/LoadingPage.vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -92,7 +93,7 @@ export default {
           this.isLoading = true
           this.commonStore
             .gameLogin(
-              '/pg/plus/gameLogin?gameId=' + this.commonStore.playGame.gameId + '&orientation=H',
+              '/pg/plus/gameLogin?gameId=' + this.commonStore.playGame.gameId + '&orientation=V',
               {}
             )
             .then((response) => {
@@ -113,8 +114,10 @@ export default {
   },
   setup() {
     const commonStore = useCommonStore()
+    const userStore = useUserStore()
     return {
       commonStore,
+      userStore,
       modules: [Navigation, Pagination]
     }
   }
@@ -135,7 +138,7 @@ export default {
           <div class="right">
             <div class="userMoney me-2">
               <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
-              0.00
+              {{ this.userStore.money }}
             </div>
             <router-link class="depositBtn me-2" to="/deposit">
               <svg
@@ -187,10 +190,10 @@ export default {
       <div class="playContent p-2 mb-3">
         <div class="gameBase mb-3">
           <div class="gameItem">
-            <img src="https://6z.com/images/game/551934.jpg" class="w-100" />
+            <img :src="this.commonStore.playGame.iconName" class="w-100" />
           </div>
           <div class="gameInfo ms-3">
-            <div class="name">Fortune Rabbit</div>
+            <div class="name">{{ this.commonStore.playGame.gameName }}</div>
           </div>
           <div class="closeBtn">
             <CloseBtn></CloseBtn>
