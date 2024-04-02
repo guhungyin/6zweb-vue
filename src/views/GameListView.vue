@@ -68,7 +68,7 @@
                 <li class="hot" :class="{ 'active' : activeTab === 'Hot' }" @click="setActiveTab('Hot')">
                     <div class="d-flex">
                         <i class="icon mb-2"></i>
-                        <span>Slots</span>
+                        <span>Hot</span>
                     </div>
                 </li>
                 <li class="record" :class="{ 'active' : activeTab === 'Record' }" @click="setActiveTab('Record')">
