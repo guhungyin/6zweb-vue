@@ -9,7 +9,7 @@ export default {
 <template>
   <div class="routerView">
     <div class="headerBack d-flex justify-content-between align-items-center px-2">
-      <h2 class="title">6Z APP</h2>
+      <h2 class="title">Wins888 APP</h2>
       <CloseBtn></CloseBtn>
     </div>
     <div class="container-fluid downloadApp">

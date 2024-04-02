@@ -7,13 +7,17 @@ import { defineStore } from 'pinia'
 export const useCommonStore = defineStore('common', {
   state: () => {
     return {
-      playGame: {}
+      playGame: {},
+      selectGameType: ''
     }
   },
   getters: {},
   actions: {
     setPlayGame(setPlayGame) {
       this.playGame = setPlayGame
+    },
+    setSelectGameType(gameType) {
+      this.selectGameType = gameType
     },
     async getWinnerShow() {
       return new Promise((resolve, reject) => {
@@ -41,10 +45,36 @@ export const useCommonStore = defineStore('common', {
       })
     },
 
+    async hotList() {
+      return new Promise((resolve, reject) => {
+        common
+          .hotList()
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+
     async lobby() {
       return new Promise((resolve, reject) => {
         common
           .lobby()
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
+    async byType(gameType) {
+      return new Promise((resolve, reject) => {
+        common
+          .byType(gameType)
           .then((res) => {
             resolve(res)
           })
@@ -83,5 +113,8 @@ export const useCommonStore = defineStore('common', {
           })
       })
     }
+  },
+  persist: {
+    storage: window.sessionStorage
   }
 })

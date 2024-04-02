@@ -28,6 +28,20 @@ export function lobby() {
   })
 }
 
+export function hotList() {
+  return request({
+    url: '/game/hotList',
+    method: 'get'
+  })
+}
+
+export function byType(gameType) {
+  return request({
+    url: '/game/byType/' + gameType,
+    method: 'get'
+  })
+}
+
 // 游戏模块
 export function gameLogin(loginUrl) {
   return request({

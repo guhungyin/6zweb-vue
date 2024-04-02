@@ -16,256 +16,12 @@ export default {
   data() {
     return {
       recentListWinData: [],
-      gameList: [],
+      // gameList: [],
       hotList: [],
       hotSize: 0,
+      pgList: [],
+      pgSize: 0,
       gameImgData: {
-        quente: {
-          list1: [
-            {
-              imgUrl: 'https://h5.wins888.club/images/game/tada/252.png', //'https://6z.com/images/game/551931.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg',
-              id: 100,
-              cp: 'tada',
-              gameId: '150',
-              gameType: 'bingo',
-              gameName: 'Lucky Bingo',
-              gameLang: 'en-US',
-              gamePlat: null,
-              gameNameZhcn: 'Lucky Bingo'
-            },
-            {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg',
-              id: 995,
-              cp: 'pgplus',
-              gameId: '43',
-              gameType: 'slots',
-              gameName: 'Dragon Hatch',
-              gameLang: 'en-US',
-              gamePlat: null,
-              gameNameZhcn: 'Dragon Hatch'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551476.jpg',
-              id: 1001,
-              cp: 'pgplus',
-              gameId: '80',
-              gameType: 'slots',
-              gameName: 'Olympus',
-              gameLang: 'en-US',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551031.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551010.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551458.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            }
-          ],
-          list2: [
-            {
-              imgUrl: 'https://6z.com/images/game/551931.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/FhsZfhemCibKnvX.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/VbIBbstdlEVdOgG.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551476.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551031.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551010.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://images.hibigwin.com/wildbet777/202401/mLLqbYLHTFbRPFQ.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551458.jpg',
-              id: 41,
-              cp: 'pg_electronic',
-              gameId: '54',
-              gameType: 'slots',
-              gameName: "Captain's Bounty",
-              gameLang: 'pt',
-              gamePlat: null,
-              gameNameZhcn: "Captain's Bounty"
-            }
-          ]
-        },
-        pg: {
-          list1: [
-            {
-              imgUrl: 'https://6z.com/images/game/551931.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551932.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551934.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551933.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551936.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551935.jpg'
-            }
-          ],
-          list2: [
-            {
-              imgUrl: 'https://6z.com/images/game/551937.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551938.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551940.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551941.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551942.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551943.jpg'
-            }
-          ]
-        },
         sixz: {
           list1: [
             {
@@ -409,7 +165,7 @@ export default {
 
     this.hotGameList()
     this.winnerShow()
-    this.queryGameList()
+    // this.queryGameList()
   },
   methods: {
     toTop() {
@@ -418,20 +174,24 @@ export default {
     setParams(gameInfo) {
       this.commonStore.setPlayGame(gameInfo)
     },
-    queryGameList() {
-      this.commonStore
-        .getGameList()
-        .then((response) => {
-          if (response.data) {
-            response.data.forEach((v) => {
-              this.gameList.push(v)
-            })
-          }
-        })
-        .catch((error) => {
-          console.log('query game list error: ', error.message)
-        })
+    selectGameType(gameType) {
+      console.log('click game type : ', gameType)
+      this.commonStore.setSelectGameType(gameType)
     },
+    // queryGameList() {
+    //   this.commonStore
+    //     .getGameList()
+    //     .then((response) => {
+    //       if (response.data) {
+    //         response.data.forEach((v) => {
+    //           this.gameList.push(v)
+    //         })
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       console.log('query game list error: ', error.message)
+    //     })
+    // },
     hotGameList() {
       this.commonStore
         .lobby()
@@ -447,9 +207,21 @@ export default {
                 this.hotList[i].push(res.data.hotList[index])
               }
             }
-            // res.data.forEach((v) => this.hotList.push(v))
             console.log('hot list : ', this.hotList)
-            this.hotSize = total // this.hotList.length
+            this.hotSize = total
+
+            if (res.data.pg) {
+              total = res.data.pg.length
+              rows = Math.ceil(total / 6)
+              index = 0
+              for (let i = 0; i < rows; i++) {
+                this.pgList[i] = []
+                for (let j = 0; j < 6 && index < total; j++, index++) {
+                  this.pgList[i].push(res.data.pg[index])
+                }
+              }
+              this.pgSize = total
+            }
           }
         })
         .catch((err) => console.log('query host list error: ', err.message))
@@ -676,32 +448,32 @@ export default {
       <div class="tabHome mt-3">
         <ul class="p-0">
           <li class="me-2">
-            <router-link to="/gameList">
-              <img src="@/assets/images/icon/gameListIcon/slots_on.png" alt="">
+            <router-link to="/gameList" @click="selectGameType('Slots')">
+              <img src="@/assets/images/icon/gameListIcon/slots_on.png" alt="" />
               <span>Slots</span>
             </router-link>
           </li>
           <li class="me-2">
-            <router-link to="/gameList">
-              <img src="@/assets/images/icon/gameListIcon/live_on.png" alt="">
+            <router-link to="/gameList" @click="selectGameType('Live')">
+              <img src="@/assets/images/icon/gameListIcon/live_on.png" alt="" />
               <span>Live</span>
             </router-link>
           </li>
           <li class="me-2">
-            <router-link to="/gameList">
-              <img src="@/assets/images/icon/gameListIcon/fish_on.png" alt="">
+            <router-link to="/gameList" @click="selectGameType('Fish')">
+              <img src="@/assets/images/icon/gameListIcon/fish_on.png" alt="" />
               <span>Fish</span>
             </router-link>
           </li>
           <li class="me-2">
-            <router-link to="/gameList">
-              <img src="@/assets/images/icon/gameListIcon/blockchain_on.png" alt="">
+            <router-link to="/gameList" @click="selectGameType('Blockchain')">
+              <img src="@/assets/images/icon/gameListIcon/blockchain_on.png" alt="" />
               <span>Blockchain</span>
             </router-link>
           </li>
           <li class="me-2">
-            <router-link to="/gameList">
-              <img src="@/assets/images/icon/gameListIcon/sports_on.png" alt="">
+            <router-link to="/gameList" @click="selectGameType('Sports')">
+              <img src="@/assets/images/icon/gameListIcon/sports_on.png" alt="" />
               <span>Sports</span>
             </router-link>
           </li>
@@ -732,23 +504,16 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">PG Soft</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 102</router-link>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+              >ALL {{ this.pgSize }}</router-link
+            >
           </div>
         </template>
-        <swiper-slide>
+        <swiper-slide v-for="pgItemRow in this.pgList" :key="pgItemRow">
           <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.pg.list1" :key="item">
-              <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
-              </router-link>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.pg.list2" :key="item">
-              <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
+            <div class="col" v-for="pgItem in pgItemRow" :key="pgItem">
+              <router-link to="/play" class="img" @click="setParams(pgItem)">
+                <img :src="pgItem.iconName" class="w-100" />
               </router-link>
             </div>
           </div>
