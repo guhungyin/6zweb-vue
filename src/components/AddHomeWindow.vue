@@ -26,7 +26,7 @@
 <template>
   <div class="addHomeWindow alert position-fixed w-100 fade show" role="alert">
     <div class="addHomeWindowTop d-flex align-items-center mb-2">
-      <img src="https://6z.com/img/logo_pwa.2b1da7fa.png" class="img-fluid me-3" alt="" />
+      <img src="../../public/pwa-192x192.png" class="img-fluid me-3" alt="" />
       <p class="m-0">
         Gostaríamos de adicionar o 6Z à sua tela inicial para as últimas apostas grátis e
         atualizações de bônus.
