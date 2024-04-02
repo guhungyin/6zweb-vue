@@ -31,7 +31,7 @@ export default {
           mobile: this.mobile,
           channel: 20231113,
           version: '1',
-          source: ''
+          source: this.userStore.source
         })
         .then((res) => {
           this.isLoading = false

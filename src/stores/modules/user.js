@@ -14,7 +14,8 @@ export const useUserStore = defineStore('user', {
       email: '',
       money: '',
       vipLevel: 0,
-      promotionTotalCommission: 0
+      promotionTotalCommission: 0,
+      source: ''
     }
   },
   actions: {

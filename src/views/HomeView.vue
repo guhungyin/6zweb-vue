@@ -154,8 +154,26 @@ export default {
     BottomMenu,
     GameListSearch
   },
+  mounted() {
+    if (this.$route.query.source) {
+      this.userStore.source = this.$route.query.source
+    }
+
+    console.log('url params: ', this.userStore.source)
+  },
   created() {
-    console.log('------- userStore ', this.userStore, ' .ticket', this.userStore.ticket)
+    console.log(
+      '------- userStore ',
+      this.userStore,
+      ' .ticket',
+      this.userStore.ticket,
+      ' url params : ',
+      this.$route.params
+    )
+
+    if (this.$route.query.source) {
+      this.userStore.source = this.$route.query.source
+    }
 
     if (this.userStore.ticket) {
       this.logged = true
