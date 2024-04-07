@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 // import { createPinia } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
+// import { useRegisterSW } from 'virtual:pwa-register/vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { pinia } from './stores'
@@ -11,6 +12,9 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/assets/css/main.css'
 // import QRCodePlugin from 'qrcode'
+// useRegisterSW()
+// pwa
+//https://www.enjoytoday.cn/2024/02/13/%E4%B8%80%E5%91%A8%E4%B8%80%E8%8D%90-vite-plugin-pwa-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85vite%E5%BA%94%E7%94%A8/
 
 const app = createApp(App)
 // const pinia = createPinia()

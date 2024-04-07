@@ -9,19 +9,62 @@ export default defineConfig(({ command, mode }) => {
 
   console.log('command ===> ', env)
 
+  const plugins = [
+    vue(),
+    VitePWA({
+      manifest: {
+        name: 'wins888',
+        short_name: 'wins888',
+        icons: [
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: '/pwa-maskable-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/pwa-maskable-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          }
+        ],
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#FFFFFF',
+        theme_color: '#FFFFFF'
+      },
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
+      devOptions: {
+        enabled: true
+      }
+    })
+  ]
+
   if (command === 'serve') {
     return {
-      plugins: [vue()],
+      plugins: plugins,
       base: '/',
       resolve: {
         alias: {
           '@': fileURLToPath(new URL('./src', import.meta.url))
         }
       },
-
-      // define: {
-      //   __APP_ENV__: JSON.stringify(env.APP_ENV)
-      // },
 
       server: {
         host: '0.0.0.0',
@@ -30,66 +73,13 @@ export default defineConfig(({ command, mode }) => {
     }
   } else {
     return {
-      plugins: [
-        vue(),
-        VitePWA({
-          manifest: {
-            name: 'win888',
-            short_name: 'win888',
-            icons: [
-              {
-                src: '/pwa-192x192.png',
-                sizes: '192x192',
-                type: 'image/png',
-                purpose: 'any'
-              },
-              {
-                src: '/pwa-512x512.png',
-                sizes: '512x512',
-                type: 'image/png',
-                purpose: 'any'
-              },
-              {
-                src: '/pwa-maskable-192x192.png',
-                sizes: '192x192',
-                type: 'image/png',
-                purpose: 'maskable'
-              },
-              {
-                src: '/pwa-maskable-512x512.png',
-                sizes: '512x512',
-                type: 'image/png',
-                purpose: 'maskable'
-              }
-            ],
-            start_url: '/',
-            display: 'standalone',
-            background_color: '#FFFFFF',
-            theme_color: '#FFFFFF'
-          },
-          registerType: 'autoUpdate',
-          workbox: {
-            globPatterns: ['**/*.{js,css,html,ico,png,svg}']
-          },
-          devOptions: {
-            enabled: true
-          }
-        })
-      ],
+      plugins: plugins,
       base: '/',
       resolve: {
         alias: {
           '@': fileURLToPath(new URL('./src', import.meta.url))
         }
       }
-
-      // define: {
-      //   __APP_ENV__: JSON.stringify(env.APP_ENV)
-      // }
-      // server: {
-      //   host: 'https://www.wins888.club',
-      //   open: true
-      // }
     }
   }
 })
