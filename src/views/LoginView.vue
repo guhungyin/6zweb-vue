@@ -27,7 +27,7 @@ export default {
       this.isActive = false
       this.isDisabled = true
       this.isLoading = true
-      let loginUser = { mobile: this.mobile, password: this.password, source: '' }
+      let loginUser = { account: this.account, password: this.password, source: '' }
       this.userStore
         .login(loginUser)
         .then((res) => {
@@ -61,7 +61,7 @@ export default {
     const isDisabled = ref(true)
     const errorActive = ref(false)
     const loginClick = ref(false)
-    const mobile = ref()
+    const account = ref('')
     const password = ref('')
     const userStore = useUserStore()
 
@@ -86,7 +86,7 @@ export default {
     return {
       isActive,
       tips1Active,
-      mobile,
+      account,
       password,
       isDisabled,
       userStore,
@@ -107,14 +107,13 @@ export default {
       <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
       <div class="container-fluid">
         <div class="loginTitle my-2 fw-bold">Login</div>
-        <div class="phoneInput position-relative">
+        <div class="passwordInput position-relative mt-3">
           <input
             class="form-control py-2"
-            type="number"
+            type="text"
             placeholder="Número de Celular"
-            v-model.number="mobile"
+            v-model.trim="this.account"
           />
-          <span>+55</span>
         </div>
         <div class="tips my-2">Please enter the correct phone number</div>
         <div class="passwordInput position-relative mt-3">
