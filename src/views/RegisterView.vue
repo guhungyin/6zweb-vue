@@ -214,7 +214,6 @@ export default {
   color: #4d565e;
 }
 input {
-  text-indent: 1rem;
   color: var(--fff);
 }
 input::placeholder {
