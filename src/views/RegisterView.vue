@@ -95,19 +95,20 @@ export default {
       <div class="container-fluid">
         <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
         <!-- 使用者名稱 -->
-        <input class="form-control py-2" placeholder="Nome de Usuário"/>
+        <input class="form-control py-2" placeholder="Nome de Usuário" />
         <div class="tips my-2">Nome de Usuário</div>
+        <div class="tips my-2">Please enter the correct phone number</div>
         <!-- 電話 -->
-        <div class="phoneInput position-relative mt-3">
+        <!-- <div class="phoneInput position-relative mt-3">
           <input
             class="form-control py-2"
             type="number"
-            placeholder="Número de Celular"
+            placeholder="Por favor, digite seu nome"
             v-model.trim="this.mobile"
           />
           <span>+55</span>
-        </div>
-        <div class="tips my-2">Please enter the correct phone number</div>
+        </div> -->
+
         <!-- 密碼 -->
         <div class="passwordInput position-relative mt-3">
           <input
@@ -130,6 +131,12 @@ export default {
           <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
         </div>
         <div class="tips my-2">Please enter the correct password</div>
+
+        <input
+          class="form-control position-relative mt-3"
+          placeholder="Por favor, digite seu nome"
+        />
+        <div class="tips my-2">Por favor, digite seu nome</div>
         <div class="form-check agreeText my-2">
           <input
             class="form-check-input"
