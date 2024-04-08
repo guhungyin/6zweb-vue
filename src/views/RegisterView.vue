@@ -23,14 +23,21 @@ export default {
     },
     register() {
       console.log('mobile > ', this.mobile, 'password > ', this.password)
+
+      if (this.password !== this.confirmPassword) {
+        this.confirmPasswordErrorActive = true
+        return
+      }
+
       this.isLoading = true
 
       this.userStore
         .register({
           password: EncryptReg(this.password),
-          mobile: this.mobile,
+          account: this.account,
           channel: 20231113,
           version: '1',
+          nickName: this.nickName,
           source: this.userStore.source
         })
         .then((res) => {
@@ -50,22 +57,45 @@ export default {
         })
         .catch((err) => {
           this.isLoading = false
+          // this.accountErrorActive = true
+          // this.accountErrorMsg = err.message
           console.log('注册用户错误: ', err.message)
         })
     }
   },
   setup() {
-    const mobile = ref()
+    const account = ref('')
+    const accountErrorMsg = ref('')
     const password = ref('')
+    const confirmPassword = ref('')
+    const nickName = ref('')
     const isActive = ref(false)
+    const accountErrorActive = ref(false)
+    const confirmPasswordErrorActive = ref(false)
     const isDisabled = ref(true)
     const isChecked = ref(true)
     const userStore = useUserStore()
 
-    watch([mobile, password], () => {
-      if (mobile.value.toString().length === 11 && password.value.length > 4) {
-        isActive.value = true
-        isDisabled.value = false
+    watch([account, password, confirmPassword], () => {
+      if (
+        account.value.toString().length > 4 &&
+        password.value.length > 4 &&
+        confirmPassword.value.length > 4
+      ) {
+        console.log('password --: ', password.value, 'confirmpassword : ', confirmPassword.value)
+
+        if (
+          password.value !== confirmPassword.value &&
+          confirmPassword.value.length >= password.value.length
+        ) {
+          confirmPasswordErrorActive.value = true
+          isActive.value = false
+          isDisabled.value = true
+        } else {
+          confirmPasswordErrorActive.value = false
+          isActive.value = true
+          isDisabled.value = false
+        }
       } else {
         isActive.value = false
         isDisabled.value = true
@@ -73,12 +103,17 @@ export default {
     })
 
     return {
-      mobile,
+      account,
       password,
       isActive,
       isDisabled,
       isChecked,
-      userStore
+      userStore,
+      accountErrorActive,
+      accountErrorMsg,
+      confirmPassword,
+      nickName,
+      confirmPasswordErrorActive
     }
   }
 }
@@ -95,9 +130,14 @@ export default {
       <div class="container-fluid">
         <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
         <!-- 使用者名稱 -->
-        <input class="form-control py-2" placeholder="Nome de Usuário" />
-        <div class="tips my-2">Nome de Usuário</div>
-        <div class="tips my-2">Please enter the correct phone number</div>
+        <input
+          class="form-control py-2"
+          placeholder="Nome de Usuário"
+          v-model.trim="this.account"
+        />
+        <div class="tips my-2" :class="{ active: this.accountErrorActive }">
+          {{ this.accountErrorMsg }}
+        </div>
         <!-- 電話 -->
         <!-- <div class="phoneInput position-relative mt-3">
           <input
@@ -126,15 +166,18 @@ export default {
             class="form-control py-2"
             placeholder="Confirme a senha"
             :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="this.password"
+            v-model.trim="this.confirmPassword"
           />
           <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
         </div>
-        <div class="tips my-2">Please enter the correct password</div>
-
+        <div class="tips my-2" :class="{ active: this.confirmPasswordErrorActive }">
+          Confirmar senha incorreta
+        </div>
+        <!-- 名字 -->
         <input
-          class="form-control position-relative mt-3"
+          class="form-control mt-3"
           placeholder="Por favor, digite seu nome"
+          v-model.trim="this.nickName"
         />
         <div class="tips my-2">Por favor, digite seu nome</div>
         <div class="form-check agreeText my-2">
