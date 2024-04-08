@@ -21,6 +21,8 @@ export default {
       hotSize: 0,
       pgList: [],
       pgSize: 0,
+      tadaList: [],
+      tadaSize: 0,
       gameImgData: {
         sixz: {
           list1: [
@@ -239,6 +241,19 @@ export default {
                 }
               }
               this.pgSize = total
+            }
+
+            if (res.data.tada) {
+              total = res.data.tada.length
+              rows = Math.ceil(total / 9)
+              index = 0
+              for (let i = 0; i < rows; i++) {
+                this.tadaList[i] = []
+                for (let j = 0; j < 9 && index < total; j++, index++) {
+                  this.tadaList[i].push(res.data.tada[index])
+                }
+              }
+              this.tadaSize = total
             }
           }
         })
@@ -541,15 +556,15 @@ export default {
       <swiper :navigation="true" :modules="modules" class="sixzGameListSwiper mt-3">
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
-            <div class="title">6z Originals</div>
+            <div class="title">Tada Soft</div>
             <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 41</router-link>
           </div>
         </template>
-        <swiper-slide>
+        <swiper-slide v-for="tadaItemRow in this.tadaList" :key="tadaItemRow">
           <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.sixz.list1" :key="item">
-              <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
+            <div class="col" v-for="tataItem in tadaItemRow" :key="tataItem">
+              <router-link to="/play" class="img" @click="setParams(tataItem)">
+                <img :src="tataItem.iconName" class="w-100" />
               </router-link>
             </div>
           </div>
