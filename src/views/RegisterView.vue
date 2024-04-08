@@ -130,6 +130,9 @@ export default {
           <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
         </div>
         <div class="tips my-2">Please enter the correct password</div>
+        <!-- 名字 -->
+        <input class="form-control mt-3" placeholder="Por favor, digite seu nome"/>
+        <div class="tips my-2">Por favor, digite seu nome</div>
         <div class="form-check agreeText my-2">
           <input
             class="form-check-input"
