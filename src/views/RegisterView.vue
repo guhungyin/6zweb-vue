@@ -94,7 +94,11 @@ export default {
       <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
       <div class="container-fluid">
         <div class="loginTitle my-2 fw-bold">Cadastre-se</div>
-        <div class="phoneInput position-relative">
+        <!-- 使用者名稱 -->
+        <input class="form-control py-2" placeholder="Nome de Usuário"/>
+        <div class="tips my-2">Nome de Usuário</div>
+        <!-- 電話 -->
+        <div class="phoneInput position-relative mt-3">
           <input
             class="form-control py-2"
             type="number"
@@ -104,10 +108,22 @@ export default {
           <span>+55</span>
         </div>
         <div class="tips my-2">Please enter the correct phone number</div>
+        <!-- 密碼 -->
         <div class="passwordInput position-relative mt-3">
           <input
             class="form-control py-2"
             placeholder="Senha"
+            :type="this.pwdFlag ? 'password' : 'text'"
+            v-model.trim="this.password"
+          />
+          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
+        </div>
+        <div class="tips my-2">Please enter the correct password</div>
+        <!-- 確認密碼 -->
+        <div class="passwordInput position-relative mt-3">
+          <input
+            class="form-control py-2"
+            placeholder="Confirme a senha"
             :type="this.pwdFlag ? 'password' : 'text'"
             v-model.trim="this.password"
           />
@@ -194,11 +210,11 @@ export default {
   transform: translate(0, -50%);
   color: #4d565e;
 }
-.passwordInput input {
+input {
   text-indent: 1rem;
   color: var(--fff);
 }
-.passwordInput input::placeholder {
+input::placeholder {
   color: #4d565e;
 }
 .passwordInput div {
