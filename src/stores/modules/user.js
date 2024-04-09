@@ -63,6 +63,19 @@ export const useUserStore = defineStore('user', {
       })
     },
 
+    async retrievePassword(data) {
+      return new Promise((resolve, reject) => {
+        user
+          .retrievePassword(data)
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+
     async register(userInfo) {
       return new Promise((resolve, reject) => {
         user

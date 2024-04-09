@@ -1,19 +1,109 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
+import LoadingPage from '@/components/LoadingPage.vue'
+import { ref, watch } from 'vue'
+import { useUserStore } from '@/stores/modules/user'
+import * as bootstrap from 'bootstrap'
+import { EncryptReg } from '@/utils/crypto'
 export default {
   data() {
     return {
       pwdFlag: true,
+      isLoading: false
     }
   },
   components: {
-    CloseBtn
+    CloseBtn,
+    LoadingPage
   },
   methods: {
     // 切換是否顯示密碼
     changePwd() {
       this.pwdFlag = !this.pwdFlag
     },
+    sendSMS() {},
+    resetPassword() {
+      console.log('----> reset password')
+      if (this.password !== this.confirmPassword) {
+        this.confirmPasswordErrorActive = true
+        return
+      }
+
+      this.isLoading = true
+
+      this.userStore
+        .retrievePassword({
+          phoneNumber: this.mobile,
+          verifyCode: this.verifyCode,
+          newPassword: EncryptReg(this.password),
+          nationalCode: '+55'
+        })
+        .then(() => {
+          this.isLoading = false
+          var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+          document.getElementById('errorTips').innerHTML = 'Password reset succeeded'
+          myModal.show()
+          let thant = this
+
+          setTimeout(async function () {
+            myModal.hide()
+            thant.$router.push({
+              name: 'login'
+            })
+          }, 2000)
+        })
+        .catch((err) => {
+          console.log('修改密码错误: ', err.message)
+          this.isLoading = false
+        })
+    }
+  },
+  setup() {
+    const mobile = ref()
+    const verifyCode = ref('')
+    const password = ref('')
+    const confirmPassword = ref('')
+    const isActive = ref(false)
+    const isDisabled = ref(true)
+    const confirmPasswordErrorActive = ref(false)
+    const userStore = useUserStore()
+
+    watch([mobile, password, confirmPassword, verifyCode], () => {
+      if (
+        mobile.value.toString().length == 11 &&
+        password.value.length > 4 &&
+        confirmPassword.value.length > 4 &&
+        password.value === confirmPassword.value
+      ) {
+        isActive.value = true
+        isDisabled.value = false
+        confirmPasswordErrorActive.value = false
+      } else {
+        isActive.value = false
+        isDisabled.value = true
+
+        if (
+          confirmPassword.value.length > 0 &&
+          password.value !== confirmPassword.value &&
+          confirmPassword.value.length >= password.value.length
+        ) {
+          confirmPasswordErrorActive.value = true
+        } else {
+          confirmPasswordErrorActive.value = false
+        }
+      }
+    })
+
+    return {
+      mobile,
+      verifyCode,
+      password,
+      confirmPassword,
+      isActive,
+      isDisabled,
+      confirmPasswordErrorActive,
+      userStore
+    }
   }
 }
 </script>
@@ -23,6 +113,7 @@ export default {
       <h2 class="title">Reset Account</h2>
       <CloseBtn></CloseBtn>
     </header>
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <div class="main">
       <div class="container-fluid">
         <div class="resetPhoneTitle fw-bold mt-4 mb-3">Encontre sua conta</div>
@@ -33,7 +124,7 @@ export default {
             class="form-control py-2"
             type="number"
             placeholder="Número de Celular"
-            v-model.trim="this.mobile"
+            v-model.number="this.mobile"
           />
           <span>+55</span>
         </div>
@@ -44,8 +135,9 @@ export default {
             class="form-control py-2"
             type="text"
             placeholder="Digite o código de verificação"
+            v-model.trim="this.verifyCode"
           />
-          <button class="btn" type="button">Obtivermos</button>
+          <button class="btn" type="button" @click="sendSMS">Obtivermos</button>
         </div>
         <div class="tips my-2">Please enter verification code</div>
         <!-- 密碼 -->
@@ -65,18 +157,28 @@ export default {
             class="form-control py-2"
             placeholder="Confirme a senha"
             :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="this.password"
+            v-model.trim="this.confirmPassword"
           />
           <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
         </div>
-        <div class="tips my-2">Please enter the correct password</div>
-        <button type="submit" class="btn continueBtn w-100 mt-4">Continuar</button>
+        <div class="tips my-2" :class="{ active: this.confirmPasswordErrorActive }">
+          Confirmar senha incorreta
+        </div>
+        <button
+          type="submit"
+          class="btn continueBtn w-100 mt-4"
+          :class="{ active: this.isActive }"
+          :disabled="this.isDisabled"
+          @click="resetPassword"
+        >
+          Continuar
+        </button>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
-.main{
+.main {
   padding-top: 4rem;
 }
 .resetPhoneTitle {
@@ -87,7 +189,7 @@ export default {
 .text {
   color: var(--fff);
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 input {
   color: #868686;
@@ -118,15 +220,15 @@ input::placeholder {
   transform: translate(0, -50%);
   color: #4d565e;
 }
-.verificationCode .btn{
+.verificationCode .btn {
   position: absolute;
-  font-size: .9rem;
+  font-size: 0.9rem;
   right: 0;
   top: 50%;
   transform: translate(0, -50%);
   color: var(--primary);
 }
-.verificationCode .btn:active{
+.verificationCode .btn:active {
   border: none;
 }
 .passwordInput div {
@@ -159,7 +261,7 @@ input::placeholder {
   border-radius: 2px;
   padding: 0.56rem 0;
 }
-.continueBtn:active{
+.continueBtn:active {
   color: var(--fff);
 }
 .continueBtn.active {

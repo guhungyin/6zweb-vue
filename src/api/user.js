@@ -18,6 +18,15 @@ export function resetPassword(data) {
   })
 }
 
+export function retrievePassword(data) {
+  return request({
+    // url: '/vue-admin-template/user/login',
+    url: '/user/retrievePassword',
+    method: 'post',
+    data
+  })
+}
+
 export function register(data) {
   return request({
     // url: '/vue-admin-template/user/login',
