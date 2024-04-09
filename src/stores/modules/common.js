@@ -8,7 +8,7 @@ export const useCommonStore = defineStore('common', {
   state: () => {
     return {
       playGame: {},
-      selectGameType: ''
+      selectGameType: 'Hot'
     }
   },
   getters: {},

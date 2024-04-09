@@ -7,14 +7,18 @@ export default {
   data() {
     return {
       activeTab: '',
-      activeList: []
+      activeList: [],
+      logged: false
     }
   },
   created() {
-    this.byType()
+    if (this.userStore.ticket) {
+      this.logged = true
+    }
   },
   mounted() {
     this.activeTab = this.commonStore.selectGameType
+    this.byType()
   },
   methods: {
     setActiveTab(tab) {
@@ -75,10 +79,11 @@ export default {
           <router-link to="/" class="navbar-brand logo">
             <GameLogo></GameLogo>
           </router-link>
-          <!-- 登出顯示登入按鈕 -->
-          <!-- <a href="./login.html" class="btn loginBtn fw-bold">Login</a> -->
-          <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
-          <div class="right">
+          <div class="right" v-show="!logged">
+            <router-link to="/register" class="registerBtn me-3">Cadastre-se</router-link>
+            <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link>
+          </div>
+          <div class="right" v-show="logged">
             <div class="userMoney me-2">
               <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
               {{ userStore.money }}
