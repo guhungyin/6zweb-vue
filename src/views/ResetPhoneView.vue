@@ -21,7 +21,22 @@ export default {
     changePwd() {
       this.pwdFlag = !this.pwdFlag
     },
-    sendSMS() {},
+    sendSMS() {
+      //https://api.wins888.club/platform/user/sendSms/+5591984568589?operatorType=bindPhone
+      this.sendSMSErrorActive = false
+      this.sendSMSErrorMsg = ''
+      this.userStore
+        .sendSMS('+55' + this.mobile.toString() + '?operatorType=bindPhone')
+        .then((res) => {
+          if (res.code !== 0) {
+            this.sendSMSErrorActive = true
+            this.sendSMSErrorMsg = res.msg
+          }
+        })
+        .catch((err) => {
+          console.log('验证码发送错误: ', err.message)
+        })
+    },
     resetPassword() {
       console.log('----> reset password')
       if (this.password !== this.confirmPassword) {
@@ -63,6 +78,8 @@ export default {
     const verifyCode = ref('')
     const password = ref('')
     const confirmPassword = ref('')
+    const sendSMSErrorActive = ref(false)
+    const sendSMSErrorMsg = ref('')
     const isActive = ref(false)
     const isDisabled = ref(true)
     const confirmPasswordErrorActive = ref(false)
@@ -102,7 +119,9 @@ export default {
       isActive,
       isDisabled,
       confirmPasswordErrorActive,
-      userStore
+      userStore,
+      sendSMSErrorMsg,
+      sendSMSErrorActive
     }
   }
 }
@@ -139,7 +158,9 @@ export default {
           />
           <button class="btn" type="button" @click="sendSMS">Obtivermos</button>
         </div>
-        <div class="tips my-2">Please enter verification code</div>
+        <div class="tips my-2" :class="{ active: this.sendSMSErrorActive }">
+          {{ this.sendSMSErrorMsg }}
+        </div>
         <!-- 密碼 -->
         <div class="passwordInput position-relative mt-3">
           <input

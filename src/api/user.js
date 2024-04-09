@@ -27,6 +27,13 @@ export function retrievePassword(data) {
   })
 }
 
+export function sendSms(urlParams) {
+  return request({
+    url: 'user/sendSms/' + urlParams,
+    method: 'get'
+  })
+}
+
 export function register(data) {
   return request({
     // url: '/vue-admin-template/user/login',

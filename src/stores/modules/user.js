@@ -76,6 +76,19 @@ export const useUserStore = defineStore('user', {
       })
     },
 
+    async sendSMS(urlParams) {
+      return new Promise((resolve, reject) => {
+        user
+          .sendSms(urlParams)
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+
     async register(userInfo) {
       return new Promise((resolve, reject) => {
         user
