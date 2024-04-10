@@ -9,7 +9,9 @@ export default {
   data() {
     return {
       pwdFlag: true,
-      isLoading: false
+      isLoading: false,
+      showCountdown: false, // 控制倒计时的显示与隐藏
+      countdown: 10, // 倒计时初始值
     }
   },
   components: {
@@ -31,11 +33,29 @@ export default {
           if (res.code !== 0) {
             this.sendSMSErrorActive = true
             this.sendSMSErrorMsg = res.msg
-          }
+          };
+          this.startCountdown();
         })
         .catch((err) => {
           console.log('验证码发送错误: ', err.message)
         })
+    },
+    startCountdown() {
+      document.querySelector('.obtivermos').classList.add('hide');
+      this.showCountdown = true; // 显示倒计时
+      this.countdownTimer(); // 启动倒计时函数
+    },
+    countdownTimer() {
+      // 使用箭头函数确保在 setInterval 中使用正确的 this
+      setInterval(() => {
+        if (this.countdown > 0) {
+          this.countdown--; // 减少倒计时时间
+        } else {
+          this.showCountdown = false; // 隐藏倒计时
+          clearInterval(); // 倒计时结束后清除计时器
+          document.querySelector('.obtivermos').classList.remove('hide');
+        }
+      }, 1000); // 每秒执行一次倒计时
     },
     resetPassword() {
       console.log('----> reset password')
@@ -156,7 +176,10 @@ export default {
             placeholder="Digite o código de verificação"
             v-model.trim="this.verifyCode"
           />
-          <button class="btn" type="button" @click="sendSMS">Obtivermos</button>
+          <button class="btn" type="button" @click="sendSMS">
+            <span class="obtivermos">Obtivermos</span>
+            <span v-if="showCountdown" class="countdownNum">{{ countdown }}s</span>
+          </button>
         </div>
         <div class="tips my-2" :class="{ active: this.sendSMSErrorActive }">
           {{ this.sendSMSErrorMsg }}
@@ -252,6 +275,15 @@ input::placeholder {
 .verificationCode .btn:active {
   border: none;
 }
+.verificationCode .countdownNum{
+  position: absolute;
+  font-size: .9rem;
+  right: 1rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: var(--primary);
+}
+.verificationCode .obtivermos.hide{display: none;}
 .passwordInput div {
   position: absolute;
   top: 50%;
