@@ -7,9 +7,9 @@ export function getWinnerShow() {
   })
 }
 
-export function goodsList(type) {
+export function goodsList() {
   return request({
-    url: 'goods/list/' + type,
+    url: 'goods/list',
     method: 'get'
   })
 }

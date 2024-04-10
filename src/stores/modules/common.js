@@ -84,10 +84,10 @@ export const useCommonStore = defineStore('common', {
       })
     },
 
-    async goodsList(type) {
+    async goodsList() {
       return new Promise((resolve, reject) => {
         common
-          .goodsList(type)
+          .goodsList()
           .then((response) => {
             resolve(response)
           })

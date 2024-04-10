@@ -137,7 +137,7 @@ export default {
     },
     queryGoods() {
       this.commonStore
-        .goodsList(1)
+        .goodsList()
         .then((res) => {
           if (res.data) {
             res.data.forEach((v) => {
@@ -172,7 +172,7 @@ export default {
   components: {
     CloseBtn,
     LoadingPage,
-    BottomMenu,
+    BottomMenu
   },
   setup() {
     const commonStore = useCommonStore()
@@ -241,7 +241,7 @@ export default {
                 :id="item.id"
                 class="mb-3 py-2"
                 @click.self="toggleActive(item, $event)"
-                v-if="item.hot == '0'"
+                v-if="item.hot == '0' && item.limits > 0"
               >
                 <div class="amountContent d-flex align-items-center">
                   <img
@@ -251,13 +251,16 @@ export default {
                   />
                   <span>{{ item.showPrice }}</span>
                 </div>
-                <div class="amountTips">+100%Bonus</div>
+                <div class="amountTips" v-if="item.discountRate !== '0%'">
+                  +{{ item.discountRate }}Bonus
+                </div>
+                <div class="amountTips" v-if="item.discountRate === '0%'">&nbsp;&nbsp;</div>
               </li>
               <li
                 :id="item.id"
                 class="mb-3 py-2 hot"
                 @click.self="toggleActive(item, $event)"
-                v-if="item.hot == '1'"
+                v-if="item.hot == '1' && item.limits > 0"
               >
                 <div class="amountContent d-flex align-items-center">
                   <img
@@ -267,7 +270,10 @@ export default {
                   />
                   <span>{{ item.showPrice }}</span>
                 </div>
-                <div class="amountTips">+100%Bonus</div>
+                <div class="amountTips" v-if="item.discountRate !== '0%'">
+                  +{{ item.discountRate }}Bonus
+                </div>
+                <div class="amountTips" v-if="item.discountRate === '0%'">&nbsp;&nbsp;</div>
               </li>
             </template>
           </ul>
