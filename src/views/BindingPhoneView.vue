@@ -29,12 +29,6 @@ export default {
         return
       }
 
-      if (this.timer) {
-        console.log('---- 定时器为 true ', this.timer)
-      } else {
-        console.log('---- 定时器为 false ', this.timer)
-      }
-
       this.countdown = 60
       this.sendSMSErrorActive = false
       this.sendSMSErrorMsg = ''
