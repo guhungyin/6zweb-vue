@@ -33,6 +33,15 @@ export default {
     //   this.userMobile = this.userStore.mobile
     // }
   },
+  methods: {
+    withdraw() {
+      if (this.userStore.mobile === '*********') {
+        console.log('没绑定手机，需要绑定手机才能提现')
+      } else {
+        this.$router.push({ name: 'withdraw' })
+      }
+    }
+  },
   setup() {
     const userStore = useUserStore()
     return {
@@ -155,7 +164,11 @@ export default {
             </svg>
             Depósito
           </router-link>
-          <router-link to="/withdraw" class="d-flex align-items-center justify-content-center">
+          <router-link
+            to=""
+            class="d-flex align-items-center justify-content-center"
+            @click="withdraw"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

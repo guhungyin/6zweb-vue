@@ -11,7 +11,7 @@ export default {
       pwdFlag: true,
       isLoading: false,
       showCountdown: false, // 控制倒计时的显示与隐藏
-      countdown: 10, // 倒计时初始值
+      countdown: 60 // 倒计时初始值
     }
   },
   components: {
@@ -33,29 +33,29 @@ export default {
           if (res.code !== 0) {
             this.sendSMSErrorActive = true
             this.sendSMSErrorMsg = res.msg
-          };
-          this.startCountdown();
+          }
+          this.startCountdown()
         })
         .catch((err) => {
           console.log('验证码发送错误: ', err.message)
         })
     },
     startCountdown() {
-      document.querySelector('.obtivermos').classList.add('hide');
-      this.showCountdown = true; // 显示倒计时
-      this.countdownTimer(); // 启动倒计时函数
+      document.querySelector('.obtivermos').classList.add('hide')
+      this.showCountdown = true // 显示倒计时
+      this.countdownTimer() // 启动倒计时函数
     },
     countdownTimer() {
       // 使用箭头函数确保在 setInterval 中使用正确的 this
       setInterval(() => {
         if (this.countdown > 0) {
-          this.countdown--; // 减少倒计时时间
+          this.countdown-- // 减少倒计时时间
         } else {
-          this.showCountdown = false; // 隐藏倒计时
-          clearInterval(); // 倒计时结束后清除计时器
-          document.querySelector('.obtivermos').classList.remove('hide');
+          this.showCountdown = false // 隐藏倒计时
+          clearInterval() // 倒计时结束后清除计时器
+          document.querySelector('.obtivermos').classList.remove('hide')
         }
-      }, 1000); // 每秒执行一次倒计时
+      }, 1000) // 每秒执行一次倒计时
     },
     resetPassword() {
       console.log('----> reset password')
@@ -79,6 +79,10 @@ export default {
           document.getElementById('errorTips').innerHTML = 'Password reset succeeded'
           myModal.show()
           let thant = this
+
+          this.showCountdown = false // 隐藏倒计时
+          clearInterval() // 倒计时结束后清除计时器
+          document.querySelector('.obtivermos').classList.remove('hide')
 
           setTimeout(async function () {
             myModal.hide()
@@ -275,15 +279,17 @@ input::placeholder {
 .verificationCode .btn:active {
   border: none;
 }
-.verificationCode .countdownNum{
+.verificationCode .countdownNum {
   position: absolute;
-  font-size: .9rem;
+  font-size: 0.9rem;
   right: 1rem;
   top: 50%;
   transform: translate(0, -50%);
   color: var(--primary);
 }
-.verificationCode .obtivermos.hide{display: none;}
+.verificationCode .obtivermos.hide {
+  display: none;
+}
 .passwordInput div {
   position: absolute;
   top: 50%;
