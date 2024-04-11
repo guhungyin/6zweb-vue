@@ -2,9 +2,29 @@
 import CloseBtn from '../components/CloseBtn.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 export default {
+  data() {
+    return {
+      cpfType:'CPF',
+      cpfOptions:['CPF'],
+      cpfSelectedOption: null,
+      accountType:'CPF',
+      accountOptions:['CPF','Número de Celular','EMAIL'],
+      accountSelectedOption: null
+    }
+  },
   components: {
     CloseBtn,
     BottomMenu,
+  },
+  methods: {
+    cpfSelectOption(option) {
+      this.cpfSelectedOption = option;
+      this.cpfType = option;
+    },
+    accountSelectOption(option) {
+      this.accountSelectedOption = option;
+      this.accountType = option;
+    }
   }
 }
 </script>
@@ -64,7 +84,7 @@ export default {
           data-bs-target="#cpfWindow"
           aria-controls="cpfWindow"
         >
-          <span class="me-2">CPF</span>
+          <span class="me-2">{{cpfType}}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -91,7 +111,7 @@ export default {
             data-bs-target="#accountWindow"
             aria-controls="accountWindow"
           >
-            <span class="me-2 text-nowrap">CPF</span>
+            <span class="me-2 text-nowrap">{{accountType}}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -233,14 +253,28 @@ export default {
       </div>
       <!-- cpf 選擇視窗 -->
       <div class="offcanvas offcanvas-bottom switchWindow" tabindex="-1" id="cpfWindow" aria-labelledby="cpfWindowLabel">
-        <button type="button" class="btn py-3 active">CPF</button>
+        <button 
+        v-for = "option in this.cpfOptions" 
+        :key = "option" 
+        @click = "cpfSelectOption(option)"
+        type="button"
+        class="btn py-3"
+        :class = "{ active: cpfSelectedOption === option }"
+        data-bs-dismiss="offcanvas" aria-label="Close"
+        >{{ option }}</button>
         <button type="button" class="btn py-3 mt-2 closeBtn" data-bs-dismiss="offcanvas" aria-label="Close">Cancelar</button>
       </div>
       <!-- account 選擇視窗 -->
       <div class="offcanvas offcanvas-bottom switchWindow" tabindex="-1" id="accountWindow" aria-labelledby="accountWindowLabel">
-        <button type="button" class="btn py-3 active">CPF</button>
-        <button type="button" class="btn py-3">Número de Celular</button>
-        <button type="button" class="btn py-3">EMAIL</button>
+        <button 
+        v-for = "option in this.accountOptions" 
+        :key = "option" 
+        @click = "accountSelectOption(option)"
+        type="button"
+        class="btn py-3"
+        :class = "{ active: accountSelectedOption === option }"
+        data-bs-dismiss="offcanvas" aria-label="Close"
+        >{{ option }}</button>
         <button type="button" class="btn py-3 mt-2 closeBtn" data-bs-dismiss="offcanvas" aria-label="Close">Cancelar</button>
       </div>
     </div>
