@@ -63,6 +63,19 @@ export const useUserStore = defineStore('user', {
       })
     },
 
+    async bindingPhone(data) {
+      return new Promise((resolve, reject) => {
+        user
+          .bindingPhone(data)
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+
     async retrievePassword(data) {
       return new Promise((resolve, reject) => {
         user

@@ -4,14 +4,14 @@ import LoadingPage from '@/components/LoadingPage.vue'
 import { ref, watch } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
 import * as bootstrap from 'bootstrap'
-import { EncryptReg } from '@/utils/crypto'
 export default {
   data() {
     return {
       pwdFlag: true,
       isLoading: false,
       showCountdown: false, // 控制倒计时的显示与隐藏
-      countdown: 60 // 倒计时初始值
+      countdown: 60, // 倒计时初始值
+      timer: {}
     }
   },
   components: {
@@ -25,15 +25,23 @@ export default {
     },
     sendSMS() {
       //https://api.wins888.club/platform/user/sendSms/+5591984568589?operatorType=bindPhone
+      if (!this.mobile || this.mobile.toString().length !== 11) {
+        return
+      }
+
+      this.countdown = 60
       this.sendSMSErrorActive = false
       this.sendSMSErrorMsg = ''
       this.userStore
         .sendSMS('+55' + this.mobile.toString() + '?operatorType=bindPhone')
         .then((res) => {
           if (res.code !== 0) {
+            console.log('验证发送错误: ', res)
             this.sendSMSErrorActive = true
             this.sendSMSErrorMsg = res.msg
+            return
           }
+          console.log('开始倒计时---- ', this.countdown)
           this.startCountdown()
         })
         .catch((err) => {
@@ -41,53 +49,50 @@ export default {
         })
     },
     startCountdown() {
+      this.timer && clearInterval(this.timer)
       document.querySelector('.obtivermos').classList.add('hide')
       this.showCountdown = true // 显示倒计时
       this.countdownTimer() // 启动倒计时函数
     },
     countdownTimer() {
       // 使用箭头函数确保在 setInterval 中使用正确的 this
-      setInterval(() => {
-        if (this.countdown > 0) {
+      this.timer = setInterval(() => {
+        if (this.countdown > 1) {
           this.countdown-- // 减少倒计时时间
         } else {
           this.showCountdown = false // 隐藏倒计时
-          clearInterval() // 倒计时结束后清除计时器
+          clearInterval(this.timer) // 倒计时结束后清除计时器
           document.querySelector('.obtivermos').classList.remove('hide')
         }
       }, 1000) // 每秒执行一次倒计时
     },
-    resetPassword() {
-      console.log('----> reset password')
-      if (this.password !== this.confirmPassword) {
-        this.confirmPasswordErrorActive = true
-        return
-      }
+    bindingPhone() {
+      console.log('----> binding phone')
 
       this.isLoading = true
 
       this.userStore
-        .retrievePassword({
+        .bindingPhone({
           phoneNumber: this.mobile,
           verifyCode: this.verifyCode,
-          newPassword: EncryptReg(this.password),
           nationalCode: '+55'
         })
         .then(() => {
           this.isLoading = false
           var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
-          document.getElementById('errorTips').innerHTML = 'Password reset succeeded'
+          document.getElementById('errorTips').innerHTML = 'Binding phone succeeded'
           myModal.show()
           let thant = this
 
           this.showCountdown = false // 隐藏倒计时
-          clearInterval() // 倒计时结束后清除计时器
+          this.timer && clearInterval(this.timer) // 倒计时结束后清除计时器
           document.querySelector('.obtivermos').classList.remove('hide')
+          this.userStore.mobile = this.mobile
 
           setTimeout(async function () {
             myModal.hide()
             thant.$router.push({
-              name: 'login'
+              name: 'withdraw'
             })
           }, 2000)
         })
@@ -100,49 +105,27 @@ export default {
   setup() {
     const mobile = ref()
     const verifyCode = ref('')
-    const password = ref('')
-    const confirmPassword = ref('')
     const sendSMSErrorActive = ref(false)
     const sendSMSErrorMsg = ref('')
     const isActive = ref(false)
     const isDisabled = ref(true)
-    const confirmPasswordErrorActive = ref(false)
     const userStore = useUserStore()
 
-    watch([mobile, password, confirmPassword, verifyCode], () => {
-      if (
-        mobile.value.toString().length == 11 &&
-        password.value.length > 4 &&
-        confirmPassword.value.length > 4 &&
-        password.value === confirmPassword.value
-      ) {
+    watch([mobile, verifyCode], () => {
+      if (mobile.value.toString().length === 11 && verifyCode.value.length === 6) {
         isActive.value = true
         isDisabled.value = false
-        confirmPasswordErrorActive.value = false
       } else {
         isActive.value = false
         isDisabled.value = true
-
-        if (
-          confirmPassword.value.length > 0 &&
-          password.value !== confirmPassword.value &&
-          confirmPassword.value.length >= password.value.length
-        ) {
-          confirmPasswordErrorActive.value = true
-        } else {
-          confirmPasswordErrorActive.value = false
-        }
       }
     })
 
     return {
       mobile,
       verifyCode,
-      password,
-      confirmPassword,
       isActive,
       isDisabled,
-      confirmPasswordErrorActive,
       userStore,
       sendSMSErrorMsg,
       sendSMSErrorActive
@@ -188,36 +171,12 @@ export default {
         <div class="tips my-2" :class="{ active: this.sendSMSErrorActive }">
           {{ this.sendSMSErrorMsg }}
         </div>
-        <!-- 密碼 -->
-        <div class="passwordInput position-relative mt-3">
-          <input
-            class="form-control py-2"
-            placeholder="Senha"
-            :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="this.password"
-          />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
-        </div>
-        <div class="tips my-2">Please enter the correct password</div>
-        <!-- 確認密碼 -->
-        <div class="passwordInput position-relative mt-3">
-          <input
-            class="form-control py-2"
-            placeholder="Confirme a senha"
-            :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="this.confirmPassword"
-          />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
-        </div>
-        <div class="tips my-2" :class="{ active: this.confirmPasswordErrorActive }">
-          Confirmar senha incorreta
-        </div>
         <button
           type="submit"
           class="btn continueBtn w-100 mt-4"
           :class="{ active: this.isActive }"
           :disabled="this.isDisabled"
-          @click="resetPassword"
+          @click="bindingPhone"
         >
           Continuar
         </button>

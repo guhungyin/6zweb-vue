@@ -36,7 +36,7 @@ export default {
   methods: {
     withdraw() {
       if (this.userStore.mobile === '*********') {
-        console.log('没绑定手机，需要绑定手机才能提现')
+        this.$router.push({ name: 'bindingPhone' })
       } else {
         this.$router.push({ name: 'withdraw' })
       }

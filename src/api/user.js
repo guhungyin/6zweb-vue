@@ -27,6 +27,15 @@ export function retrievePassword(data) {
   })
 }
 
+export function bindingPhone(data) {
+  return request({
+    // url: '/vue-admin-template/user/login',
+    url: '/user/setPhone',
+    method: 'post',
+    data
+  })
+}
+
 export function sendSms(urlParams) {
   return request({
     url: 'user/sendSms/' + urlParams,
