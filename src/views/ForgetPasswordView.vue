@@ -11,7 +11,8 @@ export default {
       pwdFlag: true,
       isLoading: false,
       showCountdown: false, // 控制倒计时的显示与隐藏
-      countdown: 60 // 倒计时初始值
+      countdown: 60, // 倒计时初始值
+      timer: {}
     }
   },
   components: {
@@ -25,6 +26,10 @@ export default {
     },
     sendSMS() {
       //https://api.wins888.club/platform/user/sendSms/+5591984568589?operatorType=bindPhone
+      if (!this.mobile || this.mobile.toString().length !== 11) {
+        return
+      }
+      this.countdown = 60
       this.sendSMSErrorActive = false
       this.sendSMSErrorMsg = ''
       this.userStore
@@ -41,18 +46,19 @@ export default {
         })
     },
     startCountdown() {
+      this.timer && clearInterval(this.timer)
       document.querySelector('.obtivermos').classList.add('hide')
       this.showCountdown = true // 显示倒计时
       this.countdownTimer() // 启动倒计时函数
     },
     countdownTimer() {
       // 使用箭头函数确保在 setInterval 中使用正确的 this
-      setInterval(() => {
-        if (this.countdown > 0) {
+      this.timer = setInterval(() => {
+        if (this.countdown > 1) {
           this.countdown-- // 减少倒计时时间
         } else {
           this.showCountdown = false // 隐藏倒计时
-          clearInterval() // 倒计时结束后清除计时器
+          clearInterval(this.timer) // 倒计时结束后清除计时器
           document.querySelector('.obtivermos').classList.remove('hide')
         }
       }, 1000) // 每秒执行一次倒计时
