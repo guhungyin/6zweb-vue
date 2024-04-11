@@ -93,9 +93,17 @@ const router = createRouter({
       }
     },
     {
-      path: '/resetPhone',
-      name: 'resetPhone',
-      component: () => import('@/views/ResetPhoneView.vue'),
+      path: '/forgetPassword',
+      name: 'forgetPassword',
+      component: () => import('@/views/ForgetPasswordView.vue'),
+      meta:{
+        index: 1
+      }
+    },
+    {
+      path: '/bindingPhone',
+      name: 'bindingPhone',
+      component: () => import('@/views/BindingPhoneView.vue'),
       meta:{
         index: 1
       }

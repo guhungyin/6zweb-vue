@@ -128,7 +128,7 @@ export default {
         <div class="tips my-2" :class="{ active: tips1Active }">
           Please enter the correct password
         </div>
-        <router-link to="/resetPhone" class="forgetPassword my-2">Esqueci minha senha?</router-link>
+        <router-link to="/forgetPassword" class="forgetPassword my-2">Esqueci minha senha?</router-link>
         <div class="tips text-center mb-0" :class="{ active: errorActive }">{{ errorMsg }}</div>
         <button
           type="button"

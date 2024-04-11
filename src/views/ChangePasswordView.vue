@@ -146,7 +146,7 @@ export default {
         >
           Mudar
         </button>
-        <router-link to="/resetPhone" class="forgetThePassword mt-2">Esqueci minha senha?</router-link>
+        <router-link to="/forgetPassword" class="forgetThePassword mt-2">Esqueci minha senha?</router-link>
       </div>
     </div>
     <div
