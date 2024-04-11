@@ -11,7 +11,7 @@ export default {
       isLoading: false,
       showCountdown: false, // 控制倒计时的显示与隐藏
       countdown: 60, // 倒计时初始值
-      timer: {}
+      timer: 0
     }
   },
   components: {
@@ -27,6 +27,12 @@ export default {
       //https://api.wins888.club/platform/user/sendSms/+5591984568589?operatorType=bindPhone
       if (!this.mobile || this.mobile.toString().length !== 11) {
         return
+      }
+
+      if (this.timer) {
+        console.log('---- 定时器为 true ', this.timer)
+      } else {
+        console.log('---- 定时器为 false ', this.timer)
       }
 
       this.countdown = 60

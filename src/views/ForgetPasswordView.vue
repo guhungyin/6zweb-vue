@@ -12,7 +12,7 @@ export default {
       isLoading: false,
       showCountdown: false, // 控制倒计时的显示与隐藏
       countdown: 60, // 倒计时初始值
-      timer: {}
+      timer: 0
     }
   },
   components: {
