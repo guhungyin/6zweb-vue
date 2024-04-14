@@ -188,8 +188,12 @@ export default {
     // this.queryGameList()
   },
   methods: {
-    toTop() {
-      document.documentElement.scrollTop = 0
+    goToTop() {
+      const viewScroll = document.getElementById('routerView');
+      viewScroll.scrollTo({
+        top: 0,
+        behavior: "smooth" // 平滑滚动
+      });
     },
     setParams(gameInfo) {
       this.commonStore.setPlayGame(gameInfo)
@@ -291,7 +295,7 @@ export default {
 }
 </script>
 <template>
-  <div class="routerView">
+  <div id="routerView" class="routerView">
     <!-- 上方選單 -->
     <header class="position-fixed">
       <nav class="navbar navbar-expand-lg">
@@ -367,11 +371,13 @@ export default {
         class="bannerSwiper"
       >
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="https://images.hibigwin.com/wildbet777/202312/mzrqWIEAPFiZzqF.jpg"
-            alt=""
-          />
+          <RouterLink to="/deposit">
+            <img
+              class="img-fluid"
+              src="https://images.hibigwin.com/wildbet777/202312/mzrqWIEAPFiZzqF.jpg"
+              alt=""
+            />
+          </RouterLink>
         </swiper-slide>
         <swiper-slide>
           <img
@@ -752,7 +758,7 @@ export default {
             </svg>
           </div>
         </div>
-        <div @click="toTop" class="topBtn mx-auto">
+        <div @click="goToTop" class="topBtn mx-auto">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

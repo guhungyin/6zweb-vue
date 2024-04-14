@@ -415,6 +415,7 @@ export default {
     font-size: 1.2rem;
   }
   .switchWindow {
+  position: absolute;
     background-color: #353535;
     height: auto;
   }
