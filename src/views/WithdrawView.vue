@@ -16,7 +16,8 @@ export default {
       accountOptions: ['CPF', 'Número de Celular', 'EMAIL'],
       accountSelectedOption: null,
       isLoading: false,
-      submitData: {}
+      submitData: {},
+      rateProgress: 0
     }
   },
   components: {
@@ -105,6 +106,16 @@ export default {
     accountSelectOption(option) {
       this.accountSelectedOption = option
       this.accountType = option
+    },
+    counterRate() {
+      let rate =
+        this.userStore.targetBetAmount > 0
+          ? this.userStore.completedBetAmount / this.userStore.targetBetAmount
+          : 0
+
+      rate = rate > 1 ? 1 : rate
+      rate *= 100
+      this.rateProgress = rate
     }
   },
   setup() {
@@ -285,6 +296,7 @@ export default {
                   class="btn p-0"
                   data-bs-toggle="modal"
                   data-bs-target="#BonusProdress"
+                  @click="counterRate"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -377,18 +389,18 @@ export default {
                   <div
                     class="progress-bar"
                     role="progressbar"
-                    style="width: 25%"
+                    :style="'width: ' + this.rateProgress - 100 + '%'"
                     aria-valuenow="25"
                     aria-valuemin="0"
                     aria-valuemax="100"
                   ></div>
                 </div>
-                <span>25%</span>
+                <span>{{ this.rateProgress }}%</span>
               </div>
               <div class="d-flex align-items-center">
                 FALTA APOSTAR
                 <img src="../assets/images/icon/rmoneyIcon3.svg" width="24" class="mx-2" alt="" />
-                <span>0</span>
+                <span>{{ this.showAvailableMoney }}</span>
               </div>
             </div>
           </div>

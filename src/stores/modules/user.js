@@ -16,7 +16,9 @@ export const useUserStore = defineStore('user', {
       vipLevel: 0,
       promotionTotalCommission: 0,
       source: '',
-      availableWithdrawalMoney: 0
+      availableWithdrawalMoney: 0,
+      completedBetAmount: 0,
+      targetBetAmount: 0
     }
   },
   actions: {
@@ -123,6 +125,8 @@ export const useUserStore = defineStore('user', {
           .then((res) => {
             if (res.code === 0) {
               this.availableWithdrawalMoney = 2562000 //res.data.availableWithdrawalMoney
+              this.targetBetAmount = res.data.targetBetAmount
+              this.completedBetAmount = res.data.completedBetAmount
             }
 
             resolve(res)
