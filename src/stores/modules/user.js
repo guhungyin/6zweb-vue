@@ -15,7 +15,8 @@ export const useUserStore = defineStore('user', {
       money: '',
       vipLevel: 0,
       promotionTotalCommission: 0,
-      source: ''
+      source: '',
+      availableWithdrawalMoney: 0
     }
   },
   actions: {
@@ -113,6 +114,32 @@ export const useUserStore = defineStore('user', {
             reject(error)
           })
       })
+    },
+
+    async walletDetails() {
+      return new Promise((resolve, reject) => {
+        user
+          .walletDetails()
+          .then((res) => {
+            if (res.code === 0) {
+              this.availableWithdrawalMoney = 2562000 //res.data.availableWithdrawalMoney
+            }
+
+            resolve(res)
+          })
+          .catch((err) => {
+            console.log('查询钱包可提现金额错误:', err)
+            reject(err)
+          })
+      })
+    },
+
+    formatMoney(inputMoney) {
+      if (inputMoney <= 0) {
+        return '0.00'
+      }
+      let bgMoney = new BigNumber(inputMoney)
+      return new BigNumber(bgMoney.div(10000).toFixed(2, 1)).toFormat(2)
     }
   },
   persist: {

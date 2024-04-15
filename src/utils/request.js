@@ -57,14 +57,17 @@ service.interceptors.response.use(
     console.log('--------->> res', res, '--------- rquest url', response.config.url)
 
     if (res.code !== 0) {
-      if (res.code === 10500012) {
+      if (res.code === 10500012 && response.config.url !== '/user/walletDetails') {
         const userStore = useUserStore(pinia)
         userStore.$reset()
         setTimeout(async function () {
           window.location.href = `/login`
         }, 300)
         return
-      } else if ('/user/login' !== response.config.url) {
+      } else if (
+        '/user/login' !== response.config.url &&
+        response.config.url !== '/user/walletDetails'
+      ) {
         var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
         document.getElementById('errorTips').innerHTML = res.msg
         myModal.show()
@@ -87,7 +90,7 @@ service.interceptors.response.use(
       //     })
       //   })
       // }
-      return Promise.reject(new Error(res.msg || 'Error'))
+      return Promise.reject(new Error(res.msg || 'Error')) //(new Error(res.msg || 'Error'))
     } else {
       return res
     }

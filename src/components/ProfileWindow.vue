@@ -140,7 +140,9 @@ export default {
               </div>
               <div class="num">
                 <span>R$ </span>
-                <span>0.00</span>
+                <span>{{
+                  this.userStore.formatMoney(this.userStore.availableWithdrawalMoney)
+                }}</span>
               </div>
             </div>
           </div>

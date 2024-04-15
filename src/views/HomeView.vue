@@ -189,11 +189,14 @@ export default {
   },
   methods: {
     goToTop() {
-      const viewScroll = document.getElementById('routerView');
+      const viewScroll = document.getElementById('routerView')
       viewScroll.scrollTo({
         top: 0,
-        behavior: "smooth" // 平滑滚动
-      });
+        behavior: 'smooth' // 平滑滚动
+      })
+    },
+    wallterDetails() {
+      this.userStore.walletDetails()
     },
     setParams(gameInfo) {
       this.commonStore.setPlayGame(gameInfo)
@@ -338,6 +341,7 @@ export default {
               data-bs-toggle="offcanvas"
               data-bs-target="#profileWindow"
               aria-controls="profileWindow"
+              @click="wallterDetails"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

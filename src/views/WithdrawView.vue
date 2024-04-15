@@ -1,29 +1,37 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      cpfType:'CPF',
-      cpfOptions:['CPF'],
+      cpfType: 'CPF',
+      cpfOptions: ['CPF'],
       cpfSelectedOption: null,
-      accountType:'CPF',
-      accountOptions:['CPF','Número de Celular','EMAIL'],
+      accountType: 'CPF',
+      accountOptions: ['CPF', 'Número de Celular', 'EMAIL'],
       accountSelectedOption: null
     }
   },
   components: {
     CloseBtn,
-    BottomMenu,
+    BottomMenu
   },
   methods: {
     cpfSelectOption(option) {
-      this.cpfSelectedOption = option;
-      this.cpfType = option;
+      this.cpfSelectedOption = option
+      this.cpfType = option
     },
     accountSelectOption(option) {
-      this.accountSelectedOption = option;
-      this.accountType = option;
+      this.accountSelectedOption = option
+      this.accountType = option
+    }
+  },
+  setup() {
+    const userStore = new useUserStore()
+
+    return {
+      userStore
     }
   }
 }
@@ -84,7 +92,7 @@ export default {
           data-bs-target="#cpfWindow"
           aria-controls="cpfWindow"
         >
-          <span class="me-2">{{cpfType}}</span>
+          <span class="me-2">{{ cpfType }}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -111,7 +119,7 @@ export default {
             data-bs-target="#accountWindow"
             aria-controls="accountWindow"
           >
-            <span class="me-2 text-nowrap">{{accountType}}</span>
+            <span class="me-2 text-nowrap">{{ accountType }}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -133,7 +141,9 @@ export default {
           <label class="d-flex align-items-center" for="quantiaInupt">
             SALDO DISPONIVEL:
             <img src="../assets/images/icon/rmoneyIcon2.svg" class="ms-2" width="25" alt="" />
-            <span class="ms-2">0</span>
+            <span class="ms-2">{{
+              this.userStore.formatMoney(this.userStore.availableWithdrawalMoney)
+            }}</span>
           </label>
           <div class="position-relative mt-2 mb-3">
             <input id="quantiaInupt" type="number" class="form-control" />
@@ -143,7 +153,12 @@ export default {
             <ul class="p-0">
               <li class="mb-2 d-flex align-items-center">
                 Valor total de resgate
-                <span class="tip mx-2">0 BRL</span>
+                <span class="tip mx-2"
+                  >{{
+                    this.userStore.formatMoney(this.userStore.availableWithdrawalMoney)
+                  }}
+                  BRL</span
+                >
                 <button
                   type="button"
                   class="btn p-0"
@@ -252,30 +267,60 @@ export default {
         </div>
       </div>
       <!-- cpf 選擇視窗 -->
-      <div class="offcanvas offcanvas-bottom switchWindow" tabindex="-1" id="cpfWindow" aria-labelledby="cpfWindowLabel">
-        <button 
-        v-for = "option in this.cpfOptions" 
-        :key = "option" 
-        @click = "cpfSelectOption(option)"
-        type="button"
-        class="btn py-3"
-        :class = "{ active: cpfSelectedOption === option }"
-        data-bs-dismiss="offcanvas" aria-label="Close"
-        >{{ option }}</button>
-        <button type="button" class="btn py-3 mt-2 closeBtn" data-bs-dismiss="offcanvas" aria-label="Close">Cancelar</button>
+      <div
+        class="offcanvas offcanvas-bottom switchWindow"
+        tabindex="-1"
+        id="cpfWindow"
+        aria-labelledby="cpfWindowLabel"
+      >
+        <button
+          v-for="option in this.cpfOptions"
+          :key="option"
+          @click="cpfSelectOption(option)"
+          type="button"
+          class="btn py-3"
+          :class="{ active: cpfSelectedOption === option }"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          {{ option }}
+        </button>
+        <button
+          type="button"
+          class="btn py-3 mt-2 closeBtn"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          Cancelar
+        </button>
       </div>
       <!-- account 選擇視窗 -->
-      <div class="offcanvas offcanvas-bottom switchWindow" tabindex="-1" id="accountWindow" aria-labelledby="accountWindowLabel">
-        <button 
-        v-for = "option in this.accountOptions" 
-        :key = "option" 
-        @click = "accountSelectOption(option)"
-        type="button"
-        class="btn py-3"
-        :class = "{ active: accountSelectedOption === option }"
-        data-bs-dismiss="offcanvas" aria-label="Close"
-        >{{ option }}</button>
-        <button type="button" class="btn py-3 mt-2 closeBtn" data-bs-dismiss="offcanvas" aria-label="Close">Cancelar</button>
+      <div
+        class="offcanvas offcanvas-bottom switchWindow"
+        tabindex="-1"
+        id="accountWindow"
+        aria-labelledby="accountWindowLabel"
+      >
+        <button
+          v-for="option in this.accountOptions"
+          :key="option"
+          @click="accountSelectOption(option)"
+          type="button"
+          class="btn py-3"
+          :class="{ active: accountSelectedOption === option }"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          {{ option }}
+        </button>
+        <button
+          type="button"
+          class="btn py-3 mt-2 closeBtn"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          Cancelar
+        </button>
       </div>
     </div>
     <!-- 下方選單 -->
@@ -283,152 +328,152 @@ export default {
   </div>
 </template>
 <style scoped>
-  .withdrawWindows {
-    padding-top: 4rem;
-    font-size: 0.8rem;
-    width: 100%;
-    border: none;
-    background-color: #24262b;
-    color: var(--gray1);
-    padding-bottom: 7rem;
-  }
-  .withdrawWindows .pixInfo {
-    color: #b4c0cb;
-  }
-  .withdrawWindows .channelContainer {
-    overflow: auto;
-  }
-  .withdrawWindows .channelContainer::-webkit-scrollbar {
-    display: none;
-  }
-  .withdrawWindows .channelContainer .channelItem {
-    color: #8ea7bb;
-    background: #232323;
-    border-radius: 0.4rem;
-    width: 12rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-wrap: nowrap;
-  }
-  .withdrawWindows .channelContainer .channelItem.active {
-    box-shadow: inset 0 0 0 1px #8399ac80;
-  }
-  .withdrawWindows .channelContainer .channelItem .pixInfo {
-    color: #9e9e9e;
-  }
-  .withdrawWindows .channelContainer .channelItem .pixImg {
-    height: 2.2rem;
-    margin-right: 1rem;
-  }
-  .withdrawWindows .channelContainer .channelItem span {
-    white-space: nowrap;
-  }
-  .withdrawWindows .withdrawTips li {
-    list-style-type: decimal;
-  }
-  .withdrawWindows label {
-    color: #aab3ba;
-  }
-  .withdrawWindows input {
-    padding: 0.5rem 0.8rem;
-    color: var(--blue);
-  }
-  .inputBg {
-    background-color: var(--black3);
-  }
-  .accountBtn,
-  .cpfSwitchBtn {
-    background-color: initial;
-    border: none;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    color: var(--fff);
-  }
-  .withdrawWindows input:focus {
-    color: #868686;
-    background-color: var(--black3);
-    box-shadow: none !important;
-  }
-  .withdrawWindows .withdrawMain .tipsClose {
-    left: 1rem;
-    top: 50%;
-    color: var(--blue);
-    transform: translate(0, -50%);
-  }
-  .withdrawWindows .withdrawMain input {
-    text-indent: 6.5rem;
-  }
-  .withdrawWindows .withdrawMain .slot .tip {
-    color: #ffa200;
-  }
-  .withdrawWindows .withdrawMain .slot .toHome {
-    color: var(--primary);
-  }
-  .withdrawWindows .confirmBtn {
-    background: var(--greenGradient);
-    color: var(--fff);
-    border: none;
-    opacity: 0.4;
-    border-radius: 2px;
-    padding: 0.56rem 0;
-  }
-  .withdrawWindows .confirmBtn.active {
-    opacity: 1;
-  }
-  /* 獎金優惠視窗 */
-  .withdrawWindows .BonusProdressModal {
-    color: var(--gray1);
-    background-color: #3f3e3e;
-  }
-  .withdrawWindows .BonusProdressModal .modal-title {
-    font-size: 1.2rem;
-  }
-  .withdrawWindows .BonusProdressModal .modal-title .modalHeaderIicon {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 1px #b9b9b9;
-  }
-  .withdrawWindows .BonusProdressModal .modal-body {
-    font-size: 0.8rem;
-  }
-  .withdrawWindows .BonusProdressModal .progressContent {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-  }
-  .withdrawWindows .BonusProdressModal .progressContent .progress {
-    height: 0.6rem;
-    width: 85%;
-  }
-  .withdrawWindows .BonusProdressModal .progressContent .progress .progress-bar {
-    background-color: #009d81;
-  }
-  .withdrawWindows .BonusProdressModal .progressContent span {
-    color: var(--primary);
-    font-size: 1.2rem;
-  }
-  .switchWindow {
+.withdrawWindows {
+  padding-top: 4rem;
+  font-size: 0.8rem;
+  width: 100%;
+  border: none;
+  background-color: #24262b;
+  color: var(--gray1);
+  padding-bottom: 7rem;
+}
+.withdrawWindows .pixInfo {
+  color: #b4c0cb;
+}
+.withdrawWindows .channelContainer {
+  overflow: auto;
+}
+.withdrawWindows .channelContainer::-webkit-scrollbar {
+  display: none;
+}
+.withdrawWindows .channelContainer .channelItem {
+  color: #8ea7bb;
+  background: #232323;
+  border-radius: 0.4rem;
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-wrap: nowrap;
+}
+.withdrawWindows .channelContainer .channelItem.active {
+  box-shadow: inset 0 0 0 1px #8399ac80;
+}
+.withdrawWindows .channelContainer .channelItem .pixInfo {
+  color: #9e9e9e;
+}
+.withdrawWindows .channelContainer .channelItem .pixImg {
+  height: 2.2rem;
+  margin-right: 1rem;
+}
+.withdrawWindows .channelContainer .channelItem span {
+  white-space: nowrap;
+}
+.withdrawWindows .withdrawTips li {
+  list-style-type: decimal;
+}
+.withdrawWindows label {
+  color: #aab3ba;
+}
+.withdrawWindows input {
+  padding: 0.5rem 0.8rem;
+  color: var(--blue);
+}
+.inputBg {
+  background-color: var(--black3);
+}
+.accountBtn,
+.cpfSwitchBtn {
+  background-color: initial;
+  border: none;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  color: var(--fff);
+}
+.withdrawWindows input:focus {
+  color: #868686;
+  background-color: var(--black3);
+  box-shadow: none !important;
+}
+.withdrawWindows .withdrawMain .tipsClose {
+  left: 1rem;
+  top: 50%;
+  color: var(--blue);
+  transform: translate(0, -50%);
+}
+.withdrawWindows .withdrawMain input {
+  text-indent: 6.5rem;
+}
+.withdrawWindows .withdrawMain .slot .tip {
+  color: #ffa200;
+}
+.withdrawWindows .withdrawMain .slot .toHome {
+  color: var(--primary);
+}
+.withdrawWindows .confirmBtn {
+  background: var(--greenGradient);
+  color: var(--fff);
+  border: none;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 0.56rem 0;
+}
+.withdrawWindows .confirmBtn.active {
+  opacity: 1;
+}
+/* 獎金優惠視窗 */
+.withdrawWindows .BonusProdressModal {
+  color: var(--gray1);
+  background-color: #3f3e3e;
+}
+.withdrawWindows .BonusProdressModal .modal-title {
+  font-size: 1.2rem;
+}
+.withdrawWindows .BonusProdressModal .modal-title .modalHeaderIicon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px #b9b9b9;
+}
+.withdrawWindows .BonusProdressModal .modal-body {
+  font-size: 0.8rem;
+}
+.withdrawWindows .BonusProdressModal .progressContent {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.withdrawWindows .BonusProdressModal .progressContent .progress {
+  height: 0.6rem;
+  width: 85%;
+}
+.withdrawWindows .BonusProdressModal .progressContent .progress .progress-bar {
+  background-color: #009d81;
+}
+.withdrawWindows .BonusProdressModal .progressContent span {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+.switchWindow {
   position: absolute;
-    background-color: #353535;
-    height: auto;
-  }
-  .switchWindow button {
-    background-color: #262728;
-    color: var(--gray1);
-    border: 0;
-    border-radius: 0;
-  }
-  .switchWindow button.closeBtn {
-    color: #646566;
-  }
-  .switchWindow button.active {
-    color: var(--primary);
-  }
+  background-color: #353535;
+  height: auto;
+}
+.switchWindow button {
+  background-color: #262728;
+  color: var(--gray1);
+  border: 0;
+  border-radius: 0;
+}
+.switchWindow button.closeBtn {
+  color: #646566;
+}
+.switchWindow button.active {
+  color: var(--primary);
+}
 </style>

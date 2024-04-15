@@ -51,3 +51,10 @@ export function register(data) {
     data
   })
 }
+
+export function walletDetails() {
+  return request({
+    url: '/user/walletDetails',
+    method: 'get'
+  })
+}

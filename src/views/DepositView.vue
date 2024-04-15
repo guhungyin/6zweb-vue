@@ -6,6 +6,7 @@ import { usePayStore } from '@/stores/modules/pay'
 import CloseBtn from '@/components/CloseBtn.vue'
 import LoadingPage from '@/components/LoadingPage.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
+import { useUserStore } from '@/stores/modules/user'
 // import MainMenu from '@/components/MainMenu.vue'
 // import ProfileWindow from '@/components/ProfileWindow.vue'
 import { ref } from 'vue'
@@ -23,6 +24,7 @@ export default {
   created() {
     this.queryGoods()
   },
+  mounted() {},
   methods: {
     toggleActive(selectGoods, e) {
       this.isDisabled = false
@@ -179,11 +181,13 @@ export default {
     const payStore = usePayStore()
     const isActive = ref(false)
     const isDisabled = ref(true)
+    const userStore = useUserStore()
     return {
       commonStore,
       isActive,
       isDisabled,
-      payStore
+      payStore,
+      userStore
     }
   }
 }

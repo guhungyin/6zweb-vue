@@ -51,7 +51,7 @@ export default defineConfig(({ command, mode }) => {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       },
       devOptions: {
-        enabled: true
+        enabled: false
       }
     })
   ]
@@ -68,7 +68,7 @@ export default defineConfig(({ command, mode }) => {
 
       server: {
         host: '0.0.0.0',
-        open: true
+        open: false
       }
     }
   } else {
