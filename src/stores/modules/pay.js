@@ -33,6 +33,18 @@ export const usePayStore = defineStore('pay', {
             reject(err)
           })
       })
+    },
+    async withdrawal(data) {
+      return new Promise((resolve, reject) => {
+        pay
+          .withdrawal(data)
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
     }
   }
 })

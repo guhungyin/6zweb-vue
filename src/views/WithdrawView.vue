@@ -1,7 +1,11 @@
 <script>
 import CloseBtn from '../components/CloseBtn.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
+import { ref, watch } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
+import LoadingPage from '@/components/LoadingPage.vue'
+import { usePayStore } from '@/stores/modules/pay'
+import * as bootstrap from 'bootstrap'
 export default {
   data() {
     return {
@@ -10,14 +14,90 @@ export default {
       cpfSelectedOption: null,
       accountType: 'CPF',
       accountOptions: ['CPF', 'Número de Celular', 'EMAIL'],
-      accountSelectedOption: null
+      accountSelectedOption: null,
+      isLoading: false,
+      submitData: {}
     }
   },
   components: {
     CloseBtn,
-    BottomMenu
+    BottomMenu,
+    LoadingPage
   },
   methods: {
+    async withdrawSubmit() {
+      console.log('提现请求...')
+      this.isLoading = true
+      const channel = await this.payChannel()
+
+      if (channel.data) {
+        channel.data.forEach((e) => {
+          if (e.channel.startsWith('pix_')) {
+            this.submitData.channel = e.channel
+            return false
+          }
+
+          return true
+        })
+
+        if (this.submitData.channel) {
+          this.submitData.accName = 'wins888'
+          this.submitData.accNo = this.pixNumber
+          this.submitData.bankCode = 'PIX'
+          this.submitData.ccyNo = 'INR'
+          this.submitData.identityNo = this.cpfNumber
+          this.submitData.identityType = this.accountType
+          this.submitData.mobileNo = this.pixNumber
+          this.submitData.orderAmount = this.userStore
+            .multiplied(this.withdrawMoney, 10000)
+            .toString()
+          this.submitData.province = 'PYTM0123456'
+          this.submitData.summary = 'summary'
+
+          console.log('提现数据:', this.submitData)
+
+          this.payStore
+            .withdrawal(this.submitData)
+            .then((res) => {
+              if (res.code === 0) {
+                // 获取最新的可提现金额
+                this.userStore.walletDetails()
+                this.isLoading = false
+                var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+                document.getElementById('errorTips').innerHTML =
+                  `Withdraw ${this.withdrawMoney} succeeded`
+                myModal.show()
+                let thant = this
+
+                setTimeout(async function () {
+                  myModal.hide()
+                  thant.$router.push({
+                    name: 'home'
+                  })
+                }, 3000)
+              }
+            })
+            .catch((err) => {
+              console.log('提现错误:', err.message)
+            })
+        }
+
+        this.isLoading = false
+      }
+    },
+    payChannel() {
+      return new Promise((resolve, reject) => {
+        this.payStore
+          .payChannel()
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((err) => {
+            this.isLoading = false
+            reject(err)
+          })
+      })
+    },
     cpfSelectOption(option) {
       this.cpfSelectedOption = option
       this.cpfType = option
@@ -29,15 +109,48 @@ export default {
   },
   setup() {
     const userStore = new useUserStore()
+    const payStore = new usePayStore()
+    const showAvailableMoney = userStore.formatMoney(userStore.availableWithdrawalMoney)
+    const isActive = ref(false)
+    const withdrawMoney = ref()
+    const cpfNumber = ref('')
+    const pixNumber = ref('')
+
+    watch([withdrawMoney, cpfNumber, pixNumber], () => {
+      if (withdrawMoney.value) {
+        withdrawMoney.value = Number(
+          withdrawMoney.value.toString().replace(/^(\\-)*(\d+)\.(\d{2}).*$/, '$1$2.$3')
+        )
+      }
+
+      if (
+        userStore.availableWithdrawalMoney > 0 &&
+        withdrawMoney.value > 0 &&
+        withdrawMoney.value <= Number(showAvailableMoney) &&
+        cpfNumber.value.length >= 5 &&
+        pixNumber.value.length >= 5
+      ) {
+        isActive.value = true
+      } else {
+        isActive.value = false
+      }
+    })
 
     return {
-      userStore
+      userStore,
+      withdrawMoney,
+      cpfNumber,
+      pixNumber,
+      isActive,
+      showAvailableMoney,
+      payStore
     }
   }
 }
 </script>
 <template>
   <div class="routerView">
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <div class="headerBack d-flex justify-content-between align-items-center px-2">
       <h2 class="title">Sacar</h2>
       <CloseBtn></CloseBtn>
@@ -106,7 +219,12 @@ export default {
             />
           </svg>
         </button>
-        <input type="text" class="form-control" placeholder="000.000.000-00" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="000.000.000-00"
+          v-model.trim="this.cpfNumber"
+        />
       </div>
       <!-- account -->
       <div class="account mb-3">
@@ -133,7 +251,12 @@ export default {
               ></path>
             </svg>
           </button>
-          <input type="number" class="form-control" placeholder="000.000.000-00" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="000.000.000-00"
+            v-model.trim="this.pixNumber"
+          />
         </div>
       </div>
       <div class="withdrawMain">
@@ -141,24 +264,22 @@ export default {
           <label class="d-flex align-items-center" for="quantiaInupt">
             SALDO DISPONIVEL:
             <img src="../assets/images/icon/rmoneyIcon2.svg" class="ms-2" width="25" alt="" />
-            <span class="ms-2">{{
-              this.userStore.formatMoney(this.userStore.availableWithdrawalMoney)
-            }}</span>
+            <span class="ms-2">{{ this.userStore.money }}</span>
           </label>
           <div class="position-relative mt-2 mb-3">
-            <input id="quantiaInupt" type="number" class="form-control" />
+            <input
+              id="quantiaInupt"
+              type="number"
+              class="form-control"
+              v-model.number="this.withdrawMoney"
+            />
             <span class="tipsClose position-absolute fw-bold">Quantia (BRL) </span>
           </div>
           <div class="slot mb-4">
             <ul class="p-0">
               <li class="mb-2 d-flex align-items-center">
                 Valor total de resgate
-                <span class="tip mx-2"
-                  >{{
-                    this.userStore.formatMoney(this.userStore.availableWithdrawalMoney)
-                  }}
-                  BRL</span
-                >
+                <span class="tip mx-2">{{ this.showAvailableMoney }} BRL</span>
                 <button
                   type="button"
                   class="btn p-0"
@@ -188,7 +309,14 @@ export default {
         </div>
       </div>
       <!-- 可加 active -->
-      <button type="button" class="btn confirmBtn w-100 mb-3">Saque</button>
+      <button
+        type="button"
+        class="btn confirmBtn w-100 mb-3"
+        @click="withdrawSubmit"
+        :class="{ active: isActive }"
+      >
+        Saque
+      </button>
       <!-- 獎金優惠視窗 -->
       <div
         class="modal fade"

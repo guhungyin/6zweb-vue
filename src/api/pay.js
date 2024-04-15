@@ -8,6 +8,14 @@ export function toPay(data) {
   })
 }
 
+export function withdrawal(data) {
+  return request({
+    url: 'pay/withdrawal',
+    method: 'post',
+    data
+  })
+}
+
 export function payChannel() {
   return request({
     url: 'pay/payChannel',

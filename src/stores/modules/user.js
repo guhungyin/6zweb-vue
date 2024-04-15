@@ -140,6 +140,10 @@ export const useUserStore = defineStore('user', {
       }
       let bgMoney = new BigNumber(inputMoney)
       return new BigNumber(bgMoney.div(10000).toFixed(2, 1)).toFormat(2)
+    },
+    multiplied(inputMoney, digit) {
+      let x = new BigNumber(inputMoney)
+      return x.times(digit)
     }
   },
   persist: {
