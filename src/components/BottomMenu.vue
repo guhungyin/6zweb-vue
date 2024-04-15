@@ -1,3 +1,20 @@
+<script>
+import { useUserStore } from '@/stores/modules/user'
+
+export default {
+  methods: {
+    wallterDetails() {
+      this.userStore.walletDetails()
+    }
+  },
+  setup() {
+    const userStore = useUserStore()
+    return {
+      userStore
+    }
+  }
+}
+</script>
 <template>
   <section class="bottomMenu position-fixed w-100">
     <ul class="d-flex justify-content-between align-items-end pb-2 px-0 m-0 h-100">
@@ -45,10 +62,13 @@
         </RouterLink>
       </li>
       <li class="main">
-      <RouterLink to="/affiliate" class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0">
-        <img src="@/assets/images/icon/afiliado.png" width="50" height="50" alt="" />
-        <span class="bottomMenuName mt-2">Afiliado</span>
-      </RouterLink>
+        <RouterLink
+          to="/affiliate"
+          class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0"
+        >
+          <img src="@/assets/images/icon/afiliado.png" width="50" height="50" alt="" />
+          <span class="bottomMenuName mt-2">Afiliado</span>
+        </RouterLink>
       </li>
       <li>
         <button
@@ -57,6 +77,7 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#profileWindow"
           aria-controls="profileWindow"
+          @click="wallterDetails"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

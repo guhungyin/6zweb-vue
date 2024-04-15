@@ -136,7 +136,7 @@ export default {
             <span>Hot</span>
           </div>
         </li>
-        <li
+        <!-- <li
           class="record"
           :class="{ active: activeTab === 'Record' }"
           @click="setActiveTab('Record')"
@@ -145,7 +145,7 @@ export default {
             <i class="icon mb-2"></i>
             <span>Record</span>
           </div>
-        </li>
+        </li> -->
         <li class="slots" :class="{ active: activeTab === 'Slots' }" @click="setActiveTab('Slots')">
           <div class="d-flex">
             <i class="icon mb-2"></i>
