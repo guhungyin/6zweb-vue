@@ -128,6 +128,15 @@ export default {
             for (let i = 0; i < rows; i++) {
               this.hotList[i] = []
               for (let j = 0; j < 9 && index < total; j++, index++) {
+                if (res.data.hotList[index].cp === 'evo') {
+                  res.data.hotList[index].cpSoft = 'Live'
+                } else if (res.data.hotList[index].cp === 'tada') {
+                  res.data.hotList[index].cpSoft = 'Tada Soft'
+                } else if (res.data.hotList[index].cp === 'pg_electronic') {
+                  res.data.hotList[index].cpSoft = 'PG Soft'
+                } else if (res.data.hotList[index].cp === 'pgplus') {
+                  res.data.hotList[index].cpSoft = 'PG Soft'
+                }
                 this.hotList[i].push(res.data.hotList[index])
               }
             }
@@ -141,6 +150,7 @@ export default {
               for (let i = 0; i < rows; i++) {
                 this.pgList[i] = []
                 for (let j = 0; j < 6 && index < total; j++, index++) {
+                  res.data.pg[index].cpSoft = 'PG Soft'
                   this.pgList[i].push(res.data.pg[index])
                 }
               }
@@ -154,6 +164,7 @@ export default {
               for (let i = 0; i < rows; i++) {
                 this.tadaList[i] = []
                 for (let j = 0; j < 9 && index < total; j++, index++) {
+                  res.data.tada[index].cpSoft = 'Tada Soft'
                   this.tadaList[i].push(res.data.tada[index])
                 }
               }
@@ -167,6 +178,7 @@ export default {
               for (let i = 0; i < rows; i++) {
                 this.evoList[i] = []
                 for (let j = 0; j < 6 && index < total; j++, index++) {
+                  res.data.evo[index].cpSoft = 'Live'
                   this.evoList[i].push(res.data.evo[index])
                 }
               }

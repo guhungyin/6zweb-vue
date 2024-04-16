@@ -199,8 +199,12 @@ export default {
     <section class="container-fluid playWindow">
       <nav class="mb-3" style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">PG Soft</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Fortune Rabbit</li>
+          <li class="breadcrumb-item">
+            <a href="/">{{ this.commonStore.playGame.cpSoft }}</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            {{ this.commonStore.playGame.gameName }}
+          </li>
         </ol>
       </nav>
       <div class="playContent p-2 mb-3">
