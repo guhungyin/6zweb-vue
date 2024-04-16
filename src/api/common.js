@@ -50,3 +50,12 @@ export function gameLogin(loginUrl) {
     method: 'get'
   })
 }
+
+export function authentication(data) {
+  return request({
+    // url: '/vue-admin-template/user/login',
+    url: '/evolution/authentication',
+    method: 'post',
+    data
+  })
+}

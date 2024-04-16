@@ -112,6 +112,20 @@ export const useCommonStore = defineStore('common', {
             reject(error)
           })
       })
+    },
+
+    async authentication(data) {
+      return new Promise((resolve, reject) => {
+        common
+          .authentication(data)
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((error) => {
+            console.log('EVO 游戏登录错误，common', error)
+            reject(error)
+          })
+      })
     }
   },
   persist: {

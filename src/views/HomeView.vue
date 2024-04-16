@@ -23,67 +23,9 @@ export default {
       pgSize: 0,
       tadaList: [],
       tadaSize: 0,
+      evoList: [],
+      evoSize: 0,
       gameImgData: {
-        sixz: {
-          list1: [
-            {
-              imgUrl: 'https://6z.com/images/game/PIC_Mines.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551032.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551008.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551031.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551010.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551009.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551037.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551006.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/PIC_Tower.jpg'
-            }
-          ],
-          list2: [
-            {
-              imgUrl: 'https://6z.com/images/game/551025.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551034.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551012.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551004.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551028.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551011.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551019.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551024.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551016.jpg'
-            }
-          ]
-        },
         Provedor: [
           {
             imgUrl: 'https://6z.com/images/homePage/provider/link_PG.jpg'
@@ -96,53 +38,8 @@ export default {
           },
           {
             imgUrl: 'https://6z.com/images/homePage/provider/link_EG.jpg'
-          },
-          {
-            imgUrl: 'https://6z.com/images/homePage/provider/link_6z.jpg'
           }
-        ],
-        live: {
-          list1: [
-            {
-              imgUrl: 'https://6z.com/images/game/551914.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551909.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551910.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551912.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551911.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551913.jpg'
-            }
-          ],
-          list2: [
-            {
-              imgUrl: 'https://6z.com/images/game/551908.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551951.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551979.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551963.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551959.jpg'
-            },
-            {
-              imgUrl: 'https://6z.com/images/game/551957.jpg'
-            }
-          ]
-        }
+        ]
       },
       logged: false,
       userMoney: '0.00'
@@ -261,6 +158,19 @@ export default {
                 }
               }
               this.tadaSize = total
+            }
+
+            if (res.data.evo) {
+              total = res.data.evo.length
+              rows = Math.ceil(total / 6)
+              index = 0
+              for (let i = 0; i < rows; i++) {
+                this.evoList[i] = []
+                for (let j = 0; j < 6 && index < total; j++, index++) {
+                  this.evoList[i].push(res.data.evo[index])
+                }
+              }
+              this.evoSize = total
             }
           }
         })
@@ -562,12 +472,14 @@ export default {
           </div>
         </swiper-slide>
       </swiper>
-      <!-- 6z game -->
+      <!-- Tada Game -->
       <swiper :navigation="true" :modules="modules" class="sixzGameListSwiper mt-3">
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Tada Soft</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 41</router-link>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+              >ALL {{ this.tadaSize }}</router-link
+            >
           </div>
         </template>
         <swiper-slide v-for="tadaItemRow in this.tadaList" :key="tadaItemRow">
@@ -575,15 +487,6 @@ export default {
             <div class="col" v-for="tataItem in tadaItemRow" :key="tataItem">
               <router-link to="/play" class="img" @click="setParams(tataItem)">
                 <img :src="tataItem.iconName" class="w-100" />
-              </router-link>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.sixz.list2" :key="item">
-              <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
               </router-link>
             </div>
           </div>
@@ -605,23 +508,16 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Live Casino</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4">ALL 55</router-link>
+            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+              >ALL {{ this.evoSize }}</router-link
+            >
           </div>
         </template>
-        <swiper-slide>
+        <swiper-slide v-for="evoItemRow in this.evoList" :key="evoItemRow">
           <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.live.list1" :key="item">
-              <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
-              </router-link>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="row row-cols-3 g-2">
-            <div class="col" v-for="item in gameImgData.live.list2" :key="item">
-              <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.imgUrl" class="w-100" />
+            <div class="col" v-for="evoItem in evoItemRow" :key="evoItem">
+              <router-link to="/play" class="img" @click="setParams(evoItem)">
+                <img :src="evoItem.iconName" class="w-100" />
               </router-link>
             </div>
           </div>

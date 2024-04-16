@@ -108,6 +108,22 @@ export default {
               this.isLoading = false
               console.log('===> gameLoing error', error.message)
             })
+        } else if (this.commonStore.playGame.cp === 'evo') {
+          this.isLoading = true
+          this.commonStore
+            .authentication({ directLaunchTableId: this.commonStore.playGame.gameId })
+            .then((response) => {
+              console.log('EVO游戏登录响应 url: ', response.data.entryEmbedded)
+              this.commonStore.playGame.gameUrl = response.data.entryEmbedded
+              this.isLoading = false
+              this.$router.push({
+                name: 'partnerGame'
+              })
+            })
+            .catch((error) => {
+              this.isLoading = false
+              console.log('===> gameLoing error', error.message)
+            })
         }
       }
     }
