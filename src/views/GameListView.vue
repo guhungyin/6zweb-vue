@@ -165,16 +165,6 @@ export default {
           </div>
         </li>
         <li
-          class="blockchain"
-          :class="{ active: activeTab === 'Blockchain' }"
-          @click="setActiveTab('Blockchain')"
-        >
-          <div class="d-flex">
-            <i class="icon mb-2"></i>
-            <span>Blockchain</span>
-          </div>
-        </li>
-        <li
           class="sports"
           :class="{ active: activeTab === 'Sports' }"
           @click="setActiveTab('Sports')"
@@ -182,6 +172,16 @@ export default {
           <div class="d-flex">
             <i class="icon mb-2"></i>
             <span>Sports</span>
+          </div>
+        </li>
+        <li
+          class="blockchain"
+          :class="{ active: activeTab === 'Blockchain' }"
+          @click="setActiveTab('Blockchain')"
+        >
+          <div class="d-flex">
+            <i class="icon mb-2"></i>
+            <span>Blockchain</span>
           </div>
         </li>
       </ul>

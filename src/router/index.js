@@ -213,6 +213,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/gameSpecifyList',
+      name: 'gameSpecifyList',
+      component: () => import('@/views/GameSpecifyListView.vue'),
+      meta:{
+        index: 1
+      }
+    },
+    {
       path: '/play',
       name: 'play',
       component: () => import('@/views/PlayGameView.vue'),
