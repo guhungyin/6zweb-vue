@@ -28,6 +28,13 @@ export function lobby() {
   })
 }
 
+export function websiteConfig() {
+  return request({
+    url: '/config/website',
+    method: 'get'
+  })
+}
+
 export function hotList() {
   return request({
     url: '/game/hotList',

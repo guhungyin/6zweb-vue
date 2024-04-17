@@ -71,6 +71,19 @@ export const useCommonStore = defineStore('common', {
       })
     },
 
+    async websiteConfig() {
+      return new Promise((resolve, reject) => {
+        common
+          .websiteConfig()
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
     async byType(gameType) {
       return new Promise((resolve, reject) => {
         common

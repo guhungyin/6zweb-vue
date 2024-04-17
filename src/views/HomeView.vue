@@ -25,6 +25,8 @@ export default {
       tadaSize: 0,
       evoList: [],
       evoSize: 0,
+      mediaList: [],
+      serviceList: [],
       gameImgData: {
         Provedor: [
           {
@@ -80,6 +82,7 @@ export default {
       this.userMoney = this.userStore.money
     }
 
+    this.websiteConfig()
     this.hotGameList()
     this.winnerShow()
     // this.queryGameList()
@@ -116,6 +119,25 @@ export default {
     //       console.log('query game list error: ', error.message)
     //     })
     // },
+    websiteConfig() {
+      this.commonStore
+        .websiteConfig()
+        .then((res) => {
+          if (res.data) {
+            res.data.forEach((v) => {
+              if (v.media) {
+                this.mediaList = v.media
+              } else if (v.service) {
+                this.serviceList = v.service
+              }
+            })
+
+            console.log('website config:', this.mediaList)
+            console.log('website config:', this.serviceList)
+          }
+        })
+        .catch((err) => console.log('load website error: ', err.message))
+    },
     hotGameList() {
       this.commonStore
         .lobby()
@@ -538,40 +560,26 @@ export default {
     </section>
     <footer class="container-fluid footer">
       <div class="bottomLogo mb-4 pt-3">
-        <img src="../assets/images/logo.png" class="img-fluid" alt="" />
+        <img src="https://h5.wins888.club/images/logo.png" class="img-fluid" alt="" />
       </div>
       <div class="customerService mb-3">
-        <a href="#" class="mx-2">
-          <img src="https://6z.com/img/persons.ac57c729.png" alt="" />
-        </a>
-        <a href="#" class="mx-2">
-          <img src="https://6z.com/img/service.1a114e92.png" alt="" />
-        </a>
+        <template v-for="serviceItem in this.serviceList" :key="serviceItem">
+          <a :href="serviceItem.link" class="mx-2">
+            <img :src="serviceItem.img" alt="" />
+          </a>
+        </template>
       </div>
       <div class="share mb-3">
         <span class="d-flex justify-content-center"
-          >6Z GAME irá responder todas suas dúvidas. Entre em contato usando uma das formas
+          >Wins888 GAME irá responder todas suas dúvidas. Entre em contato usando uma das formas
           abaixo.</span
         >
         <div class="d-flex justify-content-around mt-3">
-          <a href="#" class="text-decoration-none">
-            <img src="https://6z.com/img/facebook.3fa7319c.svg" alt="" />
-          </a>
-          <a href="#" class="text-decoration-none">
-            <img src="https://6z.com/img/twitter.cff17340.svg" alt="" />
-          </a>
-          <a href="#" class="text-decoration-none">
-            <img src="../assets/images/icon/youtube.png" alt="" />
-          </a>
-          <a href="#" class="text-decoration-none">
-            <img src="https://6z.com/img/telegram.dbf9a86f.svg" alt="" />
-          </a>
-          <a href="#" class="text-decoration-none">
-            <img src="https://6z.com/img/whatsapp.e195b1e8.svg" alt="" />
-          </a>
-          <a href="#" class="text-decoration-none">
-            <img src="https://6z.com/img/ins.5bd9c20b.png" alt="" />
-          </a>
+          <template v-for="mediaItem in this.mediaList" :key="mediaItem">
+            <a :href="mediaItem.link" class="text-decoration-none">
+              <img :src="mediaItem.img" alt="" />
+            </a>
+          </template>
         </div>
       </div>
       <div class="footerBottom">
@@ -612,7 +620,7 @@ export default {
         <hr />
         <div class="title text-center mb-3">LICENÇA</div>
         <p class="license">
-          6z.com é operada pela Dubet N.V., número de registro da empresa 10692, com endereço
+          wins888.club é operada pela Dubet N.V., número de registro da empresa 10692, com endereço
           registrado em Abraham de Veerstraat 7, Curaçao e é licenciada e autorizada pelo governo de
           365/JAZ Sub-Licença
           <a href="#" class="text-decoration-none">GLH-OCCHKTW0705152022</a>
