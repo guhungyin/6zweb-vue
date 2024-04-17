@@ -532,9 +532,9 @@ export default {
           <div class="title">Provedor Do Jogo</div>
         </div>
         <div class="row row-cols-2 g-2">
-          <div class="col" v-for="item in gameImgData.Provedor" :key="item">
+          <router-link to="/gameSpecifyList" class="col" v-for="item in gameImgData.Provedor" :key="item">
             <img :src="item.imgUrl" alt="" class="w-100" />
-          </div>
+          </router-link>
         </div>
       </div>
       <!-- LIVE game -->
