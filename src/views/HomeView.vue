@@ -27,22 +27,23 @@ export default {
       evoSize: 0,
       mediaList: [],
       serviceList: [],
-      gameImgData: {
-        Provedor: [
-          {
-            imgUrl: 'https://6z.com/images/homePage/provider/link_PG.jpg'
-          },
-          {
-            imgUrl: 'https://6z.com/images/homePage/provider/link_TD.jpg'
-          },
-          {
-            imgUrl: 'https://6z.com/images/homePage/provider/link_pp.jpg'
-          },
-          {
-            imgUrl: 'https://6z.com/images/homePage/provider/link_EG.jpg'
-          }
-        ]
-      },
+      provedorList: [],
+      // gameImgData: {
+      //   Provedor: [
+      //     {
+      //       imgUrl: 'https://h5.wins888.club/images/provider/link_PG.jpg'
+      //     },
+      //     {
+      //       imgUrl: 'https://h5.wins888.club/images/provider/link_TD.jpg'
+      //     },
+      //     // {
+      //     //   imgUrl: 'https://h5.wins888.club/images/provider/link_pp.jpg'
+      //     // },
+      //     {
+      //       imgUrl: 'https://h5.wins888.club/images/provider/link_EG.jpg'
+      //     }
+      //   ]
+      // },
       logged: false,
       userMoney: '0.00'
     }
@@ -105,6 +106,9 @@ export default {
       console.log('click game type : ', gameType)
       this.commonStore.setSelectGameType(gameType)
     },
+    selectProvedor(selectPorvedor) {
+      this.commonStore.selectProvedor = selectPorvedor
+    },
     // queryGameList() {
     //   this.commonStore
     //     .getGameList()
@@ -129,6 +133,8 @@ export default {
                 this.mediaList = v.media
               } else if (v.service) {
                 this.serviceList = v.service
+              } else if (v.provedor) {
+                this.provedorList = v.provedor
               }
             })
 
@@ -177,6 +183,7 @@ export default {
                 }
               }
               this.pgSize = total
+              this.commonStore.pgList = res.data.pg
             }
 
             if (res.data.tada) {
@@ -191,6 +198,7 @@ export default {
                 }
               }
               this.tadaSize = total
+              this.commonStore.tadaList = res.data.tada
             }
 
             if (res.data.evo) {
@@ -205,6 +213,7 @@ export default {
                 }
               }
               this.evoSize = total
+              this.commonStore.evoList = res.data.evo
             }
           }
         })
@@ -532,8 +541,14 @@ export default {
           <div class="title">Provedor Do Jogo</div>
         </div>
         <div class="row row-cols-2 g-2">
-          <router-link to="/gameSpecifyList" class="col" v-for="item in gameImgData.Provedor" :key="item">
-            <img :src="item.imgUrl" alt="" class="w-100" />
+          <router-link
+            to="/gameSpecifyList"
+            class="col"
+            v-for="provedorItem in this.provedorList"
+            :key="provedorItem"
+            @click="selectProvedor(provedorItem)"
+          >
+            <img :src="provedorItem.img" alt="" class="w-100" />
           </router-link>
         </div>
       </div>

@@ -6,11 +6,14 @@ import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      activeTab: '',
-      activeList: [],
+      gameList: [],
       logged: false,
       showButton: false,
-      viewScroll: ''
+      viewScroll: '',
+      totalSize: 0,
+      pageNumber: 0,
+      pageSize: 24,
+      currentSize: 0
     }
   },
   created() {
@@ -19,63 +22,75 @@ export default {
     }
   },
   mounted() {
-    this.activeTab = this.commonStore.selectGameType
-    this.byType(),
-    this.viewScroll = document.getElementById('main');
-    this.viewScroll.addEventListener('scroll', this.handleScroll);
+    this.viewScroll = document.getElementById('main')
+    this.viewScroll.addEventListener('scroll', this.handleScroll)
+
+    if (this.commonStore.selectProvedor) {
+      if (this.commonStore.selectProvedor.cp == 'PG') {
+        this.totalSize = this.commonStore.pgList.length
+      } else if (this.commonStore.selectProvedor.cp == 'TADA') {
+        this.totalSize = this.commonStore.tadaList.length
+      } else if (this.commonStore.selectProvedor.cp == 'Evolution') {
+        this.totalSize = this.commonStore.evoList.length
+      }
+
+      this.nextPage()
+    }
   },
   methods: {
-    setActiveTab(tab) {
-      this.commonStore.setSelectGameType(tab)
-      this.activeTab = tab
-
-      this.byType()
-    },
     setParams(gamPeInfo) {
       this.commonStore.setPlayGame(gamPeInfo)
     },
-    byType() {
-      if (this.commonStore.selectGameType === 'Hot') {
-        this.commonStore
-          .hotList()
-          .then((res) => {
-            this.activeList = []
-            res.data.forEach((v) => this.activeList.push(v))
-          })
-          .catch((err) => {
-            console.log('查询热门游戏错误: ', err.message)
-          })
-        return
-      }
+    nextPage() {
+      this.pageNumber++
+      if (this.commonStore.selectProvedor) {
+        let temList = []
+        if (this.commonStore.selectProvedor.cp == 'PG') {
+          let endLength =
+            this.pageSize * this.pageNumber > this.commonStore.pgList.length
+              ? this.commonStore.pgList.length
+              : this.pageSize * this.pageNumber
 
-      this.commonStore
-        .byType(this.commonStore.selectGameType)
-        .then((res) => {
-          this.activeList = []
-          res.data.forEach((v) => {
-            this.activeList.push(v)
-          })
-        })
-        .catch((err) => {
-          console.log('查询' + this.commonStore.selectGameType + '错误: ', err.message)
-        })
+          temList = this.commonStore.pgList.slice((this.pageNumber - 1) * this.pageSize, endLength)
+        } else if (this.commonStore.selectProvedor.cp == 'TADA') {
+          let endLength =
+            this.pageSize * this.pageNumber > this.commonStore.tadaList.length
+              ? this.commonStore.tadaList.length
+              : this.pageSize * this.pageNumber
+
+          temList = this.commonStore.tadaList.slice(
+            (this.pageNumber - 1) * this.pageSize,
+            endLength
+          )
+        } else if (this.commonStore.selectProvedor.cp == 'Evolution') {
+          let endLength =
+            this.pageSize * this.pageNumber > this.commonStore.evoList.length
+              ? this.commonStore.evoList.length
+              : this.pageSize * this.pageNumber
+
+          temList = this.commonStore.evoList.slice((this.pageNumber - 1) * this.pageSize, endLength)
+        }
+        temList.forEach((v) => this.gameList.push(v))
+        this.currentSize = this.gameList.length
+      }
     },
     handleScroll() {
-      const scrollWindow = document.getElementById('main');
-      if (scrollWindow.scrollTop > 100) { // 假设滚动超过100像素显示按钮
-        this.showButton = true;
+      const scrollWindow = document.getElementById('main')
+      if (scrollWindow.scrollTop > 100) {
+        // 假设滚动超过100像素显示按钮
+        this.showButton = true
       } else {
-        this.showButton = false;
+        this.showButton = false
       }
     },
     goToTop() {
       const viewScroll = document.getElementById('main')
       viewScroll.scrollTo({
         top: 0,
-        behavior: 'smooth', // 平滑滚动
-      });
-      this.showButton = false; // 返回顶部后隐藏按钮
-    },
+        behavior: 'smooth' // 平滑滚动
+      })
+      this.showButton = false // 返回顶部后隐藏按钮
+    }
   },
   components: {
     GameLogo,
@@ -152,20 +167,20 @@ export default {
       <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <router-link to="/">{{ this.commonStore.playGame.cpSoft }}</router-link>
+            <router-link to="/">Provedor de jogo</router-link>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            {{ this.commonStore.playGame.gameName }}
+            {{ this.commonStore.selectProvedor.tag }}
           </li>
         </ol>
       </nav>
       <div class="container">
-        <div class="title mb-2">PG Soft Games </div>
+        <div class="title mb-2">{{ this.commonStore.selectProvedor.tag }}</div>
         <div class="row row-cols-3 g-3">
           <router-link
             to="/play"
             class="col gameItem"
-            v-for="item in this.activeList"
+            v-for="item in this.gameList"
             :key="item"
             @click="setParams(item)"
           >
@@ -174,12 +189,24 @@ export default {
         </div>
       </div>
       <div class="topBtn" @click="goToTop" v-if="showButton">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFF" class="bi bi-chevron-up" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#FFF"
+          class="bi bi-chevron-up"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+          />
         </svg>
       </div>
-      <div class="sum mx-auto mt-3">Mostrando 24 de 42 jogos</div>
-      <button class="btn moreBtn mx-auto mt-3 px-3 py-2">Carregar Mais</button>
+      <div class="sum mx-auto mt-3">
+        Mostrando {{ this.currentSize }} de {{ this.totalSize }} jogos
+      </div>
+      <button class="btn moreBtn mx-auto mt-3 px-3 py-2" @click="nextPage">Carregar Mais</button>
     </div>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
@@ -190,7 +217,6 @@ export default {
   background-color: #1a1a1a;
 }
 .breadcrumb-item {
-  
   font-size: 0.8rem;
 }
 .breadcrumb-item a {
@@ -232,7 +258,7 @@ export default {
   color: var(--fff);
   background-color: #1a1a1a;
 }
-.topBtn{
+.topBtn {
   position: fixed;
   display: flex;
   align-items: center;
