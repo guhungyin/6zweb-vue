@@ -164,18 +164,18 @@ export default {
       </nav>
     </header>
     <div id="main" class="main">
-      <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <router-link to="/">Provedor de jogo</router-link>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            {{ this.commonStore.selectProvedor.tag }}
-          </li>
-        </ol>
-      </nav>
       <div class="container">
         <div class="title mb-2">{{ this.commonStore.selectProvedor.tag }}</div>
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <router-link to="/">Provedor de jogo</router-link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ this.commonStore.selectProvedor.tag }}
+            </li>
+          </ol>
+        </nav>
         <div class="row row-cols-3 g-3">
           <router-link
             to="/play"

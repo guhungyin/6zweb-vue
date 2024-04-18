@@ -163,20 +163,36 @@ header .right .userBtn {
 .swiper-button-prev {
   right: 2rem;
   left: initial;
-  background: var(--black2) url('../images/icon/chevron-left.png') no-repeat center center / 100%
-    100%;
 }
 .swiper-button-next {
   right: 0;
-  background: var(--black2) url('../images/icon/chevron-right.png') no-repeat center center / 100%
-    100%;
 }
 .swiper-button-prev,
 .swiper-button-next {
+  background-color: var(--black2);
   position: absolute;
   top: 0;
   width: 1.7rem;
   height: 1.7rem;
+}
+.swiper-button-prev::before,
+.swiper-button-next::before{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.swiper-button-prev::before{
+  background: url('../images/icon/chevron-left.png') no-repeat center center / 100%
+    100%;
+}
+.swiper-button-next::before{
+  background:  url('../images/icon/chevron-right.png') no-repeat center center / 100%
+    100%;
+}
+.swiper-button-prev.swiper-button-disabled::before,
+.swiper-button-next.swiper-button-disabled::before{
+  opacity: .5;
 }
 .footer {
   background-color: var(--black3);
