@@ -331,7 +331,7 @@ export default {
           <RouterLink to="/deposit">
             <img
               class="img-fluid"
-              src="https://images.hibigwin.com/wildbet777/202312/mzrqWIEAPFiZzqF.jpg"
+              src="@/assets/images/banner/banner_01.jpg"
               alt=""
             />
           </RouterLink>
@@ -339,28 +339,49 @@ export default {
         <swiper-slide>
           <img
             class="img-fluid"
-            src="https://images.hibigwin.com/wildbet777/202312/tXjavEotaEosfJt.jpg"
+            src="@/assets/images/banner/banner_02.jpg"
             alt=""
           />
         </swiper-slide>
         <swiper-slide>
           <img
             class="img-fluid"
-            src="https://images.hibigwin.com/wildbet777/202312/IiLcNgsERhzevtg.jpg"
+            src="@/assets/images/banner/banner_03.jpg"
             alt=""
           />
         </swiper-slide>
         <swiper-slide>
           <img
             class="img-fluid"
-            src="https://images.hibigwin.com/wildbet777/202312/MDspeLyExVBrDMK.jpg"
+            src="@/assets/images/banner/banner_04.jpg"
             alt=""
           />
         </swiper-slide>
         <swiper-slide>
           <img
             class="img-fluid"
-            src="https://images.hibigwin.com/wildbet777/202312/UkdfGNnCHEVhPRD.jpg"
+            src="@/assets/images/banner/banner_05.jpg"
+            alt=""
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <img
+            class="img-fluid"
+            src="@/assets/images/banner/banner_06.jpg"
+            alt=""
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <img
+            class="img-fluid"
+            src="@/assets/images/banner/banner_07.jpg"
+            alt=""
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <img
+            class="img-fluid"
+            src="@/assets/images/banner/banner_08.jpg"
             alt=""
           />
         </swiper-slide>
