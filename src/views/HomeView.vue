@@ -135,6 +135,8 @@ export default {
                 this.serviceList = v.service
               } else if (v.provedor) {
                 this.provedorList = v.provedor
+              } else if (v.referral) {
+                this.commonStore.referralList = v.referral
               }
             })
 
