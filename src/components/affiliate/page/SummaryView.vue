@@ -26,8 +26,6 @@ export default {
         this.meReferral = v.link.replace(/userId/g, this.userStore.id.toString())
       }
     })
-
-    console.log('whatsapp url:', this.whatsappReferral)
   },
   created() {},
   methods: {},
