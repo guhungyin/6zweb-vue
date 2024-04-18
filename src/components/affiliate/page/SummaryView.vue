@@ -28,7 +28,23 @@ export default {
     })
   },
   created() {},
-  methods: {},
+    methods: {
+    copyLink() {
+      const textToCopy = this.meReferral //event.target.getAttribute('data-clipboard-text')
+      navigator.clipboard
+        .writeText(textToCopy)
+        .then(() => {
+          console.log('文字已複製到剪貼簿:', textToCopy)
+          this.showModal = true
+          setTimeout(() => {
+            this.showModal = false
+          }, 3000)
+        })
+        .catch((error) => {
+          console.error('Failed to copy text:', error)
+        })
+    }
+  },
   setup() {
     const commonStore = useCommonStore()
     const userStore = useUserStore()
@@ -269,7 +285,7 @@ export default {
           <div class="tip mb-2">Compartilhe este link de indicação com seus amigos</div>
           <div class="copyUrl p-2">
             <span class="url">{{ this.meReferral }}</span>
-            <span class="copyBtn">Cópia</span>
+            <span class="copyBtn" @click="copyLink" data-clipboard-text="123456">Cópia</span>
           </div>
         </div>
       </div>
