@@ -17,18 +17,51 @@ export default {
   mounted() {
     this.commonStore.referralList.forEach((v) => {
       if (v.channel === 'Telegram') {
-        this.telegramReferral = v.link.replace(/userId/g, this.userStore.id.toString())
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.telegramReferral =
+          url.protocol +
+          '//' +
+          url.hostname +
+          url.pathname +
+          '?url=' +
+          encodeURIComponent(url.searchParams.get('url')) +
+          '&text=' +
+          encodeURIComponent(url.searchParams.get('text'))
+        console.log('telegram share url: ', this.telegramReferral)
       } else if (v.channel === 'Facebook') {
-        this.facebookReferral = v.link.replace(/userId/g, this.userStore.id.toString())
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.facebookReferral =
+          url.protocol +
+          '//' +
+          url.hostname +
+          url.pathname +
+          '?u=' +
+          encodeURIComponent(url.searchParams.get('u')) +
+          '&t=' +
+          encodeURIComponent(url.searchParams.get('t'))
+
+        console.log('facebook share url: ', this.facebookReferral)
       } else if (v.channel === 'whatsapp') {
-        this.whatsappReferral = v.link.replace(/userId/g, this.userStore.id.toString())
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.whatsappReferral =
+          url.protocol +
+          url.hostname +
+          url.pathname +
+          '?text=' +
+          encodeURIComponent(url.searchParams.get('text')) +
+          '&via=' +
+          encodeURIComponent(url.searchParams.get('via'))
+        console.log('whatsapp share url: ', this.whatsappReferral)
       } else if (v.channel === 'me') {
         this.meReferral = v.link.replace(/userId/g, this.userStore.id.toString())
       }
     })
   },
   created() {},
-    methods: {
+  methods: {
     copyLink() {
       const textToCopy = this.meReferral //event.target.getAttribute('data-clipboard-text')
       navigator.clipboard
