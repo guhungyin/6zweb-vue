@@ -8,7 +8,8 @@ export default {
       telegramReferral: '',
       facebookReferral: '',
       whatsappReferral: '',
-      meReferral: ''
+      meReferral: '',
+      showModal: false,
     }
   },
   components: {
@@ -478,6 +479,21 @@ export default {
       </div>
     </div>
   </div>
+  <div class="alert m-0" role="alert" :class="{ active: showModal }">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      fill="#fff"
+      class="bi bi-check-lg mb-3"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"
+      />
+    </svg>
+    Copy succeeded
+  </div>
   <CommitteeModal></CommitteeModal>
 </template>
 <style scoped>
@@ -634,5 +650,25 @@ export default {
 }
 .modal .notice {
   color: #808080;
+}
+.alert {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 0;
+  color: #fff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 8rem;
+  height: 8rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.alert.active {
+  display: flex;
 }
 </style>
