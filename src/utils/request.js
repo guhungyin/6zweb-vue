@@ -57,7 +57,11 @@ service.interceptors.response.use(
     console.log('--------->> res', res, '--------- rquest url', response.config.url)
 
     if (res.code !== 0) {
-      if (res.code === 10500012 && response.config.url !== '/user/walletDetails') {
+      if (
+        res.code === 10500012 &&
+        response.config.url !== '/user/walletDetails' &&
+        response.config.url !== 'goods/list'
+      ) {
         const userStore = useUserStore(pinia)
         userStore.$reset()
         setTimeout(async function () {
@@ -66,7 +70,8 @@ service.interceptors.response.use(
         return
       } else if (
         '/user/login' !== response.config.url &&
-        response.config.url !== '/user/walletDetails'
+        response.config.url !== '/user/walletDetails' &&
+        response.config.url !== 'goods/list'
       ) {
         var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
         document.getElementById('errorTips').innerHTML = res.msg

@@ -9,7 +9,7 @@ export default {
       facebookReferral: '',
       whatsappReferral: '',
       meReferral: '',
-      showModal: false,
+      showModal: false
     }
   },
   components: {
@@ -45,6 +45,7 @@ export default {
 
         console.log('facebook share url: ', this.facebookReferral)
       } else if (v.channel === 'whatsapp') {
+        //https://api.whatsapp.com/send?text=
         let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
         let url = new URL(tempUrl)
         this.whatsappReferral =
@@ -325,7 +326,9 @@ export default {
       </div>
     </div>
     <div class="card service">
-      <div class="card-header fw-bold">Grupo CHAT entre agentes por telegram oficial do 6Z.COM</div>
+      <div class="card-header fw-bold">
+        Grupo CHAT entre agentes por telegram oficial do wins888
+      </div>
       <div class="card-body">
         <div class="d-flex align-items-center mb-2">
           <a href="#" class="me-2">
@@ -382,8 +385,8 @@ export default {
       </div>
       <div class="card-body">
         <div class="hintTitle mb-3">
-          Ganhe dinheiro indicando amigos para a 6z, você ganha sempre que um convidado seu realiza
-          uma aposta!
+          Ganhe dinheiro indicando amigos para a wins888, você ganha sempre que um convidado seu
+          realiza uma aposta!
         </div>
         <div class="imgContent mb-3">
           <img src="@/assets/images/icon/money2.png" width="73" alt="" />
