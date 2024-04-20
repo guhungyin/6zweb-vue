@@ -393,10 +393,10 @@ export default {
     <div class="banner2 container">
       <div class="row row-cols-2 g-1">
         <router-link class="col" to="/deposit">
-          <img src="https://6z.com/img/vip.a28e101a.jpg" class="w-100" alt="" />
+          <img src="@/assets/images/banner/banner2_01.jpg" class="w-100" alt="" />
         </router-link>
         <router-link class="col" to="/cashback">
-          <img src="https://6z.com/img/RS12.affbb8c0.jpg" class="w-100" alt="" />
+          <img src="@/assets/images/banner/banner2_02.jpg" class="w-100" alt="" />
         </router-link>
       </div>
     </div>
@@ -598,7 +598,7 @@ export default {
     </section>
     <footer class="container-fluid footer">
       <div class="bottomLogo mb-4 pt-3">
-        <img src="https://h5.wins888.club/images/logo.png" class="img-fluid" alt="" />
+        <img src="@/assets/images/logo.png" class="img-fluid" alt="" />
       </div>
       <div class="customerService mb-3">
         <template v-for="serviceItem in this.serviceList" :key="serviceItem">

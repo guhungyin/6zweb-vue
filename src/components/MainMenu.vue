@@ -49,11 +49,6 @@ export default {
     </div>
     <div class="offcanvas-body">
       <ul class="gameLink px-4 py-2">
-        <li class="download justify-content-center">
-          <router-link to="/downloadApp">
-            <img src="https://6z.com/img/na_dl.580318eb.png" alt="" />
-          </router-link>
-        </li>
         <li>
           <router-link to="/affiliate">
             <img class="icon" src="@/assets/images/icon/menuIcon01.png" alt="" />
@@ -209,9 +204,6 @@ export default {
   line-height: 3rem;
 }
 .mainMenu .logo {
-  height: 2.5rem;
-}
-.mainMenu .gameLink .download img {
   height: 2.5rem;
 }
 .mainMenu li .icon {
