@@ -12,7 +12,7 @@ export const useUserStore = defineStore('user', {
       nickName: '',
       mobile: '*********',
       email: '',
-      money: '',
+      money: '0.00',
       vipLevel: 0,
       promotionTotalCommission: 0,
       source: '',

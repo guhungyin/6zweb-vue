@@ -9,6 +9,7 @@ export default {
       facebookReferral: '',
       whatsappReferral: '',
       meReferral: '',
+      instagramReferral: '',
       showModal: false
     }
   },
@@ -59,6 +60,17 @@ export default {
         console.log('whatsapp share url: ', this.whatsappReferral)
       } else if (v.channel === 'me') {
         this.meReferral = v.link.replace(/userId/g, this.userStore.id.toString())
+      } else if (v.channel === 'instagram') {
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.instagramReferral =
+          url.protocol +
+          '//' +
+          url.hostname +
+          url.pathname +
+          '?' +
+          encodeURIComponent(url.searchParams.get('url'))
+        console.log('instagram share url: ', this.instagramReferral)
       }
     })
   },
@@ -304,10 +316,10 @@ export default {
             <span>Telegram</span>
           </li>
           <li>
-            <a href="#" class="mb-2">
+            <a :href="this.instagramReferral" class="mb-2">
               <img src="@/assets/images/icon/x.svg" alt="" width="46" />
             </a>
-            <span>Twitter</span>
+            <span>Instagram</span>
           </li>
           <li>
             <a href="#" class="mb-2">
