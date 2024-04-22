@@ -128,7 +128,9 @@ export default {
         <div class="tips my-2" :class="{ active: tips1Active }">
           Please enter the correct password
         </div>
-        <router-link to="/forgetPassword" class="forgetPassword my-2">Esqueci minha senha?</router-link>
+        <router-link to="/forgetPassword" class="forgetPassword my-2"
+          >Esqueci minha senha?</router-link
+        >
         <div class="tips text-center mb-0" :class="{ active: errorActive }">{{ errorMsg }}</div>
         <button
           type="button"
@@ -141,7 +143,7 @@ export default {
           Login
         </button>
         <div class="link mb-4">
-          Novo no 6Z.com?
+          Novo no wins888.vip?
           <router-link to="/register" class="ms-2">Criar Conta Nova</router-link>
         </div>
         <div class="or mb-3">

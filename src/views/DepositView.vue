@@ -299,7 +299,7 @@ export default {
       <div class="tips">
         <ul class="ps-3">
           <li class="mb-2">
-            1. Se você perder dinheiro real ao jogar o jogo, a 6Z oferece um
+            1. Se você perder dinheiro real ao jogar o jogo, a wins888 oferece um
             <span>Cashback em dinheiro de 25% toda semana</span>
           </li>
           <li class="mb-2">

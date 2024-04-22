@@ -24,7 +24,7 @@ export default {
         <br />
         y empieza ya!
       </div>
-      <a class="downloadBtn mx-auto mb-3" download="/6Z_v1.apk">BAIXAR AGORA (3.7MB)</a>
+      <a class="downloadBtn mx-auto mb-3" download="/wins888_v1.apk">BAIXAR AGORA (3.7MB)</a>
       <div class="tip_b mb-3">Requer Android 4.4 ou acima</div>
       <div class="upIcon text-center mb-3">
         <svg

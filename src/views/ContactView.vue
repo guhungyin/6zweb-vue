@@ -13,7 +13,7 @@ export default {
       <CloseBtn></CloseBtn>
     </div>
     <div class="container-fluid contactWindows">
-      <a class="pt-3" href="mailto:xxx@6z.com">
+      <a class="pt-3" href="mailto:support@wins888.vip">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="19"
@@ -27,13 +27,13 @@ export default {
           ></path>
         </svg>
         <span class="me-2">E-mail: </span>
-        <span class="link">support@6z.com</span>
+        <span class="link">support@wins888.vip</span>
       </a>
     </div>
   </div>
 </template>
 <style scoped>
-.contactWindows{
+.contactWindows {
   margin-top: 4rem;
 }
 .contactWindows a {

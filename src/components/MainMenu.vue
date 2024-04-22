@@ -134,7 +134,7 @@ export default {
           </router-link>
         </li>
         <li>
-          <a href="mailto:xxx@6z.com">
+          <a href="mailto:support@wins888.com">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

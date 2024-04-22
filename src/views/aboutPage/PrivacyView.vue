@@ -14,11 +14,11 @@ export default {
     </header>
     <div class="privacyWindows container-fluid pt-2">
       <p>
-        A 6z tratará os dados que você nos fornecer como estritamente privados e eles só serão usados
-        de acordo com esta declaração de privacidade por nós, por um membro do nosso Grupo e/ou por um
-        terceiro selecionado que cumpra nossos altos padrões de dados proteção para gerenciar a conta
-        pessoal que você abre conosco (“Conta”), para criar perfis de clientes, para garantir a
-        segurança do Site e permitir que você use nossos serviços.
+        A wins888 tratará os dados que você nos fornecer como estritamente privados e eles só serão
+        usados de acordo com esta declaração de privacidade por nós, por um membro do nosso Grupo
+        e/ou por um terceiro selecionado que cumpra nossos altos padrões de dados proteção para
+        gerenciar a conta pessoal que você abre conosco (“Conta”), para criar perfis de clientes,
+        para garantir a segurança do Site e permitir que você use nossos serviços.
       </p>
       <div>
         <h2>Dados pessoais</h2>
@@ -35,10 +35,10 @@ export default {
             crédito ou outro meio de pagamento aceitável) para que você possa creditar sua conta.
           </li>
           <li>
-            Exigimos as informações acima para garantir que você possa se identificar ao usar o Site,
-            para garantir que você tenha idade legal para usar nossos serviços, para melhorar nossos
-            serviços para você e para mantê-lo informado sobre qualquer um de nossos serviços que
-            possa ser do seu interesse.
+            Exigimos as informações acima para garantir que você possa se identificar ao usar o
+            Site, para garantir que você tenha idade legal para usar nossos serviços, para melhorar
+            nossos serviços para você e para mantê-lo informado sobre qualquer um de nossos serviços
+            que possa ser do seu interesse.
           </li>
           <li>
             Você também tem o direito de acessar seus dados pessoais a qualquer momento para fazer
@@ -50,10 +50,10 @@ export default {
         <h2>Mensagens promocionais</h2>
         <ul>
           <li>
-            Ao se registrar e/ou inscrever-se em uma conta 6z ou atualizar sua conta 6z e usar uma
-            conta ou este serviço, os jogadores concordam que a 6z e seus parceiros de negócios podem
-            usar os detalhes fornecidos pelo jogador para contatá-los sobre seus produtos e serviços e
-            para fins de marketing e promocionais.
+            Ao se registrar e/ou inscrever-se em uma conta wins888 ou atualizar sua conta wins888 e
+            usar uma conta ou este serviço, os jogadores concordam que a wins888 e seus parceiros de
+            negócios podem usar os detalhes fornecidos pelo jogador para contatá-los sobre seus
+            produtos e serviços e para fins de marketing e promocionais.
           </li>
         </ul>
       </div>
@@ -61,20 +61,20 @@ export default {
         <h2>Uso de dados pessoais</h2>
         <ul>
           <li>
-            Uma vez que seus dados pessoais nos sejam enviados, eles serão mantidos de forma segura em
-            nosso banco de dados.
+            Uma vez que seus dados pessoais nos sejam enviados, eles serão mantidos de forma segura
+            em nosso banco de dados.
           </li>
           <li>
-            Usamos o endereço de e-mail que você nos forneceu para lhe enviar um e-mail de boas-vindas
-            ao 6z.
+            Usamos o endereço de e-mail que você nos forneceu para lhe enviar um e-mail de
+            boas-vindas ao wins888.
           </li>
           <li>
             Podemos enviar e-mails de tempos em tempos contendo informações que vão desde promoções
             especiais até informações técnicas e outras relacionadas aos nossos serviços.
           </li>
           <li>
-            Caso deseje cancelar a inscrição em nossa lista de e-mail, você pode fazer isso facilmente
-            entrando em contato conosco.
+            Caso deseje cancelar a inscrição em nossa lista de e-mail, você pode fazer isso
+            facilmente entrando em contato conosco.
           </li>
           <li>
             No âmbito da nossa parceria com os bancos comerciais e/ou as empresas responsáveis pela
@@ -87,18 +87,18 @@ export default {
           </li>
           <li>
             Também podemos firmar parcerias com processadores de dados e empresas que fornecem
-            serviços de segurança, verificação de idade e verificação de identificação (incluindo, sem
-            limitação, instituições financeiras, verificação de idade e agências de referência de
-            crédito) para melhorar a eficiência e segurança do Site e /ou para cumprir os regulamentos
-            relevantes.
+            serviços de segurança, verificação de idade e verificação de identificação (incluindo,
+            sem limitação, instituições financeiras, verificação de idade e agências de referência
+            de crédito) para melhorar a eficiência e segurança do Site e /ou para cumprir os
+            regulamentos relevantes.
           </li>
           <li>
-            Essas empresas podem ter acesso aos seus dados pessoais e podem manter registros para que
-            possam processar os dados de informação necessários e manter a segurança do Site.
+            Essas empresas podem ter acesso aos seus dados pessoais e podem manter registros para
+            que possam processar os dados de informação necessários e manter a segurança do Site.
           </li>
           <li>
-            As empresas que escolhemos para realizar essas funções têm políticas rígidas em relação à
-            privacidade de dados pessoais, embora não assumimos nenhuma responsabilidade pelas
+            As empresas que escolhemos para realizar essas funções têm políticas rígidas em relação
+            à privacidade de dados pessoais, embora não assumimos nenhuma responsabilidade pelas
             políticas de privacidade dessas empresas.
           </li>
           <li>
@@ -112,32 +112,32 @@ export default {
           </li>
           <li>
             Reservamo-nos o direito de transmitir ao público ou a outras autoridades relevantes os
-            dados pessoais dos clientes, se necessário ou exigido no decurso de qualquer investigação
-            legal.
+            dados pessoais dos clientes, se necessário ou exigido no decurso de qualquer
+            investigação legal.
           </li>
           <li>
-            Os dados pessoais enviados por nossos clientes podem ser armazenados e/ou processados para
-            os fins estabelecidos acima nesta Declaração de Privacidade em qualquer país em que nós ou
-            nossas afiliadas, fornecedores, subsidiárias ou agentes mantenham instalações.
+            Os dados pessoais enviados por nossos clientes podem ser armazenados e/ou processados
+            para os fins estabelecidos acima nesta Declaração de Privacidade em qualquer país em que
+            nós ou nossas afiliadas, fornecedores, subsidiárias ou agentes mantenham instalações.
           </li>
           <li>
-            Ao aceitar esta Política de Privacidade, você dá seu consentimento para a transferência de
-            seus dados pessoais para fora do seu país.
+            Ao aceitar esta Política de Privacidade, você dá seu consentimento para a transferência
+            de seus dados pessoais para fora do seu país.
           </li>
           <li>
-            A 6z está empenhada em tomar todas as medidas necessárias para garantir que sempre que
-            dados pessoais sejam transmitidos, tal transmissão ocorra exclusivamente dentro do Grupo e
-            parceiros selecionados do Grupo em que as empresas os padrões de privacidade e
+            A wins888 está empenhada em tomar todas as medidas necessárias para garantir que sempre
+            que dados pessoais sejam transmitidos, tal transmissão ocorra exclusivamente dentro do
+            Grupo e parceiros selecionados do Grupo em que as empresas os padrões de privacidade e
             confidencialidade devem ser de um padrão aceitável, independente da localização.
           </li>
           <li>
-            A 6z não será de forma alguma responsabilizada pela maneira como terceiros processam e/ou
-            armazenam os dados pessoais de nossos clientes.
+            A wins888 não será de forma alguma responsabilizada pela maneira como terceiros
+            processam e/ou armazenam os dados pessoais de nossos clientes.
           </li>
           <li>
-            A 6z será responsável apenas por sua própria Política de Privacidade e não garante o
-            padrão das políticas de privacidade de nenhum dos terceiros que possam ter links colocados
-            em nossos Sites.
+            A wins888 será responsável apenas por sua própria Política de Privacidade e não garante
+            o padrão das políticas de privacidade de nenhum dos terceiros que possam ter links
+            colocados em nossos Sites.
           </li>
           <li>
             Recomendamos fortemente que, quando você acessar uma nova página por meio de um link em
@@ -173,15 +173,15 @@ export default {
             online de acordo com as leis da jurisdição em que a pessoa está localizada.
           </li>
           <li>
-            Consequentemente, menores de idade não podem se registrar e jogar em nosso Site. Coletamos
-            comprovantes de identificação de nossos clientes como parte de nosso processo de
-            verificação de idade.
+            Consequentemente, menores de idade não podem se registrar e jogar em nosso Site.
+            Coletamos comprovantes de identificação de nossos clientes como parte de nosso processo
+            de verificação de idade.
           </li>
           <li>
-            Qualquer menor que esteja jogando no 6z terá sua conta bloqueada imediatamente. A 6z se
-            reserva o direito de realizar uma análise de segurança para validar sua identidade e
-            idade. A aceitação de nossa Política de Privacidade nos autoriza a realizar tais análises
-            de segurança fornecidas por você em bancos de dados de terceiros.
+            Qualquer menor que esteja jogando no wins888 terá sua conta bloqueada imediatamente. A
+            wins888 se reserva o direito de realizar uma análise de segurança para validar sua
+            identidade e idade. A aceitação de nossa Política de Privacidade nos autoriza a realizar
+            tais análises de segurança fornecidas por você em bancos de dados de terceiros.
           </li>
         </ul>
       </div>
@@ -189,30 +189,30 @@ export default {
         <h2>Segurança</h2>
         <ul>
           <li>
-            A 6z usa seus melhores esforços para proteger a confidencialidade de seus dados pessoais e
-            impedir que usuários externos ou internos não autorizados acessem tais informações sem o
-            seu consentimento.
+            A wins888 usa seus melhores esforços para proteger a confidencialidade de seus dados
+            pessoais e impedir que usuários externos ou internos não autorizados acessem tais
+            informações sem o seu consentimento.
           </li>
           <li>
-            No entanto, a 6z não assumirá qualquer responsabilidade por eventos além de seu controle,
-            incluindo, mas não limitado a, atos de Deus ou desastres naturais, incluindo cortes de
-            energia e greves.
+            No entanto, a wins888 não assumirá qualquer responsabilidade por eventos além de seu
+            controle, incluindo, mas não limitado a, atos de Deus ou desastres naturais, incluindo
+            cortes de energia e greves.
           </li>
           <li>
             Temos certeza de que, como nosso cliente, você entende a natureza evolutiva do nosso
             negócio devido à contínua inovação tecnológica e, embora nos esforcemos para garantir a
-            proteção e a privacidade de seus dados pessoais em todos os momentos, não podemos garantir
-            que o desempenho do nosso serviço estará sempre livre de erros. Caso tal erro tenha um
-            efeito ou consequência na privacidade de seus dados pessoais, não seremos responsáveis de
-            forma alguma por danos ou de outra forma.
+            proteção e a privacidade de seus dados pessoais em todos os momentos, não podemos
+            garantir que o desempenho do nosso serviço estará sempre livre de erros. Caso tal erro
+            tenha um efeito ou consequência na privacidade de seus dados pessoais, não seremos
+            responsáveis de forma alguma por danos ou de outra forma.
           </li>
           <li>
             Recomendamos fortemente que você não divulgue seus dados pessoais para estranhos ou
             terceiros durante o chat ao vivo.
           </li>
           <li>
-            Lembre-se de que seus dados pessoais são confidenciais e é importante parar e pensar antes
-            de transmitir informações pessoais.
+            Lembre-se de que seus dados pessoais são confidenciais e é importante parar e pensar
+            antes de transmitir informações pessoais.
           </li>
         </ul>
       </div>

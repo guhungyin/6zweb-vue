@@ -20,10 +20,10 @@ export default {
         <ul>
           <li class="mb-2">
             Abra seu navegador e digite:
-            <span class="link">6z.com</span>
+            <span class="link">wins888.vip</span>
           </li>
           <li class="mb-2">
-            Quando a página 6z abrir, clique em
+            Quando a página wins888 abrir, clique em
             <span class="link">“Cadastre-se”</span>
           </li>
           <li class="mb-2">
@@ -34,7 +34,7 @@ export default {
         </ul>
         <p>
           Obs.: Selecione uma senha que não vai esquecer, pois ela será utilizada para visitar
-          <span class="link">6z.com</span>
+          <span class="link">wins888.vip</span>
         </p>
       </div>
       <hr />
@@ -44,9 +44,9 @@ export default {
         <ul>
           <li class="mb-2">
             Abra seu navegador e digite:
-            <span class="link">6z.com</span>
+            <span class="link">wins888.vip</span>
           </li>
-          <li class="mb-2">Quando a página 6z abrir, clique em login.</li>
+          <li class="mb-2">Quando a página wins888 abrir, clique em login.</li>
           <li class="mb-2">Insira seu número e senha para entrar na sua conta.</li>
           <li class="mb-2">Selecione um jogo e clique no botão de jogar.</li>
           <li class="mb-2">Você verá a interface principal do jogo.</li>
@@ -63,9 +63,9 @@ export default {
         <ul>
           <li class="mb-2">
             Abra seu navegador e digite:
-            <span class="link">6z.com</span>
+            <span class="link">wins888.vip</span>
           </li>
-          <li class="mb-2">Quando a página 6z abrir, clique em login.</li>
+          <li class="mb-2">Quando a página wins888 abrir, clique em login.</li>
           <li class="mb-2">Digite seu número e senha para acessar sua conta.</li>
           <li class="mb-2">Clique em "Perfil" no menu abaixo.</li>
           <li class="mb-2">Clique em "Minhas Apostas"</li>
@@ -78,9 +78,9 @@ export default {
         <ul>
           <li class="mb-2">
             Abra seu navegador e digite:
-            <span class="link">6z.com</span>
+            <span class="link">wins888.vip</span>
           </li>
-          <li class="mb-2">Quando a página 6z abrir, clique em login.</li>
+          <li class="mb-2">Quando a página wins888 abrir, clique em login.</li>
           <li class="mb-2">Insira seu número de telefone e clique em "esqueci minha senha"</li>
           <li class="mb-2">Você receberá um sms com um PIN para resetar.</li>
           <li class="mb-2">Insira o PIN e escolha sua nova senha.</li>

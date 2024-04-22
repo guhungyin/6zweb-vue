@@ -331,61 +331,29 @@ export default {
       >
         <swiper-slide>
           <RouterLink to="/deposit">
-            <img
-              class="img-fluid"
-              src="@/assets/images/banner/banner_01.jpg"
-              alt=""
-            />
+            <img class="img-fluid" src="@/assets/images/banner/banner_01.jpg" alt="" />
           </RouterLink>
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_02.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_02.jpg" alt="" />
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_03.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_03.jpg" alt="" />
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_04.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_04.jpg" alt="" />
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_05.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_05.jpg" alt="" />
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_06.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_06.jpg" alt="" />
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_07.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_07.jpg" alt="" />
         </swiper-slide>
         <swiper-slide>
-          <img
-            class="img-fluid"
-            src="@/assets/images/banner/banner_08.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src="@/assets/images/banner/banner_08.jpg" alt="" />
         </swiper-slide>
       </swiper>
     </div>
@@ -675,15 +643,15 @@ export default {
           <ul class="p-0">
             <li class="d-flex justify-content-center mb-4">
               <div class="text">Support</div>
-              <div class="email ms-2">royal@6z.com</div>
+              <div class="email ms-2">royal@wins888.vip</div>
             </li>
             <li class="d-flex justify-content-center mb-4">
               <div class="text">Partners</div>
-              <div class="email ms-2">partners@6z.com</div>
+              <div class="email ms-2">partners@wins888.vip</div>
             </li>
             <li class="d-flex justify-content-center mb-4">
               <div class="text">Legal</div>
-              <div class="email ms-2">trusted@6z.com</div>
+              <div class="email ms-2">trusted@wins888.vip</div>
             </li>
           </ul>
           <div class="favorite">
