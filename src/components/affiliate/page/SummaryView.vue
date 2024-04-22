@@ -60,12 +60,12 @@ export default {
         console.log('whatsapp share url: ', this.whatsappReferral)
       } else if (v.channel === 'me') {
         this.meReferral = v.link.replace(/userId/g, this.userStore.id.toString())
-      } else if (v.channel === 'instagram2') {
+      } else if (v.channel === 'instagram') {
         let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
         let url = new URL(tempUrl)
         this.instagramReferral =
           url.protocol +
-          // '//' +
+          '//' +
           url.hostname +
           url.pathname +
           '?url=' +
