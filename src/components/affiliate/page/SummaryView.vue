@@ -68,7 +68,7 @@ export default {
           '//' +
           url.hostname +
           url.pathname +
-          '?url=' +
+          '?' +
           encodeURIComponent(url.searchParams.get('url'))
         console.log('instagram share url: ', this.instagramReferral)
       }
