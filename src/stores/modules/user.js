@@ -124,7 +124,7 @@ export const useUserStore = defineStore('user', {
           .walletDetails()
           .then((res) => {
             if (res.code === 0) {
-              this.availableWithdrawalMoney = 2562000 //res.data.availableWithdrawalMoney
+              this.availableWithdrawalMoney = res.data.availableWithdrawalMoney
               this.targetBetAmount = res.data.targetBetAmount
               this.completedBetAmount = res.data.completedBetAmount
             }
