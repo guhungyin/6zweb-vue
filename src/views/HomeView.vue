@@ -137,6 +137,8 @@ export default {
                 this.provedorList = v.provedor
               } else if (v.referral) {
                 this.commonStore.referralList = v.referral
+              } else if (v.mediahelp) {
+                this.commonStore.mediahelp = v.mediahelp
               }
             })
 

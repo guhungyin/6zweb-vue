@@ -2,6 +2,8 @@
 import CommitteeModal from '@/components/affiliate/CommitteeModal.vue'
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
+import LoadingPage from '@/components/LoadingPage.vue'
+import * as bootstrap from 'bootstrap'
 export default {
   data() {
     return {
@@ -10,11 +12,13 @@ export default {
       whatsappReferral: '',
       meReferral: '',
       instagramReferral: '',
-      showModal: false
+      showModal: false,
+      isLoading: false
     }
   },
   components: {
-    CommitteeModal
+    CommitteeModal,
+    LoadingPage
   },
   mounted() {
     this.commonStore.referralList.forEach((v) => {
@@ -90,6 +94,27 @@ export default {
         .catch((error) => {
           console.error('Failed to copy text:', error)
         })
+    },
+    withdrawalCommission() {
+      this.isLoading = true
+      this.userStore
+        .withdrawalCommission()
+        .then((res) => {
+          this.isLoading = false
+          if (res.code === 0) {
+            var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+            document.getElementById('errorTips').innerHTML = 'Cash out ok'
+            myModal.show()
+
+            setTimeout(async function () {
+              myModal.hide()
+            }, 2000)
+          }
+        })
+        .catch((err) => {
+          this.isLoading = false
+          console.log('佣金提现错误:', err.message)
+        })
     }
   },
   setup() {
@@ -104,6 +129,7 @@ export default {
 </script>
 <template>
   <div class="contentBox summaryContent">
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <div class="card today">
       <div class="card-header fw-bold">
         Hoje
@@ -126,24 +152,24 @@ export default {
       <div class="card-body">
         <ul class="today d-flex p-0">
           <li class="d-flex flex-column align-items-center">
-            <span class="num">0</span>
+            <span class="num">{{ this.userStore.promotionCommission.todayRegCount }}</span>
             <span class="mainTitle">Inscrições</span>
           </li>
           <li class="d-flex flex-column align-items-center">
-            <span class="num">0</span>
+            <span class="num">{{ this.userStore.promotionCommission.todayPayCount }}</span>
             <span class="mainTitle">Novos jogadores</span>
           </li>
           <li class="d-flex flex-column align-items-center">
             <span class="num">
               <span>R$</span>
-              0
+              {{ this.userStore.promotionCommission.todayCommissionCount }}
             </span>
             <span class="mainTitle">Aposta válidas em equipe</span>
           </li>
           <li class="d-flex flex-column align-items-center">
             <span class="num">
               <span>R$</span>
-              0
+              {{ this.userStore.promotionCommission.todayCommissionCount }}
             </span>
             <span class="mainTitle">Comissão</span>
           </li>
@@ -172,24 +198,24 @@ export default {
       <div class="card-body">
         <ul class="today d-flex p-0">
           <li class="d-flex flex-column align-items-center">
-            <span class="num">0</span>
+            <span class="num">{{ this.userStore.promotionCommission.totalRegCount }}</span>
             <span class="mainTitle"> Inscrições </span>
           </li>
           <li class="d-flex flex-column align-items-center">
-            <span class="num">0</span>
+            <span class="num">{{ this.userStore.promotionCommission.totalPayCount }}</span>
             <span class="mainTitle"> Jogadores totais </span>
           </li>
           <li class="d-flex flex-column align-items-center">
             <span class="num">
               <span>R$</span>
-              0
+              {{ this.userStore.promotionCommission.totalBetCount }}
             </span>
             <span class="mainTitle"> Aposta válidas total </span>
           </li>
           <li class="d-flex flex-column align-items-center">
             <span class="num">
               <span>R$</span>
-              0
+              {{ this.userStore.promotionCommission.totalCommissionCount }}
             </span>
             <span class="mainTitle"> Comissão </span>
           </li>
@@ -251,20 +277,28 @@ export default {
               <li>
                 <span class="num">
                   <span>R$</span>
-                  <span class="cash">0.00</span>
+                  <span class="cash">{{
+                    this.userStore.promotionCommission.totalCommissionCount
+                  }}</span>
                 </span>
                 <span class="mainTitle">Total pago</span>
               </li>
               <li>
                 <span class="num">
                   <span>R$</span>
-                  <span class="cash">0.00</span>
+                  <span class="cash">{{
+                    this.userStore.promotionCommission.balanceCommission
+                  }}</span>
                 </span>
                 <span class="mainTitle">Não pago</span>
               </li>
             </ul>
             <div class="wallet">
-              <button type="button" class="btn btn-outline-secondary mb-2">
+              <button
+                type="button"
+                class="btn btn-outline-secondary mb-2"
+                @click="withdrawalCommission"
+              >
                 TRANSFERIR PARA A CARTEIRA
               </button>
               <div class="tip">
@@ -321,12 +355,12 @@ export default {
             </a>
             <span>Instagram</span>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" class="mb-2">
               <img src="@/assets/images/icon/mail.svg" alt="" width="46" />
             </a>
             <span>Email</span>
-          </li>
+          </li> -->
         </ul>
         <div class="shareLink">
           <div class="tip mb-2">Compartilhe este link de indicação com seus amigos</div>
@@ -343,7 +377,7 @@ export default {
       </div>
       <div class="card-body">
         <div class="d-flex align-items-center mb-2">
-          <a href="#" class="me-2">
+          <a :href="this.commonStore.mediahelp.helplink" class="me-2">
             <img src="@/assets/images/icon/Telegram_logo.svg" width="55" alt="" />
           </a>
           <div class="text">

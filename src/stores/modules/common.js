@@ -13,7 +13,8 @@ export const useCommonStore = defineStore('common', {
       pgList: [],
       tadaList: [],
       evoList: [],
-      referralList: []
+      referralList: [],
+      mediahelp: {}
     }
   },
   getters: {},

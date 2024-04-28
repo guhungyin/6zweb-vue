@@ -5,6 +5,16 @@ export default {
   methods: {
     wallterDetails() {
       this.userStore.walletDetails()
+    },
+    queryPromotionCommission() {
+      this.userStore
+        .queryQromotionCommission()
+        .then((res) => {
+          console.log('查询推广佣金:', res.data)
+        })
+        .catch((err) => {
+          console.log('查询推广佣金错误:', err.message)
+        })
     }
   },
   setup() {
@@ -66,7 +76,13 @@ export default {
           to="/affiliate"
           class="d-flex flex-column justify-content-center align-items-center text-decoration-none p-0"
         >
-          <img src="@/assets/images/icon/afiliado.png" width="50" height="50" alt="" />
+          <img
+            src="@/assets/images/icon/afiliado.png"
+            width="50"
+            height="50"
+            alt=""
+            @click="queryPromotionCommission"
+          />
           <span class="bottomMenuName mt-2">Afiliado</span>
         </RouterLink>
       </li>

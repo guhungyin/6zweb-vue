@@ -43,6 +43,20 @@ export function sendSms(urlParams) {
   })
 }
 
+export function promotionCommission() {
+  return request({
+    url: '/user/promotionCommission',
+    method: 'get'
+  })
+}
+
+export function withdrawalCommission() {
+  return request({
+    url: '/user/withdrawalCommission',
+    method: 'get'
+  })
+}
+
 export function register(data) {
   return request({
     // url: '/vue-admin-template/user/login',

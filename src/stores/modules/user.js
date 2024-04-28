@@ -18,7 +18,19 @@ export const useUserStore = defineStore('user', {
       source: '',
       availableWithdrawalMoney: 0,
       completedBetAmount: 0,
-      targetBetAmount: 0
+      targetBetAmount: 0,
+      promotionCommission: {
+        totalBetCount: '0.00',
+        balanceCommission: 0.0,
+        todayCommissionCount: '0.00',
+        todayPayCount: 0,
+        todayRegCount: 0,
+        totalRegCount: 0,
+        totalPayCount: 0,
+        withdrawalCommission: '0.00',
+        totalCommissionCount: '0.00',
+        todayBetCount: '0.00'
+      }
     }
   },
   actions: {
@@ -134,6 +146,38 @@ export const useUserStore = defineStore('user', {
           .catch((err) => {
             console.log('查询钱包可提现金额错误:', err)
             reject(err)
+          })
+      })
+    },
+
+    async queryQromotionCommission() {
+      return new Promise((resolve, reject) => {
+        user
+          .promotionCommission()
+          .then((res) => {
+            if (res.code === 0) {
+              this.promotionCommission = res.data
+            }
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+
+    async withdrawalCommission() {
+      return new Promise((resolve, reject) => {
+        user
+          .withdrawalCommission()
+          .then((res) => {
+            if (res.code === 0) {
+              this.promotionCommission = res.data
+            }
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
           })
       })
     },
