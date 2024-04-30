@@ -15,35 +15,18 @@ import '@/assets/css/index.css'
 export default {
   data() {
     return {
-      recentListWinData: [],
-      // gameList: [],
-      hotList: [],
-      hotSize: 0,
-      pgList: [],
-      pgSize: 0,
-      tadaList: [],
-      tadaSize: 0,
-      evoList: [],
-      evoSize: 0,
-      mediaList: [],
-      serviceList: [],
-      provedorList: [],
-      // gameImgData: {
-      //   Provedor: [
-      //     {
-      //       imgUrl: 'https://h5.wins888.club/images/provider/link_PG.jpg'
-      //     },
-      //     {
-      //       imgUrl: 'https://h5.wins888.club/images/provider/link_TD.jpg'
-      //     },
-      //     // {
-      //     //   imgUrl: 'https://h5.wins888.club/images/provider/link_pp.jpg'
-      //     // },
-      //     {
-      //       imgUrl: 'https://h5.wins888.club/images/provider/link_EG.jpg'
-      //     }
-      //   ]
-      // },
+      // recentListWinData: [],
+      // hotList: [],
+      // hotSize: 0,
+      // pgList: [],
+      // pgSize: 0,
+      // tadaList: [],
+      // tadaSize: 0,
+      // evoList: [],
+      // evoSize: 0,
+      // mediaList: [],
+      // serviceList: [],
+      // provedorList: [],
       logged: false,
       userMoney: '0.00'
     }
@@ -130,11 +113,11 @@ export default {
           if (res.data) {
             res.data.forEach((v) => {
               if (v.media) {
-                this.mediaList = v.media
+                this.commonStore.mediaList = v.media
               } else if (v.service) {
-                this.serviceList = v.service
+                this.commonStore.serviceList = v.service
               } else if (v.provedor) {
-                this.provedorList = v.provedor
+                this.commonStore.provedorList = v.provedor
               } else if (v.referral) {
                 this.commonStore.referralList = v.referral
               } else if (v.mediahelp) {
@@ -142,8 +125,8 @@ export default {
               }
             })
 
-            console.log('website config:', this.mediaList)
-            console.log('website config:', this.serviceList)
+            console.log('website config:', this.commonStore.mediaList)
+            console.log('website config:', this.commonStore.serviceList)
           }
         })
         .catch((err) => console.log('load website error: ', err.message))
@@ -158,7 +141,7 @@ export default {
             console.log('总记录数:', total, '总页数:', rows)
             let index = 0
             for (let i = 0; i < rows; i++) {
-              this.hotList[i] = []
+              this.commonStore.hotArrayList[i] = []
               for (let j = 0; j < 9 && index < total; j++, index++) {
                 if (res.data.hotList[index].cp === 'evo') {
                   res.data.hotList[index].cpSoft = 'Live'
@@ -169,24 +152,24 @@ export default {
                 } else if (res.data.hotList[index].cp === 'pgplus') {
                   res.data.hotList[index].cpSoft = 'PG Soft'
                 }
-                this.hotList[i].push(res.data.hotList[index])
+                this.commonStore.hotArrayList[i].push(res.data.hotList[index])
               }
             }
-            console.log('hot list : ', this.hotList)
-            this.hotSize = total
+            console.log('hot list : ', this.commonStore.hotArrayList)
+            this.commonStore.hotSize = total
 
             if (res.data.pg) {
               total = res.data.pg.length
               rows = Math.ceil(total / 6)
               index = 0
               for (let i = 0; i < rows; i++) {
-                this.pgList[i] = []
+                this.commonStore.pgArrayList[i] = []
                 for (let j = 0; j < 6 && index < total; j++, index++) {
                   res.data.pg[index].cpSoft = 'PG Soft'
-                  this.pgList[i].push(res.data.pg[index])
+                  this.commonStore.pgArrayList[i].push(res.data.pg[index])
                 }
               }
-              this.pgSize = total
+              this.commonStore.pgSize = total
               this.commonStore.pgList = res.data.pg
             }
 
@@ -195,13 +178,13 @@ export default {
               rows = Math.ceil(total / 9)
               index = 0
               for (let i = 0; i < rows; i++) {
-                this.tadaList[i] = []
+                this.commonStore.tadaArrayList[i] = []
                 for (let j = 0; j < 9 && index < total; j++, index++) {
                   res.data.tada[index].cpSoft = 'Tada Soft'
-                  this.tadaList[i].push(res.data.tada[index])
+                  this.commonStore.tadaArrayList[i].push(res.data.tada[index])
                 }
               }
-              this.tadaSize = total
+              this.commonStore.tadaSize = total
               this.commonStore.tadaList = res.data.tada
             }
 
@@ -210,13 +193,13 @@ export default {
               rows = Math.ceil(total / 6)
               index = 0
               for (let i = 0; i < rows; i++) {
-                this.evoList[i] = []
+                this.commonStore.evoArrayList[i] = []
                 for (let j = 0; j < 6 && index < total; j++, index++) {
                   res.data.evo[index].cpSoft = 'Live'
-                  this.evoList[i].push(res.data.evo[index])
+                  this.commonStore.evoArrayList[i].push(res.data.evo[index])
                 }
               }
-              this.evoSize = total
+              this.commonStore.evoSize = total
               this.commonStore.evoList = res.data.evo
             }
           }
@@ -424,7 +407,11 @@ export default {
         }"
         class="recentListSwiper mt-2"
       >
-        <swiper-slide v-for="item in recentListWinData" :key="item" class="main overflow-hidden">
+        <swiper-slide
+          v-for="item in this.commonStore.recentListWinData"
+          :key="item"
+          class="main overflow-hidden"
+        >
           <div class="img">
             <img :src="item.imgUrl" class="w-100" />
           </div>
@@ -474,11 +461,11 @@ export default {
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Quente</div>
             <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
-              >ALL {{ this.hotSize }}</router-link
+              >ALL {{ this.commonStore.hotSize }}</router-link
             >
           </div>
         </template>
-        <swiper-slide v-for="itemrow in this.hotList" :key="itemrow">
+        <swiper-slide v-for="itemrow in this.commonStore.hotArrayList" :key="itemrow">
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in itemrow" :key="item">
               <router-link to="/play" class="img" @click="setParams(item)">
@@ -497,11 +484,11 @@ export default {
               to="/gameSpecifyList"
               class="total px-3 py-1 fw-bold me-4"
               @click="selectProvedor({ cp: 'PG', tag: 'PG Soft Games' })"
-              >ALL {{ this.pgSize }}</router-link
+              >ALL {{ this.commonStore.pgSize }}</router-link
             >
           </div>
         </template>
-        <swiper-slide v-for="pgItemRow in this.pgList" :key="pgItemRow">
+        <swiper-slide v-for="pgItemRow in this.commonStore.pgArrayList" :key="pgItemRow">
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="pgItem in pgItemRow" :key="pgItem">
               <router-link to="/play" class="img" @click="setParams(pgItem)">
@@ -520,11 +507,11 @@ export default {
               to="/gameSpecifyList"
               class="total px-3 py-1 fw-bold me-4"
               @click="selectProvedor({ cp: 'TADA', tag: 'TADA Games' })"
-              >ALL {{ this.tadaSize }}</router-link
+              >ALL {{ this.commonStore.tadaSize }}</router-link
             >
           </div>
         </template>
-        <swiper-slide v-for="tadaItemRow in this.tadaList" :key="tadaItemRow">
+        <swiper-slide v-for="tadaItemRow in this.commonStore.tadaArrayList" :key="tadaItemRow">
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="tataItem in tadaItemRow" :key="tataItem">
               <router-link to="/play" class="img" @click="setParams(tataItem)">
@@ -543,7 +530,7 @@ export default {
           <router-link
             to="/gameSpecifyList"
             class="col"
-            v-for="provedorItem in this.provedorList"
+            v-for="provedorItem in this.commonStore.provedorList"
             :key="provedorItem"
             @click="selectProvedor(provedorItem)"
           >
@@ -560,11 +547,11 @@ export default {
               to="/gameSpecifyList"
               class="total px-3 py-1 fw-bold me-4"
               @click="selectProvedor({ cp: 'Evolution', tag: 'Evolution Games' })"
-              >ALL {{ this.evoSize }}</router-link
+              >ALL {{ this.commonStore.evoSize }}</router-link
             >
           </div>
         </template>
-        <swiper-slide v-for="evoItemRow in this.evoList" :key="evoItemRow">
+        <swiper-slide v-for="evoItemRow in this.commonStore.evoArrayList" :key="evoItemRow">
           <div class="row row-cols-3 g-2">
             <div class="col" v-for="evoItem in evoItemRow" :key="evoItem">
               <router-link to="/play" class="img" @click="setParams(evoItem)">
@@ -580,7 +567,7 @@ export default {
         <img src="@/assets/images/logo.png" class="img-fluid" alt="" />
       </div>
       <div class="customerService mb-3">
-        <template v-for="serviceItem in this.serviceList" :key="serviceItem">
+        <template v-for="serviceItem in this.commonStore.serviceList" :key="serviceItem">
           <a :href="serviceItem.link" class="mx-2">
             <img :src="serviceItem.img" alt="" />
           </a>
@@ -592,7 +579,7 @@ export default {
           abaixo.</span
         >
         <div class="d-flex justify-content-around mt-3">
-          <template v-for="mediaItem in this.mediaList" :key="mediaItem">
+          <template v-for="mediaItem in this.commonStore.mediaList" :key="mediaItem">
             <a :href="mediaItem.link" class="text-decoration-none">
               <img :src="mediaItem.img" alt="" />
             </a>

@@ -14,7 +14,20 @@ export const useCommonStore = defineStore('common', {
       tadaList: [],
       evoList: [],
       referralList: [],
-      mediahelp: {}
+      mediahelp: {},
+
+      recentListWinData: [],
+      hotArrayList: [],
+      hotSize: 0,
+      pgArrayList: [],
+      pgSize: 0,
+      tadaArrayList: [],
+      tadaSize: 0,
+      evoArrayList: [],
+      evoSize: 0,
+      mediaList: [],
+      serviceList: [],
+      provedorList: []
     }
   },
   getters: {},
