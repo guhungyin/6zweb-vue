@@ -493,7 +493,10 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">PG Soft</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+            <router-link
+              to="/gameSpecifyList"
+              class="total px-3 py-1 fw-bold me-4"
+              @click="selectProvedor({ cp: 'PG', tag: 'PG Soft Games' })"
               >ALL {{ this.pgSize }}</router-link
             >
           </div>
@@ -513,7 +516,10 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Tada Soft</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+            <router-link
+              to="/gameSpecifyList"
+              class="total px-3 py-1 fw-bold me-4"
+              @click="selectProvedor({ cp: 'TADA', tag: 'TADA Games' })"
               >ALL {{ this.tadaSize }}</router-link
             >
           </div>
@@ -550,7 +556,10 @@ export default {
         <template v-slot:container-start>
           <div class="topContent d-flex justify-content-between align-items-center mb-2 pe-5">
             <div class="title">Live Casino</div>
-            <router-link to="/gameList" class="total px-3 py-1 fw-bold me-4"
+            <router-link
+              to="/gameSpecifyList"
+              class="total px-3 py-1 fw-bold me-4"
+              @click="selectProvedor({ cp: 'Evolution', tag: 'Evolution Games' })"
               >ALL {{ this.evoSize }}</router-link
             >
           </div>

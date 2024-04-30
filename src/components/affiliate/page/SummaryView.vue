@@ -351,7 +351,7 @@ export default {
           </li>
           <li>
             <a :href="this.instagramReferral" class="mb-2">
-              <img src="@/assets/images/icon/x.svg" alt="" width="46" />
+              <img src="@/assets/images/icon/instagram.svg" alt="" width="46" />
             </a>
             <span>Instagram</span>
           </li>
