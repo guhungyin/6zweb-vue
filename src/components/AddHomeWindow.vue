@@ -1,34 +1,31 @@
 <script>
 // import { reactive, onMounted } from 'vue'
 import { onMounted } from 'vue'
+import * as bootstrap from 'bootstrap'
 export default {
   setup() {
     // const states = reactive({
     //   deferredPrompt: null
     // })
     onMounted(() => {
-      document.querySelector('#addApp').addEventListener('click', () => {
-        if (window.deferredPrompt) {
-          console.log('pwa install.......')
-          //window.deferredPrompt.prompt()
-          // states.deferredPrompt = null
-          window.deferredPromptPrompt()
-        } else {
-          console.log('pwa uninstall.......')
-        }
-        //       addBtn.style.display = 'none';
-        // // 显示之前保存的提示
-        // deferredPrompt.prompt();
-        // // 等待用户的响应以决定是否安装应用程序
-        // deferredPrompt.userChoice.then((choiceResult) => {
-        //     if (choiceResult.outcome === 'accepted') {
-        //       console.log('用户接受了安装提示');
-        //     } else {
-        //       console.log('用户拒绝了安装提示');
-        //     }
-        //     deferredPrompt = null;
-        //   });
-      })
+      if (localStorage.getItem('pwaInstalled') === '1') {
+        console.log('pwa already installed.')
+        var alertNode = document.querySelector('.alert')
+        var alert = bootstrap.Alert.getInstance(alertNode)
+        alert.close()
+      } else {
+        console.log('pwa uninstall.')
+        document.querySelector('#addApp').addEventListener('click', () => {
+          if (window.deferredPrompt) {
+            console.log('pwa install.......')
+            //window.deferredPrompt.prompt()
+            // states.deferredPrompt = null
+            window.deferredPromptPrompt()
+          } else {
+            console.log('pwa uninstall.......')
+          }
+        })
+      }
     })
   }
 }
