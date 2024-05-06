@@ -5,14 +5,11 @@
     tabindex="-1"
     aria-labelledby="alertsModalLabel"
     aria-hidden="true"
+    data-bs-backdrop="false"
   >
     <div class="modal-dialog modal-dialog-centered px-4">
       <div class="modal-content py-2">
         <div class="modal-body text-center py-3" id="errorTips"></div>
-        <!-- <div class="modal-footer justify-content-around border-0">
-                    <button type="button" class="btn px-4 py-2 m-0 border-0 cancel" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn px-4 py-2 m-0 border-0 continue">Continuar</button>
-                </div> -->
       </div>
     </div>
   </div>

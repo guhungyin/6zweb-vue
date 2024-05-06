@@ -20,6 +20,7 @@
   min-height: 100%;
   box-sizing: border-box;
   background-color: #25262b;
+  
 }
 .app.widthLimit {
   max-width: 34rem;

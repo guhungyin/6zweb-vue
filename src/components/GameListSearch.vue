@@ -9,7 +9,7 @@ export default {
 }
 </script>
 <template>
-    <div class="modal fade gameListSearch" id="GameListSearchModal" tabindex="-1" aria-labelledby="GameListSearchModalLabel" aria-hidden="true">
+    <div class="modal fade gameListSearch" id="GameListSearchModal" tabindex="-1" aria-labelledby="GameListSearchModalLabel" aria-hidden="true" data-bs-backdrop="false">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header border-0">

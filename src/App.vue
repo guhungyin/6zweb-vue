@@ -1,13 +1,15 @@
 <template>
   <div class="vuxDrawer">
-    <RouterViewTransition></RouterViewTransition>
-    <!-- 主選單 -->
-    <MainMenu></MainMenu>
-    <!-- 個人選單 -->
-    <ProfileWindow></ProfileWindow>
+    <div class="vux-drawer-body" style="transform: translate3d(0px, 0px, 0px);">
+      <RouterViewTransition></RouterViewTransition>
+      <!-- 主選單 -->
+      <MainMenu></MainMenu>
+      <!-- 個人選單 -->
+      <ProfileWindow></ProfileWindow>
 
-    <!-- 弹窗 -->
-    <AlertsModal></AlertsModal>
+      <!-- 弹窗 -->
+      <AlertsModal></AlertsModal>
+    </div>
   </div>
 </template>
 <script>
@@ -33,5 +35,18 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.vux-drawer-body{
+  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: visibility .38s, -webkit-transform .38s ease-in-out;
+    transition: visibility .38s, -webkit-transform .38s ease-in-out;
+    -o-transition: transform ease-in-out .38s, visibility .38s;
+    transition: transform .38s ease-in-out, visibility .38s;
+    transition: transform .38s ease-in-out, visibility .38s, -webkit-transform .38s ease-in-out;
 }
 </style>
