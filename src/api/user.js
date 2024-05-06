@@ -43,6 +43,13 @@ export function sendSms(urlParams) {
   })
 }
 
+export function userInfo() {
+  return request({
+    url: '/user/userInfo',
+    method: 'get'
+  })
+}
+
 export function promotionCommission() {
   return request({
     url: '/user/promotionCommission',

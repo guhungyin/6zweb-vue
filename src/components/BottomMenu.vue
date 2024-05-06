@@ -5,6 +5,7 @@ export default {
   methods: {
     wallterDetails() {
       this.userStore.walletDetails()
+      this.userStore.userInfo()
     },
     queryPromotionCommission() {
       this.userStore

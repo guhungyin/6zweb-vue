@@ -1,6 +1,7 @@
 <script>
 import { Offcanvas } from 'bootstrap'
 import GameLogo from '@/components/home/GameLogo.vue'
+import { useCommonStore } from '@/stores/modules/common'
 export default {
   data() {
     return {
@@ -18,6 +19,13 @@ export default {
   mounted() {
     const myOffcanvas = document.getElementById('mainMenu')
     this.bsOffcanvas = new Offcanvas(myOffcanvas)
+  },
+  setup() {
+    const commonStore = useCommonStore()
+
+    return {
+      commonStore
+    }
   }
 }
 </script>
@@ -154,22 +162,21 @@ export default {
       <div class="socialLink px-4 py-2 mb-3">
         <h6 class="fw-bold mb-3">Junte-se à nossa comunidade</h6>
         <div class="mb-2">
-          <a href="#" class="me-3">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAC91BMVEUAAAAAFSgBgOkCdNMAIXUBZrsAEkAADikAHDsAECYAFywAIXYAGlwAJ1EACxgEfeABKYYCed4BY7YBVJkCctIAJIAAGFsBQ3YBO20BPXECfOEAI30CcM0CY7YBU5MAEDoBQ3oADyEFddYCjfYAJH8AJYUCctEBaL8AIHEAHWgBW6cBYLABVp4BSogAE0gAFlABN2MAMmEAHz8AJkoCdNQAI3sBWbICd9kCacIAHmwCaL8BSooCXKkCUZQBRX0CiusCfOIAGVoAGVr///8npuckod4oqOokouApqeompeUop+glo+Ejn9sjoNwlpOIjoN0in9opquwmpOMpqu0AcNwAc90Bed8Act8Ckv8Acd0AHXwCj/8ChvUpp+YAdt4AK5YAJ4wAFHQCivoBeuELmeAno98Elt4AEXEACmwmreQdn+EAddsAj9kAIYIppuQAlOAAktwAKI8AJYkCjP8xs/AvsewrruweouQAIH4ADm8CiPcqs+8CgOsYlecsrOQko+MBl+IqquAYnt8AdN8BeNwAJYEClf8Cg/Atr+8puO4rrO4nsegbmegZoeQlqeMGf+AnpNwchckrvvMqq+sprOgVkeUBfOMopeIVbrcALZwAGXgACGrd8fwuv/qR0fEyte4ws+4BfeYXlOIIgeEnpOAAk94qqd0AGHbq9/0Cg/MqvPGDy/AxtPBzxe1rwu0hoOpTt+kotOkuqOQKm+QQneMNh+ARjN8Nl9wgkNMdi8sQW6j2/P7A5fi14fap2/Usu/Wk2fMrtvJuxO4vsu5lwOxdu+ktrOgOieMLhOMTnOEkpd8bmN8Jgt8Akd4Hldsej88bf8QPV6cNUKEAKJIFNo37/v8CmP/k9PzV7vrG5/i74/eY1fOKzvBMteojpOlGsugur+hAr+YRjeQiltUAVr4XdbwRYK0AAF0Co//w+f2d1vN7yO41q+cAkt4ejNAMR5gHP5UFLocxx/8vt/Iknd4Ajd0AhNsAYcgTZbQASLAFMYkAc+EACWZ1zrxRAAAAQ3RSTlMABv7g2cxbJhgSDOOlWR3+/eTBmuzrr3JHPO/o3qhza2Uv/v358dTQybu5saeNhXxiVEk/8/Hi4drPwJ6VkYLs6nl3O6QHSgAACA5JREFUWMOlmWVYU1EchyepgILY3d3dOUBBEMS77mAb28gJCILkSOkGQRARURRFMbBbkBKxu7s7PnjGxO3eO7Yx3y+Mc87zPr//Pfees3uG0UDHPgPnD5hrqN+1q/4oywHzB/bpiNGdDr0XzB2qFxUQRaUWcvCFVGoUu1QvwnBBbxOddH266VMl1EAOHUeCSCQcDvyBSHSOHlUS1X1A73brBhuWSqI4dAiiJ144nx60QUbQwwtFeByEwwcGRI0c3KFduv6SgAw6hEt8uKF8dfTpNXLK1kTH2mxIvwA6OFSJfi+tdb1HSaggCedheeyasujY2NX/iI2NXrMm+m5QEQ7CUyX9p2il6zRewuaQoKKg1WUFwKWC6LLo8vPhED5AMq6LZt+UxZQMEZS4wbfMd1WbpBYU3D2PgzIoep01+SZI2BEQPch3U+wq9ZwuKy+CRFRKN/W+sZGBIuiCDdBppuB0UDikF2lpoubyjSRySLig0z42y7XAJnXTXXMIT5nV5oXsqE/BQ/jyTakKnwblad/zkIjS17iNfPrECChxVcFy7bGJLkiHRMS+qjOOBL4iX1Bue4y+m4JIIkpXE5XzgfRpeSGDQEZDtG/hVQ5kDvNpbUwn4a/OQ/qmEgNJeBsfGx1I9akk6UUi7nATc7YIV+5jp4vQzvfcUBw7Cr7yjo+MIKUX2OiG3adHjwsjLZV904iF0AWfVBtdycv6MQxW9GyKiH4XFKwr0Z+afzzvrvBNJuJJ6T52umOV9yj38XPFitudjUtMW273P8aPl55Bw1p3hc4gYBAI+D+ctCn5XdoacbYEBEyz0x6/vSEh+87Bmmw/fn/GnCn3DQnIIKXft9ISmu3eEL87+bfu7KPB2k9+lvIZU1uE3SgivFWaVjY7WnzI3nv5G7FY7JVz8fC+vEuCyz1lvg7dS0nntQpIs9obYnXqCFbOqRBYp21eMt97uInspg7ghG/QQkiL99h779Y2bCtngFCZVN9m1mUj2bZEoZtb0TSG2+fhdwaEU/BgnxUiYlUuwwwIDdmEynOaJiIk5PWOjVhltlnFI0blNfKZpmDhjwgkbL6vziardfexK1g4G/38EAPXfZaulRpj+gRm0IXnbNuC5g5q3XUDi+LGvmDE0LR17/leRpheAXRzW1obOvfgEI/Xt68pNNf/1f3SAzX6+CWB1yRMNzauiEZTrYv34N45hlVwZefXl62fd6CFed8FXmaYAaW4yvXuKmzu1W/iz8BqPeoecebfpTylImEjy3s0xpJKeLheRa1cjwr4vB7eVfx1l+LfO1xbJCff5rgZYAyphHSkkObnwb134jAWFq+i7ssppbvGNh4tPEh2M8XoF+I2w4Xu1XXVZ2/CbCCeB69up/JdE++HEq47uJbcD9OVE755vbMCd79i51fX4Tpw9eqEnq+UW25yg52RyIQ9UEI/7o4XWASnirl+X3bAmm6/cVYtBCXDhMG8Y0jdzdd1wWFv8uGNr4rRQnnJo0oJm9evVMC7hfDt5PEqqj1PIFp381aiAEIwKZYBhP3KwmDu7hNKj8aRCk9hBZd3FOF7URGmQviWDG6bcdTwylCl1sxgXrHw7C35tFwD8TLdubwjWAQbhUK08GRyifcc8OiF12YiesKKi6sf7MrP3xXsKczM5HLRa8NNXjBaeDzLH2wCA6n0xBWZK5AIuZ6AsC2yTyAfknzPFWhaFgf58hW6om08d2LR7FQhdF73TrZ8dcSDBVadkHcW7QOTjB6Y5mhBlhq3bAH7YUIk9TtQvheZYehxMWBOTOWbVOKWLcvaZItQvPsaQng9TIgeePypoGWT6s3m0C+GLlNjXCYOe4l4tuvRw5x93/MZRrKNfnoUqHmZOjIPiHdvgz3JYvSgdWA1lHbCAMZTcIkuLmqNLtbiMOWH74wnaoh1ytNcxhj592F2BgFZM7ruA+KzipAPDqAGuCZ8KAEVt9CfTagNddFktBYLW0NuCwtDdjumPBEwZyi+EYdfDLXWhAsIKd8WjolRnQlpzfzsiZi/TA8g1W611mx0FLsck+0HLgeQXQ6ygFKTVmEvIp5wcaujFsp68b3b+Q/qXRDtjmkJFvKAim/t5i5glGajdb1YfAA9Ekyx1/AOym96GYT9oGgdsY9pYJGzB8HebYmicFnROuHgGvfTP3sO/G0+MACHt05y1AWHlSlNuUwvxFt950g9Qm1Ski4+x5QsgRsoGMG8q3hC5dYkh/Zib7892T8nuycGhSExgrC//Ub77Q0sVraBquPHWURRu432jikNJXzGCJXnnl36AmNlUpK99jjVpCSz+AyLNg5ujPtSIgi1TqEOTtr6XLdn+bMYFkMwbdClKxH/a2jy+gQnrXT2Ma5NghzGCIUPhYllZCHnW1VSDBitSQfiHfqQ65ZtoP4MsRuFqvf4Q+P2OCcN1GyvqWL5Mxlmms5iJ0dRhj3OffcoJs5ejS4hJiFLmktmMAdhNGI8jnL12zP+pYa4mATVNuu4GPusnwIWkzFmiJZnxM9xgmfkd0+c9uxxrYHLHBLiYmqSqywELG9Gj0FaH7EvXBTozfL3t2jKanCI27MnzlUO+JjwqLGquUSQw2SMmNgJoz0mA2cyvbxz/Pnk5qaqrMbkQzKSnzxtei9lCVhuXkzTSe3+UWBKzxlel73dSvj+/BzyWgA5B4Rmkb0vM4ePMeqA0YFORmYGUm+Q1M1tLZlMdnPz9mIypQZmRiCczhh3Xmo22sC0X48e/UwNRvdc0tkYo54/ccrbpQPwABwAAAAASUVORK5CYII="
-              alt=""
-            />
-          </a>
-          <a href="#">
+          <template v-for="itemSocial in this.commonStore.social" :key="itemSocial">
+            <a :href="itemSocial.link" class="me-3">
+              <img :src="itemSocial.src" alt="" />
+            </a>
+          </template>
+          <!-- <a href="#">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAC/VBMVEUAAABvO40dDiNzSa9SKmQeDyY2IE10P5N3Ur1sOok1GkAeDyRYM3tnQJllNoBJI1VlNX9oQJleMnYzG0KjP51AJl1IJVpOLW03HENaN4JiPZCaR6iGQ6GENYNtM3tnHlCuMpB2PpOdQZ2WNoWHQZ+FMHb////+/v15QZlmMYZWG3j8+fr59fhgKoHi1OprNorm3+5SFXSBRqN9VcJYKKttLaX47PKFWNCEVMd0Trl8Q53r5fPYzOXPu9+GRaxLEXGHXNiHYMC9ULuXTruggLRnPbNfLauOFoZcJHzQEXXaI3OKX+GPUsRGN76pTruaWrOHRqjdYqP83J+9PZucOpm9D3f3ain2WQzKuuRzNrpkNa7ISq1mLKizRaR8IJaFGYubFITIDoPGKYHXF27+0mvtf2n+xljx7vbppcW2UsWNT7l6SrTRX7HlirDYXaqxK6esDpjVXZeFJpW+EI+rCnfGCGjSBVnaClj9vkv7pDXyVCfsPCf22uTBpdjHstKvjs/JhsVhSMGgOriWcauPF6v93pDNL4b+zGL0bzmtuOq9sOPWwt/Hsd/ks9K9qMszSstOSsU0PcWymMKdUcLMTLyHMbm0brjXg7ZuP7H3xq7DWKOYQ6J1KaB+LJ18UpjZMXvQC2vgO1PpS1D9sEneE0XkKTf0fCvxSRa0suf54NS+ltBPWM3Kl8ulcMJWM7zytburjLuBSbpnLLm+cK95Naj50ZpuHJr2uZTrmozZO4S5G4P904HhcH/ylHS5BWr5mk7wWj/5kibhUSbu3u/79u334ujWmM/1zs6jVcmSb8WuecD30r3PcblMGbLcdauZDqSIOKHWgpXBLov7xXXhKGfBKlf0iEPWQjrqYB6/ye368+bqyOLZrN2mhs6VfMzllb3aSLKPJ7F8ELH64a+hSKywWqrnfKRjGaO6IJuUL4zhS4h+FH3PK2z5pWnnQmPQNk7nR0D3gBfT2vH87MWFWp76x5X2qYWyHmn8t2LqHijxcRG1wep7jNtqdNXnal+QKbZPAAAAJnRSTlMA/g/hpxo9/v3sWiaWxOJd2NPITO2HeW9qtqr978ekd/nr4eHavPH2ddIAAAg8SURBVFjDpZh3WJJBGMA/EJXc2rC9+wRkiAM3uDAzU4tMc6eVqZlmjtyaZWY2zJaplVaampWVlpWrvffee++9nw4QoftEkX5/6d3Dj/e993jvnkM6QVFJV62vurYCQFu9r5qukiLyHyipqYcbmfGpCQ+vceETxlZXU8LLaVMwMzUzCl/t7QswEbKLHWafb99/oFKXdZrqZjZm5lxHx9W2x2+n5HpZW1vnpqRVu7GLivhS++G6XQpTV8HUlMh19La9nWugj0qgZ2ld6Xaurphtnz+8l8y67uo2pubejsQ0Kz20PeiVbsX+7vauwzVl0uH7CnS2uVRUOguri/0LXV0HKsoQHtGGyDW29UI7gV4dHd0vtJ9KZ76eIDzj1SmoDCx08z/nGqrWsa/PaCOu8R1LVDYqo6MfhQ7ooNx4hdFER24OKjP0fgGFdkOlLqSigo25MdEA7QL6KwPG2/VQlRqfubEtFe0a6Xxj+zHyfcfRLrNlJDDi260H7JPduHxAO/tlNNHYFpWLdGAkYPbzaCNHc31UPlaO9FuuAhWEaMP1tkTlpTDQx08Rs4BeqNwYBAxePuKfZmpDNL6D/geLX/L+SVrbhruaimII+XD9+s8FAjbzycnJ8fKyooegWNa+vNdD7FNpN+Hrv6qWCMjLyxsD2ArYAZhYU22NTZry/N4g8ZY29cbsGMvfeXlVVVVLARkZGVzuRAErBDx4cAxTQAeOH08iQEcraP7D0ryqpSCsjAyiEcA2LCzMHjBnzv25c+fOmfPgPh1eHhrNRxSiNjZAS6Aas/VOjpVBCJWq3waVyjp489ZKoJx7H45xO8diWGuJTYmYFTQ6nXHaiC61a7menTPXFY6BRjbsLhCq2XCJ0GmUc3riaSMwJg09YDx7CxrMZBoShCUxM06DAzTe4Sutjx2xO4KirMjIs3bQhDVFGYcXZGzuDSVn4DjxaZo0X2BUYDpoCFGRkQehZqtMs1ARHEtcW/i7nu6qg8pOFQXMi+JFRaLozajIKDhnB2HO6qaOcDQpT3e5S2Sst+jUGh5vzalFKGB6zLOY6YKco45AH0ulkDRAnwk3coRrXFlX5Cb+bxEvJmYvwMODB5SsNRd8WCA/3rOodLjOZAZOFVEC9yv4XEqr8xcLV8XsvRDkAQjK8vBYBQaADuDzbNYpuPZraSQVRNd0NeZnd8I/+rHYd+FCY9DMVatmBnlkZTXyjULhLCCEcKBY9ELUTL2PY4QBI0XCRY1BQY1nDqOA5DOxQVmxi1Ah02fNmo5CbGdaEJC+Zr63MS09ILBVSA3yCIqdJhqfFps1KosqXbiYQtJB1M18U7BnROAaVMDdxqzYCPFERGy9SD9jElZo5YTTQrTNfHPhiZ2BIuHM2FfrJJd9nfP6mSLhJIyQTsZpIAo1vl5YYYxQyHr1Ki5CcuZJnHO9vkg4A9NlyYxuiEK4iTVGGPNVGEfy25KN2yRnpsU5O4MKAca2J2SQpQi/Xm4VlpRswgiThcJR0oQ1WOH5y5f3o3wOvyv9VxgR77yOJV1IBkJtF5NcrPCtUKj3513SFMmZF/HxL9BW4agZ7RZF3cUkBSN8e1UoRPckNScdFU8c3Xgp/kmbcCxm29DAtunrYpKGEV692hpXRXlzYnNb42GVAGGydGEqf2OruZhUwxN7rh4QJdpQnl2efbQ1vtJNbzY+QYXMDMYKl/F/erouu9wwwgNtQv1sz2zPxIaCioqCKUlJpd/f6MNCuDkohbHZlhjhtbZS3CjznDDBszwxsTypufl7KautPMHrz8DCT04kTUSRHVa0EJrYfeDaFXHzb/IESgBQTmlbTr16rDCEwW+wiHZ+USUsvDbhisQherKpzBOQPeWkeIwFftV34aNIcAQgaseK4EUsuFZWViE5cOhkQcHJQ5IjycHO66fB7VB4SHXPZ5+DFrHiR9mPArRDpsWtW38TvtLRDFUQQH/7Omhr6195/76pY2F9cHC9HrStBQc9YOCxYjjn3e8TWmo78kXEr4uLwB7LOsLLUj67GLo63GhJSEgY15HPOTiYBV0FGGSQsYAh+f4noE88bNmwIeHix0MoFj3Wtv0bLznHwSVZzCF1Q4T0PuZefBCark2YPXX27Pn75o0TUltb+/nz7t1fvjRMKd206c0lTMJ6yk7uPZFW+ruCEOEYgW7y/Kl8gHk2CDihpaUMbO/Ed6UlG+PvotgAQUlEIYYW+tNRiBvzJs+fP1nIfGD+tmFDU9OV7OzEpE0l+5NRCCqZxg9QHGK0G4rh0MeH48bN47MPcPHixW+vX79uaNiz7TCKwYFjgUPEdA/t579F+n1VDCoFKybDvTciQZ/Qc9EHUbnRx1HcdRBJ8I9cowv15BZmckgW0DuBSuijgJXy+pZxcOzeCAQhtDAgXT5fKpPMJiAYBtiND9gij28hheauhWDBD7UbP3KLPD4nwyGK7T7b9ADG9C7nC3zKUh5uVPnGnV2sB5NmqKwk9WmJn7UfXXYdNZNDNhyiikgFP2C5X+DzZbL6rHEcnLtWx2+IA338Br9cayWLLiST4kRyJ3T6muvnwxvp5GDZabbLGByGIak30imqI3x8nnNoDvQOo1umzKSRDHVUZXtyHnbPj8ahZaaGSOk+Cx0YTCeSYbfeiKwMGuxHIlMouMzFdLhjGKQ6rHVikoGuJx6RHfygYSQLZTKTQl6buX2xFd0AQLdK3e7wiUxh0nAkkkYvRaSLdCd0s7BQZtAoTIoTjcxgkMmCPxnKFiRcHxVEHvAqBC0GiURSxuGAjozDARcJp0HQVETkR1WzF0FHS6MbQENLh9BLs7O6/gWklqUf4wyQHgAAAABJRU5ErkJggg=="
             />
-          </a>
+          </a> -->
         </div>
       </div>
       <ul class="helpLink px-4 py-2">
         <li>
-          <a href="https://direct.lc.chat/15879396/" target="_blank">
+          <a :href="this.commonStore.mainService.service" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

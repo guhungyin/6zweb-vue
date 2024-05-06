@@ -53,6 +53,7 @@ export const useUserStore = defineStore('user', {
               this.mobile = response.data.mobile
             }
             this.email = response.data.email
+            this.vipLevel = response.data.vipLevel
 
             let bgMoney = new BigNumber(response.data.money)
             this.money = new BigNumber(bgMoney.div(10000).toFixed(2, 1)).toFormat(2)
@@ -64,7 +65,32 @@ export const useUserStore = defineStore('user', {
           })
       })
     },
-    toLogin() {},
+    userInfo() {
+      return new Promise((resolve, reject) => {
+        user
+          .userInfo()
+          .then((response) => {
+            this.id = response.data.id
+            this.nickName = response.data.nickName
+
+            if (
+              response.data.mobile &&
+              response.data.mobile !== '' &&
+              response.data.mobile !== 'null'
+            ) {
+              this.mobile = response.data.mobile
+            }
+            this.email = response.data.email
+            this.vipLevel = response.data.vipLevel
+            let bgMoney = new BigNumber(response.data.money)
+            this.money = new BigNumber(bgMoney.div(10000).toFixed(2, 1)).toFormat(2)
+            resolve(response)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
     async resetPassword(oldPwd, newPwd) {
       return new Promise((resolve, reject) => {
         user

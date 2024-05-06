@@ -15,7 +15,8 @@ export const useCommonStore = defineStore('common', {
       evoList: [],
       referralList: [],
       mediahelp: {},
-
+      mainService: {},
+      social: [],
       recentListWinData: [],
       hotArrayList: [],
       hotSize: 0,

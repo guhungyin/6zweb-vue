@@ -62,14 +62,18 @@ export default {
 
     if (this.userStore.ticket) {
       this.logged = true
-
       this.userMoney = this.userStore.money
+
+      this.userStore.userInfo().then((res) => {
+        if (res.code === 0) {
+          this.userMoney = this.userStore.money
+        }
+      })
     }
 
     this.websiteConfig()
     this.hotGameList()
     this.winnerShow()
-    // this.queryGameList()
   },
   methods: {
     goToTop() {
@@ -81,6 +85,7 @@ export default {
     },
     wallterDetails() {
       this.userStore.walletDetails()
+      this.userStore.userInfo()
     },
     setParams(gameInfo) {
       this.commonStore.setPlayGame(gameInfo)
@@ -122,6 +127,10 @@ export default {
                 this.commonStore.referralList = v.referral
               } else if (v.mediahelp) {
                 this.commonStore.mediahelp = v.mediahelp
+              } else if (v.mainService) {
+                this.commonStore.mainService = v.mainService
+              } else if (v.social) {
+                this.commonStore.social = v.social
               }
             })
 
@@ -668,18 +677,20 @@ export default {
             </svg>
           </div>
           <div class="message">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="23"
-              height="23"
-              fill="currentColor"
-              class="bi bi-chat-dots-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
-              />
-            </svg>
+            <a :href="this.commonStore.mainService.service" target="_blank">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="23"
+                fill="currentColor"
+                class="bi bi-chat-dots-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                />
+              </svg>
+            </a>
           </div>
         </div>
         <div @click="goToTop" class="topBtn mx-auto">

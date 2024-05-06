@@ -8,7 +8,12 @@ export default {
     return {
       activeTab: '',
       activeList: [],
-      logged: false
+      queryList: [],
+      logged: false,
+      totalSize: 0,
+      pageNumber: 0,
+      pageSize: 24,
+      currentSize: 0
     }
   },
   created() {
@@ -24,7 +29,6 @@ export default {
     setActiveTab(tab) {
       this.commonStore.setSelectGameType(tab)
       this.activeTab = tab
-
       this.byType()
     },
     setParams(gamPeInfo) {
@@ -35,26 +39,80 @@ export default {
         this.commonStore
           .hotList()
           .then((res) => {
+            this.queryList = []
             this.activeList = []
-            res.data.forEach((v) => this.activeList.push(v))
+            this.totalSize = 0
+            this.pageNumber = 0
+            this.currentSize = 0
+            this.pageSize = 24
+            res.data.forEach((v) => this.queryList.push(v))
+            this.totalSize = res.data.length
+            this.nextPage()
           })
           .catch((err) => {
             console.log('查询热门游戏错误: ', err.message)
           })
+
         return
       }
 
       this.commonStore
         .byType(this.commonStore.selectGameType)
         .then((res) => {
+          this.queryList = []
           this.activeList = []
+          this.totalSize = 0
+          this.pageNumber = 0
+          this.currentSize = 0
+          this.pageSize = 24
           res.data.forEach((v) => {
-            this.activeList.push(v)
+            this.queryList.push(v)
           })
+          this.totalSize = res.data.length
+          this.nextPage()
         })
         .catch((err) => {
           console.log('查询' + this.commonStore.selectGameType + '错误: ', err.message)
         })
+    },
+    nextPage() {
+      this.pageNumber++
+      if (this.commonStore.selectProvedor) {
+        let temList = []
+        let endLength =
+          this.pageSize * this.pageNumber > this.queryList.length
+            ? this.queryList.length
+            : this.pageSize * this.pageNumber
+
+        temList = this.queryList.slice((this.pageNumber - 1) * this.pageSize, endLength)
+        // if (this.commonStore.selectProvedor.cp == 'PG') {
+        //   let endLength =
+        //     this.pageSize * this.pageNumber > this.commonStore.pgList.length
+        //       ? this.commonStore.pgList.length
+        //       : this.pageSize * this.pageNumber
+
+        //   temList = this.commonStore.pgList.slice((this.pageNumber - 1) * this.pageSize, endLength)
+        // } else if (this.commonStore.selectProvedor.cp == 'TADA') {
+        //   let endLength =
+        //     this.pageSize * this.pageNumber > this.commonStore.tadaList.length
+        //       ? this.commonStore.tadaList.length
+        //       : this.pageSize * this.pageNumber
+
+        //   temList = this.commonStore.tadaList.slice(
+        //     (this.pageNumber - 1) * this.pageSize,
+        //     endLength
+        //   )
+        // } else if (this.commonStore.selectProvedor.cp == 'Evolution') {
+        //   let endLength =
+        //     this.pageSize * this.pageNumber > this.commonStore.evoList.length
+        //       ? this.commonStore.evoList.length
+        //       : this.pageSize * this.pageNumber
+
+        //   temList = this.commonStore.evoList.slice((this.pageNumber - 1) * this.pageSize, endLength)
+        // }
+        temList.forEach((v) => this.activeList.push(v))
+        this.currentSize = this.activeList.length
+      }
     }
   },
   components: {
@@ -227,8 +285,10 @@ export default {
           </router-link> -->
         </div>
       </div>
-      <div class="sum mx-auto mt-3">Mostrando 24 de 42 jogos</div>
-      <button class="btn moreBtn mx-auto mt-3 px-3 py-2">Carregar Mais</button>
+      <div class="sum mx-auto mt-3">
+        Mostrando {{ this.currentSize }} de {{ this.totalSize }} jogos
+      </div>
+      <button class="btn moreBtn mx-auto mt-3 px-3 py-2" @click="nextPage">Carregar Mais</button>
     </div>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
