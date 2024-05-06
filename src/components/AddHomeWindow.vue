@@ -1,29 +1,21 @@
 <script>
-import { reactive, onMounted } from 'vue'
+// import { reactive, onMounted } from 'vue'
+import { onMounted } from 'vue'
 export default {
   setup() {
-    const states = reactive({
-      deferredPrompt: null
-    })
+    // const states = reactive({
+    //   deferredPrompt: null
+    // })
     onMounted(() => {
-      window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('pwa beforeinstallprompt : ', e)
-        e.preventDefault()
-        states.deferredPrompt = e
-      })
-      window.addEventListener('appinstalled', (e) => {
-        console.log('pwa appinstalled : ', e)
-        states.deferredPrompt = null
-      })
       document.querySelector('#addApp').addEventListener('click', () => {
-        if (states.deferredPrompt) {
+        if (window.deferredPrompt) {
           console.log('pwa install.......')
-          states.deferredPrompt.prompt()
-          states.deferredPrompt = null
+          //window.deferredPrompt.prompt()
+          // states.deferredPrompt = null
+          window.deferredPromptPrompt()
         } else {
           console.log('pwa uninstall.......')
         }
-
         //       addBtn.style.display = 'none';
         // // 显示之前保存的提示
         // deferredPrompt.prompt();

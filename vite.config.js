@@ -73,7 +73,7 @@ export default defineConfig(({ command, mode }) => {
     }
   } else {
     return {
-      plugins: plugins, //[vue()],
+      plugins: plugins,
       base: '/',
       resolve: {
         alias: {
