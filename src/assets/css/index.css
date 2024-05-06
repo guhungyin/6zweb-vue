@@ -279,6 +279,9 @@ header .right .userBtn {
   background: #2f7dea;
   z-index: 3;
 }
+.footerBottom .message a{
+  color: var(--fff);
+}
 .footerBottom .topBtn {
   width: 3.5rem;
   height: 3.5rem;
