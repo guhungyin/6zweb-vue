@@ -9,12 +9,14 @@ export default {
     // })
     onMounted(() => {
       if (localStorage.getItem('pwaInstalled') === '1') {
-        console.log('pwa already installed.')
+        // console.log('pwa already installed.')
         var alertNode = document.querySelector('.alert')
-        var alert = bootstrap.Alert.getInstance(alertNode)
-        alert.close()
+        var alert = bootstrap.Alert.getOrCreateInstance(alertNode)
+        if (alert) {
+          alert.close()
+        }
       } else {
-        console.log('pwa uninstall.')
+        // console.log('pwa uninstall.')
         document.querySelector('#addApp').addEventListener('click', () => {
           if (window.deferredPrompt) {
             console.log('pwa install.......')

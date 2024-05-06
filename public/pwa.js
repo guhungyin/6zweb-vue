@@ -1,7 +1,7 @@
 // console.log(navigator)
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('/firebase-messaging-sw.js?time=20240506163632')
+    .register('/firebase-messaging-sw.js?time=20240506170932')
     .then((swReg) => {
       // console.log('Service Worker Registered')
       swReg.pushManager.getSubscription().then((sub) => {
