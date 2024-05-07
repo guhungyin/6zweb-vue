@@ -25,10 +25,6 @@ export default {
           alert.close()
         }
       } else {
-        console.log('pwa uninstall.', isShow.value)
-
-        console.log('pwa uninstall 2.', isShow.value)
-
         document.querySelector('#addApp').addEventListener('click', () => {
           if (window.deferredPrompt) {
             console.log('pwa install.......')

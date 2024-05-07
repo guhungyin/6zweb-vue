@@ -49,6 +49,13 @@ export function byType(gameType) {
   })
 }
 
+export function searchGame(key) {
+  return request({
+    url: '/game/searchGame/' + key,
+    method: 'get'
+  })
+}
+
 // 游戏模块
 export function gameLogin(loginUrl) {
   return request({

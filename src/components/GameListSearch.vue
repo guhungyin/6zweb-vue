@@ -4,7 +4,8 @@ export default {
   data() {
     return {
       gameList: [],
-      searchKey: ''
+      searchKey: '',
+      searchGameList: []
     }
   },
   methods: {
@@ -17,6 +18,31 @@ export default {
 
       if (gameInfo) {
         this.commonStore.setPlayGame(gameInfo)
+      }
+    },
+    searchGame() {
+      if (this.searchKey.length >= 3) {
+        console.log('搜索游戏: ', this.searchKey)
+
+        this.commonStore
+          .searchGame(this.searchKey)
+          .then((res) => {
+            if (res.code === 0) {
+              res.data.forEach((v) => {
+                if (v.cp === 'evo') {
+                  v.cpSoft = 'Live'
+                } else if (v.cp === 'tada') {
+                  v.cpSoft = 'Tada Soft'
+                } else if (v.cp === 'pg_electronic') {
+                  v.cpSoft = 'PG Soft'
+                } else if (v.cp === 'pgplus') {
+                  v.cpSoft = 'PG Soft'
+                }
+                this.searchGameList.push(v)
+              })
+            }
+          })
+          .catch((err) => console.log('搜索游戏 [', this.searchKey, '] 错误:', err.message))
       }
     }
   },
@@ -79,6 +105,7 @@ export default {
                 aria-describedby="emailHelp"
                 placeholder="Procure Jogos ou Provedores"
                 v-model.trim="this.searchKey"
+                @keyup.enter="searchGame"
               />
             </div>
             <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
@@ -215,29 +242,17 @@ export default {
         </div>
         <div class="modal-body">
           <!-- 輸入搜尋後 + active 顯示該搜尋遊戲列表 -->
-          <div class="hisDisplay active">
+          <div class="hisDisplay" :class="{ active: this.searchGameList.length > 0 }">
             <div class="gameTitle mb-2">gamesSearchCount</div>
             <div class="row row-cols-3 g-3">
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551031.jpg" class="w-100 rounded-2" alt="" />
-              </router-link>
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551250.jpg" class="w-100 rounded-2" alt="" />
-              </router-link>
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551256.png" class="w-100 rounded-2" alt="" />
-              </router-link>
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551511.jpg" class="w-100 rounded-2" alt="" />
-              </router-link>
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551600.jpg" class="w-100 rounded-2" alt="" />
-              </router-link>
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551618.jpg" class="w-100 rounded-2" alt="" />
-              </router-link>
-              <router-link to="/play" class="col" @click="closeModal">
-                <img src="https://6z.com/images/game/551662.jpg" class="w-100 rounded-2" alt="" />
+              <router-link
+                to="/play"
+                class="col"
+                v-for="item in this.searchGameList"
+                :key="item"
+                @click="closeModal(item)"
+              >
+                <img :src="item.iconName" class="w-100 rounded-2" alt="" />
               </router-link>
             </div>
           </div>
