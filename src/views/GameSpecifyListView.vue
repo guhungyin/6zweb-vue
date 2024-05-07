@@ -234,7 +234,7 @@ export default {
   flex-direction: column;
   overflow-y: auto;
   height: calc(100vh - 8rem);
-  padding-bottom: 2rem;
+  padding-bottom: 5rem;
   background-color: #24262b;
 }
 .main::-webkit-scrollbar {
