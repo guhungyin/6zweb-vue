@@ -1,7 +1,7 @@
 // console.log(navigator)
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('/firebase-messaging-sw.js?time=20240506170932')
+    .register('/firebase-messaging-sw.js?time=20240507101132')
     .then((swReg) => {
       // console.log('Service Worker Registered')
       swReg.pushManager.getSubscription().then((sub) => {
@@ -21,6 +21,14 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Stash the event so it can be triggered later.
   window.deferredPrompt = e
   // Update UI to notify the user they can add to home screen
+
+  if (window.showPwa) {
+    window.showPwa(true)
+  } else {
+    setTimeout(async function () {
+      window.showPwa(true)
+    }, 5000)
+  }
 })
 window.deferredPromptPrompt = function () {
   window.deferredPrompt.prompt()

@@ -1,12 +1,21 @@
 <script>
 // import { reactive, onMounted } from 'vue'
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import * as bootstrap from 'bootstrap'
 export default {
+  mounted() {
+    window.showPwa = this.showPwa
+  },
+  methods: {
+    showPwa(isShow) {
+      this.isShow = isShow
+    }
+  },
   setup() {
     // const states = reactive({
     //   deferredPrompt: null
     // })
+    const isShow = ref(false)
     onMounted(() => {
       if (localStorage.getItem('pwaInstalled') === '1') {
         // console.log('pwa already installed.')
@@ -16,7 +25,10 @@ export default {
           alert.close()
         }
       } else {
-        // console.log('pwa uninstall.')
+        console.log('pwa uninstall.', isShow.value)
+
+        console.log('pwa uninstall 2.', isShow.value)
+
         document.querySelector('#addApp').addEventListener('click', () => {
           if (window.deferredPrompt) {
             console.log('pwa install.......')
@@ -29,11 +41,15 @@ export default {
         })
       }
     })
+
+    return {
+      isShow
+    }
   }
 }
 </script>
 <template>
-  <div class="addHomeWindow alert position-fixed w-100 fade show" role="alert">
+  <div class="addHomeWindow alert position-fixed w-100 fade show" role="alert" v-show="this.isShow">
     <div class="addHomeWindowTop d-flex align-items-center mb-2">
       <img src="../../public/pwa-192x192.png" class="img-fluid me-3" alt="" />
       <p class="m-0">
