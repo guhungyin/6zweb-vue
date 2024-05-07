@@ -5,7 +5,8 @@ export default {
     return {
       gameList: [],
       searchKey: '',
-      searchGameList: []
+      searchGameList: [],
+      searchHistoryKey: []
     }
   },
   methods: {
@@ -20,14 +21,33 @@ export default {
         this.commonStore.setPlayGame(gameInfo)
       }
     },
-    searchGame() {
-      if (this.searchKey.length >= 3) {
-        console.log('搜索游戏: ', this.searchKey)
+    deleteHistory(key) {
+      if (key === 'all') {
+        console.log('删除所有历史搜索记录')
+        localStorage.removeItem('searchHistory')
+        this.searchHistoryKey = []
+      } else {
+        this.searchHistoryKey = this.searchHistoryKey.filter((v) => v !== key)
 
+        if (this.searchHistoryKey.length > 0) {
+          localStorage.setItem('searchHistory', JSON.stringify(this.searchHistoryKey))
+        } else {
+          localStorage.removeItem('searchHistory')
+        }
+      }
+    },
+    searchGame(searchKey) {
+      console.log('搜索游戏关键字:', searchKey)
+      if (searchKey && typeof searchKey === 'string') {
+        this.searchKey = searchKey
+      }
+
+      if (this.searchKey.length >= 3) {
         this.commonStore
           .searchGame(this.searchKey)
           .then((res) => {
             if (res.code === 0) {
+              this.searchGameList = []
               res.data.forEach((v) => {
                 if (v.cp === 'evo') {
                   v.cpSoft = 'Live'
@@ -38,8 +58,23 @@ export default {
                 } else if (v.cp === 'pgplus') {
                   v.cpSoft = 'PG Soft'
                 }
+
                 this.searchGameList.push(v)
               })
+
+              let find = false
+
+              for (const key in this.searchHistoryKey) {
+                if (this.searchHistoryKey[key] === this.searchKey) {
+                  find = true
+                  break
+                }
+              }
+
+              if (!find && res.data.length > 0) {
+                this.searchHistoryKey.push(this.searchKey)
+                localStorage.setItem('searchHistory', JSON.stringify(this.searchHistoryKey))
+              }
             }
           })
           .catch((err) => console.log('搜索游戏 [', this.searchKey, '] 错误:', err.message))
@@ -47,6 +82,10 @@ export default {
     }
   },
   created() {
+    if (localStorage.getItem('searchHistory')) {
+      this.searchHistoryKey = JSON.parse(localStorage.getItem('searchHistory'))
+    }
+
     this.commonStore.hotList().then((res) => {
       if (res.code === 0) {
         res.data.forEach((v) => {
@@ -114,7 +153,7 @@ export default {
           </section>
           <div class="characterNotice mb-3">A pesquisa requer pelo menos 3 caracteres</div>
           <!-- + active 顯示 -->
-          <div class="searchHistory w-100 active">
+          <div class="searchHistory w-100" :class="{ active: this.searchHistoryKey.length > 0 }">
             <div class="d-flex justify-content-between align-items-center mb-2 title">
               <span>Histórico de busca</span>
               <!-- 刪除所有歷史紀錄  把 searchHistory的active刪除 並將 historyList 裡的資料清空-->
@@ -125,6 +164,7 @@ export default {
                 fill="#FFF"
                 class="bi bi-trash-fill"
                 viewBox="0 0 16 16"
+                @click="deleteHistory('all')"
               >
                 <path
                   d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"
@@ -132,8 +172,12 @@ export default {
               </svg>
             </div>
             <div class="historyList py-2">
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">cash</span>
+              <div
+                class="historyItem me-2 mt-2"
+                v-for="itemKey in this.searchHistoryKey"
+                :key="itemKey"
+              >
+                <span class="me-3" @click="searchGame(itemKey)">{{ itemKey }}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
@@ -141,96 +185,7 @@ export default {
                   fill="#8d8a8a"
                   class="bi bi-x"
                   viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
-                  />
-                </svg>
-              </div>
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">cash or</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="#8d8a8a"
-                  class="bi bi-x"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
-                  />
-                </svg>
-              </div>
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">sadj mdwsk</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="#8d8a8a"
-                  class="bi bi-x"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
-                  />
-                </svg>
-              </div>
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">sadj</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="#8d8a8a"
-                  class="bi bi-x"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
-                  />
-                </svg>
-              </div>
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">mdwsk</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="#8d8a8a"
-                  class="bi bi-x"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
-                  />
-                </svg>
-              </div>
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">aaaaa</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="#8d8a8a"
-                  class="bi bi-x"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
-                  />
-                </svg>
-              </div>
-              <div class="historyItem me-2 mt-2">
-                <span class="me-3">bbbbbb</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="#8d8a8a"
-                  class="bi bi-x"
-                  viewBox="0 0 16 16"
+                  @click="deleteHistory(itemKey)"
                 >
                   <path
                     d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
