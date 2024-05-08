@@ -1,9 +1,11 @@
 // console.log(navigator)
 if ('serviceWorker' in navigator) {
+  // alert('serviceWorker register')
   navigator.serviceWorker
     .register('/firebase-messaging-sw.js?time=20240507101132')
     .then((swReg) => {
       // console.log('Service Worker Registered')
+      // alert('serviceWorker Registered')
       swReg.pushManager.getSubscription().then((sub) => {
         console.log('Subscription Info', sub)
       })
@@ -17,6 +19,7 @@ window.deferredPrompt = null
 window.addEventListener('beforeinstallprompt', (e) => {
   // console.log('beforeinstallprompt : ', e)
   // Prevent Chrome 67 and earlier from automatically showing the prompt
+  // alert('beforeinstallprompt')
   e.preventDefault()
   // Stash the event so it can be triggered later.
   window.deferredPrompt = e

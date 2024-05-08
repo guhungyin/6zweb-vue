@@ -29,7 +29,7 @@
     ],
     "start_url": "/",
     "display": "standalone",
+    "description": "wins888",
     "background_color": "#FFFFFF",
-    "theme_color": "#FFFFFF",
-    "orientation": "any"
+    "theme_color": "#FFFFFF"
   }
