@@ -215,6 +215,7 @@ export default {
 <style scoped>
 .gameSpecifyListWindow {
   background-color: #1a1a1a;
+  overflow: none;
 }
 .breadcrumb-item {
   font-size: 0.8rem;
