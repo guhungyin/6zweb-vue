@@ -80,7 +80,7 @@ export default {
         <li>
           <router-link to="/cashback" @click="queryCashback">
             <img class="icon" src="@/assets/images/icon/menuIcon03.png" alt="" />
-            Cashback 25%
+            Cashback {{ this.userStore.cashbackMax }}
           </router-link>
         </li>
       </ul>

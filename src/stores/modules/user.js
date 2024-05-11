@@ -19,6 +19,7 @@ export const useUserStore = defineStore('user', {
       availableWithdrawalMoney: 0,
       completedBetAmount: 0,
       targetBetAmount: 0,
+      cashbackMax: '25%',
       promotionCommission: {
         totalBetCount: '0.00',
         balanceCommission: 0.0,
@@ -85,6 +86,7 @@ export const useUserStore = defineStore('user', {
             this.vipLevel = response.data.vipLevel
             let bgMoney = new BigNumber(response.data.money)
             this.money = new BigNumber(bgMoney.div(10000).toFixed(2, 1)).toFormat(2)
+            this.cashbackMax = response.data.cashbackMax
             resolve(response)
           })
           .catch((error) => {
