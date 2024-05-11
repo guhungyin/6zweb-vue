@@ -405,7 +405,6 @@ export default {
     </section>
     <!-- 遊戲內容 -->
     <section class="container-fluid mb-4">
-      <div class="recentListTitle title">Recent Grand Prize</div>
       <swiper
         :loop="true"
         :slidesPerView="3"
@@ -475,10 +474,10 @@ export default {
           </div>
         </template>
         <swiper-slide v-for="itemrow in this.commonStore.hotArrayList" :key="itemrow">
-          <div class="row row-cols-3 g-2">
+          <div class="row row-cols-3 g-2 ">
             <div class="col" v-for="item in itemrow" :key="item">
               <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.iconName" class="w-100" />
+                <img :src="item.iconName" class="w-100 " />
               </router-link>
             </div>
           </div>

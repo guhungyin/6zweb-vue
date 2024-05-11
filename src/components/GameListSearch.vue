@@ -210,6 +210,7 @@ export default {
                 <img :src="item.iconName" class="w-100 rounded-2" alt="" />
               </router-link>
             </div>
+            <hr class="hr">
           </div>
           <!-- 原先預設遊戲列表 -->
           <div class="gameMain">
@@ -319,5 +320,9 @@ export default {
 }
 .hisDisplay .gameTitle {
   color: var(--fff);
+}
+.hr{
+  opacity: 1;
+  border-color: #4f4f4f;
 }
 </style>
