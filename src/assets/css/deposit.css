@@ -12,12 +12,13 @@
 }
 .depositWindows .channelContainer {
   height: 4.5rem;
+  overflow-x: auto;
 }
+.depositWindows .channelContainer::-webkit-scrollbar{display: none;}
 .depositWindows .channelContainer .payChannel{
   flex-direction: column;
   flex-wrap: wrap;
   height: 100%;
-  overflow-x: auto;
 }
 .depositWindows .channelContainer .payChannel::-webkit-scrollbar {
   display: none;

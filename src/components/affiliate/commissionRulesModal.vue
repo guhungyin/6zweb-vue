@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade commissionRulesModal" id="commissionRulesModal" tabindex="-1" aria-labelledby="commissionRulesModalLabel" aria-hidden="true">
+    <div class="modal fade commissionRulesModal" id="commissionRulesModal" tabindex="-1" aria-labelledby="commissionRulesModalLabel" aria-hidden="true" data-bs-backdrop="false">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header border-0">

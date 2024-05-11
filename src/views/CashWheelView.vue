@@ -302,6 +302,7 @@ export default {
       tabindex="-1"
       aria-labelledby="ruleModalLabel"
       aria-hidden="true"
+      data-bs-backdrop="false"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -355,6 +356,7 @@ export default {
       tabindex="-1"
       aria-labelledby="withdrawAlertLabel"
       aria-hidden="true"
+      data-bs-backdrop="false"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

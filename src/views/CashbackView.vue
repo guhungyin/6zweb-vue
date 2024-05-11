@@ -69,7 +69,7 @@ export default {
           </div>
         </div>
         <div class="progress van-progress mb-2">
-          <span class="vanProgressPortion"></span>
+          <span class="vanProgressPortion" :style="{width: userStore.cashbackInfo.maxRate}"></span>
         </div>
         <div class="progressTips">
           {{ this.userStore.cashbackInfo.nextBetAmount }} Apostas to VIP{{
@@ -185,6 +185,9 @@ export default {
   height: 0.6rem;
   background-color: var(--fff);
 }
+.vipCard .vanProgressPortion{
+  background-color: #1a9c82;
+}
 .vipCard .progressTips {
   color: #383838;
   text-align: right;
@@ -210,16 +213,47 @@ export default {
   font-size: 0.65rem;
 }
 .vipCash .main .button {
+  opacity: 0.4;
+  cursor: not-allowed;
   text-align: center;
   padding: 0.5rem 0;
   font-size: 0.7rem;
   color: var(--fff);
   background: var(--greenGradient);
+
+}
+.vipCash .main .button.active{
+  cursor: pointer;
+  opacity: 1;
 }
 .vipCash .main .extTime {
   font-size: 0.55rem;
   color: grey;
   text-align: center;
+}
+.vipCash .main .extTime.showTimeAm{
+  animation: showTimeAm 1s infinite;
+}
+@keyframes showTimeAm {
+  0% {
+      color: grey
+  }
+
+  25% {
+      color: #fc992c
+  }
+
+  50% {
+      color: grey
+  }
+
+  75% {
+      color: #fc992c
+  }
+
+  to {
+      color: grey
+  }
 }
 .vipList {
   font-weight: bold;

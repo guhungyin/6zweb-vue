@@ -152,6 +152,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 2.2rem;
+  overflow-x: auto;
 }
 .tabs::-webkit-scrollbar {
   display: none;
