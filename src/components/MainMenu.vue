@@ -2,6 +2,7 @@
 import { Offcanvas } from 'bootstrap'
 import GameLogo from '@/components/home/GameLogo.vue'
 import { useCommonStore } from '@/stores/modules/common'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
@@ -20,11 +21,18 @@ export default {
     const myOffcanvas = document.getElementById('mainMenu')
     this.bsOffcanvas = new Offcanvas(myOffcanvas)
   },
+  methods: {
+    queryCashback() {
+      this.userStore.cashback()
+    }
+  },
   setup() {
     const commonStore = useCommonStore()
+    const userStore = useUserStore()
 
     return {
-      commonStore
+      commonStore,
+      userStore
     }
   }
 }
@@ -70,7 +78,7 @@ export default {
           </router-link>
         </li>
         <li>
-          <router-link to="/cashback">
+          <router-link to="/cashback" @click="queryCashback">
             <img class="icon" src="@/assets/images/icon/menuIcon03.png" alt="" />
             Cashback 25%
           </router-link>

@@ -50,6 +50,13 @@ export function userInfo() {
   })
 }
 
+export function cashback() {
+  return request({
+    url: '/user/cashback',
+    method: 'get'
+  })
+}
+
 export function promotionCommission() {
   return request({
     url: '/user/promotionCommission',

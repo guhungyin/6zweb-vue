@@ -389,7 +389,7 @@ export default {
                   <div
                     class="progress-bar"
                     role="progressbar"
-                    :style="'width: ' + this.rateProgress - 100 + '%'"
+                    :style="'width: ' + this.rateProgress + '%'"
                     aria-valuenow="25"
                     aria-valuemin="0"
                     aria-valuemax="100"

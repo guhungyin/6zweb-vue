@@ -30,7 +30,8 @@ export const useUserStore = defineStore('user', {
         withdrawalCommission: '0.00',
         totalCommissionCount: '0.00',
         todayBetCount: '0.00'
-      }
+      },
+      cashbackInfo: {}
     }
   },
   actions: {
@@ -85,6 +86,26 @@ export const useUserStore = defineStore('user', {
             let bgMoney = new BigNumber(response.data.money)
             this.money = new BigNumber(bgMoney.div(10000).toFixed(2, 1)).toFormat(2)
             resolve(response)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+    cashback() {
+      return new Promise((resolve, reject) => {
+        user
+          .cashback()
+          .then((res) => {
+            if (res.code === 0) {
+              let temp = res.data.vipCondition.sort((a, b) => {
+                return a.vipLevel - b.vipLevel
+              })
+
+              res.data.vipCondition = temp
+              this.cashbackInfo = res.data
+            }
+            resolve(res)
           })
           .catch((error) => {
             reject(error)

@@ -1,8 +1,16 @@
 <script>
+import { useUserStore } from '@/stores/modules/user'
 export default {
   methods: {
     closeBtn() {
       this.$router.go(-1)
+    }
+  },
+  setup() {
+    const userStore = useUserStore()
+
+    return {
+      userStore
     }
   }
 }
@@ -26,7 +34,7 @@ export default {
             />
           </svg>
         </div>
-        Cashback 25%
+        Cashback {{ this.userStore.cashbackInfo.maxRate }}
       </h2>
       <div class="moneyBox">
         <svg
@@ -39,7 +47,7 @@ export default {
         >
           <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
         </svg>
-        <span>0.00</span>
+        <span>{{ this.userStore.money }}</span>
         BRL
       </div>
     </header>
@@ -48,20 +56,26 @@ export default {
         <div class="main d-flex justify-content-between align-items-center mb-2">
           <div class="cashMain">
             <img src="../assets/images/icon/money1.png" width="44" alt="" />
-            <span class="current fw-bold mx-2">13% Cashback</span>
-            <span class="max">Max:25%</span>
+            <span class="current fw-bold mx-2"
+              >{{ this.userStore.cashbackInfo.minRate }} Cashback</span
+            >
+            <span class="max">Max:{{ this.userStore.cashbackInfo.maxRate }}</span>
           </div>
           <div class="vipMaim vip1 d-flex justify-content-between">
             <span class="iconfont icon-vip me-1">
               <img src="../assets/images/icon/menuIcon05.png" width="25" alt="" />
             </span>
-            <span class="vipNum">v1</span>
+            <span class="vipNum">v{{ this.userStore.cashbackInfo.vipLevel }}</span>
           </div>
         </div>
         <div class="progress van-progress mb-2">
           <span class="vanProgressPortion"></span>
         </div>
-        <div class="progressTips">5000 Apostas to VIP2</div>
+        <div class="progressTips">
+          {{ this.userStore.cashbackInfo.nextBetAmount }} Apostas to VIP{{
+            this.userStore.cashbackInfo.nextVipLevel
+          }}
+        </div>
       </div>
       <div class="vipCash d-flex align-items-center mb-3 p-3">
         <div class="img position-relative">
@@ -71,9 +85,9 @@ export default {
         <div class="main">
           <div class="title fw-bold mb-1">Seu Cashback Semanal</div>
           <p class="mb-1">Você ganhará ??? BRL em cashback jogando esta semana.</p>
-          <div class="time mb-1">Periodo 2024-02-12 00:00:00~2024-02-18 23:59:59</div>
+          <div class="time mb-1">Periodo {{ this.userStore.cashbackInfo.cycle }}</div>
           <div class="button mb-2">Reivindicar Agora</div>
-          <div class="extTime">Tempo de reivindicação 2024-02-19 06:00:00~2024-02-23 23:59:59</div>
+          <div class="extTime">Tempo de reivindicação {{ this.userStore.cashbackInfo.claim }}</div>
         </div>
       </div>
       <div class="vipList mb-3 p-3">
@@ -87,56 +101,16 @@ export default {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>0+ BRL</td>
-              <td>13%</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>5000+ BRL</td>
-              <td>14%</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>20000+ BRL</td>
-              <td>15%</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>80000+ BRL</td>
-              <td>16%</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>400000+ BRL</td>
-              <td>17%</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>1200000+ BRL</td>
-              <td>18%</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>5000000+ BRL</td>
-              <td>19%</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>15000000+ BRL</td>
-              <td>20%</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>30000000+ BRL</td>
-              <td>21%</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>60000000+ BRL</td>
-              <td>25%</td>
-            </tr>
+            <template
+              v-for="levelItem in this.userStore.cashbackInfo.vipCondition"
+              :key="levelItem"
+            >
+              <tr>
+                <td>{{ levelItem.vipLevel }}</td>
+                <td>{{ levelItem.requireBetAmount }}</td>
+                <td>{{ levelItem.rebate }}</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
