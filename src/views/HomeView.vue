@@ -251,8 +251,8 @@ export default {
     <!-- 上方選單 -->
     <header class="position-fixed">
       <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <router-link to="/" class="navbar-brand logo">
+        <div class="container-fluid h-100 px-1 px-sm-3">
+          <router-link to="/" class="navbar-brand me-0">
             <GameLogo></GameLogo>
           </router-link>
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
@@ -263,7 +263,7 @@ export default {
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
           <div class="right" v-show="logged">
             <div class="userMoney me-2">
-              <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
+              <img src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
               {{ userMoney }}
             </div>
             <router-link class="depositBtn me-2" to="/deposit">
@@ -272,7 +272,7 @@ export default {
                 width="16"
                 height="16"
                 fill="#FFF"
-                class="bi bi-wallet-fill me-2"
+                class="bi bi-wallet-fill me-1"
                 viewBox="0 0 16 16"
               >
                 <path

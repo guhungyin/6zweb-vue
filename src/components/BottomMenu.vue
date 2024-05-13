@@ -46,7 +46,7 @@ export default {
               d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"
             />
           </svg>
-          <span class="bottomMenuName mt-2">Início</span>
+          <span class="bottomMenuName mt-1">Início</span>
         </RouterLink>
       </li>
       <li :class="{ active: $route.path === '/deposit' }">
@@ -69,7 +69,7 @@ export default {
               d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z"
             />
           </svg>
-          <span class="bottomMenuName mt-2">Depósito</span>
+          <span class="bottomMenuName mt-1">Depósito</span>
         </RouterLink>
       </li>
       <li class="main">
@@ -84,7 +84,7 @@ export default {
             alt=""
             @click="queryPromotionCommission"
           />
-          <span class="bottomMenuName mt-2">Afiliado</span>
+          <span class="bottomMenuName mt-1">Afiliado</span>
         </RouterLink>
       </li>
       <li>
@@ -110,7 +110,7 @@ export default {
               d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
             />
           </svg>
-          <span class="bottomMenuName mt-2">Perfil</span>
+          <span class="bottomMenuName mt-1">Perfil</span>
         </button>
       </li>
       <li>
@@ -133,7 +133,7 @@ export default {
               d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
             />
           </svg>
-          <span class="bottomMenuName mt-2">Menu</span>
+          <span class="bottomMenuName mt-1">Menu</span>
         </a>
       </li>
     </ul>
@@ -159,7 +159,7 @@ export default {
 }
 .bottomMenu ul li .bottomMenuName {
   color: var(--gray1);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 .bottomMenu .active svg,
 .bottomMenu .active .bottomMenuName {

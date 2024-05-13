@@ -6,8 +6,11 @@ header {
   z-index: 2;
   height: 4rem;
 }
-header .logo img {
-  height: 2.5rem;
+header nav{
+  height: 100%;
+}
+header img {
+  height: 30px;
 }
 header .loginBtn {
   border: none;
@@ -29,9 +32,11 @@ header .right .userMoney {
   display: flex;
   align-items: center;
   color: var(--blue);
+  font-size: .8rem;
 }
 header .right .userMoney img {
-  width: 1.5rem;
+  width: 17px;
+  margin-right: 3px;
 }
 header .right .depositBtn {
   display: flex;
@@ -40,15 +45,15 @@ header .right .depositBtn {
   background: linear-gradient(180deg, #5519cd, #9449ff);
   color: var(--fff);
   font-size: 0.8rem;
-  height: 2rem;
-  width: 6rem;
-  border-radius: 0.2rem;
+  padding: .3rem .3rem;
+  border-radius: 0.1rem;
 }
 header .right .userBtn {
   border: none;
   background-color: #1f1f1f;
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.1rem;
 }
 .banner{
   padding-top: 4rem;

@@ -263,6 +263,7 @@ export default {
   color: var(--gray1);
   background-color: transparent;
   position: absolute;
+  font-size: .8rem;
 }
 .gameListSearch .modal-header .searchBox input::placeholder {
   color: #6e6e6e;
@@ -270,6 +271,7 @@ export default {
 .gameListSearch .modal-header .searchBox button {
   z-index: 1;
   color: var(--fff);
+  font-size: .8rem;
 }
 .gameListSearch .characterNotice {
   color: #6e6e6e;

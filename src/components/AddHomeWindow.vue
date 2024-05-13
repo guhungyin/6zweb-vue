@@ -79,6 +79,7 @@ export default {
 }
 .addHomeWindow .continueBtn {
   border: none;
+  font-size: 1rem;
   color: var(--fff);
   background: var(--greenGradient);
 }
