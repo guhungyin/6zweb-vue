@@ -18,6 +18,14 @@ export function resetPassword(data) {
   })
 }
 
+export function claimRebate(params) {
+  return request({
+    url: '/user/claimRebate',
+    method: 'post',
+    params
+  })
+}
+
 export function retrievePassword(data) {
   return request({
     // url: '/vue-admin-template/user/login',

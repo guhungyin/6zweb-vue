@@ -1,30 +1,54 @@
 <script>
 import { useUserStore } from '@/stores/modules/user'
+import LoadingPage from '@/components/LoadingPage.vue'
+import * as bootstrap from 'bootstrap'
 import { ref } from 'vue'
 export default {
   data() {
     return {
-      isLoading: false
+      isLoading: false,
+      progress: false
     }
+  },
+  components: {
+    LoadingPage
   },
   methods: {
     closeBtn() {
       this.$router.go(-1)
     },
     claimRebate() {
-      if (this.isLoading) {
+      if (this.progress) {
         return
       }
 
-      this.isLoading = true
+      this.progress = true
 
       if (!this.userStore.cashbackInfo.claimOk) {
         this.showTimeAm = true
         let thant = this
         setTimeout(async function () {
           thant.showTimeAm = false
-          thant.isLoading = false
+          thant.progress = false
         }, 2000)
+      } else {
+        this.isLoading = true
+        this.userStore
+          .claimRebate({ cycle: this.userStore.cashbackInfo.cycle })
+          .then(() => {
+            var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
+            document.getElementById('errorTips').innerHTML = 'claim succeeded'
+            myModal.show()
+            this.isLoading = false
+            this.progress = false
+            setTimeout(async function () {
+              myModal.hide()
+            }, 2000)
+          })
+          .catch(() => {
+            this.isLoading = false
+            this.progress = false
+          })
       }
     }
   },
@@ -41,6 +65,7 @@ export default {
 </script>
 <template>
   <div class="routerView">
+    <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
       <h2 class="title d-flex align-items-center">
         <div @click="closeBtn">

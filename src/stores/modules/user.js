@@ -138,6 +138,18 @@ export const useUserStore = defineStore('user', {
           })
       })
     },
+    claimRebate(params) {
+      return new Promise((resolve, reject) => {
+        user
+          .claimRebate(params)
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
     async resetPassword(oldPwd, newPwd) {
       return new Promise((resolve, reject) => {
         user
