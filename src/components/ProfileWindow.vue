@@ -276,7 +276,7 @@ export default {
   height: 4rem;
 }
 .profileWindow .offcanvas-header img {
-  height: 2.5rem;
+  height: 30px;
 }
 .profileWindow .offcanvas-body {
   overflow: initial;

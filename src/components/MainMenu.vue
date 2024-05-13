@@ -219,10 +219,10 @@ export default {
   line-height: 3rem;
 }
 .mainMenu .logo {
-  height: 2.5rem;
+  height: 30px;
 }
 .mainMenu li .icon {
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   width: 1.2rem;
   height: 1.2rem;
 }

@@ -133,8 +133,8 @@ export default {
   <div class="routerView gameListWindow">
     <header class="position-fixed">
       <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <router-link to="/" class="navbar-brand logo">
+        <div class="container-fluid h-100 px-1 px-sm-3">
+          <router-link to="/" class="navbar-brand me-0">
             <GameLogo></GameLogo>
           </router-link>
           <div class="right" v-show="!logged">
@@ -143,7 +143,7 @@ export default {
           </div>
           <div class="right" v-show="logged">
             <div class="userMoney me-2">
-              <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
+              <img src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
               {{ userStore.money }}
             </div>
             <router-link to="/deposit" class="depositBtn me-2">
