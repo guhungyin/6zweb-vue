@@ -460,6 +460,7 @@ export default {
     tabindex="-1"
     aria-labelledby="todayModalLabel"
     aria-hidden="true"
+    data-bs-backdrop="false"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -496,6 +497,7 @@ export default {
     tabindex="-1"
     aria-labelledby="totalModalLabel"
     aria-hidden="true"
+    data-bs-backdrop="false"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">

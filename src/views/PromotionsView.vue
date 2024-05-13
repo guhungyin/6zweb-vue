@@ -5,14 +5,30 @@
     data() {
       return {
         imgData: [
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/EZpgEYGszUcfSow.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/eJgaWAAVMNpKFJE.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/wuDqhIlnpLYYTsg.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/XxBnOQgbgJuYyXH.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/scVxQMhvQApGWHQ.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/HcPYcesCOPOrSDy.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/rvnogttVsNKHRIk.jpg' },
-          { imgUrl: 'https://images.hibigwin.com/6z/202402/OcPxQWbYrylUfit.jpg' }
+          { imgUrl: 'src/assets/images/banner/banner_01.jpg',
+            link: '/deposit'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_02.jpg',
+            link: '/'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_03.jpg',
+            link: '/'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_04.jpg',
+            link: '/cashwheel'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_05.jpg',
+            link: '/'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_06.jpg',
+            link: '/'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_07.jpg',
+            link: '/'
+          },
+          { imgUrl: 'src/assets/images/banner/banner_08.jpg',
+            link: '/downloadApp'
+          }
         ]
       }
     },
@@ -31,7 +47,7 @@
     <div class="promotionsWindows container-fluid">
       <ul class="px-0">
         <li v-for="item in imgData" :key="item" class="mt-4">
-          <router-link to="/">
+          <router-link :to="item.link">
             <img :src="item.imgUrl" alt="" class="w-100" />
           </router-link>
         </li>
