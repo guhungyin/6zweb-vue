@@ -40,6 +40,9 @@ export default {
       } else {
         this.$router.push({ name: 'withdraw' })
       }
+    },
+    logOutBtn(){
+      this.bsOffcanvas.hide()
     }
   },
   setup() {
@@ -258,9 +261,14 @@ export default {
             <router-link to="/cashwheel"> Receba R$ 100 de graça </router-link>
           </li>
         </ul>
-        <div class="logOut px-3 mb-2">
+        <div 
+        class="logOut px-3 mb-2"
+        data-bs-toggle="modal" 
+        data-bs-target="#LogOutModal"
+        @click="logOutBtn"
+        >
           <img src="../assets/images/icon/logout.png" alt="" />
-          Login
+          Logout
         </div>
       </div>
     </div>
