@@ -1,16 +1,40 @@
 <script>
 import { useUserStore } from '@/stores/modules/user'
+import { ref } from 'vue'
 export default {
+  data() {
+    return {
+      isLoading: false
+    }
+  },
   methods: {
     closeBtn() {
       this.$router.go(-1)
+    },
+    claimRebate() {
+      if (this.isLoading) {
+        return
+      }
+
+      this.isLoading = true
+
+      if (!this.userStore.cashbackInfo.claimOk) {
+        this.showTimeAm = true
+        let thant = this
+        setTimeout(async function () {
+          thant.showTimeAm = false
+          thant.isLoading = false
+        }, 2000)
+      }
     }
   },
   setup() {
     const userStore = useUserStore()
+    const showTimeAm = ref(false)
 
     return {
-      userStore
+      userStore,
+      showTimeAm
     }
   }
 }
@@ -69,7 +93,10 @@ export default {
           </div>
         </div>
         <div class="progress van-progress mb-2">
-          <span class="vanProgressPortion" :style="{width: userStore.cashbackInfo.maxRate}"></span>
+          <span
+            class="vanProgressPortion"
+            :style="'width: ' + this.userStore.cashbackInfo.progress + '%'"
+          ></span>
         </div>
         <div class="progressTips">
           {{ this.userStore.cashbackInfo.nextBetAmount }} Apostas to VIP{{
@@ -86,8 +113,10 @@ export default {
           <div class="title fw-bold mb-1">Seu Cashback Semanal</div>
           <p class="mb-1">Você ganhará ??? BRL em cashback jogando esta semana.</p>
           <div class="time mb-1">Periodo {{ this.userStore.cashbackInfo.cycle }}</div>
-          <div class="button mb-2">Reivindicar Agora</div>
-          <div class="extTime">Tempo de reivindicação {{ this.userStore.cashbackInfo.claim }}</div>
+          <div class="button mb-2 active" @click="claimRebate">Reivindicar Agora</div>
+          <div class="extTime" :class="{ showTimeAm: this.showTimeAm }">
+            Tempo de reivindicação {{ this.userStore.cashbackInfo.claim }}
+          </div>
         </div>
       </div>
       <div class="vipList mb-3 p-3">
@@ -185,7 +214,7 @@ export default {
   height: 0.6rem;
   background-color: var(--fff);
 }
-.vipCard .vanProgressPortion{
+.vipCard .vanProgressPortion {
   background-color: #1a9c82;
 }
 .vipCard .progressTips {
@@ -220,9 +249,8 @@ export default {
   font-size: 0.7rem;
   color: var(--fff);
   background: var(--greenGradient);
-
 }
-.vipCash .main .button.active{
+.vipCash .main .button.active {
   cursor: pointer;
   opacity: 1;
 }
@@ -231,28 +259,28 @@ export default {
   color: grey;
   text-align: center;
 }
-.vipCash .main .extTime.showTimeAm{
+.vipCash .main .extTime.showTimeAm {
   animation: showTimeAm 1s infinite;
 }
 @keyframes showTimeAm {
   0% {
-      color: grey
+    color: grey;
   }
 
   25% {
-      color: #fc992c
+    color: #fc992c;
   }
 
   50% {
-      color: grey
+    color: grey;
   }
 
   75% {
-      color: #fc992c
+    color: #fc992c;
   }
 
   to {
-      color: grey
+    color: grey;
   }
 }
 .vipList {
