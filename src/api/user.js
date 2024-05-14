@@ -81,10 +81,17 @@ export function withdrawalCommission() {
 
 export function register(data) {
   return request({
-    // url: '/vue-admin-template/user/login',
     url: '/user/register',
     method: 'post',
     data
+  })
+}
+
+export function logout() {
+  return request({
+    // url: '/vue-admin-template/user/login',
+    url: '/user/logout',
+    method: 'post'
   })
 }
 

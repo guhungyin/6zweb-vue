@@ -40,6 +40,18 @@ export default {
       } else {
         this.$router.push({ name: 'withdraw' })
       }
+    },
+    queryCashback() {
+      this.userStore.cashback()
+    },
+    logout() {
+      this.userStore.logout().then((res) => {
+        if (res.code === 0) {
+          // this.$router.push({ name: 'home' })
+          this.userStore.clearUserInfo()
+          this.$router.replace({ name: 'home' })
+        }
+      })
     }
   },
   setup() {
@@ -247,7 +259,9 @@ export default {
           </li>
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/money.png" alt="" />
-            <router-link to="/cashback"> Cashback 25% </router-link>
+            <router-link to="/cashback" @click="queryCashback">
+              Cashback {{ this.userStore.cashbackMax }}
+            </router-link>
           </li>
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/danger.png" alt="" />
@@ -258,7 +272,7 @@ export default {
             <router-link to="/cashwheel"> Receba R$ 100 de graça </router-link>
           </li>
         </ul>
-        <div class="logOut px-3 mb-2">
+        <div class="logOut px-3 mb-2" @click="logout">
           <img src="../assets/images/icon/logout.png" alt="" />
           Login
         </div>

@@ -138,6 +138,74 @@ export const useUserStore = defineStore('user', {
           })
       })
     },
+    logout() {
+      return new Promise((resolve, reject) => {
+        user
+          .logout()
+          .then((res) => {
+            if (res.code === 0) {
+              window.sessionStorage.removeItem('user')
+              window.sessionStorage.removeItem('common')
+            }
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+    clearUserInfo() {
+      this.id = 1
+      this.ticket = ''
+      this.nickName = ''
+      this.mobile = '*********'
+      this.email = ''
+      this.money = '0.00'
+      this.vipLevel = 0
+      this.promotionTotalCommission = 0
+      this.source = ''
+      this.availableWithdrawalMoney = 0
+      this.completedBetAmount = 0
+      this.targetBetAmount = 0
+      this.cashbackMax = '25%'
+      this.promotionCommission = {
+        totalBetCount: '0.00',
+        balanceCommission: 0.0,
+        todayCommissionCount: '0.00',
+        todayPayCount: 0,
+        todayRegCount: 0,
+        totalRegCount: 0,
+        totalPayCount: 0,
+        withdrawalCommission: '0.00',
+        totalCommissionCount: '0.00',
+        todayBetCount: '0.00'
+      }
+      this.cashbackInfo = {
+        vipLevel: 1,
+        betAmount: 0,
+        claimOk: false,
+        nextVipLevel: 2,
+        claim: '2024-05-13 06:00:00~2024-05-17 23:59:59',
+        progress: 0,
+        minRate: '13%',
+        maxRate: '25%',
+        cycle: '2024-05-06 00:00:00~2024-05-12 23:59:59',
+        nextBetAmount: 5000,
+        vipCondition: [
+          { vipLevel: 1, rebate: '13%', requireBetAmount: '0+ BRL' },
+          { vipLevel: 2, rebate: '14%', requireBetAmount: '5000+ BRL' },
+          { vipLevel: 3, rebate: '15%', requireBetAmount: '20000+ BRL' },
+
+          { vipLevel: 4, rebate: '16%', requireBetAmount: '80000+ BRL' },
+          { vipLevel: 5, rebate: '17%', requireBetAmount: '400000+ BRL' },
+          { vipLevel: 6, rebate: '18%', requireBetAmount: '1200000+ BRL' },
+          { vipLevel: 7, rebate: '19%', requireBetAmount: '5000000+ BRL' },
+          { vipLevel: 8, rebate: '20%', requireBetAmount: '15000000+ BRL' },
+          { vipLevel: 9, rebate: '21%', requireBetAmount: '30000000+ BRL' },
+          { vipLevel: 10, rebate: '25%', requireBetAmount: '60000000+ BRL' }
+        ]
+      }
+    },
     claimRebate(params) {
       return new Promise((resolve, reject) => {
         user
