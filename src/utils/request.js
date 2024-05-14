@@ -29,6 +29,12 @@ service.interceptors.request.use(
       // please modify it according to the actual situation
       config.headers['token'] = userStore.ticket
     }
+
+    if (config.url === '/user/login' || config.url === '/user/register') {
+      config.headers['lang'] = window.navigator.language
+      config.headers['osType'] = '2'
+    }
+
     return config
   },
   (error) => {

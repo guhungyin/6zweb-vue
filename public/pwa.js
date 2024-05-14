@@ -1,8 +1,22 @@
 // console.log(navigator)
+// console.log(window)
+
+// navigator.geolocation.getCurrentPosition(function (position) {
+//   var latitude = position.coords.latitude
+
+//   var longitude = position.coords.longitude
+
+//   var timestamp = position.timestamp
+
+//   var deviceID = latitude + longitude + timestamp
+
+//   alert(deviceID)
+// })
+
 if ('serviceWorker' in navigator) {
   // alert('serviceWorker register')
   navigator.serviceWorker
-    .register('/firebase-messaging-sw.js?time=20240514101132')
+    .register('/firebase-messaging-sw.js?time=20240514141132')
     .then((swReg) => {
       // console.log('Service Worker Registered')
       // alert('serviceWorker Registered')
