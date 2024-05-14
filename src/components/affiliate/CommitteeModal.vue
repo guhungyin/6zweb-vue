@@ -5,6 +5,7 @@
     tabindex="-1"
     aria-labelledby="committeeModalLabel"
     aria-hidden="true"
+    data-bs-backdrop="false"
   >
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">

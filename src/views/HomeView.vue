@@ -710,6 +710,20 @@ export default {
         </div>
       </div>
     </footer>
+    <!-- 是否登出 -->
+    <div class="modal fade LogOutModal" id="LogOutModal" tabindex="-1" aria-labelledby="LogOutModalLabel" aria-hidden="true" data-bs-backdrop="false">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-4">
+            Do you want log out ?
+            <div class="d-flex justify-content-evenly mt-5">
+              <button type="button" class="btn cancel" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn continue">Continuar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- 增加到桌面 -->
     <AddHomeWindow></AddHomeWindow>
     <!-- 下方選單 -->
@@ -718,3 +732,27 @@ export default {
     <GameListSearch></GameListSearch>
   </div>
 </template>
+<style scoped>
+.LogOutModal .modal-content {
+  background-color: #1c1c1c;
+  color: var(--fff);
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.LogOutModal .modal-content .cancel {
+  border: none;
+  padding: .5rem 1.5rem;
+  color: var(--fff);
+  background: linear-gradient(180deg, #303030, #494949);
+  font-size: 1.2rem;
+}
+.LogOutModal .modal-content .continue {
+  border: none;
+  padding: .5rem 1.5rem;
+  color: var(--fff);
+  background: linear-gradient(180deg, #5519cd, #9449ff);
+  font-size: 1.2rem;
+}
+</style>

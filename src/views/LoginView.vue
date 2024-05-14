@@ -111,7 +111,7 @@ export default {
           <input
             class="form-control py-2"
             type="text"
-            placeholder="Número de Celular"
+            placeholder="Nome de Usuário"
             v-model.trim="this.account"
           />
         </div>

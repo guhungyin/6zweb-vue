@@ -210,27 +210,6 @@ export default {
             </div>
             <span>10 ~ 99,999 BRL</span>
           </div>
-          <div class="channelItem me-2 py-2 px-3">
-            <div class="pixInfo d-flex align-items-center mb-2">
-              <img src="../assets/images/icon/pix.png" alt="" class="pixImg" />
-              <span>V</span>
-            </div>
-            <span>10 ~ 99,999 BRL</span>
-          </div>
-          <div class="channelItem me-2 py-2 px-3">
-            <div class="pixInfo d-flex align-items-center mb-2">
-              <img src="../assets/images/icon/pix.png" alt="" class="pixImg" />
-              <span>PIX Ⅲ</span>
-            </div>
-            <span>10 ~ 99,999 BRL</span>
-          </div>
-          <div class="channelItem me-2 py-2 px-3">
-            <div class="pixInfo d-flex align-items-center mb-2">
-              <img src="../assets/images/icon/pix.png" alt="" class="pixImg" />
-              <span>PIX Ⅳ</span>
-            </div>
-            <span>10 ~ 99,999 BRL</span>
-          </div>
         </div>
       </div>
       <div class="depositMain">
