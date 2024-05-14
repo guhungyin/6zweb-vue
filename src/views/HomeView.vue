@@ -76,6 +76,17 @@ export default {
     this.winnerShow()
   },
   methods: {
+    logout() {
+      this.userStore.logout().then((res) => {
+        if (res.code === 0) {
+          // this.$router.push({ name: 'home' })
+          this.userStore.clearUserInfo()
+          this.bsOffcanvas.hide()
+
+          //this.$router.replace({ name: 'home' })
+        }
+      })
+    },
     goToTop() {
       const viewScroll = document.getElementById('routerView')
       viewScroll.scrollTo({
@@ -474,10 +485,10 @@ export default {
           </div>
         </template>
         <swiper-slide v-for="itemrow in this.commonStore.hotArrayList" :key="itemrow">
-          <div class="row row-cols-3 g-2 ">
+          <div class="row row-cols-3 g-2">
             <div class="col" v-for="item in itemrow" :key="item">
               <router-link to="/play" class="img" @click="setParams(item)">
-                <img :src="item.iconName" class="w-100 " />
+                <img :src="item.iconName" class="w-100" />
               </router-link>
             </div>
           </div>
@@ -711,14 +722,21 @@ export default {
       </div>
     </footer>
     <!-- 是否登出 -->
-    <div class="modal fade LogOutModal" id="LogOutModal" tabindex="-1" aria-labelledby="LogOutModalLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div
+      class="modal fade LogOutModal"
+      id="LogOutModal"
+      tabindex="-1"
+      aria-labelledby="LogOutModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop="false"
+    >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body p-4">
             Do you want log out ?
             <div class="d-flex justify-content-evenly mt-5">
               <button type="button" class="btn cancel" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn continue">Continuar</button>
+              <button type="button" class="btn continue" @click="logout">Continuar</button>
             </div>
           </div>
         </div>
@@ -743,14 +761,14 @@ export default {
 }
 .LogOutModal .modal-content .cancel {
   border: none;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   color: var(--fff);
   background: linear-gradient(180deg, #303030, #494949);
   font-size: 1.2rem;
 }
 .LogOutModal .modal-content .continue {
   border: none;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   color: var(--fff);
   background: linear-gradient(180deg, #5519cd, #9449ff);
   font-size: 1.2rem;

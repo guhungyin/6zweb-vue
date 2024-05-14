@@ -41,22 +41,8 @@ export default {
         this.$router.push({ name: 'withdraw' })
       }
     },
-<<<<<<< HEAD
     queryCashback() {
       this.userStore.cashback()
-    },
-    logout() {
-      this.userStore.logout().then((res) => {
-        if (res.code === 0) {
-          // this.$router.push({ name: 'home' })
-          this.userStore.clearUserInfo()
-          this.$router.replace({ name: 'home' })
-        }
-      })
-=======
-    logOutBtn(){
-      this.bsOffcanvas.hide()
->>>>>>> 5b5572b3f7925f79f4a4c6acdf50f90384439d5b
     }
   },
   setup() {
@@ -277,18 +263,9 @@ export default {
             <router-link to="/cashwheel"> Receba R$ 100 de graça </router-link>
           </li>
         </ul>
-<<<<<<< HEAD
-        <div class="logOut px-3 mb-2" @click="logout">
-=======
-        <div 
-        class="logOut px-3 mb-2"
-        data-bs-toggle="modal" 
-        data-bs-target="#LogOutModal"
-        @click="logOutBtn"
-        >
->>>>>>> 5b5572b3f7925f79f4a4c6acdf50f90384439d5b
+        <div class="logOut px-3 mb-2" data-bs-toggle="modal" data-bs-target="#LogOutModal">
           <img src="../assets/images/icon/logout.png" alt="" />
-          Logout
+          Sair
         </div>
       </div>
     </div>
