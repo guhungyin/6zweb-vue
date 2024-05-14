@@ -85,7 +85,7 @@ export default {
 }
 .tip_b {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #919191;
 }

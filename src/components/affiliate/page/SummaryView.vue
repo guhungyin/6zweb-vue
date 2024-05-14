@@ -586,7 +586,7 @@ export default {
   font-weight: bold;
 }
 .contentBox .card .mainTitle {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: #808080;
 }
 .contentBox .card.committee .vip {
@@ -628,10 +628,10 @@ export default {
   align-items: center;
 }
 .contentBox .card.committee .wallet button {
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .contentBox .card.committee .wallet .tip {
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .contentBox .card.share ul {
   display: flex;
@@ -645,7 +645,7 @@ export default {
   justify-content: center;
 }
 .contentBox .card.share li span {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: #727272;
 }
 .contentBox .card.share .shareLink .tip {
@@ -667,7 +667,7 @@ export default {
   font-size: 0.9rem;
 }
 .contentBox .card.service .card-header {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .contentBox .card.service .text {
   font-size: 0.72rem;
@@ -676,7 +676,7 @@ export default {
 .contentBox .card.commission .hintTitle {
   text-align: center;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .contentBox .card.commission .imgContent {
   display: flex;
@@ -690,7 +690,7 @@ export default {
   width: 7rem;
 }
 .contentBox .card.commission .relationSchema li {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .contentBox .card.commission .relationSchema li span {
   color: red;
@@ -716,7 +716,7 @@ export default {
   left: 50%;
   width: 8rem;
   height: 8rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   white-space: nowrap;
 }
 .alert.active {

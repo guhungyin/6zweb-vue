@@ -689,7 +689,7 @@ export default {
   background-color: #6ddf39;
   border-radius: 50%;
   color: var(--fff);
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: bold;
   width: 1.3rem;
   height: 1.3rem;
@@ -747,12 +747,12 @@ export default {
   display: flex;
   justify-content: space-between;
   color: var(--fff);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .withdrawAlertModal .modal-content .main .schedule {
   background-color: #232327;
   color: #6ddf39;
-  font-size: 0.8rem;
+  font-size: 1rem;
   position: relative;
 }
 .withdrawAlertModal .modal-content .main .schedule::before {

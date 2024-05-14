@@ -226,13 +226,13 @@ export default {
 }
 .vipCard .cashMain .max {
   color: #383838;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .vipCard .vipMaim .vipNum {
   padding: 2px 9px;
   color: var(--fff);
   border-radius: 3px;
-  font-size: 0.7rem;
+  font-size: 1rem;
   background-color: #1a9c82;
 }
 .vipCard .progress {
@@ -245,7 +245,7 @@ export default {
 .vipCard .progressTips {
   color: #383838;
   text-align: right;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .vipCash {
   background-color: var(--fff);
@@ -271,7 +271,7 @@ export default {
   cursor: not-allowed;
   text-align: center;
   padding: 0.5rem 0;
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--fff);
   background: var(--greenGradient);
 }
@@ -332,6 +332,6 @@ export default {
   font-size: 1rem;
 }
 .vipRules {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 </style>

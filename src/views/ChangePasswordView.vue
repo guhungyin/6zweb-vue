@@ -182,7 +182,7 @@ export default {
 .text {
   color: var(--fff);
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .loginBtn {
   background: var(--greenGradient);
@@ -233,7 +233,7 @@ export default {
   display: block;
   color: var(--fff);
   text-align: right;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .alertsModal .modal-content {
   background-color: #1c1c1c;

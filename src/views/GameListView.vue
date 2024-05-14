@@ -404,14 +404,14 @@ export default {
   display: none;
 }
 .sum {
-  font-size: 0.7rem;
+  font-size: 1rem;
   text-align: center;
   color: #c4c4c4;
 }
 .moreBtn {
   border: none;
   width: 12rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: center;
   color: var(--fff);
   background-color: #1a1a1a;

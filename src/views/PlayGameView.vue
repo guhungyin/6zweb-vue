@@ -260,7 +260,7 @@ export default {
   margin-top: 4rem;
 }
 .breadcrumb-item {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .breadcrumb-item a {
   color: #98a7b5;
@@ -287,7 +287,7 @@ export default {
 }
 .playContent .gameInfo {
   color: var(--fff);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .playContent .closeBtn {
   background: #2d3035;
@@ -306,7 +306,7 @@ export default {
 .topContent .total {
   color: var(--fff);
   background-color: var(--black2);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .swiper-button-prev {
   right: 2rem;

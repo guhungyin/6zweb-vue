@@ -159,7 +159,7 @@ export default {
 }
 .bottomMenu ul li .bottomMenuName {
   color: var(--gray1);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .bottomMenu .active svg,
 .bottomMenu .active .bottomMenuName {

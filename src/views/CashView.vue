@@ -154,7 +154,7 @@ export default {
   left: 50%;
   width: 8rem;
   height: 8rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   white-space: nowrap;
 }
 .cashWindows .alert.active {

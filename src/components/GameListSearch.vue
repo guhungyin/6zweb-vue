@@ -263,7 +263,7 @@ export default {
   color: var(--gray1);
   background-color: transparent;
   position: absolute;
-  font-size: .8rem;
+  font-size: 1rem;
 }
 .gameListSearch .modal-header .searchBox input::placeholder {
   color: #6e6e6e;
@@ -271,11 +271,11 @@ export default {
 .gameListSearch .modal-header .searchBox button {
   z-index: 1;
   color: var(--fff);
-  font-size: .8rem;
+  font-size: 1rem;
 }
 .gameListSearch .characterNotice {
   color: #6e6e6e;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: center;
 }
 .searchHistory {
@@ -286,7 +286,7 @@ export default {
 }
 .searchHistory .title span {
   color: var(--fff);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .searchHistory .historyList {
   overflow-y: auto;

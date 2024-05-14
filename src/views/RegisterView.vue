@@ -289,7 +289,7 @@ input::placeholder {
   display: block;
 }
 .agreeText {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--gray1);
 }
 .agreeText .form-check-input {
@@ -321,7 +321,7 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   color: #d4d9e6;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .link a {
   color: var(--primary);
@@ -331,7 +331,7 @@ input::placeholder {
   align-items: center;
   justify-content: center;
   color: #656e78;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .or::before,
 .or::after {
