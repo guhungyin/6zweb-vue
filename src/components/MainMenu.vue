@@ -207,7 +207,7 @@ export default {
 <style scoped>
 .mainMenu {
   position: absolute;
-  font-size: 0.8rem;
+  font-size: 1rem;
   width: 100% !important;
   border: none !important;
   background-color: #17191b;
@@ -237,13 +237,15 @@ export default {
   align-items: center;
   justify-content: center;
   background: var(--redGradient);
-  font-size: 0.7rem;
+  font-size: 1rem;
   border-radius: 0.2rem;
+  padding: 0 3rem;
   width: 5rem;
   height: 2rem;
 }
 .mainMenu .pageLink .installBtn a {
   color: var(--fff);
+  font-size: 1rem;
 }
 .mainMenu .socialLink {
   background-color: #24262b;

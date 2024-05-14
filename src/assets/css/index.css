@@ -44,7 +44,7 @@ header .right .depositBtn {
   justify-content: center;
   background: linear-gradient(180deg, #5519cd, #9449ff);
   color: var(--fff);
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: .3rem .3rem;
   border-radius: 0.1rem;
 }
@@ -122,12 +122,12 @@ header .right .userBtn {
   justify-content: space-between;
 }
 .recentListSwiper .main .name {
-  font-size: 0.8rem;
+  font-size: 1rem;
   white-space: nowrap;
   color: var(--gray1);
 }
 .recentListSwiper .main .money {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--primary);
 }
 .tabHome {
@@ -156,14 +156,14 @@ header .right .userBtn {
   margin-right: 0.5rem;
 }
 .tabHome li span {
-  font-size: 0.8rem;
+  font-size: 1rem;
   white-space: nowrap;
   color: var(--gray1);
 }
 .topContent .total {
   color: var(--fff);
   background-color: var(--black2);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .swiper-button-prev {
   right: 2rem;
@@ -228,24 +228,25 @@ header .right .userBtn {
   height: 2.5rem;
 }
 .footerBottom a {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--gray1);
 }
 .footerBottom .license {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--gray1);
 }
 .footerBottom .license a {
   color: var(--fff);
 }
 .footerBottom .warnContent {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--gray1);
+  text-align: center;
 }
 .footerBottom .support {
   position: relative;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .footerBottom .support .text {
   color: var(--gray1);
@@ -296,7 +297,7 @@ header .right .userBtn {
   justify-content: center;
   background-color: var(--black1);
   color: var(--fff);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .footerBottom .topBtn svg,
 .footerBottom .topBtn span{

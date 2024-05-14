@@ -165,7 +165,7 @@ export default {
 }
 .tabs .tabItem {
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #808080;
   display: flex;
   align-items: center;

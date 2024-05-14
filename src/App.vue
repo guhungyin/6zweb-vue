@@ -8,10 +8,13 @@
       <ProfileWindow></ProfileWindow>
       <!-- 弹窗 -->
       <AlertsModal></AlertsModal>
+      <!-- 是否登出 -->
+      <LogOutModal></LogOutModal>
     </div>
   </div>
 </template>
 <script>
+import LogOutModal from '@/components/LogOutModal.vue'
 import MainMenu from '@/components/MainMenu.vue'
 import ProfileWindow from '@/components/ProfileWindow.vue'
 import RouterViewTransition from '@/components/RouterViewTransition.vue'
@@ -21,8 +24,9 @@ export default {
     MainMenu,
     ProfileWindow,
     RouterViewTransition,
-    AlertsModal
-  }
+    AlertsModal,
+    LogOutModal
+  },
 }
 </script>
 <style scoped>

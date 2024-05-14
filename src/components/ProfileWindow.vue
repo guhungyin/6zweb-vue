@@ -5,7 +5,7 @@ import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      bsOffcanvas: null
+      profileWindow: null
     }
   },
   components: {
@@ -14,7 +14,8 @@ export default {
   watch: {
     $route() {
       console.log('Profile route wath')
-      this.bsOffcanvas.hide()
+      this.profileWindow.hide()
+      console.log(this.$route)
     }
   },
   created() {
@@ -24,9 +25,9 @@ export default {
     // }
   },
   mounted() {
-    const myOffcanvas = document.getElementById('profileWindow')
-    this.bsOffcanvas = new Offcanvas(myOffcanvas)
-
+    const profileWindow = document.getElementById('profileWindow')
+    this.profileWindow = new Offcanvas(profileWindow)
+    
     // console.log('---> user mobile ', this.userStore.mobile)
 
     // if (this.userStore.mobile !== '' && this.userStore.mobile !== undefined) {
@@ -34,6 +35,10 @@ export default {
     // }
   },
   methods: {
+    // 關閉個人選單方法
+    closeProfileWindow(){
+      this.profileWindow.hide()
+    },
     withdraw() {
       if (this.userStore.mobile === '*********') {
         this.$router.push({ name: 'bindingPhone' })
@@ -289,6 +294,7 @@ export default {
 }
 .profileWindow .main .userContent a {
   color: var(--blue);
+  font-size: 1rem;
 }
 .profileWindow .main .userContent .userImg img {
   width: 3rem;
@@ -326,7 +332,7 @@ export default {
   height: 2.2rem;
   color: var(--fff);
   border-radius: 0.2rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   background: linear-gradient(180deg, #303030, #494949);
 }
 .profileWindow .main ul {
@@ -344,13 +350,13 @@ export default {
 }
 .profileWindow .main ul li a {
   color: var(--blue);
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .profileWindow .main .logOut {
   display: flex;
   align-items: center;
   color: var(--blue);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .profileWindow .main .logOut img {
   width: 1rem;

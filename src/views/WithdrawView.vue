@@ -471,7 +471,7 @@ export default {
 <style scoped>
 .withdrawWindows {
   padding-top: 4rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   width: 100%;
   border: none;
   background-color: #24262b;
@@ -582,7 +582,7 @@ export default {
   box-shadow: inset 0 0 0 1px #b9b9b9;
 }
 .withdrawWindows .BonusProdressModal .modal-body {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .withdrawWindows .BonusProdressModal .progressContent {
   align-items: center;
