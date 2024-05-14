@@ -5,6 +5,10 @@ import * as bootstrap from 'bootstrap'
 export default {
   mounted() {
     window.showPwa = this.showPwa
+
+    if (window.deferredPrompt) {
+      this.showPwa(true)
+    }
   },
   methods: {
     showPwa(isShow) {

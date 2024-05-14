@@ -27,8 +27,7 @@ export default {
       // mediaList: [],
       // serviceList: [],
       // provedorList: [],
-      logged: false,
-      userMoney: '0.00'
+      logged: false
     }
   },
   components: {
@@ -61,13 +60,14 @@ export default {
 
     if (this.userStore.ticket) {
       this.logged = true
-      this.userMoney = this.userStore.money
+      // this.userMoney = this.userStore.money
 
-      this.userStore.userInfo().then((res) => {
-        if (res.code === 0) {
-          this.userMoney = this.userStore.money
-        }
-      })
+      this.userStore.userInfo()
+      // .then((res) => {
+      //   if (res.code === 0) {
+      //     this.userMoney = this.userStore.money
+      //   }
+      // })
     }
 
     this.websiteConfig()
@@ -75,23 +75,6 @@ export default {
     this.winnerShow()
   },
   methods: {
-    logout() {
-      this.userStore.logout().then((res) => {
-        if (res.code === 0) {
-          if (this.$route.name === 'home') {
-            // 如果当前页面已经是 home，则刷新页面
-            window.location.reload();
-          } else {
-            // 否则跳转到 home 页面
-            this.$router.push({ name: 'home' });
-          }
-          this.userStore.clearUserInfo()
-          this.bsOffcanvas.hide()
-
-          //this.$router.replace({ name: 'home' })
-        }
-      })
-    },
     goToTop() {
       const viewScroll = document.getElementById('routerView')
       viewScroll.scrollTo({
@@ -280,7 +263,7 @@ export default {
           <div class="right" v-show="logged">
             <div class="userMoney me-2">
               <img src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
-              {{ userMoney }}
+              {{ this.userStore.money }}
             </div>
             <router-link class="depositBtn me-2" to="/deposit">
               <svg

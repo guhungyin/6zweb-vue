@@ -16,7 +16,7 @@
 if ('serviceWorker' in navigator) {
   // alert('serviceWorker register')
   navigator.serviceWorker
-    .register('/firebase-messaging-sw.js?time=20240514141132')
+    .register('/firebase-messaging-sw.js?time=20240514151132')
     .then((swReg) => {
       // console.log('Service Worker Registered')
       // alert('serviceWorker Registered')
@@ -43,8 +43,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
     window.showPwa(true)
   } else {
     setTimeout(async function () {
-      window.showPwa(true)
-    }, 10000)
+      if (window.showPwa) {
+        window.showPwa(true)
+      }
+    }, 5000)
   }
 })
 window.deferredPromptPrompt = function () {
