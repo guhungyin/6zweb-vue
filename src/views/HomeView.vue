@@ -7,6 +7,7 @@ import BottomMenu from '@/components/BottomMenu.vue'
 import GameListSearch from '@/components/GameListSearch.vue'
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
+import Fingerprint2 from 'fingerprintjs2'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import '@/assets/css/index.css'
@@ -42,7 +43,17 @@ export default {
     if (this.$route.query.source) {
       this.userStore.source = this.$route.query.source
     }
-    console.log('url params: ', this.userStore.source)
+    console.log('url params: ', this.userStore.source, 'timezone:', this.userStore.timezone)
+
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => {
+        this.createFingerprint()
+      })
+    } else {
+      setTimeout(() => {
+        this.createFingerprint()
+      }, 20000)
+    }
   },
   created() {
     console.log(
@@ -75,6 +86,14 @@ export default {
     this.winnerShow()
   },
   methods: {
+    createFingerprint() {
+      Fingerprint2.get((components) => {
+        let values = components.map((component) => component.value)
+        this.userStore.deviceId = Fingerprint2.x64hash128(values.join(''), 31)
+        console.log('deviceId: ', this.userStore.deviceId)
+      })
+    },
+
     goToTop() {
       const viewScroll = document.getElementById('routerView')
       viewScroll.scrollTo({

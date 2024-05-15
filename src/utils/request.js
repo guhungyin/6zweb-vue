@@ -33,6 +33,9 @@ service.interceptors.request.use(
     if (config.url === '/user/login' || config.url === '/user/register') {
       config.headers['lang'] = window.navigator.language
       config.headers['osType'] = '2'
+      config.headers['timeZone'] = userStore.timezone
+      config.headers['deviceId'] = userStore.deviceId
+      console.log('deviceId', config.headers['deviceId'])
     }
 
     return config

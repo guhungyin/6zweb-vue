@@ -3,6 +3,7 @@
 import * as user from '@/api/user'
 import BigNumber from 'bignumber.js'
 import { defineStore } from 'pinia'
+// import moment from 'moment-timezone'
 
 export const useUserStore = defineStore('user', {
   state: () => {
@@ -20,6 +21,8 @@ export const useUserStore = defineStore('user', {
       completedBetAmount: 0,
       targetBetAmount: 0,
       cashbackMax: '25%',
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      deviceId: '',
       promotionCommission: {
         totalBetCount: '0.00',
         balanceCommission: 0.0,
@@ -161,6 +164,8 @@ export const useUserStore = defineStore('user', {
       this.mobile = '*********'
       this.email = ''
       this.money = '0.00'
+      this.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+      this.deviceId = ''
       this.vipLevel = 0
       this.promotionTotalCommission = 0
       this.source = ''
