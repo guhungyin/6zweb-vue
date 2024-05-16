@@ -88,8 +88,9 @@ export default {
           <span class="needCashNum">2.79</span>
           para sacar
         </div>
-        
       </div>
+      <!-- 你已超过99%用户，马上就可以提现啦 +active -->
+      <span class="nineNinePercentage mb-3">Você ultrapassou 99% dos usuários e pode sacar dinheiro imediatamente</span>
       <div class="drawMain mb-5">
         <!-- 背景旋轉光暈 -->
         <div class="spinLightBg"></div>
@@ -116,6 +117,8 @@ export default {
         <div class="drawImg">
           <img src="../assets/images/rou/draw.png" alt="" class="w-100" />
         </div>
+        <!-- 增加次數 +active -->
+        <div class="aginPlay">+1</div>
         <!-- 顯示次數及金額 -->
         <div class="drawLen">
           <div class="content">
@@ -453,7 +456,13 @@ export default {
 .cashMain .progressBox .progress .progress-bar {
   background-color: #6ddf39;
 }
-
+.nineNinePercentage{
+  display: none;
+  color: #FFF;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.nineNinePercentage.active{display: block;}
 .cashMain .needCash {
   color: var(--fff);
   text-align: center;
@@ -464,7 +473,27 @@ export default {
   font-weight: bold;
   font-size: 1.1rem;
 }
-
+.aginPlay{
+  display: none;
+  position: absolute;
+  left: -5%;
+  top: 24%;
+  color: #6ddf39;
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: .1s zoomIn ;
+}
+@keyframes zoomIn {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.aginPlay.active{
+  display: block;
+}
 .drawMain {
   position: relative;
   width: 80%;
@@ -473,8 +502,8 @@ export default {
 .drawMain .spinLightBg {
   pointer-events: none;
   background: url('../assets/images/rou/spinBg_2.png') no-repeat center center / 100% 100%;
-  width: 31rem;
-  height: 31rem;
+  width: 140%;
+  padding-bottom: 140%;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -493,9 +522,9 @@ export default {
   position: absolute;
   transform: translate(-50%, 0);
   left: 50%;
-  top: 17.1%;
-  width: 18.7rem;
-  height: 18.7rem;
+  top: 18.1%;
+  width: 94%;
+  padding-bottom: 94%;
   animation: lightAnimation infinite 0.4s;
 }
 @keyframes lightAnimation {
