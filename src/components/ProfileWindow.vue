@@ -1,22 +1,26 @@
 <script>
-import { Offcanvas } from 'bootstrap'
 import GameLogo from '../components/home/GameLogo.vue'
 import { useUserStore } from '@/stores/modules/user'
+// import { closeProfileWindow } from '../stores/closeProfileWindow';
 export default {
   data() {
     return {
-      profileWindow: null
+      // profileWindow: null
+      // modalStore: closeProfileWindow()
     }
   },
   components: {
     GameLogo
   },
   watch: {
-    $route() {
-      console.log('Profile route wath')
-      this.profileWindow.hide()
-      console.log(this.$route)
-    }
+    // $route() {
+    //   console.log('Profile route wath')
+    //   this.profileWindow.hide()
+    //   console.log(this.$route)
+    // }
+    // $route() {
+    //   this.modalStore.closeProfileWindow();
+    // },
   },
   created() {
     // console.log('profile money ---> ', this.userStore.money)
@@ -25,8 +29,9 @@ export default {
     // }
   },
   mounted() {
-    const profileWindow = document.getElementById('profileWindow')
-    this.profileWindow = new Offcanvas(profileWindow)
+    // this.modalStore.initializeModal('profileWindow');
+    // const profileWindow = document.getElementById('profileWindow')
+    // this.profileWindow = new Offcanvas(profileWindow)
     
     // console.log('---> user mobile ', this.userStore.mobile)
 
@@ -35,10 +40,13 @@ export default {
     // }
   },
   methods: {
+    // closeProfileWindow() {
+    //   this.modalStore.closeProfileWindow();
+    // },
     // 關閉個人選單方法
-    closeProfileWindow(){
-      this.profileWindow.hide()
-    },
+    // closeProfileWindow(){
+    //   this.profileWindow.hide()
+    // },
     withdraw() {
       if (this.userStore.mobile === '*********') {
         this.$router.push({ name: 'bindingPhone' })
@@ -198,7 +206,7 @@ export default {
         <ul class="p-3 d-flex flex-wrap">
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/transfer.png" alt="" />
-            <router-link to="/bets"> Minhas Apostas de Jogo </router-link>
+            <router-link to="/bets" > Minhas Apostas de Jogo </router-link>
           </li>
           <li class="py-2">
             <img class="icon" src="../assets/images/icon/coin.png" alt="" />

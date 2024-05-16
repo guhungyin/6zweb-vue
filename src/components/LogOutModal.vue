@@ -32,28 +32,31 @@
   </div>
 </template>
 <script>
-import { Offcanvas } from 'bootstrap'
+// import { Offcanvas } from 'bootstrap'
+import { closeProfileWindow } from '../stores/closeProfileWindow';
 import { useUserStore } from '@/stores/modules/user'
 import LoadingPage from '@/components/LoadingPage.vue'
 export default {
   data() {
     return {
-      profileWindow: null,
-      isLoading: false
+      isLoading: false,
+      modalStore: closeProfileWindow()
     }
   },
   components: {
     LoadingPage
   },
   mounted() {
-    // 個人選單
-    const profileWindow = document.getElementById('profileWindow')
-    this.profileWindow = new Offcanvas(profileWindow)
+    this.modalStore.initializeModal('profileWindow');
+  },
+  watch: {
+    $route() {
+      this.modalStore.closeProfileWindow();
+    },
   },
   methods: {
-    // 關閉個人選單方法
     closeProfileWindow() {
-      this.profileWindow.hide()
+      this.modalStore.closeProfileWindow();
     },
     logout() {
       this.isLoading = true
@@ -74,7 +77,6 @@ export default {
   },
   setup() {
     const userStore = useUserStore()
-
     return {
       userStore
     }

@@ -88,6 +88,7 @@ export default {
           <span class="needCashNum">2.79</span>
           para sacar
         </div>
+        
       </div>
       <div class="drawMain mb-5">
         <!-- 背景旋轉光暈 -->
@@ -96,11 +97,11 @@ export default {
         <div class="drawContent">
           <div class="spinbox">
             <div class="banknote1"></div>
-            <div class="coins"></div>
+            <div class="zeroPointZeroOne">0.01</div>
             <div class="fail"></div>
-            <div class="sacar"></div>
+            <div class="ten">10</div>
             <div class="banknote2"></div>
-            <div class="one">1</div>
+            <div class="directMention">menção <br>direta</div>
             <div class="fifty">50</div>
             <div class="oneThousand">1000</div>
           </div>
@@ -577,14 +578,14 @@ export default {
   height: 2.5rem;
   transform: rotate(180deg);
 }
-.drawMain .drawContent .spinbox .coins {
-  background: url('../assets/images/rou/spin-2.png') no-repeat center center / contain;
+.drawMain .drawContent .spinbox .zeroPointZeroOne {
   position: absolute;
   top: 43%;
-  left: 9.5%;
-  width: 2.5rem;
-  height: 2.5rem;
+  left: 7.5%;
   transform: rotate(-90deg);
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ffd760;
 }
 .drawMain .drawContent .spinbox .fail {
   background: url('../assets/images/rou/spin-4.png') no-repeat center center / contain;
@@ -595,23 +596,24 @@ export default {
   height: 3.5rem;
   transform: rotate(-135deg);
 }
-.drawMain .drawContent .spinbox .sacar {
-  background: url('../assets/images/rou/spin-5.png') no-repeat center center / contain;
+.drawMain .drawContent .spinbox .ten {
   position: absolute;
-  top: 62%;
-  left: 63.5%;
-  width: 3rem;
-  transform: rotate(135deg);
-  height: 3.5rem;
+    top: 65%;
+    left: 67.5%;
+    transform: rotate(135deg);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffd760;
 }
-.drawMain .drawContent .spinbox .one {
+.drawMain .drawContent .spinbox .directMention {
   position: absolute;
-  top: 17%;
-  left: 21.5%;
-  transform: rotate(-45deg);
-  font-weight: bold;
-  font-size: 2rem;
-  color: #ffd760;
+    top: 15%;
+    left: 12.5%;
+    transform: rotate(-47deg);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1rem;
+    color: #ffd760;
 }
 .drawMain .drawContent .spinbox .fifty {
   position: absolute;
