@@ -1,9 +1,18 @@
 <script>
+import LuckyTurntable from '@/components/LuckyTurntable.vue';
 export default {
+  data() {
+    return {
+      
+    };
+  },
   methods: {
     closeBtn() {
       this.$router.go(-1)
-    }
+    },
+  },
+  components: {
+    LuckyTurntable
   }
 }
 </script>
@@ -95,36 +104,15 @@ export default {
         <!-- 背景旋轉光暈 -->
         <div class="spinLightBg"></div>
         <!-- 轉盤內容 -->
-        <div class="drawContent">
-          <div class="spinbox">
-            <div class="banknote1"></div>
-            <div class="zeroPointZeroOne">0.01</div>
-            <div class="fail"></div>
-            <div class="ten">10</div>
-            <div class="banknote2"></div>
-            <div class="directMention">menção <br>direta</div>
-            <div class="fifty">50</div>
-            <div class="oneThousand">1000</div>
-          </div>
-        </div>
+        <LuckyTurntable></LuckyTurntable>
         <!-- 轉盤背景 -->
-        <img src="../assets/images/rou/d.png" alt="" class="w-100 position-relative" />
+        <div class="bg"></div>
         <!-- 燈光效果 -->
         <div class="light"></div>
-        <!-- 裝飾 -->
+        <!-- 指針 -->
         <img src="../assets/images/rou/pointer.png" alt="" class="pointer" />
-        <!-- 按鈕 -->
-        <div class="drawImg">
-          <img src="../assets/images/rou/draw.png" alt="" class="w-100" />
-        </div>
         <!-- 增加次數 +active -->
         <div class="aginPlay">+1</div>
-        <!-- 顯示次數及金額 -->
-        <div class="drawLen">
-          <div class="content">
-            <img src="../assets/images/rou/one.png" alt="" />
-          </div>
-        </div>
       </div>
       <div class="drawContent mb-3">
         <div class="text text-center mb-2">
@@ -299,6 +287,7 @@ export default {
         </div>
       </div>
     </div>
+    
     <!-- ruleModal -->
     <div
       class="modal fade ruleModalLabel"
@@ -496,14 +485,25 @@ export default {
 }
 .drawMain {
   position: relative;
-  width: 80%;
+  max-width: 400px;
+  height: 530px;
   margin: 0 auto;
+}
+.drawMain .bg{
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, 0);
+  top: -15px;
+  left: 50%;
+  width: 400px;
+  height: 539px;
+  background: url('../assets/images/rou/d.png') no-repeat 0 0 / 100% 100%;
 }
 .drawMain .spinLightBg {
   pointer-events: none;
   background: url('../assets/images/rou/spinBg_2.png') no-repeat center center / 100% 100%;
-  width: 140%;
-  padding-bottom: 140%;
+  width: 500px;
+  height: 500px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -512,19 +512,26 @@ export default {
 }
 @keyframes spinLightBg {
   from {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%,-50%) rotate(0deg);
   }
   to {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%,-50%) rotate(360deg);
   }
 }
+.drawMain .luckyWheelContent{
+  position: absolute;
+  left: 50%;
+  top: 103px;
+  transform: translate(-50%, 0);
+}
 .drawMain .light {
+  pointer-events: none;
   position: absolute;
   transform: translate(-50%, 0);
   left: 50%;
-  top: 18.1%;
-  width: 94%;
-  padding-bottom: 94%;
+  top: 80px;
+  height: 385px;
+  width: 382px;
   animation: lightAnimation infinite 0.4s;
 }
 @keyframes lightAnimation {
@@ -539,128 +546,9 @@ export default {
   position: absolute;
   transform: translate(-50%, 0);
   left: 50%;
-  top: 15.6%;
+  top: 78px;
   width: 5rem;
   height: 3rem;
-}
-.drawMain .drawImg {
-  position: absolute;
-  transform: translate(-50%, 0);
-  left: 50%;
-  top: 43%;
-  width: 5.3rem;
-  height: 5rem;
-}
-.drawMain .drawLen {
-  pointer-events: none;
-  position: absolute;
-  transform: translate(-50%, 0);
-  left: 50%;
-  top: 43%;
-  width: 5.3rem;
-  height: 5rem;
-  text-align: center;
-  border-radius: 50%;
-  color: var(--fff);
-  font-weight: bold;
-}
-.drawMain .drawLen .content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.drawMain .drawLen img {
-  width: 1.2rem;
-}
-.drawMain .drawContent {
-  position: absolute;
-  left: 7.6%;
-  top: 21.7%;
-  width: 84.5%;
-  height: 63.4%;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: transform 1s;
-}
-.drawMain .drawContent .spinbox {
-  background: url('../assets/images/rou/spinBg.png') no-repeat center center / contain;
-  transform: rotate(0deg);
-  width: 100%;
-  height: 100%;
-}
-.drawMain .drawContent .spinbox .banknote1 {
-  background: url('../assets/images/rou/spin-1.png') no-repeat center center / contain;
-  position: absolute;
-  top: 10%;
-  left: 41.5%;
-  width: 3rem;
-  height: 2.5rem;
-}
-.drawMain .drawContent .spinbox .banknote2 {
-  background: url('../assets/images/rou/spin-1.png') no-repeat center center / contain;
-  position: absolute;
-  top: 76%;
-  left: 41.5%;
-  width: 3rem;
-  height: 2.5rem;
-  transform: rotate(180deg);
-}
-.drawMain .drawContent .spinbox .zeroPointZeroOne {
-  position: absolute;
-  top: 43%;
-  left: 7.5%;
-  transform: rotate(-90deg);
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #ffd760;
-}
-.drawMain .drawContent .spinbox .fail {
-  background: url('../assets/images/rou/spin-4.png') no-repeat center center / contain;
-  position: absolute;
-  top: 65%;
-  left: 15.5%;
-  width: 3rem;
-  height: 3.5rem;
-  transform: rotate(-135deg);
-}
-.drawMain .drawContent .spinbox .ten {
-  position: absolute;
-    top: 65%;
-    left: 67.5%;
-    transform: rotate(135deg);
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #ffd760;
-}
-.drawMain .drawContent .spinbox .directMention {
-  position: absolute;
-    top: 15%;
-    left: 12.5%;
-    transform: rotate(-47deg);
-    font-weight: bold;
-    text-align: center;
-    font-size: 1rem;
-    color: #ffd760;
-}
-.drawMain .drawContent .spinbox .fifty {
-  position: absolute;
-  top: 41%;
-  left: 78.5%;
-  transform: rotate(90deg);
-  font-weight: bold;
-  font-size: 2rem;
-  color: #b90615;
-}
-.drawMain .drawContent .spinbox .oneThousand {
-  position: absolute;
-  top: 18%;
-  left: 64.8%;
-  transform: rotate(45deg);
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #ffd760;
 }
 .drawContent {
   color: var(--fff);

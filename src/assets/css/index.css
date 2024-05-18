@@ -188,11 +188,11 @@ header .right .userBtn {
   height: 100%;
 }
 .swiper-button-prev::before{
-  background: url('../images/icon/chevron-left.png') no-repeat center center / 100%
+  background: url('@/images/icon/chevron-left.png') no-repeat center center / 100%
     100%;
 }
 .swiper-button-next::before{
-  background:  url('../images/icon/chevron-right.png') no-repeat center center / 100%
+  background:  url('@/images/icon/chevron-right.png') no-repeat center center / 100%
     100%;
 }
 .swiper-button-prev.swiper-button-disabled::before,
@@ -302,4 +302,119 @@ header .right .userBtn {
 .footerBottom .topBtn svg,
 .footerBottom .topBtn span{
   pointer-events: none;
+}
+/* 首頁轉盤 */
+.turntableModal{
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+}
+.turntableModal.active{
+  display: block;
+}
+.turntableModal .turntableContent{
+  max-width: 460px;
+  width: 24rem;
+  height: 24rem;
+  margin: 0 auto;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 55%;
+  left: 50%;
+}
+.turntableModal .closeTurntableModalBtn{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 98%;
+  width: 1.8rem;
+  height: 1.8rem;
+  top: -42%;
+}
+.turntableModal .turntableTitle{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 340px;
+  top: -34%;
+}
+.turntableModal .luckyWheelContent{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.turntableModal .bg{
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 45.6%;
+  left: 50%;
+  width: 400px;
+  height: 535px;
+  background: url('@/assets/images/rou/d.png') no-repeat 0 0 / 100% 100%;
+}
+.turntableModal .decorateUp{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 0;
+  width: 100%;
+  height: 141px;
+  background: url('@/assets/images/rou/decorateUp.png') no-repeat center center / contain;
+}
+.turntableModal .decorateDown{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 376px;
+  width: 100%;
+  height: 165px;
+  background: url('@/assets/images/rou/decorateDown.png') no-repeat center center / contain;
+}
+.turntableModal .light {
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  height: 382px;
+  width: 382px;
+  animation: lightAnimation infinite 0.4s;
+}
+@keyframes lightAnimation {
+  from {
+    background: url('@/assets/images/rou/light1.png') no-repeat center center / 100% 100%;
+  }
+  to {
+    background: url('@/assets/images/rou/light2.png') no-repeat center center / 100% 100%;
+  }
+}
+.turntableModal .pointer {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 6%;
+  width: 5rem;
+  height: 3rem;
+}
+.turntableModal .decorationImg{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 102%;
+  width: 364px;
+}
+.turntableModal .tipImg{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 400px;
+  top: 117%;
 }

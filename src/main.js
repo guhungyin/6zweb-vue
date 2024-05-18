@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 // import { createPinia } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 // import { useRegisterSW } from 'virtual:pwa-register/vue'
+import VueLuckyCanvas from '@lucky-canvas/vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { pinia } from './stores'
@@ -22,6 +23,7 @@ pinia.use(createPersistedState())
 app.use(pinia)
 app.use(VueAxios, axios)
 app.use(router)
+app.use(VueLuckyCanvas)
 // app.use(QRCodePlugin)
 app.provide('axios', app.config.globalProperties.axios)
 app.mount('#app')

@@ -5,6 +5,7 @@ import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 import GameListSearch from '@/components/GameListSearch.vue'
+import LuckyTurntable from '@/components/LuckyTurntable.vue';
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
 import Fingerprint2 from 'fingerprintjs2'
@@ -28,7 +29,8 @@ export default {
       // mediaList: [],
       // serviceList: [],
       // provedorList: [],
-      logged: false
+      logged: false,
+      showTurntableModal: false,
     }
   },
   components: {
@@ -37,14 +39,14 @@ export default {
     GameLogo,
     AddHomeWindow,
     BottomMenu,
-    GameListSearch
+    GameListSearch,
+    LuckyTurntable
   },
   mounted() {
     if (this.$route.query.source) {
       this.userStore.source = this.$route.query.source
     }
     console.log('url params: ', this.userStore.source, 'timezone:', this.userStore.timezone)
-
     if (window.requestIdleCallback) {
       requestIdleCallback(() => {
         this.createFingerprint()
@@ -53,6 +55,13 @@ export default {
       setTimeout(() => {
         this.createFingerprint()
       }, 20000)
+    }
+    // 首頁轉盤顯示
+    const hasSeenModal = localStorage.getItem('hasSeenTurntableModal');
+    if (!hasSeenModal) {
+      setTimeout(() => {
+        this.showTurntableModal = true;
+      }, 2000); // 2秒後顯示視窗
     }
   },
   created() {
@@ -93,7 +102,11 @@ export default {
         console.log('deviceId: ', this.userStore.deviceId)
       })
     },
-
+    closeTurntableModal() {
+      const turntableModal = document.getElementById('turntableModal')
+      turntableModal.classList.remove('active')
+      showTurntableModal = false
+    },
     goToTop() {
       const viewScroll = document.getElementById('routerView')
       viewScroll.scrollTo({
@@ -251,7 +264,7 @@ export default {
         .catch((error) => {
           console.log('getWinnerShow error message  ---> ', error.message)
         })
-    }
+    },
   },
   setup() {
     const commonStore = useCommonStore()
@@ -734,5 +747,23 @@ export default {
     <BottomMenu></BottomMenu>
     <!-- 搜尋遊戲列表 -->
     <GameListSearch></GameListSearch>
+    <!-- 轉盤 -->
+    <div id="turntableModal" class="turntableModal" :class="{'active': showTurntableModal}">
+      <div class="turntableContent">
+        <img @click="closeTurntableModal" src="../assets/images/rou/close.png" alt="" class="closeTurntableModalBtn" />
+        <!-- 轉盤標題 -->
+        <img src="../assets/images/rou/title.png" alt="" class="turntableTitle" />
+        <!-- 轉盤內容 -->
+        <LuckyTurntable></LuckyTurntable>
+        <!-- 轉盤背景 -->
+        <div class="bg"></div>
+        <!-- 燈光效果 -->
+        <div class="light"></div>
+        <!-- 指針 -->
+        <img src="../assets/images/rou/pointer.png" alt="" class="pointer" />
+        <img src="../assets/images/rou/tip.png" alt="" class="tipImg" />
+        <img src="../assets/images/rou/decoration.png" alt="" class="decorationImg" />
+      </div>
+    </div>
   </div>
 </template>
