@@ -5,28 +5,28 @@
     data() {
       return {
         imgData: [
-          { imgUrl: 'src/assets/images/banner/banner_01.jpg',
+          { imgUrl: './src/assets/images/banner/banner_01.jpg',
             link: '/deposit'
           },
-          { imgUrl: 'src/assets/images/banner/banner_02.jpg',
+          { imgUrl: './src/assets/images/banner/banner_02.jpg',
             link: '/'
           },
-          { imgUrl: 'src/assets/images/banner/banner_03.jpg',
+          { imgUrl: './src/assets/images/banner/banner_03.jpg',
             link: '/'
           },
-          { imgUrl: 'src/assets/images/banner/banner_04.jpg',
+          { imgUrl: './src/assets/images/banner/banner_04.jpg',
             link: '/cashwheel'
           },
-          { imgUrl: 'src/assets/images/banner/banner_05.jpg',
+          { imgUrl: './src/assets/images/banner/banner_05.jpg',
             link: '/'
           },
-          { imgUrl: 'src/assets/images/banner/banner_06.jpg',
+          { imgUrl: './src/assets/images/banner/banner_06.jpg',
             link: '/'
           },
-          { imgUrl: 'src/assets/images/banner/banner_07.jpg',
+          { imgUrl: './src/assets/images/banner/banner_07.jpg',
             link: '/'
           },
-          { imgUrl: 'src/assets/images/banner/banner_08.jpg',
+          { imgUrl: './src/assets/images/banner/banner_08.jpg',
             link: '/downloadApp'
           }
         ]
