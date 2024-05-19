@@ -246,6 +246,7 @@ export default {
 .mainMenu .pageLink .installBtn a {
   color: var(--fff);
   font-size: 1rem;
+  white-space: nowrap;
 }
 .mainMenu .socialLink {
   background-color: #24262b;
