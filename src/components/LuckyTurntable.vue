@@ -100,7 +100,7 @@ export default {
           fonts: [
             {
               text: '50',
-              fontColor: '#b90615',
+              fontColor: '#ffd760',
               fontSize: '25',
               fontWeight: '700',
               top: '30'
