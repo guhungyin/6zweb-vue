@@ -110,7 +110,7 @@ export default {
         <!-- 燈光效果 -->
         <div class="light"></div>
         <!-- 指針 -->
-        <img src="../assets/images/icon/pointer.png" alt="" class="pointer" />
+        <img src="../assets/images/rou/pointer.png" alt="" class="pointer" />
         <!-- 增加次數 +active -->
         <div class="aginPlay">+1</div>
       </div>
@@ -499,7 +499,7 @@ export default {
   left: 50%;
   width: 400px;
   height: 539px;
-  background: url('../assets/images/icon/d.png') no-repeat 0 0 / 100% 100%;
+  background: url('../assets/images/rou/d.png') no-repeat 0 0 / 100% 100%;
 }
 .drawMain .spinLightBg {
   pointer-events: none;
@@ -538,10 +538,10 @@ export default {
 }
 @keyframes lightAnimation {
   from {
-    background: url('../assets/images/icon/light1.png') no-repeat center center / 100% 100%;
+    background: url('../assets/images/rou/light1.png') no-repeat center center / 100% 100%;
   }
   to {
-    background: url('../assets/images/icon/light2.png') no-repeat center center / 100% 100%;
+    background: url('../assets/images/rou/light2.png') no-repeat center center / 100% 100%;
   }
 }
 .drawMain .pointer {
