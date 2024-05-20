@@ -97,67 +97,68 @@ export default {
 }
 </script>
 <template>
-  <div class="routerView">
+  <div class="routerView loginContainer">
     <LoadingPage :active="isLoading" :is-full-page="false"></LoadingPage>
     <header class="headerBack d-flex justify-content-between align-items-center px-2">
       <h2 class="title">Bem Vindo ao</h2>
       <CloseBtn></CloseBtn>
     </header>
-    <div class="main">
-      <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
-      <div class="container-fluid">
-        <div class="loginTitle my-2 fw-bold">Login</div>
-        <div class="passwordInput position-relative mt-3">
-          <input
-            class="form-control py-2"
-            type="text"
-            placeholder="Nome de Usuário"
-            v-model.trim="this.account"
-          />
-        </div>
-        <div class="tips my-2">Please enter the correct phone number</div>
-        <div class="passwordInput position-relative mt-3">
-          <input
-            class="form-control py-2"
-            placeholder="Senha"
-            :type="this.pwdFlag ? 'password' : 'text'"
-            v-model.trim="password"
-          />
-          <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
-        </div>
-        <div class="tips my-2" :class="{ active: tips1Active }">
-          Please enter the correct password
-        </div>
-        <router-link to="/forgetPassword" class="forgetPassword my-2"
-          >Esqueci minha senha?</router-link
-        >
-        <div class="tips text-center mb-0" :class="{ active: errorActive }">{{ errorMsg }}</div>
-        <button
-          type="button"
-          class="btn loginBtn w-100 my-2"
-          :class="{ active: isActive }"
-          :disabled="isDisabled"
-          style="pointer-events: auto"
-          @click="login"
-        >
-          Login
-        </button>
-        <div class="link mb-4">
-          Novo no wins888.vip?
-          <router-link to="/register" class="ms-2">Criar Conta Nova</router-link>
-        </div>
-        <div class="or mb-3">
-          <span class="mx-4">OU</span>
-        </div>
-        <div class="googleLoginBtn mx-auto">
-          <img class="me-2" src="../assets/images/login/googleIcon.svg" alt="" />
-          Entrar com Google+
-        </div>
+    <img class="headerBg w-100" src="../assets/images/login/bg.jpg" alt="" />
+    <div class="container-fluid">
+      <div class="loginTitle my-2 fw-bold">Login</div>
+      <div class="passwordInput position-relative mt-3">
+        <input
+          class="form-control py-2"
+          type="text"
+          placeholder="Nome de Usuário"
+          v-model.trim="this.account"
+        />
+      </div>
+      <div class="tips my-2">Please enter the correct phone number</div>
+      <div class="passwordInput position-relative mt-3">
+        <input
+          class="form-control py-2"
+          placeholder="Senha"
+          :type="this.pwdFlag ? 'password' : 'text'"
+          v-model.trim="password"
+        />
+        <div :class="this.pwdFlag ? 'textIcon' : 'pwdIcon'" @click="changePwd"></div>
+      </div>
+      <div class="tips my-2" :class="{ active: tips1Active }">
+        Please enter the correct password
+      </div>
+      <router-link to="/forgetPassword" class="forgetPassword my-2"
+        >Esqueci minha senha?</router-link
+      >
+      <div class="tips text-center mb-0" :class="{ active: errorActive }">{{ errorMsg }}</div>
+      <button
+        type="button"
+        class="btn loginBtn w-100 my-2"
+        :class="{ active: isActive }"
+        :disabled="isDisabled"
+        style="pointer-events: auto"
+        @click="login"
+      >
+        Login
+      </button>
+      <div class="link mb-4">
+        Novo no wins888.vip?
+        <router-link to="/register" class="ms-2">Criar Conta Nova</router-link>
+      </div>
+      <div class="or mb-3">
+        <span class="mx-4">OU</span>
+      </div>
+      <div class="googleLoginBtn mx-auto">
+        <img class="me-2" src="../assets/images/login/googleIcon.svg" alt="" />
+        Entrar com Google+
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+.loginContainer{
+  padding-bottom: 4rem;
+}
 .headerBack {
   z-index: 3;
 }
@@ -165,15 +166,7 @@ export default {
   background-color: var(--black2);
   height: 100vh;
 }
-.main {
-  max-width: 34rem;
-  z-index: 2;
-  margin-top: 0rem;
-  position: fixed;
-  background-color: var(--black1);
-  top: 0;
-  height: 100%;
-}
+.headerBg{padding-top: 64px;}
 .loginTitle {
   color: var(--fff);
 }
