@@ -1,15 +1,13 @@
 <script>
-import LuckyTurntable from '@/components/LuckyTurntable.vue';
+import LuckyTurntable from '@/components/LuckyTurntable.vue'
 export default {
   data() {
-    return {
-      
-    };
+    return {}
   },
   methods: {
     closeBtn() {
       this.$router.go(-1)
-    },
+    }
   },
   components: {
     LuckyTurntable
@@ -99,7 +97,9 @@ export default {
         </div>
       </div>
       <!-- 你已超过99%用户，马上就可以提现啦 +active -->
-      <span class="nineNinePercentage mb-3">Você ultrapassou 99% dos usuários e pode sacar dinheiro imediatamente</span>
+      <span class="nineNinePercentage mb-3"
+        >Você ultrapassou 99% dos usuários e pode sacar dinheiro imediatamente</span
+      >
       <div class="drawMain mb-5">
         <!-- 背景旋轉光暈 -->
         <div class="spinLightBg"></div>
@@ -110,7 +110,7 @@ export default {
         <!-- 燈光效果 -->
         <div class="light"></div>
         <!-- 指針 -->
-        <img src="../assets/images/rou/pointer.png" alt="" class="pointer" />
+        <img src="../assets/images/icon/pointer.png" alt="" class="pointer" />
         <!-- 增加次數 +active -->
         <div class="aginPlay">+1</div>
       </div>
@@ -287,7 +287,7 @@ export default {
         </div>
       </div>
     </div>
-    
+
     <!-- ruleModal -->
     <div
       class="modal fade ruleModalLabel"
@@ -445,13 +445,15 @@ export default {
 .cashMain .progressBox .progress .progress-bar {
   background-color: #6ddf39;
 }
-.nineNinePercentage{
+.nineNinePercentage {
   display: none;
-  color: #FFF;
+  color: #fff;
   font-size: 1.2rem;
   text-align: center;
 }
-.nineNinePercentage.active{display: block;}
+.nineNinePercentage.active {
+  display: block;
+}
 .cashMain .needCash {
   color: var(--fff);
   text-align: center;
@@ -462,7 +464,7 @@ export default {
   font-weight: bold;
   font-size: 1.1rem;
 }
-.aginPlay{
+.aginPlay {
   display: none;
   position: absolute;
   left: -5%;
@@ -470,17 +472,17 @@ export default {
   color: #6ddf39;
   font-size: 2.5rem;
   font-weight: bold;
-  animation: .1s zoomIn ;
+  animation: 0.1s zoomIn;
 }
 @keyframes zoomIn {
-  0%{
+  0% {
     transform: scale(0);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
-.aginPlay.active{
+.aginPlay.active {
   display: block;
 }
 .drawMain {
@@ -489,7 +491,7 @@ export default {
   height: 530px;
   margin: 0 auto;
 }
-.drawMain .bg{
+.drawMain .bg {
   pointer-events: none;
   position: absolute;
   transform: translate(-50%, 0);
@@ -497,11 +499,11 @@ export default {
   left: 50%;
   width: 400px;
   height: 539px;
-  background: url('../assets/images/rou/d.png') no-repeat 0 0 / 100% 100%;
+  background: url('../assets/images/icon/d.png') no-repeat 0 0 / 100% 100%;
 }
 .drawMain .spinLightBg {
   pointer-events: none;
-  background: url('../assets/images/rou/spinBg_2.png') no-repeat center center / 100% 100%;
+  background: url('../assets/images/icon/spinBg_2.png') no-repeat center center / 100% 100%;
   width: 500px;
   height: 500px;
   position: absolute;
@@ -512,13 +514,13 @@ export default {
 }
 @keyframes spinLightBg {
   from {
-    transform: translate(-50%,-50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: translate(-50%,-50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-.drawMain .luckyWheelContent{
+.drawMain .luckyWheelContent {
   position: absolute;
   left: 50%;
   top: 103px;
@@ -536,10 +538,10 @@ export default {
 }
 @keyframes lightAnimation {
   from {
-    background: url('../assets/images/rou/light1.png') no-repeat center center / 100% 100%;
+    background: url('../assets/images/icon/light1.png') no-repeat center center / 100% 100%;
   }
   to {
-    background: url('../assets/images/rou/light2.png') no-repeat center center / 100% 100%;
+    background: url('../assets/images/icon/light2.png') no-repeat center center / 100% 100%;
   }
 }
 .drawMain .pointer {

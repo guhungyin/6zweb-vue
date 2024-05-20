@@ -5,7 +5,7 @@ import GameLogo from '@/components/home/GameLogo.vue'
 import AddHomeWindow from '@/components/AddHomeWindow.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
 import GameListSearch from '@/components/GameListSearch.vue'
-import LuckyTurntable from '@/components/LuckyTurntable.vue';
+import LuckyTurntable from '@/components/LuckyTurntable.vue'
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
 import Fingerprint2 from 'fingerprintjs2'
@@ -30,7 +30,7 @@ export default {
       // serviceList: [],
       // provedorList: [],
       logged: false,
-      showTurntableModal: false,
+      showTurntableModal: false
     }
   },
   components: {
@@ -57,11 +57,11 @@ export default {
       }, 20000)
     }
     // 首頁轉盤顯示
-    const hasSeenModal = localStorage.getItem('hasSeenTurntableModal');
+    const hasSeenModal = localStorage.getItem('hasSeenTurntableModal')
     if (!hasSeenModal) {
       setTimeout(() => {
-        this.showTurntableModal = true;
-      }, 2000); // 2秒後顯示視窗
+        this.showTurntableModal = true
+      }, 2000) // 2秒後顯示視窗
     }
   },
   created() {
@@ -264,7 +264,7 @@ export default {
         .catch((error) => {
           console.log('getWinnerShow error message  ---> ', error.message)
         })
-    },
+    }
   },
   setup() {
     const commonStore = useCommonStore()
@@ -748,11 +748,16 @@ export default {
     <!-- 搜尋遊戲列表 -->
     <GameListSearch></GameListSearch>
     <!-- 轉盤 -->
-    <div id="turntableModal" class="turntableModal" :class="{'active': showTurntableModal}">
+    <div id="turntableModal" class="turntableModal" :class="{ active: showTurntableModal }">
       <div class="turntableContent">
-        <img @click="closeTurntableModal" src="../assets/images/rou/close.png" alt="" class="closeTurntableModalBtn" />
+        <img
+          @click="closeTurntableModal"
+          src="../assets/images/icon/close.png"
+          alt=""
+          class="closeTurntableModalBtn"
+        />
         <!-- 轉盤標題 -->
-        <img src="../assets/images/rou/title.png" alt="" class="turntableTitle" />
+        <img src="../assets/images/icon/title.png" alt="" class="turntableTitle" />
         <!-- 轉盤內容 -->
         <LuckyTurntable></LuckyTurntable>
         <!-- 轉盤背景 -->
@@ -760,9 +765,9 @@ export default {
         <!-- 燈光效果 -->
         <div class="light"></div>
         <!-- 指針 -->
-        <img src="../assets/images/rou/pointer.png" alt="" class="pointer" />
-        <img src="../assets/images/rou/tip.png" alt="" class="tipImg" />
-        <img src="../assets/images/rou/decoration.png" alt="" class="decorationImg" />
+        <img src="../assets/images/icon/pointer.png" alt="" class="pointer" />
+        <img src="../assets/images/icon/tip.png" alt="" class="tipImg" />
+        <img src="../assets/images/icon/decoration.png" alt="" class="decorationImg" />
       </div>
     </div>
   </div>
