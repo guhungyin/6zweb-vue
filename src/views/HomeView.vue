@@ -105,7 +105,7 @@ export default {
     closeTurntableModal() {
       const turntableModal = document.getElementById('turntableModal')
       turntableModal.classList.remove('active')
-      showTurntableModal = false
+      this.showTurntableModal = false
     },
     goToTop() {
       const viewScroll = document.getElementById('routerView')
