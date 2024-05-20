@@ -57,12 +57,12 @@ export default {
       }, 20000)
     }
     // 首頁轉盤顯示
-    const hasSeenModal = localStorage.getItem('hasSeenTurntableModal')
-    if (!hasSeenModal) {
-      setTimeout(() => {
-        this.showTurntableModal = true
-      }, 2000) // 2秒後顯示視窗
-    }
+    // const hasSeenModal = localStorage.getItem('hasSeenTurntableModal')
+    // if (!hasSeenModal) {
+    //   setTimeout(() => {
+    //     this.showTurntableModal = true
+    //   }, 2000) // 2秒後顯示視窗
+    // }
   },
   created() {
     console.log(
