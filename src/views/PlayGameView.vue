@@ -12,39 +12,9 @@ import 'swiper/css/pagination'
 export default {
   data() {
     return {
-      RespectedData: [
-        {
-          imgUrl: 'https://6z.com/images/game/551032.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551458.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551031.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551932.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551008.jpg'
-        },
-        {
-          imgUrl: 'https://6z.com/images/game/551934.jpg'
-        },
-        {
-          imgUrl: 'https://pg61.vip/images/game/551037.jpg'
-        },
-        {
-          imgUrl: 'https://pg61.vip/images/game/551204.jpg'
-        },
-        {
-          imgUrl: 'https://pg61.vip/images/game/551476.jpg'
-        },
-        {
-          imgUrl: 'https://pg61.vip/images/game/551936.jpg'
-        }
-      ],
-      isLoading: false
+      RespectedData: this.commonStore.hotArrayList.flat(),
+      isLoading: false,
+      logged: false
     }
   },
   components: {
@@ -57,8 +27,16 @@ export default {
   },
   mounted() {
     console.log('------> query params : ', this.commonStore.playGame)
+
+    if (this.userStore.ticket) {
+      this.logged = true
+      this.userStore.userInfo()
+    }
   },
   methods: {
+    setParams(gameInfo) {
+      this.commonStore.setPlayGame(gameInfo)
+    },
     handlePlayGame() {
       if (this.commonStore.playGame.cp === 'pg_electronic') {
         this.$router.push({
@@ -151,7 +129,11 @@ export default {
           <!-- 登出顯示登入按鈕 -->
           <!-- <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link> -->
           <!-- 登入顯示金額 + 儲值 + 個人選單按鈕 -->
-          <div class="right">
+          <div class="right" v-show="!logged">
+            <router-link to="/register" class="registerBtn me-3">Cadastre-se</router-link>
+            <router-link to="/login" class="btn loginBtn fw-bold">Login</router-link>
+          </div>
+          <div class="right" v-show="logged">
             <div class="userMoney me-2">
               <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
               {{ this.userStore.money }}
@@ -241,12 +223,12 @@ export default {
               <img class="me-2" src="@/assets/images/icon/hotIcon.png" width="20" alt="" />
               Provedor Do Jogo
             </div>
-            <div class="total px-3 py-1 fw-bold me-4">ALL 55</div>
+            <div class="total px-3 py-1 fw-bold me-4">{{ this.commonStore.hotSize }}</div>
           </div>
         </template>
         <swiper-slide v-for="item in RespectedData" :key="item">
           <div class="img">
-            <img :src="item.imgUrl" class="w-100" />
+            <img :src="item.iconName" class="w-100" @click="setParams(item)" />
           </div>
         </swiper-slide>
       </swiper>
