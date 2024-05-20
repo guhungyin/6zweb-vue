@@ -35,7 +35,7 @@ export default {
         .register({
           password: EncryptReg(this.password),
           account: this.account,
-          channel: 20231114,
+          channel: 20231113,
           version: '1',
           nickName: this.nickName,
           source: this.userStore.source
