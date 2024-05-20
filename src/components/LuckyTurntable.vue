@@ -19,7 +19,7 @@ export default {
         {
           imgs: [
             {
-              src: 'src/assets/images/icon/spinBg.png',
+              src: 'src/assets/images/rou/spinBg.png',
               width: '100%',
               height: '100%',
               rotate: true
@@ -32,7 +32,7 @@ export default {
           range: 5,
           imgs: [
             {
-              src: 'src/assets/images/icon/spin-1.png',
+              src: 'src/assets/images/rou/spin-1.png',
               top: '30',
               width: '30%'
             }
@@ -54,7 +54,7 @@ export default {
           range: 95,
           imgs: [
             {
-              src: 'src/assets/images/icon/spin-4.png',
+              src: 'src/assets/images/rou/spin-4.png',
               top: '30',
               width: '20%'
             }
@@ -76,7 +76,7 @@ export default {
           range: 5,
           imgs: [
             {
-              src: 'src/assets/images/icon/spin-1.png',
+              src: 'src/assets/images/rou/spin-1.png',
               top: '30',
               width: '30%'
             }
@@ -125,7 +125,7 @@ export default {
           radius: '60',
           imgs: [
             {
-              src: 'src/assets/images/icon/draw.png',
+              src: 'src/assets/images/rou/draw.png',
               width: '100%',
               top: '-50'
             }

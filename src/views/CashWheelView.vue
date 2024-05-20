@@ -503,7 +503,7 @@ export default {
 }
 .drawMain .spinLightBg {
   pointer-events: none;
-  background: url('../assets/images/icon/spinBg_2.png') no-repeat center center / 100% 100%;
+  background: url('../assets/images/rou/spinBg_2.png') no-repeat center center / 100% 100%;
   width: 500px;
   height: 500px;
   position: absolute;

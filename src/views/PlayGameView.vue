@@ -293,13 +293,13 @@ export default {
 .swiper-button-prev {
   right: 2rem;
   left: initial;
-  background: var(--black2) url('../images/icon/chevron-left.png') no-repeat center center / 100%
-    100%;
+  background: var(--black2) url('@/assets/images/icon/chevron-left.png') no-repeat center center /
+    100% 100%;
 }
 .swiper-button-next {
   right: 0;
-  background: var(--black2) url('../images/icon/chevron-right.png') no-repeat center center / 100%
-    100%;
+  background: var(--black2) url('@/assets/images/icon/chevron-right.png') no-repeat center center /
+    100% 100%;
 }
 .swiper-button-prev,
 .swiper-button-next {
