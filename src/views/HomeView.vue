@@ -362,9 +362,9 @@ export default {
         <swiper-slide>
           <img class="img-fluid" src="@/assets/images/banner/banner_02.jpg" alt="" />
         </swiper-slide>
-        <swiper-slide>
+        <!--<swiper-slide>
           <img class="img-fluid" src="@/assets/images/banner/banner_03.jpg" alt="" />
-        </swiper-slide>
+        </swiper-slide>-->
         <swiper-slide>
           <img class="img-fluid" src="@/assets/images/banner/banner_04.jpg" alt="" />
         </swiper-slide>

@@ -1,42 +1,28 @@
 <script>
-  import CloseBtn from '@/components/CloseBtn.vue'
-  import BottomMenu from '@/components/BottomMenu.vue'
-  export default {
-    data() {
-      return {
-        imgData: [
-          { imgUrl: './src/assets/images/banner/banner_01.jpg',
-            link: '/deposit'
-          },
-          { imgUrl: './src/assets/images/banner/banner_02.jpg',
-            link: '/'
-          },
-          { imgUrl: './src/assets/images/banner/banner_03.jpg',
-            link: '/'
-          },
-          { imgUrl: './src/assets/images/banner/banner_04.jpg',
-            link: '/cashwheel'
-          },
-          { imgUrl: './src/assets/images/banner/banner_05.jpg',
-            link: '/'
-          },
-          { imgUrl: './src/assets/images/banner/banner_06.jpg',
-            link: '/'
-          },
-          { imgUrl: './src/assets/images/banner/banner_07.jpg',
-            link: '/'
-          },
-          { imgUrl: './src/assets/images/banner/banner_08.jpg',
-            link: '/downloadApp'
-          }
-        ]
-      }
-    },
-    components: {
-      CloseBtn,
-      BottomMenu,
+import CloseBtn from '@/components/CloseBtn.vue'
+import BottomMenu from '@/components/BottomMenu.vue'
+export default {
+  data() {
+    return {
+      imgData: [
+        { imgUrl: './src/assets/images/banner/banner_01.jpg', link: '/deposit' },
+        { imgUrl: './src/assets/images/banner/banner_02.jpg', link: '/' },
+        // { imgUrl: './src/assets/images/banner/banner_03.jpg',
+        //   link: '/'
+        // },
+        { imgUrl: './src/assets/images/banner/banner_04.jpg', link: '/cashwheel' },
+        { imgUrl: './src/assets/images/banner/banner_05.jpg', link: '/' },
+        { imgUrl: './src/assets/images/banner/banner_06.jpg', link: '/' },
+        { imgUrl: './src/assets/images/banner/banner_07.jpg', link: '/' },
+        { imgUrl: './src/assets/images/banner/banner_08.jpg', link: '/downloadApp' }
+      ]
     }
+  },
+  components: {
+    CloseBtn,
+    BottomMenu
   }
+}
 </script>
 <template>
   <div class="routerView">
@@ -58,7 +44,7 @@
   </div>
 </template>
 <style scoped>
-.promotionsWindows{
+.promotionsWindows {
   margin-top: 4rem;
 }
 .promotionsWindows ul {
