@@ -156,7 +156,7 @@ export default {
   </div>
 </template>
 <style scoped>
-.loginContainer{
+.loginContainer {
   padding-bottom: 4rem;
 }
 .headerBack {
@@ -166,7 +166,9 @@ export default {
   background-color: var(--black2);
   height: 100vh;
 }
-.headerBg{padding-top: 64px;}
+.headerBg {
+  padding-top: 64px;
+}
 .loginTitle {
   color: var(--fff);
 }
