@@ -12,6 +12,7 @@
   />
 </template>
 <script>
+import { useActivityStore } from '@/stores/modules/activity'
 export default {
   data() {
     return {
@@ -133,7 +134,7 @@ export default {
           pointer: true,
           fonts: [
             {
-              text: '1',
+              text: this.activityStore.showText,
               top: '-15',
               fontColor: '#fff',
               fontSize: '35',
@@ -147,6 +148,13 @@ export default {
   methods: {
     // 点击抽奖按钮会触发star回调
     startCallback() {
+      if (!this.activityStore.logged) {
+        this.$router.push({
+          name: 'login'
+        })
+        return
+      }
+
       // 更新可轉動次數
       let buttonsNum = parseInt(this.$refs.myLucky.buttons[0].fonts[0].text)
       if (buttonsNum > 0) {
@@ -171,6 +179,14 @@ export default {
     handleButtonClick() {
       this.showTurntableModal = false
       localStorage.setItem('hasSeenTurntableModal', 'true')
+    }
+  },
+
+  setup() {
+    const activityStore = useActivityStore()
+
+    return {
+      activityStore
     }
   }
 }

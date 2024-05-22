@@ -72,7 +72,8 @@ service.interceptors.response.use(
         response.config.url !== 'goods/list' &&
         response.config.url !== '/user/promotionCommission' &&
         response.config.url !== '/user/cashback' &&
-        response.config.url !== '/user/logout'
+        response.config.url !== '/user/logout' &&
+        response.config.url !== '/roulette/queryLotteryTimes'
       ) {
         const userStore = useUserStore(pinia)
         userStore.$reset()
@@ -86,7 +87,8 @@ service.interceptors.response.use(
         response.config.url !== 'goods/list' &&
         response.config.url !== '/user/promotionCommission' &&
         response.config.url !== '/user/cashback' &&
-        response.config.url !== '/user/logout'
+        response.config.url !== '/user/logout' &&
+        response.config.url !== '/roulette/queryLotteryTimes'
       ) {
         var myModal = new bootstrap.Modal(document.getElementById('alertsModal'))
         document.getElementById('errorTips').innerHTML = res.msg

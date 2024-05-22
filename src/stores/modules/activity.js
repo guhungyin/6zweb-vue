@@ -1,9 +1,12 @@
 import * as activity from '@/api/activity'
 import { defineStore } from 'pinia'
 
-export const useCommonStore = defineStore('activity', {
+export const useActivityStore = defineStore('activity', {
   state: () => {
-    return {}
+    return {
+      showText: '1',
+      logged: false
+    }
   },
   actions: {
     async queryLotteryTimes() {
