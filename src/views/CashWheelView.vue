@@ -93,11 +93,11 @@ export default {
           <span>{{ activityStore.totalBonus }}%</span>
           <div class="progress mb-2">
             <div
-              class="progress-bar w-75"
+              class="progress-bar"
               role="progressbar"
-              aria-valuenow="75"
               aria-valuemin="0"
               aria-valuemax="100"
+              style="width: 25%"
             ></div>
           </div>
         </div>
