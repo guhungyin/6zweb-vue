@@ -1,10 +1,14 @@
 <script>
 import LuckyTurntable from '@/components/LuckyTurntable.vue'
+import CountUp from 'vue-countup-v3'
 import { useActivityStore } from '@/stores/modules/activity'
 import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
-    return {}
+    return {
+      bigBonusStartVal: 0,
+      notEnoughStartVal:0,
+    }
   },
   methods: {
     closeBtn() {
@@ -12,7 +16,8 @@ export default {
     }
   },
   components: {
-    LuckyTurntable
+    LuckyTurntable,
+    CountUp
   },
   setup() {
     const activityStore = useActivityStore()
@@ -20,7 +25,7 @@ export default {
 
     return {
       activityStore,
-      userStore
+      userStore,
     }
   }
 }
@@ -81,8 +86,8 @@ export default {
         <div class="haveCash d-flex justify-content-between align-items-center">
           <img src="../assets/images/icon/cash_2.png" width="55" alt="" />
           <div class="totalCash">
-            R$
-            <span class="cash"> {{ activityStore.totalBonus }} </span>
+            <span class="me-2">R$</span>
+            <count-up class="cash" :start-val='this.bigBonusStartVal' :end-val='`${ activityStore.totalBonus }`' :decimalPlaces='2'></count-up>
           </div>
           <div class="withdraw" data-bs-toggle="modal" data-bs-target="#withdrawAlert">
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
@@ -103,7 +108,9 @@ export default {
         </div>
         <div class="needCash">
           Ainda e necessário
-          <span class="needCashNum">{{ activityStore.remainingBonus }}</span>
+          <span class="needCashNum mx-2">
+            <count-up :start-val='this.notEnoughStartVal' :end-val='`${activityStore.remainingBonus}`' :decimalPlaces='2'></count-up>
+          </span>
           para sacar
         </div>
       </div>
@@ -411,6 +418,64 @@ export default {
         </div>
       </div>
     </div>
+    <!-- 轉到大獎 bigBonusModal -->
+    <div
+      class="modal fade bigBonusModal"
+      id="bigBonus"
+      tabindex="-1"
+      aria-labelledby="bigBonusLabel"
+      aria-hidden="true"
+      data-bs-backdrop="false"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="bigBonusLabel">Em breve poderá sacar</h5>
+            <div data-bs-dismiss="modal" aria-label="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="#FFFFFF"
+                class="bi bi-x"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="main py-3 px-2">
+              <div class="cash">
+                <div class="text">Total de dinheiro a ser pago em breve</div>
+                <div class="cashContent">
+                  <span>97.21</span>
+                  <span class="currency"> BRL</span>
+                </div>
+              </div>
+              <ul class="withdrawInfo mb-3">
+                <li class="mb-2">
+                  <span>Conta de saque</span>
+                  <span style="color: rgb(60, 197, 23)">100,000</span>
+                </li>
+                <li class="mb-2">
+                  <span>Formas de Pagamentos</span>
+                  <span>Pix</span>
+                </li>
+              </ul>
+              <ul class="schedule py-3">
+                <li class="mb-3">O pedido de pagamento foi submetido</li>
+                <li class="mb-3">Ainda e necessário 2.79 para sacar</li>
+                <li class="active">100 R$ serão pagos na sua conta PIX</li>
+              </ul>
+              <button type="button" class="btn w-100">Convide amigos para ajudar com</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -426,6 +491,8 @@ export default {
   border-radius: 0.8rem;
 }
 .cashMain .haveCash .totalCash {
+  display: flex;
+  align-items: center;
   color: #6ddf39;
   font-size: 2rem;
 }
@@ -469,6 +536,8 @@ export default {
   color: var(--fff);
   text-align: center;
   font-size: 1rem;
+  display: flex;
+  justify-content: center;
 }
 .cashMain .needCash .needCashNum {
   color: #6ddf39;
@@ -727,6 +796,90 @@ export default {
   background-color: #4b4f5d;
 }
 .withdrawAlertModal .modal-content button {
+  background-color: #6ddf39;
+  color: var(--fff);
+}
+
+
+
+
+
+
+.bigBonusModal .modal-content {
+  background-color: #202124;
+}
+.bigBonusModal .modal-content .modal-title {
+  color: var(--fff);
+}
+.bigBonusModal .modal-content .main {
+  background-color: #27292d;
+}
+.bigBonusModal .modal-content .main .cash .text {
+  color: #6ddf39;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.bigBonusModal .modal-content .main .cashContent {
+  color: #fd2626;
+  font-size: 2.6rem;
+  text-align: center;
+  font-weight: bold;
+}
+.bigBonusModal .modal-content .main .withdrawInfo {
+  padding: 0;
+}
+.bigBonusModal .modal-content .main .withdrawInfo li {
+  display: flex;
+  justify-content: space-between;
+  color: var(--fff);
+  font-size: 1rem;
+}
+.bigBonusModal .modal-content .main .schedule {
+  background-color: #232327;
+  color: #6ddf39;
+  font-size: 1rem;
+  position: relative;
+}
+.bigBonusModal .modal-content .main .schedule::before {
+  content: '';
+  position: absolute;
+  height: 5rem;
+  border-left: 1px dotted #3cc517;
+  transform: translate(0, -50%);
+  top: 50%;
+  left: 1rem;
+}
+.bigBonusModal .modal-content .main .schedule li {
+  position: relative;
+}
+.bigBonusModal .modal-content .main .schedule li::before {
+  content: '\2713';
+  font-size: 0.6rem;
+  color: var(--fff);
+  width: 0.9rem;
+  height: 0.9rem;
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6ddf39;
+  border-radius: 50%;
+}
+.bigBonusModal .modal-content .main .schedule li.active {
+  color: #4b4f5d;
+}
+.bigBonusModal .modal-content .main .schedule li.active::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  left: -1.25rem;
+  top: 52%;
+  background-color: #4b4f5d;
+}
+.bigBonusModal .modal-content button {
   background-color: #6ddf39;
   color: var(--fff);
 }
