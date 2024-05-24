@@ -5,7 +5,9 @@ export const useActivityStore = defineStore('activity', {
   state: () => {
     return {
       showText: '1',
-      logged: false
+      logged: false,
+      totalBonus: '0.00',
+      bonus: '0.00'
     }
   },
   actions: {
@@ -13,6 +15,18 @@ export const useActivityStore = defineStore('activity', {
       return new Promise((resolve, reject) => {
         activity
           .queryLotteryTimes()
+          .then((response) => {
+            resolve(response)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+    async luckyStar() {
+      return new Promise((resolve, reject) => {
+        activity
+          .luckyStar()
           .then((response) => {
             resolve(response)
           })

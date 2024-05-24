@@ -68,9 +68,9 @@ export default {
         this.activityStore.logged = true
       })
       .catch(() => {
-        this.activityStore.showText = '1'
+        this.activityStore.showText = '0'
 
-        this.showTurntableModal = true
+        this.showTurntableModal = false
       })
   },
   created() {

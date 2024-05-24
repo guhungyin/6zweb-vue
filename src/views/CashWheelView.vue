@@ -1,5 +1,7 @@
 <script>
 import LuckyTurntable from '@/components/LuckyTurntable.vue'
+import { useActivityStore } from '@/stores/modules/activity'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {}
@@ -11,6 +13,15 @@ export default {
   },
   components: {
     LuckyTurntable
+  },
+  setup() {
+    const activityStore = useActivityStore()
+    const userStore = useUserStore()
+
+    return {
+      activityStore,
+      userStore
+    }
   }
 }
 </script>
@@ -61,7 +72,7 @@ export default {
         >
           <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
         </svg>
-        <span class="mx-1">0.00</span>
+        <span class="mx-1">{{ this.userStore.money }}</span>
         <span>BRL</span>
       </div>
     </div>
@@ -71,7 +82,7 @@ export default {
           <img src="../assets/images/icon/cash_2.png" width="55" alt="" />
           <div class="totalCash">
             R$
-            <span class="cash"> 97.21 </span>
+            <span class="cash"> {{ activityStore.totalBonus }} </span>
           </div>
           <div class="withdraw" data-bs-toggle="modal" data-bs-target="#withdrawAlert">
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
@@ -79,7 +90,7 @@ export default {
           </div>
         </div>
         <div class="progressBox">
-          <span>97.21%</span>
+          <span>{{ activityStore.totalBonus }}%</span>
           <div class="progress mb-2">
             <div
               class="progress-bar w-75"
@@ -92,7 +103,7 @@ export default {
         </div>
         <div class="needCash">
           Ainda e necessário
-          <span class="needCashNum">2.79</span>
+          <span class="needCashNum">{{ activityStore.bonus }}</span>
           para sacar
         </div>
       </div>
