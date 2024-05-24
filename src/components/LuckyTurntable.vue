@@ -173,6 +173,7 @@ export default {
               this.$refs.myLucky.stop(res.data.point)
               this.activityStore.bonus = res.data.bonus
               this.activityStore.totalBonus = res.data.totalBonus
+              this.activityStore.remainingBonus = res.data.remainingBonus
             })
             .catch((err) => {
               console.log('抽奖错误:', err.message)

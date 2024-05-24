@@ -7,7 +7,8 @@ export const useActivityStore = defineStore('activity', {
       showText: '1',
       logged: false,
       totalBonus: '0.00',
-      bonus: '0.00'
+      bonus: '0.00',
+      remainingBonus: ''
     }
   },
   actions: {

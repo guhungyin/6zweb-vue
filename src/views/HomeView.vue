@@ -66,6 +66,8 @@ export default {
         this.activityStore.showText = res.data.remainingLotteryDraws.toString()
         this.showTurntableModal = true
         this.activityStore.logged = true
+        this.activityStore.totalBonus = res.data.totalBonus
+        this.activityStore.remainingBonus = res.data.remainingBonus
       })
       .catch(() => {
         this.activityStore.showText = '0'

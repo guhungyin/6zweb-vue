@@ -97,13 +97,13 @@ export default {
               role="progressbar"
               aria-valuemin="0"
               aria-valuemax="100"
-              style="width: 25%"
+              :style="'width: ' + activityStore.totalBonus + '%'"
             ></div>
           </div>
         </div>
         <div class="needCash">
           Ainda e necessário
-          <span class="needCashNum">{{ activityStore.bonus }}</span>
+          <span class="needCashNum">{{ activityStore.remainingBonus }}</span>
           para sacar
         </div>
       </div>
