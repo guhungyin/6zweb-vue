@@ -457,29 +457,14 @@ export default {
           </div>
           <div class="modal-body">
             <div class="main py-3 px-2">
-              <div class="cash">
-                <div class="text">Total de dinheiro a ser pago em breve</div>
+              <div class="cash mb-3">
+                <div class="text">Que sorte, parabéns por ganhar o prêmio em dinheiro O dinheiro será enviado automaticamente para a carteira da sua conta</div>
                 <div class="cashContent">
-                  <span>97.21</span>
+                  <span>1,000</span>
                   <span class="currency"> BRL</span>
                 </div>
               </div>
-              <ul class="withdrawInfo mb-3">
-                <li class="mb-2">
-                  <span>Conta de saque</span>
-                  <span style="color: rgb(60, 197, 23)">100,000</span>
-                </li>
-                <li class="mb-2">
-                  <span>Formas de Pagamentos</span>
-                  <span>Pix</span>
-                </li>
-              </ul>
-              <ul class="schedule py-3">
-                <li class="mb-3">O pedido de pagamento foi submetido</li>
-                <li class="mb-3">Ainda e necessário 2.79 para sacar</li>
-                <li class="active">100 R$ serão pagos na sua conta PIX</li>
-              </ul>
-              <button type="button" class="btn w-100">Convide amigos para ajudar com</button>
+              <button type="button" class="btn w-100">Continue recebendo mais recompensas</button>
             </div>
           </div>
         </div>
@@ -810,6 +795,8 @@ export default {
 }
 
 .bigBonusModal .modal-content {
+  margin: 0 auto;
+  width: 84%;
   background-color: #202124;
 }
 .bigBonusModal .modal-content .modal-title {
@@ -828,60 +815,6 @@ export default {
   font-size: 2.6rem;
   text-align: center;
   font-weight: bold;
-}
-.bigBonusModal .modal-content .main .withdrawInfo {
-  padding: 0;
-}
-.bigBonusModal .modal-content .main .withdrawInfo li {
-  display: flex;
-  justify-content: space-between;
-  color: var(--fff);
-  font-size: 1rem;
-}
-.bigBonusModal .modal-content .main .schedule {
-  background-color: #232327;
-  color: #6ddf39;
-  font-size: 1rem;
-  position: relative;
-}
-.bigBonusModal .modal-content .main .schedule::before {
-  content: '';
-  position: absolute;
-  height: 5rem;
-  border-left: 1px dotted #3cc517;
-  transform: translate(0, -50%);
-  top: 50%;
-  left: 1rem;
-}
-.bigBonusModal .modal-content .main .schedule li {
-  position: relative;
-}
-.bigBonusModal .modal-content .main .schedule li::before {
-  content: '\2713';
-  font-size: 0.6rem;
-  color: var(--fff);
-  width: 0.9rem;
-  height: 0.9rem;
-  position: absolute;
-  left: -1.5rem;
-  top: 50%;
-  transform: translate(0, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #6ddf39;
-  border-radius: 50%;
-}
-.bigBonusModal .modal-content .main .schedule li.active {
-  color: #4b4f5d;
-}
-.bigBonusModal .modal-content .main .schedule li.active::before {
-  content: '';
-  width: 0.55rem;
-  height: 0.55rem;
-  left: -1.25rem;
-  top: 52%;
-  background-color: #4b4f5d;
 }
 .bigBonusModal .modal-content button {
   background-color: #6ddf39;
