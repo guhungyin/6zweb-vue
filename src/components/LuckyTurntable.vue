@@ -12,6 +12,7 @@
   />
 </template>
 <script>
+import { useActivityStore } from '@/stores/modules/activity'
 export default {
   data() {
     return {
@@ -133,7 +134,7 @@ export default {
           pointer: true,
           fonts: [
             {
-              text: '1',
+              text: this.activityStore.showText,
               top: '-15',
               fontColor: '#fff',
               fontSize: '35',
@@ -147,19 +148,49 @@ export default {
   methods: {
     // 点击抽奖按钮会触发star回调
     startCallback() {
+      if (!this.activityStore.logged) {
+        this.$router.push({
+          name: 'login'
+        })
+        return
+      }
+
       // 更新可轉動次數
       let buttonsNum = parseInt(this.$refs.myLucky.buttons[0].fonts[0].text)
       if (buttonsNum > 0) {
-        this.$refs.myLucky.buttons[0].fonts[0].text = (buttonsNum - 1).toString()
-        // 调用抽奖组件的play方法开始游戏
-        this.$refs.myLucky.play()
-        // 模拟调用接口异步抽奖
-        setTimeout(() => {
-          // 假设后端返回的中奖索引是0
-          //   const index = 0
-          // 调用stop停止旋转并传递中奖索引
-          this.$refs.myLucky.stop()
-        }, 3000)
+        console.log('抽奖活动当前路径: ', this.$route.path)
+
+        if (this.$route.path === '/cashwheel') {
+          this.$refs.myLucky.buttons[0].fonts[0].text = (buttonsNum - 1).toString()
+          // 调用抽奖组件的play方法开始游戏
+          this.$refs.myLucky.play()
+          // 模拟调用接口异步抽奖
+
+          this.activityStore
+            .luckyStar()
+            .then((res) => {
+              // console.log('抽奖返回:', res)
+              this.$refs.myLucky.stop(res.data.point)
+              this.activityStore.bonus = res.data.bonus
+              this.activityStore.totalBonus = res.data.totalBonus
+              this.activityStore.remainingBonus = res.data.remainingBonus
+            })
+            .catch((err) => {
+              console.log('抽奖错误:', err.message)
+              this.$refs.myLucky.stop(2)
+            })
+        } else if (this.$route.path === '/') {
+          this.$router.push({
+            name: 'cashwheel'
+          })
+        }
+
+        // setTimeout(() => {
+        //   // 假设后端返回的中奖索引是0
+        //   //   const index = 0
+        //   // 调用stop停止旋转并传递中奖索引
+        //   this.$refs.myLucky.stop(8)
+        // }, 3000)
       }
       this.handleButtonClick()
     },
@@ -171,6 +202,14 @@ export default {
     handleButtonClick() {
       this.showTurntableModal = false
       localStorage.setItem('hasSeenTurntableModal', 'true')
+    }
+  },
+
+  setup() {
+    const activityStore = useActivityStore()
+
+    return {
+      activityStore
     }
   }
 }

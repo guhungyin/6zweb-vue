@@ -1,13 +1,13 @@
 <script>
 import LuckyTurntable from '@/components/LuckyTurntable.vue'
 import CountUp from 'vue-countup-v3'
+import { useActivityStore } from '@/stores/modules/activity'
+import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
       bigBonusStartVal: 0,
-      bigBonusEndVal: 94.21,
       notEnoughStartVal:0,
-      notEnoughEndVal: 5.79,
     }
   },
   methods: {
@@ -18,6 +18,15 @@ export default {
   components: {
     LuckyTurntable,
     CountUp
+  },
+  setup() {
+    const activityStore = useActivityStore()
+    const userStore = useUserStore()
+
+    return {
+      activityStore,
+      userStore,
+    }
   }
 }
 </script>
@@ -68,7 +77,7 @@ export default {
         >
           <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
         </svg>
-        <span class="mx-1">0.00</span>
+        <span class="mx-1">{{ this.userStore.money }}</span>
         <span>BRL</span>
       </div>
     </div>
@@ -78,7 +87,7 @@ export default {
           <img src="../assets/images/icon/cash_2.png" width="55" alt="" />
           <div class="totalCash">
             <span class="me-2">R$</span>
-            <count-up class="cash" :start-val='this.bigBonusStartVal' :end-val='this.bigBonusEndVal' :decimalPlaces='2'></count-up>
+            <count-up class="cash" :start-val='this.bigBonusStartVal' :end-val='`${ activityStore.totalBonus }`' :decimalPlaces='2'></count-up>
           </div>
           <div class="withdraw" data-bs-toggle="modal" data-bs-target="#withdrawAlert">
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
@@ -86,21 +95,21 @@ export default {
           </div>
         </div>
         <div class="progressBox">
-          <span>97.21%</span>
+          <span>{{ activityStore.totalBonus }}%</span>
           <div class="progress mb-2">
             <div
               class="progress-bar"
               role="progressbar"
               aria-valuemin="0"
               aria-valuemax="100"
-              style="width: 25%"
+              :style="'width: ' + activityStore.totalBonus + '%'"
             ></div>
           </div>
         </div>
         <div class="needCash">
           Ainda e necessário
           <span class="needCashNum mx-2">
-            <count-up :start-val='this.notEnoughStartVal' :end-val='this.notEnoughEndVal' :decimalPlaces='2'></count-up>
+            <count-up :start-val='this.notEnoughStartVal' :end-val='`${activityStore.remainingBonus}`' :decimalPlaces='2'></count-up>
           </span>
           para sacar
         </div>

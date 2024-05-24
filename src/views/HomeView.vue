@@ -8,6 +8,7 @@ import GameListSearch from '@/components/GameListSearch.vue'
 import LuckyTurntable from '@/components/LuckyTurntable.vue'
 import { useCommonStore } from '@/stores/modules/common'
 import { useUserStore } from '@/stores/modules/user'
+import { useActivityStore } from '@/stores/modules/activity'
 import Fingerprint2 from 'fingerprintjs2'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -47,6 +48,8 @@ export default {
       this.userStore.source = this.$route.query.source
     }
     console.log('url params: ', this.userStore.source, 'timezone:', this.userStore.timezone)
+
+    // 生成指纹
     if (window.requestIdleCallback) {
       requestIdleCallback(() => {
         this.createFingerprint()
@@ -54,15 +57,23 @@ export default {
     } else {
       setTimeout(() => {
         this.createFingerprint()
-      }, 20000)
+      }, 1000)
     }
-    // 首頁轉盤顯示
-    const hasSeenModal = localStorage.getItem('hasSeenTurntableModal')
-    if (!hasSeenModal) {
-      setTimeout(() => {
+
+    this.activityStore
+      .queryLotteryTimes()
+      .then((res) => {
+        this.activityStore.showText = res.data.remainingLotteryDraws.toString()
         this.showTurntableModal = true
-      }, 2000) // 2秒後顯示視窗
-    }
+        this.activityStore.logged = true
+        this.activityStore.totalBonus = res.data.totalBonus
+        this.activityStore.remainingBonus = res.data.remainingBonus
+      })
+      .catch(() => {
+        this.activityStore.showText = '0'
+
+        this.showTurntableModal = false
+      })
   },
   created() {
     console.log(
@@ -269,10 +280,12 @@ export default {
   setup() {
     const commonStore = useCommonStore()
     const userStore = useUserStore()
+    const activityStore = useActivityStore()
     return {
       modules: [Navigation, Pagination, Grid],
       commonStore,
-      userStore
+      userStore,
+      activityStore
     }
   }
 }

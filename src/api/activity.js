@@ -6,3 +6,10 @@ export function queryLotteryTimes() {
     method: 'get'
   })
 }
+
+export function luckyStar() {
+  return request({
+    url: '/roulette/luckyStar',
+    method: 'post'
+  })
+}
