@@ -174,6 +174,11 @@ export default {
               this.activityStore.bonus = res.data.bonus
               this.activityStore.totalBonus = res.data.totalBonus
               this.activityStore.remainingBonus = res.data.remainingBonus
+              this.$refs.myLucky.buttons[0].fonts[0].text = '+' + this.activityStore.bonus
+
+              setTimeout(() => {
+                this.$refs.myLucky.buttons[0].fonts[0].text = (buttonsNum - 1).toString()
+              }, 2000)
             })
             .catch((err) => {
               console.log('抽奖错误:', err.message)
