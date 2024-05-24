@@ -3,6 +3,7 @@ import CloseBtn from '../components/CloseBtn.vue'
 import { ref, watch } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
 import LoadingPage from '@/components/LoadingPage.vue'
+import { useActivityStore } from '@/stores/modules/activity'
 export default {
   data() {
     return {
@@ -31,15 +32,33 @@ export default {
       this.userStore
         .login(loginUser)
         .then((res) => {
-          this.isActive = true
-          this.isDisabled = false
-          this.errorMsg = ''
-          this.errorActive = false
-          this.isLoading = false
           console.log('登录响应: ', res, ' ---> ', this.userStore.id)
-          this.$router.push({
-            name: 'home'
-          })
+
+          this.activityStore
+            .queryLotteryTimes()
+            .then((resa) => {
+              this.isActive = true
+              this.isDisabled = false
+              this.errorMsg = ''
+              this.errorActive = false
+              this.isLoading = false
+
+              this.activityStore.showText = resa.data.remainingLotteryDraws.toString()
+              this.activityStore.logged = true
+              this.activityStore.totalBonus = resa.data.totalBonus
+              this.activityStore.remainingBonus = resa.data.remainingBonus
+
+              this.$router.push({
+                name: 'home'
+              })
+            })
+            .catch((err) => {
+              this.isActive = true
+              this.isDisabled = false
+              this.errorMsg = err.message
+              this.errorActive = true
+              this.isLoading = false
+            })
         })
         .catch((err) => {
           this.isActive = true
@@ -64,6 +83,7 @@ export default {
     const account = ref('')
     const password = ref('')
     const userStore = useUserStore()
+    const activityStore = useActivityStore()
 
     watch(password, () => {
       if (password.value.length > 4) {
@@ -91,7 +111,8 @@ export default {
       isDisabled,
       userStore,
       loginClick,
-      errorActive
+      errorActive,
+      activityStore
     }
   }
 }

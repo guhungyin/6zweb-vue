@@ -63,16 +63,23 @@ export default {
     this.activityStore
       .queryLotteryTimes()
       .then((res) => {
+        console.log('查询抽奖次数：', res)
         this.activityStore.showText = res.data.remainingLotteryDraws.toString()
         this.showTurntableModal = true
         this.activityStore.logged = true
         this.activityStore.totalBonus = res.data.totalBonus
         this.activityStore.remainingBonus = res.data.remainingBonus
       })
-      .catch(() => {
-        this.activityStore.showText = '0'
+      .catch((err) => {
+        if (err.message === 'User not logged.') {
+          this.activityStore.showText = '1'
 
-        this.showTurntableModal = false
+          this.showTurntableModal = true
+        } else {
+          this.activityStore.showText = '0'
+
+          this.showTurntableModal = false
+        }
       })
   },
   created() {
@@ -263,8 +270,9 @@ export default {
         .then((response) => {
           console.log('response ---> ', response)
           if (response.data.bigWin) {
+            this.commonStore.recentListWinData = []
             response.data.bigWin.forEach((v) => {
-              this.recentListWinData.push({
+              this.commonStore.recentListWinData.push({
                 userName: v.nickname,
                 winMoney: v.amount,
                 imgUrl: v.gameVo.img
@@ -272,8 +280,8 @@ export default {
             })
           }
         })
-        .catch((error) => {
-          console.log('getWinnerShow error message  ---> ', error.message)
+        .catch((err) => {
+          console.log('getWinnerShow error message  ---> ', err.message)
         })
     }
   },
