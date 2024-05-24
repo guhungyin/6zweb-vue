@@ -174,6 +174,7 @@ export default {
               this.activityStore.bonus = res.data.bonus
               this.activityStore.totalBonus = res.data.totalBonus
               this.activityStore.remainingBonus = res.data.remainingBonus
+              this.activityStore.showText = res.data.remainingLotteryDraws
               this.$refs.myLucky.buttons[0].fonts[0].text = '+' + this.activityStore.bonus
 
               setTimeout(() => {

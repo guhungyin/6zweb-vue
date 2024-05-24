@@ -6,8 +6,8 @@ import { useUserStore } from '@/stores/modules/user'
 export default {
   data() {
     return {
-      bigBonusStartVal: 0,
-      notEnoughStartVal:0,
+      bigBonusStartVal: 0.0,
+      notEnoughStartVal: parseFloat(this.activityStore.remainingBonus)
     }
   },
   methods: {
@@ -25,7 +25,7 @@ export default {
 
     return {
       activityStore,
-      userStore,
+      userStore
     }
   }
 }
@@ -87,7 +87,12 @@ export default {
           <img src="../assets/images/icon/cash_2.png" width="55" alt="" />
           <div class="totalCash">
             <span class="me-2">R$</span>
-            <count-up class="cash" :start-val='this.bigBonusStartVal' :end-val='`${ activityStore.totalBonus }`' :decimalPlaces='2'></count-up>
+            <count-up
+              class="cash"
+              :start-val="this.bigBonusStartVal"
+              :end-val="`${activityStore.totalBonus}`"
+              :decimalPlaces="2"
+            ></count-up>
           </div>
           <div class="withdraw" data-bs-toggle="modal" data-bs-target="#withdrawAlert">
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
@@ -109,7 +114,11 @@ export default {
         <div class="needCash">
           Ainda e necessário
           <span class="needCashNum mx-2">
-            <count-up :start-val='this.notEnoughStartVal' :end-val='`${activityStore.remainingBonus}`' :decimalPlaces='2'></count-up>
+            <count-up
+              :start-val="this.notEnoughStartVal"
+              :end-val="`${activityStore.remainingBonus}`"
+              :decimalPlaces="2"
+            ></count-up>
           </span>
           para sacar
         </div>
@@ -799,11 +808,6 @@ export default {
   background-color: #6ddf39;
   color: var(--fff);
 }
-
-
-
-
-
 
 .bigBonusModal .modal-content {
   background-color: #202124;
