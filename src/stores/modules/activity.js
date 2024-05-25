@@ -6,9 +6,11 @@ export const useActivityStore = defineStore('activity', {
     return {
       showText: '1',
       logged: false,
+      preTotalBonus: '0.00',
       totalBonus: '0.00',
       bonus: '0.00',
-      remainingBonus: '100.00'
+      remainingBonus: '100.00',
+      preRemainingBonus: '0.00'
     }
   },
   actions: {

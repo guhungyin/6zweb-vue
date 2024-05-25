@@ -172,7 +172,9 @@ export default {
               // console.log('抽奖返回:', res)
               this.$refs.myLucky.stop(res.data.point)
               this.activityStore.bonus = res.data.bonus
+              this.activityStore.preTotalBonus = this.activityStore.totalBonus
               this.activityStore.totalBonus = res.data.totalBonus
+              this.activityStore.preRemainingBonus = this.activityStore.remainingBonus
               this.activityStore.remainingBonus = res.data.remainingBonus
               this.activityStore.showText = res.data.remainingLotteryDraws
               this.$refs.myLucky.buttons[0].fonts[0].text = '+' + this.activityStore.bonus

@@ -89,8 +89,8 @@ export default {
             <span class="me-2">R$</span>
             <count-up
               class="cash"
-              :start-val="this.bigBonusStartVal"
-              :end-val="`${activityStore.totalBonus}`"
+              :start-val="this.activityStore.preTotalBonus"
+              :end-val="`${this.activityStore.totalBonus}`"
               :decimalPlaces="2"
             ></count-up>
           </div>
@@ -115,7 +115,7 @@ export default {
           Ainda e necessário
           <span class="needCashNum mx-2">
             <count-up
-              :start-val="this.notEnoughStartVal"
+              :start-val="this.activityStore.preRemainingBonus"
               :end-val="`${activityStore.remainingBonus}`"
               :decimalPlaces="2"
             ></count-up>
