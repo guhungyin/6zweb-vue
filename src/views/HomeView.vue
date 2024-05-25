@@ -63,7 +63,6 @@ export default {
     this.activityStore
       .queryLotteryTimes()
       .then((res) => {
-        console.log('查询抽奖次数：', res)
         this.activityStore.showText = res.data.remainingLotteryDraws.toString()
         this.showTurntableModal = true
         this.activityStore.logged = true
@@ -71,6 +70,7 @@ export default {
         this.activityStore.totalBonus = res.data.totalBonus
         this.activityStore.preRemainingBonus = res.data.remainingBonus
         this.activityStore.remainingBonus = res.data.remainingBonus
+        this.$refs.homeLuckStar.countFinished()
       })
       .catch((err) => {
         if (err.message === 'User not logged.') {
@@ -782,7 +782,7 @@ export default {
         <!-- 轉盤標題 -->
         <img src="../assets/images/rou/title.png" alt="" class="turntableTitle" />
         <!-- 轉盤內容 -->
-        <LuckyTurntable></LuckyTurntable>
+        <LuckyTurntable ref="homeLuckStar"></LuckyTurntable>
         <!-- 轉盤背景 -->
         <div class="bg"></div>
         <!-- 燈光效果 -->

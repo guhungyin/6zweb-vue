@@ -477,7 +477,9 @@ export default {
                   <span class="currency"> BRL</span>
                 </div>
               </div>
-              <button type="button" class="btn w-100">Continue recebendo mais recompensas</button>
+              <button type="button" class="btn w-100" data-bs-dismiss="modal">
+                Continue recebendo mais recompensas
+              </button>
             </div>
           </div>
         </div>

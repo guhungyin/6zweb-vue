@@ -34,31 +34,46 @@ export default {
         .then((res) => {
           console.log('登录响应: ', res, ' ---> ', this.userStore.id)
 
-          this.activityStore
-            .queryLotteryTimes()
-            .then((resa) => {
-              this.isActive = true
-              this.isDisabled = false
-              this.errorMsg = ''
-              this.errorActive = false
-              this.isLoading = false
+          // this.activityStore
+          //   .queryLotteryTimes()
+          //   .then((resa) => {
+          //     this.isActive = true
+          //     this.isDisabled = false
+          //     this.errorMsg = ''
+          //     this.errorActive = false
+          //     this.isLoading = false
 
-              this.activityStore.showText = resa.data.remainingLotteryDraws.toString()
-              this.activityStore.logged = true
-              this.activityStore.totalBonus = resa.data.totalBonus
-              this.activityStore.remainingBonus = resa.data.remainingBonus
+          //     this.activityStore.showText = resa.data.remainingLotteryDraws.toString()
+          //     this.activityStore.logged = true
+          //     this.activityStore.totalBonus = resa.data.totalBonus
+          //     this.activityStore.remainingBonus = resa.data.remainingBonus
 
-              this.$router.push({
-                name: 'home'
-              })
-            })
-            .catch((err) => {
-              this.isActive = true
-              this.isDisabled = false
-              this.errorMsg = err.message
-              this.errorActive = true
-              this.isLoading = false
-            })
+          //     this.$router.push({
+          //       name: 'home'
+          //     })
+          //   })
+          //   .catch((err) => {
+          //     this.isActive = true
+          //     this.isDisabled = false
+          //     this.errorMsg = err.message
+          //     this.errorActive = true
+          //     this.isLoading = false
+          //   })
+
+          this.isActive = true
+          this.isDisabled = false
+          this.errorMsg = ''
+          this.errorActive = false
+          this.isLoading = false
+
+          // this.activityStore.showText = resa.data.remainingLotteryDraws.toString()
+          this.activityStore.logged = true
+          // this.activityStore.totalBonus = resa.data.totalBonus
+          // this.activityStore.remainingBonus = resa.data.remainingBonus
+
+          this.$router.push({
+            name: 'home'
+          })
         })
         .catch((err) => {
           this.isActive = true
