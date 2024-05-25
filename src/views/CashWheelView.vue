@@ -3,11 +3,11 @@ import LuckyTurntable from '@/components/LuckyTurntable.vue'
 import CountUp from 'vue-countup-v3'
 import { useActivityStore } from '@/stores/modules/activity'
 import { useUserStore } from '@/stores/modules/user'
+import * as bootstrap from 'bootstrap'
 export default {
   data() {
     return {
-      bigBonusStartVal: 0.0,
-      notEnoughStartVal: parseFloat(this.activityStore.remainingBonus)
+      luckyBonus: '0.00'
     }
   },
   methods: {
@@ -16,6 +16,12 @@ export default {
     },
     countFinished() {
       this.$refs.luckyStar.countFinished()
+    },
+    withdrawAlertOpen(luckyBonus) {
+      this.luckyBonus = luckyBonus
+
+      var myModal = new bootstrap.Modal(document.getElementById('bigBonus'))
+      myModal.show()
     }
   },
   components: {
@@ -135,7 +141,7 @@ export default {
         <!-- 背景旋轉光暈 -->
         <div class="spinLightBg"></div>
         <!-- 轉盤內容 -->
-        <LuckyTurntable ref="luckyStar"></LuckyTurntable>
+        <LuckyTurntable ref="luckyStar" @withdraw-alert="withdrawAlertOpen"></LuckyTurntable>
         <!-- 轉盤背景 -->
         <div class="bg"></div>
         <!-- 燈光效果 -->
@@ -172,7 +178,7 @@ export default {
           <div class="vanTabsContent px-2">
             <div class="winList">
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5591******372</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -180,7 +186,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5591******589</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -188,7 +194,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5557******786</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -196,7 +202,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5569******675</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -204,7 +210,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5578******459</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -212,7 +218,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5568******699</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -220,7 +226,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5592******712</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -228,7 +234,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5591******217</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -236,7 +242,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5593******277</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -244,7 +250,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5568******286</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -252,7 +258,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5593******189</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -260,7 +266,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5591******778</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -268,7 +274,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5591******566</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -276,7 +282,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5568******545</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -284,7 +290,7 @@ export default {
                 </div>
               </div>
               <div class="item">
-                <div class="name">5568******172</div>
+                <div class="name">5592******387</div>
                 <div class="tipText">Acabou de saca</div>
                 <div class="value">
                   <span class="addCash">+100</span>
@@ -406,7 +412,7 @@ export default {
               <div class="cash">
                 <div class="text">Total de dinheiro a ser pago em breve</div>
                 <div class="cashContent">
-                  <span>97.21</span>
+                  <span>{{ this.activityStore.totalBonus }}</span>
                   <span class="currency"> BRL</span>
                 </div>
               </div>
@@ -467,7 +473,7 @@ export default {
                   automaticamente para a carteira da sua conta
                 </div>
                 <div class="cashContent">
-                  <span>1,000</span>
+                  <span>{{ this.luckyBonus }}</span>
                   <span class="currency"> BRL</span>
                 </div>
               </div>

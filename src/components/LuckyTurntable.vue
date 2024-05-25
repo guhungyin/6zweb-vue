@@ -22,6 +22,8 @@ export default {
       bonus: '0.00',
       remainingBonus: '100.00',
       preRemainingBonus: '0.00',
+      point: 2,
+      fixedBonus: '',
       blocks: [
         {
           imgs: [
@@ -216,12 +218,19 @@ export default {
             .luckyStar()
             .then((res) => {
               // console.log('抽奖返回:', res)
+              this.point = res.data.point
               this.$refs.myLucky.stop(res.data.point)
-              this.activityStore.bonus = res.data.bonus
-              this.preTotalBonus = this.activityStore.totalBonus
-              this.totalBonus = res.data.totalBonus
-              this.preRemainingBonus = this.activityStore.remainingBonus
-              this.remainingBonus = res.data.remainingBonus
+
+              if (res.data.point === 0 || res.data.point === 1 || res.data.point === 4) {
+                this.activityStore.bonus = res.data.bonus
+                this.preTotalBonus = this.activityStore.totalBonus
+                this.totalBonus = res.data.totalBonus
+                this.preRemainingBonus = this.activityStore.remainingBonus
+                this.remainingBonus = res.data.remainingBonus
+              } else {
+                this.fixedBonus = res.data.bonus
+              }
+
               this.activityStore.showText = res.data.remainingLotteryDraws
             })
             .catch((err) => {
@@ -245,7 +254,11 @@ export default {
     },
     // 抽奖结束会触发end回调 可以取得該獎品內容及機率
     endCallback() {
-      this.animateValue(0.0, this.activityStore.bonus)
+      if (this.point === 0 || this.point === 1 || this.point === 4) {
+        this.animateValue(0.0, this.activityStore.bonus)
+      } else {
+        this.$emit('withdraw-alert', this.fixedBonus)
+      }
     },
     // 首頁轉盤使用 在首頁點擊轉盤按鈕後，下次再進來就不會再出現
     handleButtonClick() {}
