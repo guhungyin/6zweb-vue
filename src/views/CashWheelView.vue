@@ -22,7 +22,22 @@ export default {
 
       var myModal = new bootstrap.Modal(document.getElementById('bigBonus'))
       myModal.show()
-    }
+    },
+    copyLink() {
+      const textToCopy = this.meReferral //event.target.getAttribute('data-clipboard-text')
+      navigator.clipboard
+        .writeText(textToCopy)
+        .then(() => {
+          console.log('文字已複製到剪貼簿:', textToCopy)
+          this.showModal = true
+          setTimeout(() => {
+            this.showModal = false
+          }, 3000)
+        })
+        .catch((error) => {
+          console.error('Failed to copy text:', error)
+        })
+    },
   },
   components: {
     LuckyTurntable,
@@ -158,18 +173,20 @@ export default {
         </div>
         <div class="cashButton d-flex justify-content-around align-items-center py-2">
           <span> Convide amigos para ajudar com saques </span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="#FFF"
-            class="bi bi-share-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"
-            />
-          </svg>
+          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="#FFF"
+              class="bi bi-share-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"
+              />
+            </svg>
+          </button>
         </div>
       </div>
       <div class="report mb-3">
@@ -485,6 +502,113 @@ export default {
         </div>
       </div>
     </div>
+    <!-- 分享給好友 -->
+    <div class="offcanvas offcanvas-bottom shareToFriend" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel">  1. Convide amigos para ajudar com saques </h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="shareLink">
+          <li class="shareLinkItem">
+            <router-link to="/">
+              <img src="@/assets/images/icon/fb.svg" alt="">
+            </router-link>
+            <span class="mt-2">Facebook</span>
+          </li>
+          <li class="shareLinkItem">
+            <router-link to="/">
+              <img src="@/assets/images/icon/whatsapp.svg" alt="">
+            </router-link>
+            <span class="mt-2">WhatsApp</span>
+          </li>
+          <li class="shareLinkItem">
+            <router-link to="/">
+              <img src="@/assets/images/icon/Telegram_logo.svg" alt="">
+            </router-link>
+            <span class="mt-2">Telegram</span>
+          </li>
+          <li class="shareLinkItem">
+            <router-link to="/">
+              <img src="@/assets/images/icon/x.svg" alt="">
+            </router-link>
+            <span class="mt-2">Twitter</span>
+          </li>
+          <li class="shareLinkItem">
+            <router-link to="/">
+              <img src="@/assets/images/icon/mail.svg" alt="">
+            </router-link>
+            <span class="mt-2">Email</span>
+          </li>
+        </ul>
+        <div class="copyUrl p-2">
+          <span class="url">{{ this.meReferral }}</span>
+          <span class="copyBtn" @click="copyLink" data-clipboard-text="123456">Cópia</span>
+        </div>
+        <h5 class="mt-3">2. Enviar convite para jogador aleatório ajudar </h5>
+        <div class="code p-3">
+          <ul class="p-0">
+            <li> 5549984173125 </li>
+            <li> 5597999026423 </li>
+            <li> 5584996680112 </li>
+            <li> 5594992309447 </li>
+            <li> 5511975673173 </li>
+            <li> 5527998778519 </li>
+            <li> 5567996527154 </li>
+            <li> 5598970040693 </li>
+            <li> 5521980363864 </li>
+            <li> 5561982314619 </li>
+            <li> 5592992652865 </li>
+            <li> 5583991691405 </li>
+            <li> 5566996515611 </li>
+            <li> 5513997446708 </li>
+            <li> 5521965328117 </li>
+            <li> 5551996495538 </li>
+            <li> 5554996024143 </li>
+            <li> 5586998472815 </li>
+            <li> 5511959002062 </li>
+            <li> 5511953868084 </li>
+          </ul>
+          <div class="d-flex justify-content-between">
+            <div class="shareBtn whatsAppB p-2">
+              <div class="text">
+                Enviar Mensagem
+                <br>
+                no <span class="fw-bold">WhatsAPP</span>
+              </div>
+              <a href="">
+                <img src="@/assets/images/icon/whatsappBtn.svg" alt="">
+              </a>
+            </div>
+            <div class="shareBtn sms p-2">
+              <a href="">
+                <img src="@/assets/images/icon/sms.png" alt="">
+              </a>
+              <div class="">
+                Enviar Mensagem
+                <br>
+                <span class="fw-bold">SMS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert m-0" role="alert" :class="{ active: showModal }">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      fill="#fff"
+      class="bi bi-check-lg mb-3"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"
+      />
+    </svg>
+    Copy succeeded
+  </div>
   </div>
 </template>
 <style scoped>
@@ -834,5 +958,92 @@ export default {
 .bigBonusModal .modal-content button {
   background-color: #6ddf39;
   color: var(--fff);
+}
+.shareToFriend{
+  height: auto;
+}
+.shareToFriend h5{
+  font-size: 1rem;
+  color: #898989;
+}
+.shareToFriend .shareLink{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+}
+.shareToFriend .shareLink .shareLinkItem{
+  text-align: center;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.shareToFriend .shareLink img{
+  width: 3rem;
+}
+.shareToFriend .shareLink span{
+  color: #727272;
+  font-size: .8rem;
+}
+.shareToFriend .copyUrl {
+  background-color: #f9f9f9;
+  border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shareToFriend .copyUrl .url {
+  color: #808080;
+  font-size: 0.9rem;
+}
+.shareToFriend .copyUrl .copyBtn {
+  color: #40a1de;
+  font-size: 0.9rem;
+}
+.shareToFriend .code{
+  background-color: #000;
+  color: #8f8f8f;
+  font-weight: 700;
+}
+.shareToFriend .code ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+.shareToFriend .code ul li{
+  padding: 0 .4rem;
+  font-size: .8rem;
+}
+.shareToFriend .code .shareBtn{
+  background-color: #fff;
+  text-align: left;
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #000;
+  font-size: .8rem;
+}
+.shareToFriend .code .shareBtn img{
+  width: 2rem;
+}
+.alert {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 0;
+  color: #fff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 8rem;
+  height: 8rem;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+.alert.active {
+  display: flex;
 }
 </style>
