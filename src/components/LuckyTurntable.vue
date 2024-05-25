@@ -135,9 +135,9 @@ export default {
           fonts: [
             {
               text: this.activityStore.showText,
-              top: '-15',
+              top: '-5',
               fontColor: '#fff',
-              fontSize: '35',
+              fontSize: '20',
               fontWeight: '700'
             }
           ]
