@@ -13,9 +13,15 @@
 </template>
 <script>
 import { useActivityStore } from '@/stores/modules/activity'
+import { ref } from 'vue'
 export default {
   data() {
     return {
+      preTotalBonus: '0.00',
+      totalBonus: '0.00',
+      bonus: '0.00',
+      remainingBonus: '100.00',
+      preRemainingBonus: '0.00',
       blocks: [
         {
           imgs: [
@@ -146,6 +152,48 @@ export default {
     }
   },
   methods: {
+    countFinished() {
+      this.$refs.myLucky.buttons[0].fonts[0].text = this.activityStore.showText
+    },
+    animateValue(start, end) {
+      // let range = parseFloat(end) - start
+      let current = start
+      let stepTime = 20
+
+      let increment = parseFloat(end) > start ? 1 : -1
+
+      if (parseFloat(end) <= 3.0) {
+        increment = parseFloat(end) > start ? 0.01 : -0.01
+        stepTime = 50
+      }
+
+      //let stepTime = Math.abs(Math.floor(duration / range))
+
+      console.log('间隔时间: ', stepTime)
+
+      let thant = this
+
+      let timer = setInterval(function () {
+        current += increment
+        thant.$refs.myLucky.buttons[0].fonts[0].text = current.toFixed(2)
+
+        if (increment !== 0.01 && parseFloat(end) - current <= 3.0) {
+          increment = 0.01
+        }
+
+        if (current >= parseFloat(end)) {
+          clearInterval(timer)
+
+          setTimeout(() => {
+            thant.activityStore.preRemainingBonus = thant.preRemainingBonus
+            thant.activityStore.remainingBonus = thant.remainingBonus
+            thant.activityStore.preTotalBonus = thant.preTotalBonus
+            thant.activityStore.totalBonus = thant.totalBonus
+          }, 2000)
+        }
+      }, stepTime)
+    },
+
     // 点击抽奖按钮会触发star回调
     startCallback() {
       if (!this.activityStore.logged) {
@@ -158,8 +206,6 @@ export default {
       // 更新可轉動次數
       let buttonsNum = parseInt(this.$refs.myLucky.buttons[0].fonts[0].text)
       if (buttonsNum > 0) {
-        console.log('抽奖活动当前路径: ', this.$route.path)
-
         if (this.$route.path === '/cashwheel') {
           this.$refs.myLucky.buttons[0].fonts[0].text = (buttonsNum - 1).toString()
           // 调用抽奖组件的play方法开始游戏
@@ -172,16 +218,11 @@ export default {
               // console.log('抽奖返回:', res)
               this.$refs.myLucky.stop(res.data.point)
               this.activityStore.bonus = res.data.bonus
-              this.activityStore.preTotalBonus = this.activityStore.totalBonus
-              this.activityStore.totalBonus = res.data.totalBonus
-              this.activityStore.preRemainingBonus = this.activityStore.remainingBonus
-              this.activityStore.remainingBonus = res.data.remainingBonus
+              this.preTotalBonus = this.activityStore.totalBonus
+              this.totalBonus = res.data.totalBonus
+              this.preRemainingBonus = this.activityStore.remainingBonus
+              this.remainingBonus = res.data.remainingBonus
               this.activityStore.showText = res.data.remainingLotteryDraws
-              this.$refs.myLucky.buttons[0].fonts[0].text = '+' + this.activityStore.bonus
-
-              setTimeout(() => {
-                this.$refs.myLucky.buttons[0].fonts[0].text = (buttonsNum - 1).toString()
-              }, 2000)
             })
             .catch((err) => {
               console.log('抽奖错误:', err.message)
@@ -203,21 +244,20 @@ export default {
       this.handleButtonClick()
     },
     // 抽奖结束会触发end回调 可以取得該獎品內容及機率
-    endCallback(prize) {
-      console.log(prize)
+    endCallback() {
+      this.animateValue(0.0, this.activityStore.bonus)
     },
     // 首頁轉盤使用 在首頁點擊轉盤按鈕後，下次再進來就不會再出現
-    handleButtonClick() {
-      this.showTurntableModal = false
-      localStorage.setItem('hasSeenTurntableModal', 'true')
-    }
+    handleButtonClick() {}
   },
 
   setup() {
     const activityStore = useActivityStore()
+    const bonustext = ref('6')
 
     return {
-      activityStore
+      activityStore,
+      bonustext
     }
   }
 }

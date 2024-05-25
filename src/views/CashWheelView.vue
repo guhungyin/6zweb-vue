@@ -13,6 +13,9 @@ export default {
   methods: {
     closeBtn() {
       this.$router.go(-1)
+    },
+    countFinished() {
+      this.$refs.luckyStar.countFinished()
     }
   },
   components: {
@@ -92,6 +95,7 @@ export default {
               :start-val="this.activityStore.preTotalBonus"
               :end-val="`${this.activityStore.totalBonus}`"
               :decimalPlaces="2"
+              @finished="countFinished"
             ></count-up>
           </div>
           <div class="withdraw" data-bs-toggle="modal" data-bs-target="#withdrawAlert">
@@ -131,7 +135,7 @@ export default {
         <!-- 背景旋轉光暈 -->
         <div class="spinLightBg"></div>
         <!-- 轉盤內容 -->
-        <LuckyTurntable></LuckyTurntable>
+        <LuckyTurntable ref="luckyStar"></LuckyTurntable>
         <!-- 轉盤背景 -->
         <div class="bg"></div>
         <!-- 燈光效果 -->
@@ -458,7 +462,10 @@ export default {
           <div class="modal-body">
             <div class="main py-3 px-2">
               <div class="cash mb-3">
-                <div class="text">Que sorte, parabéns por ganhar o prêmio em dinheiro O dinheiro será enviado automaticamente para a carteira da sua conta</div>
+                <div class="text">
+                  Que sorte, parabéns por ganhar o prêmio em dinheiro O dinheiro será enviado
+                  automaticamente para a carteira da sua conta
+                </div>
                 <div class="cashContent">
                   <span>1,000</span>
                   <span class="currency"> BRL</span>
