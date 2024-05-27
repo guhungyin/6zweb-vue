@@ -173,7 +173,7 @@ export default {
         </div>
         <div class="cashButton d-flex justify-content-around align-items-center py-2">
           <span> Convide amigos para ajudar com saques </span>
-          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#shareToFriend" aria-controls="shareToFriend">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -448,7 +448,7 @@ export default {
                 <li class="mb-3">Ainda e necessário 2.79 para sacar</li>
                 <li class="active">100 R$ serão pagos na sua conta PIX</li>
               </ul>
-              <button type="button" class="btn w-100">Convide amigos para ajudar com</button>
+              <button class="btn w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#shareToFriend" aria-controls="shareToFriend">Convide amigos para ajudar com</button>
             </div>
           </div>
         </div>
@@ -503,7 +503,7 @@ export default {
       </div>
     </div>
     <!-- 分享給好友 -->
-    <div class="offcanvas offcanvas-bottom shareToFriend" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas offcanvas-bottom shareToFriend" tabindex="-1" id="shareToFriend" aria-labelledby="shareToFriendLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasBottomLabel">  1. Convide amigos para ajudar com saques </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -960,6 +960,7 @@ export default {
   color: var(--fff);
 }
 .shareToFriend{
+  z-index: 2000;
   height: auto;
 }
 .shareToFriend h5{
