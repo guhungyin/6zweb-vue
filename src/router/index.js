@@ -259,6 +259,14 @@ const router = createRouter({
       meta:{
         index: 1
       },
+    },
+    {
+      path: '/sports',
+      name: 'sports',
+      component: () => import('@/views/SportsView.vue'),
+      meta:{
+        index: 1
+      },
     }
   ]
 })
