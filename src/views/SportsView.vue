@@ -1,10 +1,44 @@
 <script>
 import GameLogo from '@/components/home/GameLogo.vue'
 import BottomMenu from '@/components/BottomMenu.vue'
+import { useCommonStore } from '@/stores/modules/common'
+import { useUserStore } from '@/stores/modules/user'
+
 export default {
-  components:{
+  data() {
+    return {
+      gameUrl: '',
+      logged: false
+    }
+  },
+  created() {
+    if (this.userStore.ticket) {
+      this.logged = true
+    }
+
+    if (this.commonStore.selectProvedor && this.commonStore.selectProvedor.cp === 'Pinnacle') {
+      this.commonStore.gameLogin('/pinnacle/gameLogin', {}).then((res) => {
+        this.gameUrl = res.data
+      })
+    }
+  },
+  components: {
     GameLogo,
     BottomMenu
+  },
+  methods: {
+    wallterDetails() {
+      this.userStore.walletDetails()
+      this.userStore.userInfo()
+    }
+  },
+  setup() {
+    const commonStore = useCommonStore()
+    const userStore = useUserStore()
+    return {
+      commonStore,
+      userStore
+    }
   }
 }
 </script>
@@ -23,7 +57,9 @@ export default {
           </div>
           <div class="right" v-show="logged">
             <div class="userMoney me-2">
-              <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" /></div>
+              <img class="me-1" src="@/assets/images/icon/rmoneyIcon.svg" alt="" />
+              {{ this.userStore.money }}
+            </div>
             <router-link to="/deposit" class="depositBtn me-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,6 +84,7 @@ export default {
               data-bs-toggle="offcanvas"
               data-bs-target="#profileWindow"
               aria-controls="profileWindow"
+              @click="wallterDetails"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +101,9 @@ export default {
         </div>
       </nav>
     </header>
-    <div class="main"></div>
+    <div class="main">
+      <iframe :src="gameUrl" frameborder="0" scrolling="no"></iframe>
+    </div>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
   </div>
