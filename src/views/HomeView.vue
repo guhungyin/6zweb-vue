@@ -598,6 +598,9 @@ export default {
           >
             <img :src="provedorItem.img" alt="" class="w-100" />
           </router-link>
+        <router-link to="/sports" class="col">
+          <img src="@/assets/images/provider/link_PINNACLE.jpg" alt="" class="w-100">
+        </router-link>
         </div>
       </div>
       <!-- LIVE game -->
