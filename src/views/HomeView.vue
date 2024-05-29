@@ -589,18 +589,24 @@ export default {
           <div class="title">Provedor Do Jogo</div>
         </div>
         <div class="row row-cols-2 g-2">
-          <router-link
-            to="/gameSpecifyList"
-            class="col"
-            v-for="provedorItem in this.commonStore.provedorList"
-            :key="provedorItem"
-            @click="selectProvedor(provedorItem)"
-          >
-            <img :src="provedorItem.img" alt="" class="w-100" />
-          </router-link>
-        <router-link to="/sports" class="col">
-          <img src="@/assets/images/provider/link_PINNACLE.jpg" alt="" class="w-100">
-        </router-link>
+          <template v-for="provedorItem in this.commonStore.provedorList" :key="provedorItem">
+            <router-link
+              v-if="provedorItem.cp !== 'Pinnacle'"
+              to="/gameSpecifyList"
+              class="col"
+              @click="selectProvedor(provedorItem)"
+            >
+              <img :src="provedorItem.img" alt="" class="w-100" />
+            </router-link>
+            <router-link
+              v-if="provedorItem.cp === 'Pinnacle'"
+              to="/sports"
+              class="col"
+              @click="selectProvedor(provedorItem)"
+            >
+              <img :src="provedorItem.img" alt="" class="w-100" />
+            </router-link>
+          </template>
         </div>
       </div>
       <!-- LIVE game -->
