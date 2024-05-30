@@ -102,7 +102,7 @@ export default {
       </nav>
     </header>
     <div class="main">
-      <iframe :src="gameUrl" frameborder="0" scrolling="no"></iframe>
+      <iframe :src="gameUrl" frameborder="0" scrolling="yes"></iframe>
     </div>
     <!-- 下方選單 -->
     <BottomMenu></BottomMenu>
