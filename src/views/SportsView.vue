@@ -124,7 +124,7 @@ export default {
 .main::-webkit-scrollbar {
   display: none;
 }
-iframe{
+iframe {
   width: 100%;
   height: 100%;
 }
