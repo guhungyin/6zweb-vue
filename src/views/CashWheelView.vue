@@ -3,16 +3,99 @@ import LuckyTurntable from '@/components/LuckyTurntable.vue'
 import CountUp from 'vue-countup-v3'
 import { useActivityStore } from '@/stores/modules/activity'
 import { useUserStore } from '@/stores/modules/user'
+import { useCommonStore } from '@/stores/modules/common'
 import * as bootstrap from 'bootstrap'
 export default {
   data() {
     return {
-      luckyBonus: '0.00'
+      luckyBonus: '0.00',
+      telegramReferral: '',
+      facebookReferral: '',
+      whatsappReferral: '',
+      meReferral: '',
+      instagramReferral: '',
+      showModal: false
     }
+  },
+  created() {
+    console.log('分享页面来源: ---> ', this.$route.query.source)
+    if (this.$route.query.source) {
+      this.userStore.source = this.$route.query.source
+    }
+  },
+  mounted() {
+    this.commonStore.referralList.forEach((v) => {
+      if (v.channel === 'Telegram') {
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.telegramReferral =
+          url.protocol +
+          '//' +
+          url.hostname +
+          url.pathname +
+          '?url=' +
+          encodeURIComponent(url.searchParams.get('url').replace('?', 'cashwheel?')) +
+          '&text=' +
+          encodeURIComponent('\n\nReceba 100 BRL de graça,Pix SAQUE RÁPIDO')
+        console.log('telegram share url: ', this.telegramReferral)
+      } else if (v.channel === 'Facebook') {
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.facebookReferral =
+          url.protocol +
+          '//' +
+          url.hostname +
+          url.pathname +
+          '?u=' +
+          encodeURIComponent(url.searchParams.get('u').replace('?', 'cashwheel?')) +
+          '&t=' +
+          encodeURIComponent(url.searchParams.get('t'))
+
+        console.log('facebook share url: ', this.facebookReferral)
+      } else if (v.channel === 'whatsapp') {
+        //https://api.whatsapp.com/send?text=
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.whatsappReferral =
+          url.protocol +
+          url.hostname +
+          url.pathname +
+          '?text=' +
+          encodeURIComponent(url.searchParams.get('text').replace('?', 'cashwheel?')) +
+          '&via=' +
+          encodeURIComponent(url.searchParams.get('via'))
+        console.log('whatsapp share url: ', this.whatsappReferral)
+      } else if (v.channel === 'me') {
+        this.meReferral = v.link
+          .replace(/userId/g, this.userStore.id.toString())
+          .replace('?', 'cashwheel?')
+      } else if (v.channel === 'instagram') {
+        let tempUrl = v.link.replace(/userId/g, this.userStore.id.toString())
+        let url = new URL(tempUrl)
+        this.instagramReferral =
+          url.protocol +
+          '//' +
+          url.hostname +
+          url.pathname +
+          '?' +
+          encodeURIComponent(url.searchParams.get('url').replace('?', 'cashwheel?'))
+        console.log('instagram share url: ', this.instagramReferral)
+      }
+    })
   },
   methods: {
     closeBtn() {
       this.$router.go(-1)
+    },
+    toRegister() {
+      if (this.userStore.ticket === '') {
+        this.$router.push({
+          name: 'register'
+        })
+      } else {
+        // var myModal = new bootstrap.Modal(document.getElementById('shareToFriend'))
+        // myModal.show()
+      }
     },
     countFinished() {
       this.$refs.luckyStar.countFinished()
@@ -37,7 +120,7 @@ export default {
         .catch((error) => {
           console.error('Failed to copy text:', error)
         })
-    },
+    }
   },
   components: {
     LuckyTurntable,
@@ -46,10 +129,12 @@ export default {
   setup() {
     const activityStore = useActivityStore()
     const userStore = useUserStore()
+    const commonStore = useCommonStore()
 
     return {
       activityStore,
-      userStore
+      userStore,
+      commonStore
     }
   }
 }
@@ -173,8 +258,15 @@ export default {
         </div>
         <div class="cashButton d-flex justify-content-around align-items-center py-2">
           <span> Convide amigos para ajudar com saques </span>
-          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#shareToFriend" aria-controls="shareToFriend">
-              <svg
+          <button
+            class="btn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#shareToFriend"
+            aria-controls="shareToFriend"
+            @click="toRegister"
+          >
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -448,7 +540,16 @@ export default {
                 <li class="mb-3">Ainda e necessário 2.79 para sacar</li>
                 <li class="active">100 R$ serão pagos na sua conta PIX</li>
               </ul>
-              <button class="btn w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#shareToFriend" aria-controls="shareToFriend">Convide amigos para ajudar com</button>
+              <button
+                class="btn w-100"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#shareToFriend"
+                aria-controls="shareToFriend"
+                @click="toRegister"
+              >
+                Convide amigos para ajudar com
+              </button>
             </div>
           </div>
         </div>
@@ -503,90 +604,102 @@ export default {
       </div>
     </div>
     <!-- 分享給好友 -->
-    <div class="offcanvas offcanvas-bottom shareToFriend" tabindex="-1" id="shareToFriend" aria-labelledby="shareToFriendLabel">
+    <div
+      class="offcanvas offcanvas-bottom shareToFriend"
+      tabindex="-1"
+      id="shareToFriend"
+      aria-labelledby="shareToFriendLabel"
+    >
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasBottomLabel">  1. Convide amigos para ajudar com saques </h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel">
+          1. Convide amigos para ajudar com saques
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="offcanvas-body">
         <ul class="shareLink">
           <li class="shareLinkItem">
-            <router-link to="/">
-              <img src="@/assets/images/icon/fb.svg" alt="">
-            </router-link>
+            <a :href="this.facebookReferral">
+              <img src="@/assets/images/icon/fb.svg" alt="" />
+            </a>
             <span class="mt-2">Facebook</span>
           </li>
           <li class="shareLinkItem">
-            <router-link to="/">
-              <img src="@/assets/images/icon/whatsapp.svg" alt="">
-            </router-link>
+            <a :href="this.whatsappReferral">
+              <img src="@/assets/images/icon/whatsapp.svg" alt="" />
+            </a>
             <span class="mt-2">WhatsApp</span>
           </li>
           <li class="shareLinkItem">
-            <router-link to="/">
-              <img src="@/assets/images/icon/Telegram_logo.svg" alt="">
-            </router-link>
+            <a :href="this.telegramReferral">
+              <img src="@/assets/images/icon/Telegram_logo.svg" alt="" />
+            </a>
             <span class="mt-2">Telegram</span>
           </li>
           <li class="shareLinkItem">
-            <router-link to="/">
-              <img src="@/assets/images/icon/x.svg" alt="">
-            </router-link>
-            <span class="mt-2">Twitter</span>
+            <a :href="this.instagramReferral">
+              <img src="@/assets/images/icon/instagram.svg" alt="" />
+            </a>
+            <span class="mt-2">Instagram</span>
           </li>
-          <li class="shareLinkItem">
+          <!-- <li class="shareLinkItem">
             <router-link to="/">
-              <img src="@/assets/images/icon/mail.svg" alt="">
+              <img src="@/assets/images/icon/mail.svg" alt="" />
             </router-link>
             <span class="mt-2">Email</span>
-          </li>
+          </li> -->
         </ul>
         <div class="copyUrl p-2">
           <span class="url">{{ this.meReferral }}</span>
           <span class="copyBtn" @click="copyLink" data-clipboard-text="123456">Cópia</span>
         </div>
-        <h5 class="mt-3">2. Enviar convite para jogador aleatório ajudar </h5>
+        <h5 class="mt-3">2. Enviar convite para jogador aleatório ajudar</h5>
         <div class="code p-3">
           <ul class="p-0">
-            <li> 5549984173125 </li>
-            <li> 5597999026423 </li>
-            <li> 5584996680112 </li>
-            <li> 5594992309447 </li>
-            <li> 5511975673173 </li>
-            <li> 5527998778519 </li>
-            <li> 5567996527154 </li>
-            <li> 5598970040693 </li>
-            <li> 5521980363864 </li>
-            <li> 5561982314619 </li>
-            <li> 5592992652865 </li>
-            <li> 5583991691405 </li>
-            <li> 5566996515611 </li>
-            <li> 5513997446708 </li>
-            <li> 5521965328117 </li>
-            <li> 5551996495538 </li>
-            <li> 5554996024143 </li>
-            <li> 5586998472815 </li>
-            <li> 5511959002062 </li>
-            <li> 5511953868084 </li>
+            <li>5549984173125</li>
+            <li>5597999026423</li>
+            <li>5584996680112</li>
+            <li>5594992309447</li>
+            <li>5511975673173</li>
+            <li>5527998778519</li>
+            <li>5567996527154</li>
+            <li>5598970040693</li>
+            <li>5521980363864</li>
+            <li>5561982314619</li>
+            <li>5592992652865</li>
+            <li>5583991691405</li>
+            <li>5566996515611</li>
+            <li>5513997446708</li>
+            <li>5521965328117</li>
+            <li>5551996495538</li>
+            <li>5554996024143</li>
+            <li>5586998472815</li>
+            <li>5511959002062</li>
+            <li>5511953868084</li>
           </ul>
           <div class="d-flex justify-content-between">
             <div class="shareBtn whatsAppB p-2">
               <div class="text">
                 Enviar Mensagem
-                <br>
+                <br />
                 no <span class="fw-bold">WhatsAPP</span>
               </div>
               <a href="">
-                <img src="@/assets/images/icon/whatsappBtn.svg" alt="">
+                <img src="@/assets/images/icon/whatsappBtn.svg" alt="" />
               </a>
             </div>
             <div class="shareBtn sms p-2">
               <a href="">
-                <img src="@/assets/images/icon/sms.png" alt="">
+                <img src="@/assets/images/icon/sms.png" alt="" />
               </a>
               <div class="">
                 Enviar Mensagem
-                <br>
+                <br />
                 <span class="fw-bold">SMS</span>
               </div>
             </div>
@@ -595,20 +708,20 @@ export default {
       </div>
     </div>
     <div class="alert m-0" role="alert" :class="{ active: showModal }">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="30"
-      fill="#fff"
-      class="bi bi-check-lg mb-3"
-      viewBox="0 0 16 16"
-    >
-      <path
-        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"
-      />
-    </svg>
-    Copy succeeded
-  </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="#fff"
+        class="bi bi-check-lg mb-3"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"
+        />
+      </svg>
+      Copy succeeded
+    </div>
   </div>
 </template>
 <style scoped>
@@ -959,32 +1072,32 @@ export default {
   background-color: #6ddf39;
   color: var(--fff);
 }
-.shareToFriend{
+.shareToFriend {
   z-index: 2000;
   height: auto;
 }
-.shareToFriend h5{
+.shareToFriend h5 {
   font-size: 1rem;
   color: #898989;
 }
-.shareToFriend .shareLink{
+.shareToFriend .shareLink {
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 0;
 }
-.shareToFriend .shareLink .shareLinkItem{
+.shareToFriend .shareLink .shareLinkItem {
   text-align: center;
   width: 20%;
   display: flex;
   flex-direction: column;
 }
-.shareToFriend .shareLink img{
+.shareToFriend .shareLink img {
   width: 3rem;
 }
-.shareToFriend .shareLink span{
+.shareToFriend .shareLink span {
   color: #727272;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 .shareToFriend .copyUrl {
   background-color: #f9f9f9;
@@ -1001,20 +1114,20 @@ export default {
   color: #40a1de;
   font-size: 0.9rem;
 }
-.shareToFriend .code{
+.shareToFriend .code {
   background-color: #000;
   color: #8f8f8f;
   font-weight: 700;
 }
-.shareToFriend .code ul{
+.shareToFriend .code ul {
   display: flex;
   flex-wrap: wrap;
 }
-.shareToFriend .code ul li{
-  padding: 0 .4rem;
-  font-size: .8rem;
+.shareToFriend .code ul li {
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
 }
-.shareToFriend .code .shareBtn{
+.shareToFriend .code .shareBtn {
   background-color: #fff;
   text-align: left;
   width: 48%;
@@ -1022,9 +1135,9 @@ export default {
   align-items: center;
   justify-content: space-around;
   color: #000;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
-.shareToFriend .code .shareBtn img{
+.shareToFriend .code .shareBtn img {
   width: 2rem;
 }
 .alert {

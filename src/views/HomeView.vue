@@ -98,7 +98,7 @@ export default {
       this.userStore.source = this.$route.query.source
     }
 
-    if (this.userStore.ticket) {
+    if (this.userStore.ticket && this.userStore.ticket !== '') {
       this.logged = true
       // this.userMoney = this.userStore.money
 
