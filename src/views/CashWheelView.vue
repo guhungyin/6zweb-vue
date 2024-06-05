@@ -4,7 +4,9 @@ import CountUp from 'vue-countup-v3'
 import { useActivityStore } from '@/stores/modules/activity'
 import { useUserStore } from '@/stores/modules/user'
 import { useCommonStore } from '@/stores/modules/common'
-import * as bootstrap from 'bootstrap'
+// import * as bootstrap from 'bootstrap'
+import { Modal,Offcanvas } from 'bootstrap';
+
 export default {
   data() {
     return {
@@ -88,13 +90,15 @@ export default {
       this.$router.go(-1)
     },
     toRegister() {
+      var shareToFriendOffcanvas = document.getElementById('shareToFriendOffcanvas')
+      var newShareToFriendOffcanvas = new Offcanvas(shareToFriendOffcanvas)
+      newShareToFriendOffcanvas.show();
       if (this.userStore.ticket === '') {
         this.$router.push({
           name: 'register'
         })
       } else {
-        // var myModal = new bootstrap.Modal(document.getElementById('shareToFriend'))
-        // myModal.show()
+        //
       }
     },
     countFinished() {
@@ -103,7 +107,7 @@ export default {
     withdrawAlertOpen(luckyBonus) {
       this.luckyBonus = luckyBonus
 
-      var myModal = new bootstrap.Modal(document.getElementById('bigBonus'))
+      var myModal = new Modal(document.getElementById('bigBonus'))
       myModal.show()
     },
     copyLink() {
@@ -261,8 +265,6 @@ export default {
           <button
             class="btn"
             type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#shareToFriend"
             aria-controls="shareToFriend"
             @click="toRegister"
           >
@@ -543,8 +545,6 @@ export default {
               <button
                 class="btn w-100"
                 type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#shareToFriend"
                 aria-controls="shareToFriend"
                 @click="toRegister"
               >
@@ -607,8 +607,9 @@ export default {
     <div
       class="offcanvas offcanvas-bottom shareToFriend"
       tabindex="-1"
-      id="shareToFriend"
+      id="shareToFriendOffcanvas"
       aria-labelledby="shareToFriendLabel"
+      data-bs-backdrop="false"
     >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasBottomLabel">

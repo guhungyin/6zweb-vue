@@ -125,6 +125,8 @@ export default {
   display: none;
 }
 iframe {
+  background-color: #122d53;
+  padding-bottom: 1.5rem;
   width: 100%;
   height: 100%;
 }
