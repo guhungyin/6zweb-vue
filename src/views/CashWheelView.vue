@@ -5,7 +5,7 @@ import { useActivityStore } from '@/stores/modules/activity'
 import { useUserStore } from '@/stores/modules/user'
 import { useCommonStore } from '@/stores/modules/common'
 // import * as bootstrap from 'bootstrap'
-import { Modal,Offcanvas } from 'bootstrap';
+import { Modal, Offcanvas } from 'bootstrap'
 
 export default {
   data() {
@@ -89,16 +89,30 @@ export default {
     closeBtn() {
       this.$router.go(-1)
     },
-    toRegister() {
-      var shareToFriendOffcanvas = document.getElementById('shareToFriendOffcanvas')
-      var newShareToFriendOffcanvas = new Offcanvas(shareToFriendOffcanvas)
-      newShareToFriendOffcanvas.show();
+    waToRegister() {
       if (this.userStore.ticket === '') {
         this.$router.push({
           name: 'register'
         })
       } else {
-        //
+      }
+    },
+    toRegister(flag) {
+      if ('open' === flag) {
+        let shareToFriendOffcanvas = document.getElementById('shareToFriendOffcanvas')
+        let newShareToFriendOffcanvas = new Offcanvas(shareToFriendOffcanvas)
+        newShareToFriendOffcanvas.show()
+        return
+      }
+
+      if (this.userStore.ticket === '') {
+        this.$router.push({
+          name: 'register'
+        })
+      } else {
+        let shareToFriendOffcanvas = document.getElementById('shareToFriendOffcanvas')
+        let newShareToFriendOffcanvas = new Offcanvas(shareToFriendOffcanvas)
+        newShareToFriendOffcanvas.show()
       }
     },
     countFinished() {
@@ -208,7 +222,12 @@ export default {
               @finished="countFinished"
             ></count-up>
           </div>
-          <div class="withdraw" data-bs-toggle="modal" data-bs-target="#withdrawAlert">
+          <div
+            class="withdraw"
+            data-bs-toggle="modal"
+            data-bs-target="#withdrawAlert"
+            @click="waToRegister"
+          >
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
             SACAR
           </div>
@@ -262,12 +281,7 @@ export default {
         </div>
         <div class="cashButton d-flex justify-content-around align-items-center py-2">
           <span> Convide amigos para ajudar com saques </span>
-          <button
-            class="btn"
-            type="button"
-            aria-controls="shareToFriend"
-            @click="toRegister"
-          >
+          <button class="btn" type="button" aria-controls="shareToFriend" @click="toRegister">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -546,7 +560,7 @@ export default {
                 class="btn w-100"
                 type="button"
                 aria-controls="shareToFriend"
-                @click="toRegister"
+                @click="toRegister('open')"
               >
                 Convide amigos para ajudar com
               </button>
