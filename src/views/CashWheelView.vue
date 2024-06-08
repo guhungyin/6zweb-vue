@@ -95,6 +95,8 @@ export default {
           name: 'register'
         })
       } else {
+        var myModal = new Modal(document.getElementById('withdrawAlert'))
+        myModal.show()
       }
     },
     toRegister(flag) {
@@ -224,8 +226,6 @@ export default {
           </div>
           <div
             class="withdraw"
-            data-bs-toggle="modal"
-            data-bs-target="#withdrawAlert"
             @click="waToRegister"
           >
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
@@ -1171,6 +1171,7 @@ export default {
   height: 8rem;
   font-size: 1rem;
   white-space: nowrap;
+  z-index: 9999;
 }
 .alert.active {
   display: flex;
