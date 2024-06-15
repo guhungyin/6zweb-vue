@@ -95,7 +95,7 @@ export default {
           name: 'register'
         })
       } else {
-        var myModal = new Modal(document.getElementById('withdrawAlert'))
+        let myModal = new Modal(document.getElementById('withdrawAlert'))
         myModal.show()
       }
     },
@@ -224,10 +224,7 @@ export default {
               @finished="countFinished"
             ></count-up>
           </div>
-          <div
-            class="withdraw"
-            @click="waToRegister"
-          >
+          <div class="withdraw" @click="waToRegister">
             <img src="../assets/images/icon/pix_2.png" width="16" class="me-1" alt="" />
             SACAR
           </div>
