@@ -22,7 +22,8 @@ service.interceptors.request.use(
   (config) => {
     // do something before request is sent
     const userStore = useUserStore(pinia)
-    // console.log('====> userStore', userStore)
+    config.headers['channel'] = userStore.channel
+
     if (userStore.ticket) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
@@ -35,7 +36,6 @@ service.interceptors.request.use(
       config.headers['osType'] = '2'
       config.headers['timeZone'] = userStore.timezone
       config.headers['deviceId'] = userStore.deviceId
-      console.log('deviceId', config.headers['deviceId'])
     }
 
     return config

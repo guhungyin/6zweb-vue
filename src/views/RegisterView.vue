@@ -31,11 +31,13 @@ export default {
 
       this.isLoading = true
 
+      let channel = this.userStore.channel
+
       this.userStore
         .register({
           password: EncryptReg(this.password),
           account: this.account,
-          channel: 20231113,
+          channel: channel,
           version: '1',
           nickName: this.nickName,
           source: this.userStore.source

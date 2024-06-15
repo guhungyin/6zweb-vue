@@ -15,6 +15,7 @@ export const useUserStore = defineStore('user', {
       email: '',
       money: '0.00',
       vipLevel: 0,
+      channel: 20231113,
       promotionTotalCommission: 0,
       source: '',
       availableWithdrawalMoney: 0,
