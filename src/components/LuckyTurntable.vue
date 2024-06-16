@@ -2,8 +2,8 @@
   <LuckyWheel
     class="luckyWheelContent"
     ref="myLucky"
-    width="339"
-    height="339"
+    width="280"
+    height="280"
     :prizes="prizes"
     :blocks="blocks"
     :buttons="buttons"
@@ -53,7 +53,7 @@ export default {
             {
               text: '0.01',
               fontColor: '#ffd760',
-              fontSize: '25',
+              fontSize: '20',
               fontWeight: '700',
               top: '30'
             }
@@ -75,7 +75,7 @@ export default {
             {
               text: '10',
               fontColor: '#ffd760',
-              fontSize: '25',
+              fontSize: '20',
               fontWeight: '700',
               top: '30'
             }
@@ -97,7 +97,7 @@ export default {
             {
               text: 'menção\ndireta',
               fontColor: '#ffd760',
-              fontSize: '20',
+              fontSize: '16',
               wordWrap: false,
               fontWeight: '700',
               top: '30'
@@ -110,7 +110,7 @@ export default {
             {
               text: '50',
               fontColor: '#b90615',
-              fontSize: '25',
+              fontSize: '20',
               fontWeight: '700',
               top: '30'
             }
@@ -122,7 +122,7 @@ export default {
             {
               text: '1000',
               fontColor: '#ffd760',
-              fontSize: '25',
+              fontSize: '20',
               fontWeight: '700',
               top: '30'
             }

@@ -332,17 +332,17 @@ header .right .userBtn {
 .turntableModal .closeTurntableModalBtn{
   position: absolute;
   transform: translate(-50%, -50%);
-  left: 98%;
+  left: 81%;
   width: 1.8rem;
   height: 1.8rem;
-  top: -42%;
+  top: -30%;
 }
 .turntableModal .turntableTitle{
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  width: 340px;
-  top: -34%;
+  width: 308px;
+  top: -13%;
 }
 .turntableModal .luckyWheelContent{
   position: absolute;
@@ -354,10 +354,10 @@ header .right .userBtn {
   pointer-events: none;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 45.6%;
+  top: 46.5%;
   left: 50%;
-  width: 400px;
-  height: 535px;
+  width: 310px;
+  height: 413px;
   background: url('@/assets/images/rou/d.png') no-repeat 0 0 / 100% 100%;
 }
 .turntableModal .light {
@@ -366,8 +366,8 @@ header .right .userBtn {
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  height: 382px;
-  width: 382px;
+  height: 296px;
+  width: 290px;
   animation: lightAnimation infinite 0.4s;
 }
 @keyframes lightAnimation {
@@ -382,7 +382,7 @@ header .right .userBtn {
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 6%;
+  top: 17%;
   width: 5rem;
   height: 3rem;
 }
@@ -390,13 +390,13 @@ header .right .userBtn {
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 102%;
-  width: 364px;
+  top: 92%;
+  width: 283px;
 }
 .turntableModal .tipImg{
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  width: 400px;
+  width: 310px;
   top: 117%;
 }

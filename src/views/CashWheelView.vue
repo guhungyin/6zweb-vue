@@ -826,24 +826,24 @@ export default {
 .drawMain {
   position: relative;
   max-width: 400px;
-  height: 530px;
+  height: 435px;
   margin: 0 auto;
 }
 .drawMain .bg {
   pointer-events: none;
   position: absolute;
   transform: translate(-50%, 0);
-  top: -15px;
-  left: 50%;
-  width: 400px;
-  height: 539px;
+  top: 28px;
+    left: 50%;
+    width: 310px;
+    height: 413px;
   background: url('../assets/images/rou/d.png') no-repeat 0 0 / 100% 100%;
 }
 .drawMain .spinLightBg {
   pointer-events: none;
   background: url('../assets/images/rou/spinBg_2.png') no-repeat center center / 100% 100%;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -869,9 +869,9 @@ export default {
   position: absolute;
   transform: translate(-50%, 0);
   left: 50%;
-  top: 80px;
-  height: 385px;
-  width: 382px;
+  top: 99px;
+  height: 296px;
+  width: 290px;
   animation: lightAnimation infinite 0.4s;
 }
 @keyframes lightAnimation {
@@ -886,7 +886,7 @@ export default {
   position: absolute;
   transform: translate(-50%, 0);
   left: 50%;
-  top: 78px;
+  top: 99px;
   width: 5rem;
   height: 3rem;
 }
