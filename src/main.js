@@ -6,6 +6,7 @@ import VueLuckyCanvas from '@lucky-canvas/vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { pinia } from './stores'
+import i18n from './i18n';
 import App from './App.vue'
 import router from './router'
 import '@/assets/css/reset.css'
@@ -24,6 +25,7 @@ app.use(pinia)
 app.use(VueAxios, axios)
 app.use(router)
 app.use(VueLuckyCanvas)
+app.use(i18n);
 // app.use(QRCodePlugin)
 app.provide('axios', app.config.globalProperties.axios)
 app.mount('#app')
